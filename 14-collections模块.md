@@ -1,0 +1,205 @@
+# collections模块
+
+在内置数据类型（dict、list、set、tuple）的基础上，collections模块还提供了几个额外的数据类型：Counter、deque、defaultdict、namedtuple和OrderedDict等。
+
+> 1.namedtuple: 生成可以使用名字来访问元素内容的tuple
+>
+> 2.deque: 双端队列，可以快速的从另外一侧追加和推出对象
+>
+> 3.Counter: 计数器，主要用来计数
+>
+> 4.OrderedDict: 有序字典
+>
+> 5.defaultdict: 带有默认值的字典
+
+### namedtuple
+
+我们知道`tuple`可以表示不变集合，例如，一个点的二维坐标就可以表示成：
+
+```python
+>>> p = (1, 2)
+```
+
+但是，看到(1, 2)，很难看出这个tuple是用来表示一个坐标的。
+
+这时，`namedtuple`就派上了用场：
+
+```python
+>>> from collections import namedtuple
+>>> Point = namedtuple('Point', ['x', 'y'])
+>>> p = Point(1, 2)
+>>> p.x
+1
+>>> p.y
+2
+```
+
+类似的，如果要用坐标和半径表示一个圆，也可以用`namedtuple`定义：
+
+```python
+#namedtuple('名称', [属性list]):
+Circle = namedtuple('Circle', ['x', 'y', 'r'])
+```
+
+### deque
+
+使用list存储数据时，按索引访问元素很快，但是插入和删除元素就很慢了，因为list是线性存储，数据量大的时候，插入和删除效率很低。
+
+deque是为了高效实现插入和删除操作的双向列表，适合用于队列和栈：
+
+```python
+>>> from collections import deque
+>>> q = deque(['a', 'b', 'c'])
+>>> q.append('x')
+>>> q.appendleft('y')
+>>> q
+deque(['y', 'a', 'b', 'c', 'x'])
+```
+
+deque除了实现list的`append()`和`pop()`外，还支持`appendleft()`和`popleft()`，这样就可以非常高效地往头部添加或删除元素。
+
+### OrderedDict
+
+使用dict时，Key是无序的。在对dict做迭代时，我们无法确定Key的顺序。
+
+如果要保持Key的顺序，可以用`OrderedDict`：
+
+```python
+>>> from collections import OrderedDict
+>>> d = dict([('a', 1), ('b', 2), ('c', 3)])
+>>> d # dict的Key是无序的
+{'a': 1, 'c': 3, 'b': 2}
+>>> od = OrderedDict([('a', 1), ('b', 2), ('c', 3)])
+>>> od # OrderedDict的Key是有序的
+OrderedDict([('a', 1), ('b', 2), ('c', 3)])
+```
+
+注意，`OrderedDict`的Key会按照插入的顺序排列，不是Key本身排序：
+
+```python
+>>> od = OrderedDict()
+>>> od['z'] = 1
+>>> od['y'] = 2
+>>> od['x'] = 3
+>>> od.keys() # 按照插入的Key的顺序返回
+['z', 'y', 'x']
+```
+
+### defaultdict 
+
+`有如下值集合 [``11``,``22``,``33``,``44``,``55``,``66``,``77``,``88``,``99``,``90.``..]，将所有大于 ``66` `的值保存至字典的第一个key中，将小于 ``66` `的值保存至第二个key的值中。`
+
+`即： {``'k1'``: 大于``66` `, ``'k2'``: 小于``66``}`
+
+```python
+values = [11, 22, 33,44,55,66,77,88,99,90]
+
+my_dict = {}
+
+for value in  values:
+    if value>66:
+        if my_dict.has_key('k1'):
+            my_dict['k1'].append(value)
+        else:
+            my_dict['k1'] = [value]
+    else:
+        if my_dict.has_key('k2'):
+            my_dict['k2'].append(value)
+        else:
+            my_dict['k2'] = [value]
+```
+
+```python
+from collections import defaultdict
+
+values = [11, 22, 33,44,55,66,77,88,99,90]
+
+my_dict = defaultdict(list)
+
+for value in  values:
+    if value>66:
+        my_dict['k1'].append(value)
+    else:
+        my_dict['k2'].append(value)
+```
+
+使用`dict`时，如果引用的Key不存在，就会抛出`KeyError`。如果希望key不存在时，返回一个默认值，就可以用`defaultdict`：
+
+```python
+>>> from collections import defaultdict
+>>> dd = defaultdict(lambda: 'N/A')
+>>> dd['key1'] = 'abc'
+>>> dd['key1'] # key1存在
+'abc'
+>>> dd['key2'] # key2不存在，返回默认值
+'N/A'
+```
+
+### Counter
+
+Counter类的目的是用来跟踪值出现的次数。它是一个无序的容器类型，以字典的键值对形式存储，其中元素作为key，其计数作为value。计数值可以是任意的Interger（包括0和负数）。Counter类和其他语言的bags或multisets很相似。
+
+```python
+c = Counter('abcdeabcdabcaba')
+print c
+>>> Counter({'a': 5, 'b': 4, 'c': 3, 'd': 2, 'e': 1})
+```
+
+Counter的其他方法这里不是重点。
+
+
+
+# Queue模块
+
+创建一个“队列”对象
+
+```python
+import Queue
+myqueue = Queue.Queue(maxsize = 10)
+```
+
+Queue.Queue类即是一个队列的同步实现。队列长度可为无限或者有限。可通过Queue的构造函数的可选参数maxsize来设定队列长度。如果maxsize小于1就表示队列长度无限。
+
+将一个值放入队列中
+
+```python
+myqueue.put(10)
+```
+
+调用队列对象的put()方法在队尾插入一个项目。put()有两个参数，第一个item为必需的，为插入项目的值；第二个block为可选参数，默认为1。如果队列当前为空且block为1，put()方法就使调用线程暂停,直到空出一个数据单元。如果block为0，put方法将引发Full异常。
+
+将一个值从队列中取出
+
+```python
+myqueue.get()
+```
+
+调用队列对象的get()方法从队头删除并返回一个项目。可选参数为block，默认为True。如果队列为空且block为True，get()就使调用线程暂停，直至有项目可用。如果队列为空且block为False，队列将引发Empty异常。
+
+python queue模块有三种队列:
+
+> 1、python queue模块的FIFO队列先进先出。
+> 2、LIFO类似于堆。即先进后出。
+> 3、还有一种是优先级队列级别越低越先出来。 
+
+针对这三种队列分别有三个构造函数:
+
+> 1、class Queue.Queue(maxsize) FIFO 
+> 2、class Queue.LifoQueue(maxsize) LIFO 
+> 3、class Queue.PriorityQueue(maxsize) 优先级队列 
+
+介绍一下此包中的常用方法:
+
+```python
+Queue.qsize() #返回队列的大小 
+Queue.empty() #如果队列为空，返回True,反之False 
+Queue.full() #如果队列满了，返回True,反之False
+Queue.full #与 maxsize 大小对应 
+Queue.get([block[, timeout]])#获取队列，timeout等待时间 
+Queue.get_nowait() #相当Queue.get(False)
+非阻塞 Queue.put(item) #写入队列，timeout等待时间 
+Queue.put_nowait(item) #相当Queue.put(item, False)
+Queue.task_done() #在完成一项工作之后，Queue.task_done()函数向任务已经完成的队列发送一个信号
+Queue.join() #实际上意味着等到队列为空，再执行别的操作
+```
+
