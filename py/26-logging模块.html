@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>logging模块 | nanarino note</title>
+    <meta name="description" content="a note I took with markdown">
+    
+    
+    <link rel="preload" href="/markdown-note/assets/css/0.styles.447f505d.css" as="style"><link rel="preload" href="/markdown-note/assets/js/app.6e2a47d9.js" as="script"><link rel="preload" href="/markdown-note/assets/js/26.f446d7f7.js" as="script"><link rel="prefetch" href="/markdown-note/assets/js/10.8545fbf1.js"><link rel="prefetch" href="/markdown-note/assets/js/11.c591ac1f.js"><link rel="prefetch" href="/markdown-note/assets/js/12.38d44553.js"><link rel="prefetch" href="/markdown-note/assets/js/13.c74d45f6.js"><link rel="prefetch" href="/markdown-note/assets/js/14.bab4a9fb.js"><link rel="prefetch" href="/markdown-note/assets/js/15.9ad785ce.js"><link rel="prefetch" href="/markdown-note/assets/js/16.563203ba.js"><link rel="prefetch" href="/markdown-note/assets/js/17.6dcf9869.js"><link rel="prefetch" href="/markdown-note/assets/js/18.ac2c5815.js"><link rel="prefetch" href="/markdown-note/assets/js/19.5a90d5c6.js"><link rel="prefetch" href="/markdown-note/assets/js/2.2208a19d.js"><link rel="prefetch" href="/markdown-note/assets/js/20.d2c1e60b.js"><link rel="prefetch" href="/markdown-note/assets/js/21.cdef5b11.js"><link rel="prefetch" href="/markdown-note/assets/js/22.14104b6c.js"><link rel="prefetch" href="/markdown-note/assets/js/23.df9abc21.js"><link rel="prefetch" href="/markdown-note/assets/js/24.e883d23b.js"><link rel="prefetch" href="/markdown-note/assets/js/25.80a679f4.js"><link rel="prefetch" href="/markdown-note/assets/js/27.1e02f8bd.js"><link rel="prefetch" href="/markdown-note/assets/js/28.5f3d3747.js"><link rel="prefetch" href="/markdown-note/assets/js/29.b230f9f7.js"><link rel="prefetch" href="/markdown-note/assets/js/3.e0813aed.js"><link rel="prefetch" href="/markdown-note/assets/js/30.70c83e7c.js"><link rel="prefetch" href="/markdown-note/assets/js/31.4a50e074.js"><link rel="prefetch" href="/markdown-note/assets/js/32.9ccdcc5f.js"><link rel="prefetch" href="/markdown-note/assets/js/33.fb6dc097.js"><link rel="prefetch" href="/markdown-note/assets/js/34.967ab631.js"><link rel="prefetch" href="/markdown-note/assets/js/35.f06c88b4.js"><link rel="prefetch" href="/markdown-note/assets/js/4.891a686e.js"><link rel="prefetch" href="/markdown-note/assets/js/5.2f006642.js"><link rel="prefetch" href="/markdown-note/assets/js/6.d00ca5cf.js"><link rel="prefetch" href="/markdown-note/assets/js/7.7b8107dc.js"><link rel="prefetch" href="/markdown-note/assets/js/8.09685a99.js"><link rel="prefetch" href="/markdown-note/assets/js/9.215f5681.js">
+    <link rel="stylesheet" href="/markdown-note/assets/css/0.styles.447f505d.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/markdown-note/" class="home-link router-link-active"><!----> <span class="site-name">nanarino note</span></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/markdown-note/py/" class="nav-link router-link-active">Python</a></div><div class="nav-item"><a href="/markdown-note/js/" class="nav-link">JavaScript</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">Other</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/nanarino/markdown-note" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="http://www.akokono.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Mysite
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/markdown-note/py/" class="nav-link router-link-active">Python</a></div><div class="nav-item"><a href="/markdown-note/js/" class="nav-link">JavaScript</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">Other</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/nanarino/markdown-note" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="http://www.akokono.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Mysite
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><div class="sidebar-group first collapsable"><p class="sidebar-heading"><span>起步</span> <span class="arrow right"></span></p> <!----></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>数据类型</span> <span class="arrow right"></span></p> <!----></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>函数</span> <span class="arrow right"></span></p> <!----></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>常用模块</span> <span class="arrow right"></span></p> <!----></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading open"><span>面向对象</span> <span class="arrow down"></span></p> <ul class="sidebar-group-items"><li><a href="/markdown-note/py/21-类和对象.html" class="sidebar-link">类和对象</a></li><li><a href="/markdown-note/py/22-面向对象特性.html" class="sidebar-link">面向对象特性</a></li><li><a href="/markdown-note/py/23-魔术方法.html" class="sidebar-link">魔术方法</a></li><li><a href="/markdown-note/py/24-hashlib模块.html" class="sidebar-link">hashlib模块</a></li><li><a href="/markdown-note/py/25-configparser模块.html" class="sidebar-link">configparser模块</a></li><li><a href="/markdown-note/py/26-logging模块.html" class="active sidebar-link">logging模块</a><ul class="sidebar-sub-headers"></ul></li></ul></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>网络编程</span> <span class="arrow right"></span></p> <!----></div></li></ul> </div> <div class="page"> <div class="content"><h1 id="logging模块"><a href="#logging模块" aria-hidden="true" class="header-anchor">#</a> logging模块</h1> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">import</span> logging
+<span class="token comment">##级别依次提高</span>
+logging<span class="token punctuation">.</span>debug<span class="token punctuation">(</span><span class="token string">'debug message'</span><span class="token punctuation">)</span>  <span class="token comment">#排错信息</span>
+logging<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string">'info message'</span><span class="token punctuation">)</span>  <span class="token comment">#正常信息</span>
+logging<span class="token punctuation">.</span>warning<span class="token punctuation">(</span><span class="token string">'warning message'</span><span class="token punctuation">)</span>  <span class="token comment">#警告信息</span>
+logging<span class="token punctuation">.</span>error<span class="token punctuation">(</span><span class="token string">'error message'</span><span class="token punctuation">)</span>  <span class="token comment">#错误信息</span>
+logging<span class="token punctuation">.</span>critical<span class="token punctuation">(</span><span class="token string">'critical message'</span><span class="token punctuation">)</span>  <span class="token comment">#严重错误信息</span>
+</code></pre></div><p>默认情况下Python的logging模块将日志打印到了标准输出中，且只显示了大于等于WARNING级别的日志，这说明默认的日志级别设置为WARNING（日志级别等级CRITICAL &gt; ERROR &gt; WARNING &gt; INFO &gt; DEBUG），默认的日志格式为日志级别：Logger名称：用户输出消息。</p> <p>两种配置方法:</p> <h3 id="配置参数："><a href="#配置参数：" aria-hidden="true" class="header-anchor">#</a> 配置参数：</h3> <p>缺点:中文乱码,不能同时控制台打印和写入文件</p> <p>灵活配置日志级别，日志格式，输出位置:</p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">import</span> logging  
+logging<span class="token punctuation">.</span>basicConfig<span class="token punctuation">(</span>level<span class="token operator">=</span>logging<span class="token punctuation">.</span>DEBUG<span class="token punctuation">,</span>
+        <span class="token builtin">format</span><span class="token operator">=</span><span class="token string">'%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s'</span><span class="token punctuation">,</span>  
+        datefmt<span class="token operator">=</span><span class="token string">'%a, %d %b %Y %H:%M:%S'</span><span class="token punctuation">,</span>  
+        filename<span class="token operator">=</span><span class="token string">'/tmp/test.log'</span><span class="token punctuation">,</span>  
+        filemode<span class="token operator">=</span><span class="token string">'w'</span><span class="token punctuation">)</span>  
+  
+logging<span class="token punctuation">.</span>debug<span class="token punctuation">(</span><span class="token string">'debug message'</span><span class="token punctuation">)</span>  
+logging<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string">'info message'</span><span class="token punctuation">)</span>  
+logging<span class="token punctuation">.</span>warning<span class="token punctuation">(</span><span class="token string">'warning message'</span><span class="token punctuation">)</span>  
+logging<span class="token punctuation">.</span>error<span class="token punctuation">(</span><span class="token string">'error message'</span><span class="token punctuation">)</span>  
+logging<span class="token punctuation">.</span>critical<span class="token punctuation">(</span><span class="token string">'critical message'</span><span class="token punctuation">)</span>
+</code></pre></div><p>更多的配置选项:</p> <div class="language-txt extra-class"><pre class="language-text"><code>logging.basicConfig()函数中可通过具体参数来更改logging模块默认行为，可用参数有：
+
+filename：用指定的文件名创建FiledHandler，这样日志会被存储在指定的文件中。
+filemode：文件打开方式，在指定了filename时使用这个参数，默认值为“a”还可指定为“w”。
+format：指定handler使用的日志显示格式。
+datefmt：指定日期时间格式。
+level：设置rootlogger（后边会讲解具体概念）的日志级别
+stream：用指定的stream创建StreamHandler。可以指定输出到sys.stderr,sys.stdout或者文件(f=open(‘test.log’,’w’))，默认为sys.stderr。若同时列出了filename和stream两个参数，则stream参数会被忽略。
+
+format参数中可能用到的格式化串：
+%(name)s Logger的名字
+%(levelno)s 数字形式的日志级别
+%(levelname)s 文本形式的日志级别
+%(pathname)s 调用日志输出函数的模块的完整路径名，可能没有
+%(filename)s 调用日志输出函数的模块的文件名
+%(module)s 调用日志输出函数的模块名
+%(funcName)s 调用日志输出函数的函数名
+%(lineno)d 调用日志输出函数的语句所在的代码行
+%(created)f 当前时间，用UNIX标准的表示时间的浮 点数表示
+%(relativeCreated)d 输出日志信息时的，自Logger创建以 来的毫秒数
+%(asctime)s 字符串形式的当前时间。默认格式是 “2003-07-08 16:49:45,896”。逗号后面的是毫秒
+%(thread)d 线程ID。可能没有
+%(threadName)s 线程名。可能没有
+%(process)d 进程ID。可能没有
+%(message)s用户输出的消息
+</code></pre></div><h3 id="配置logger对象"><a href="#配置logger对象" aria-hidden="true" class="header-anchor">#</a> 配置logger对象</h3> <div class="language-python extra-class"><pre class="language-python"><code><span class="token keyword">import</span> logging
+
+logger <span class="token operator">=</span> logging<span class="token punctuation">.</span>getLogger<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment"># 创建一个handler，用于写入日志文件</span>
+fh <span class="token operator">=</span> logging<span class="token punctuation">.</span>FileHandler<span class="token punctuation">(</span><span class="token string">'test.log'</span><span class="token punctuation">,</span>encoding<span class="token operator">=</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span> 
+
+<span class="token comment"># 再创建一个handler，用于输出到控制台 </span>
+ch <span class="token operator">=</span> logging<span class="token punctuation">.</span>StreamHandler<span class="token punctuation">(</span><span class="token punctuation">)</span> 
+formatter <span class="token operator">=</span> logging<span class="token punctuation">.</span>Formatter<span class="token punctuation">(</span><span class="token string">'%(asctime)s - %(name)s - %(levelname)s - %(message)s'</span><span class="token punctuation">)</span>
+fh<span class="token punctuation">.</span>setLevel<span class="token punctuation">(</span>logging<span class="token punctuation">.</span>DEBUG<span class="token punctuation">)</span>
+
+fh<span class="token punctuation">.</span>setFormatter<span class="token punctuation">(</span>formatter<span class="token punctuation">)</span> 
+ch<span class="token punctuation">.</span>setFormatter<span class="token punctuation">(</span>formatter<span class="token punctuation">)</span> 
+logger<span class="token punctuation">.</span>addHandler<span class="token punctuation">(</span>fh<span class="token punctuation">)</span> <span class="token comment">#logger对象可以添加多个fh和ch对象 </span>
+logger<span class="token punctuation">.</span>addHandler<span class="token punctuation">(</span>ch<span class="token punctuation">)</span> 
+
+logger<span class="token punctuation">.</span>debug<span class="token punctuation">(</span><span class="token string">'logger debug message'</span><span class="token punctuation">)</span> 
+logger<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string">'logger info message'</span><span class="token punctuation">)</span> 
+logger<span class="token punctuation">.</span>warning<span class="token punctuation">(</span><span class="token string">'logger warning message'</span><span class="token punctuation">)</span> 
+logger<span class="token punctuation">.</span>error<span class="token punctuation">(</span><span class="token string">'logger error message'</span><span class="token punctuation">)</span> 
+logger<span class="token punctuation">.</span>critical<span class="token punctuation">(</span><span class="token string">'logger critical message'</span><span class="token punctuation">)</span>
+</code></pre></div><p>logging库提供了多个组件：Logger、Handler、Filter、Formatter。Logger对象提供应用程序可直接使用的接口，Handler发送日志到适当的目的地，Filter提供了过滤日志信息的方法，Formatter指定日志显示格式。另外，可以通过：logger.setLevel(logging.Debug)设置级别,当然，也可以通过</p> <p>fh.setLevel(logging.Debug)单对文件流设置某个级别。</p></div> <div class="page-edit"><!----> <!----></div> <!----> </div> <!----></div></div>
+    <script src="/markdown-note/assets/js/app.6e2a47d9.js" defer></script><script src="/markdown-note/assets/js/26.f446d7f7.js" defer></script>
+  </body>
+</html>

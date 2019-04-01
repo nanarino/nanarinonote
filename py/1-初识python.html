@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>初识python | nanarino note</title>
+    <meta name="description" content="a note I took with markdown">
+    
+    
+    <link rel="preload" href="/markdown-note/assets/css/0.styles.447f505d.css" as="style"><link rel="preload" href="/markdown-note/assets/js/app.6e2a47d9.js" as="script"><link rel="preload" href="/markdown-note/assets/js/11.c591ac1f.js" as="script"><link rel="prefetch" href="/markdown-note/assets/js/10.8545fbf1.js"><link rel="prefetch" href="/markdown-note/assets/js/12.38d44553.js"><link rel="prefetch" href="/markdown-note/assets/js/13.c74d45f6.js"><link rel="prefetch" href="/markdown-note/assets/js/14.bab4a9fb.js"><link rel="prefetch" href="/markdown-note/assets/js/15.9ad785ce.js"><link rel="prefetch" href="/markdown-note/assets/js/16.563203ba.js"><link rel="prefetch" href="/markdown-note/assets/js/17.6dcf9869.js"><link rel="prefetch" href="/markdown-note/assets/js/18.ac2c5815.js"><link rel="prefetch" href="/markdown-note/assets/js/19.5a90d5c6.js"><link rel="prefetch" href="/markdown-note/assets/js/2.2208a19d.js"><link rel="prefetch" href="/markdown-note/assets/js/20.d2c1e60b.js"><link rel="prefetch" href="/markdown-note/assets/js/21.cdef5b11.js"><link rel="prefetch" href="/markdown-note/assets/js/22.14104b6c.js"><link rel="prefetch" href="/markdown-note/assets/js/23.df9abc21.js"><link rel="prefetch" href="/markdown-note/assets/js/24.e883d23b.js"><link rel="prefetch" href="/markdown-note/assets/js/25.80a679f4.js"><link rel="prefetch" href="/markdown-note/assets/js/26.f446d7f7.js"><link rel="prefetch" href="/markdown-note/assets/js/27.1e02f8bd.js"><link rel="prefetch" href="/markdown-note/assets/js/28.5f3d3747.js"><link rel="prefetch" href="/markdown-note/assets/js/29.b230f9f7.js"><link rel="prefetch" href="/markdown-note/assets/js/3.e0813aed.js"><link rel="prefetch" href="/markdown-note/assets/js/30.70c83e7c.js"><link rel="prefetch" href="/markdown-note/assets/js/31.4a50e074.js"><link rel="prefetch" href="/markdown-note/assets/js/32.9ccdcc5f.js"><link rel="prefetch" href="/markdown-note/assets/js/33.fb6dc097.js"><link rel="prefetch" href="/markdown-note/assets/js/34.967ab631.js"><link rel="prefetch" href="/markdown-note/assets/js/35.f06c88b4.js"><link rel="prefetch" href="/markdown-note/assets/js/4.891a686e.js"><link rel="prefetch" href="/markdown-note/assets/js/5.2f006642.js"><link rel="prefetch" href="/markdown-note/assets/js/6.d00ca5cf.js"><link rel="prefetch" href="/markdown-note/assets/js/7.7b8107dc.js"><link rel="prefetch" href="/markdown-note/assets/js/8.09685a99.js"><link rel="prefetch" href="/markdown-note/assets/js/9.215f5681.js">
+    <link rel="stylesheet" href="/markdown-note/assets/css/0.styles.447f505d.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/markdown-note/" class="home-link router-link-active"><!----> <span class="site-name">nanarino note</span></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/markdown-note/py/" class="nav-link router-link-active">Python</a></div><div class="nav-item"><a href="/markdown-note/js/" class="nav-link">JavaScript</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">Other</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/nanarino/markdown-note" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="http://www.akokono.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Mysite
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/markdown-note/py/" class="nav-link router-link-active">Python</a></div><div class="nav-item"><a href="/markdown-note/js/" class="nav-link">JavaScript</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">Other</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/nanarino/markdown-note" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="http://www.akokono.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Mysite
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><div class="sidebar-group first collapsable"><p class="sidebar-heading open"><span>起步</span> <span class="arrow down"></span></p> <ul class="sidebar-group-items"><li><a href="/markdown-note/py/" class="sidebar-link">print(&quot;Hello World!&quot;)</a></li><li><a href="/markdown-note/py/1-初识python.html" class="active sidebar-link">初识python</a></li><li><a href="/markdown-note/py/2-流程控制.html" class="sidebar-link">流程控制</a></li></ul></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>数据类型</span> <span class="arrow right"></span></p> <!----></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>函数</span> <span class="arrow right"></span></p> <!----></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>常用模块</span> <span class="arrow right"></span></p> <!----></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>面向对象</span> <span class="arrow right"></span></p> <!----></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>网络编程</span> <span class="arrow right"></span></p> <!----></div></li></ul> </div> <div class="page"> <div class="content"><h1 id="初识python"><a href="#初识python" aria-hidden="true" class="header-anchor">#</a> 初识python</h1> <h4 id="_1，计算机基础。"><a href="#_1，计算机基础。" aria-hidden="true" class="header-anchor">#</a> 1，计算机基础。</h4> <p>cpu:用于计算。相当于一个博士。
+显卡:用于计算。相当于数千名初中生。
+内存:储存数据  最早128MB内存条 发展到8G,16G,32G, 成本高，断电即消失。
+硬盘:1T，固态硬盘，机械硬盘，储存数据，长久保持数据, 。
+操作系统:纯命令行发展为图形界面 ,
+应用程序::操作系统也是应用程序。
+:安卓App -&gt;  java虚拟机  -&gt; 安卓系统 之间的关系</p> <h4 id="_2，python历史。"><a href="#_2，python历史。" aria-hidden="true" class="header-anchor">#</a> 2，python历史。</h4> <p>宏观上：python2 与 python3 区别：
+python2 源码不标准，混乱，重复代码太多，
+python3 统一 标准，去除重复代码。</p> <h4 id="_3，python的环境。"><a href="#_3，python的环境。" aria-hidden="true" class="header-anchor">#</a> 3，python的环境。</h4> <p>编译型：一次性将所有程序编译成二进制文件。
+缺点：开发效率低，不能跨平台。
+优点：运行速度快。
+：C，C++等等。</p> <p>解释型：当程序执行时，一行一行的解释。
+优点：开发效率高，可以跨平台。
+缺点：运行速度慢。
+:python ,php,等等。</p> <h4 id="_4，python的发展。"><a href="#_4，python的发展。" aria-hidden="true" class="header-anchor">#</a> 4，python的发展。</h4> <h4 id="_5，python种类。"><a href="#_5，python种类。" aria-hidden="true" class="header-anchor">#</a> 5，python种类。</h4> <p>​    运行第一个py文件：
+python3x :python 文件路径 回车
+python2x :python2 文件路径 回车
+python2 python3 区别：python2默认编码方式是ascii码
+解决方式：在文件的首行：<code>#-*- encoding:utf-8 -*-</code>
+python3 默认编码方式utf-8</p> <h4 id="_6，变量。"><a href="#_6，变量。" aria-hidden="true" class="header-anchor">#</a> 6，变量。</h4> <p>​    变量：就是将一些运算的中间结果暂存到内存中，以便后续代码调用。
+1,必须由数字，字母，下划线任意组合，且不能数字开头。
+2,不能是python中的关键字:</p> <div class="language-python extra-class"><pre class="language-python"><code>    <span class="token punctuation">[</span><span class="token string">'and'</span><span class="token punctuation">,</span> <span class="token string">'as'</span><span class="token punctuation">,</span> <span class="token string">'assert'</span><span class="token punctuation">,</span> <span class="token string">'break'</span><span class="token punctuation">,</span> <span class="token string">'class'</span><span class="token punctuation">,</span> <span class="token string">'continue'</span><span class="token punctuation">,</span>
+    <span class="token string">'def'</span><span class="token punctuation">,</span> <span class="token string">'del'</span><span class="token punctuation">,</span> <span class="token string">'elif'</span><span class="token punctuation">,</span> <span class="token string">'else'</span><span class="token punctuation">,</span> <span class="token string">'except'</span><span class="token punctuation">,</span> <span class="token string">'exec'</span><span class="token punctuation">,</span>
+    <span class="token string">'finally'</span><span class="token punctuation">,</span> <span class="token string">'for'</span><span class="token punctuation">,</span> <span class="token string">'from'</span><span class="token punctuation">,</span> <span class="token string">'global'</span><span class="token punctuation">,</span> <span class="token string">'if'</span><span class="token punctuation">,</span> <span class="token string">'import'</span><span class="token punctuation">,</span> 
+    <span class="token string">'in'</span><span class="token punctuation">,</span> <span class="token string">'is'</span><span class="token punctuation">,</span> <span class="token string">'lambda'</span><span class="token punctuation">,</span> <span class="token string">'not'</span><span class="token punctuation">,</span> <span class="token string">'or'</span><span class="token punctuation">,</span> <span class="token string">'pass'</span><span class="token punctuation">,</span> <span class="token string">'print'</span><span class="token punctuation">,</span> 
+    <span class="token string">'raise'</span><span class="token punctuation">,</span> <span class="token string">'return'</span><span class="token punctuation">,</span> <span class="token string">'try'</span><span class="token punctuation">,</span> <span class="token string">'while'</span><span class="token punctuation">,</span> <span class="token string">'with'</span><span class="token punctuation">,</span> <span class="token string">'yield'</span><span class="token punctuation">]</span>
+</code></pre></div><p>​    3,变量具有可描述性。
+4,不能是中文。</p> <h4 id="_7，常量。"><a href="#_7，常量。" aria-hidden="true" class="header-anchor">#</a> 7，常量。</h4> <p>​    一直不变的量。     圆周率π    自然对数底数e
+BIR_OF_CHINA = 1949</p> <h4 id="_8，注释。"><a href="#_8，注释。" aria-hidden="true" class="header-anchor">#</a> 8，注释。</h4> <p>方便自己方便他人理解代码。
+单行注释：#
+多行注释：'''被注释内容'''</p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token triple-quoted-string string">&quot;&quot;&quot;
+
+被注释内容:代码千万行,注释第一行,注释不规范,亲人两行泪
+
+&quot;&quot;&quot;</span>
+</code></pre></div><h4 id="_9，用户交互。input"><a href="#_9，用户交互。input" aria-hidden="true" class="header-anchor">#</a> 9，用户交互。input</h4> <p>1，等待输入，
+2，将你输入的内容赋值给了前面变量。
+3，input出来的数据类型全部是str</p> <h4 id="_10，基础数据类型初始。"><a href="#_10，基础数据类型初始。" aria-hidden="true" class="header-anchor">#</a> 10，基础数据类型初始。</h4> <p>数字：int 12,3,45
+​    一些算数运算符:
+​     加减乘除+ - * /       这里的除是精确除法 c语言那种除法是 //
+​     指数运算**
+​     取余数%
+​    ps:<code>type()</code>
+​        字符串转化成数字：int(str) 条件：str必须是数字组成的。
+数字转化成字符串：str(int)</p> <p>字符串：str，python当中凡是用引号引起来的都是字符串。
+​    可相加  : str + str  拼接
+可相乘 : str * int  复读</p> <p>布尔值 :bool
+True   False  表示真假  是逻辑运算表达式的结果
+不是基础数据类型 是继承的1和0</p></div> <div class="page-edit"><!----> <!----></div> <!----> </div> <!----></div></div>
+    <script src="/markdown-note/assets/js/app.6e2a47d9.js" defer></script><script src="/markdown-note/assets/js/11.c591ac1f.js" defer></script>
+  </body>
+</html>

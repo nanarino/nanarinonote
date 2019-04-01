@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>函数和作用域 | nanarino note</title>
+    <meta name="description" content="a note I took with markdown">
+    
+    
+    <link rel="preload" href="/markdown-note/assets/css/0.styles.447f505d.css" as="style"><link rel="preload" href="/markdown-note/assets/js/app.6e2a47d9.js" as="script"><link rel="preload" href="/markdown-note/assets/js/32.9ccdcc5f.js" as="script"><link rel="prefetch" href="/markdown-note/assets/js/10.8545fbf1.js"><link rel="prefetch" href="/markdown-note/assets/js/11.c591ac1f.js"><link rel="prefetch" href="/markdown-note/assets/js/12.38d44553.js"><link rel="prefetch" href="/markdown-note/assets/js/13.c74d45f6.js"><link rel="prefetch" href="/markdown-note/assets/js/14.bab4a9fb.js"><link rel="prefetch" href="/markdown-note/assets/js/15.9ad785ce.js"><link rel="prefetch" href="/markdown-note/assets/js/16.563203ba.js"><link rel="prefetch" href="/markdown-note/assets/js/17.6dcf9869.js"><link rel="prefetch" href="/markdown-note/assets/js/18.ac2c5815.js"><link rel="prefetch" href="/markdown-note/assets/js/19.5a90d5c6.js"><link rel="prefetch" href="/markdown-note/assets/js/2.2208a19d.js"><link rel="prefetch" href="/markdown-note/assets/js/20.d2c1e60b.js"><link rel="prefetch" href="/markdown-note/assets/js/21.cdef5b11.js"><link rel="prefetch" href="/markdown-note/assets/js/22.14104b6c.js"><link rel="prefetch" href="/markdown-note/assets/js/23.df9abc21.js"><link rel="prefetch" href="/markdown-note/assets/js/24.e883d23b.js"><link rel="prefetch" href="/markdown-note/assets/js/25.80a679f4.js"><link rel="prefetch" href="/markdown-note/assets/js/26.f446d7f7.js"><link rel="prefetch" href="/markdown-note/assets/js/27.1e02f8bd.js"><link rel="prefetch" href="/markdown-note/assets/js/28.5f3d3747.js"><link rel="prefetch" href="/markdown-note/assets/js/29.b230f9f7.js"><link rel="prefetch" href="/markdown-note/assets/js/3.e0813aed.js"><link rel="prefetch" href="/markdown-note/assets/js/30.70c83e7c.js"><link rel="prefetch" href="/markdown-note/assets/js/31.4a50e074.js"><link rel="prefetch" href="/markdown-note/assets/js/33.fb6dc097.js"><link rel="prefetch" href="/markdown-note/assets/js/34.967ab631.js"><link rel="prefetch" href="/markdown-note/assets/js/35.f06c88b4.js"><link rel="prefetch" href="/markdown-note/assets/js/4.891a686e.js"><link rel="prefetch" href="/markdown-note/assets/js/5.2f006642.js"><link rel="prefetch" href="/markdown-note/assets/js/6.d00ca5cf.js"><link rel="prefetch" href="/markdown-note/assets/js/7.7b8107dc.js"><link rel="prefetch" href="/markdown-note/assets/js/8.09685a99.js"><link rel="prefetch" href="/markdown-note/assets/js/9.215f5681.js">
+    <link rel="stylesheet" href="/markdown-note/assets/css/0.styles.447f505d.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/markdown-note/" class="home-link router-link-active"><!----> <span class="site-name">nanarino note</span></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/markdown-note/py/" class="nav-link router-link-active">Python</a></div><div class="nav-item"><a href="/markdown-note/js/" class="nav-link">JavaScript</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">Other</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/nanarino/markdown-note" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="http://www.akokono.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Mysite
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/markdown-note/py/" class="nav-link router-link-active">Python</a></div><div class="nav-item"><a href="/markdown-note/js/" class="nav-link">JavaScript</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title">Other</span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/nanarino/markdown-note" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Github
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li><li class="dropdown-item"><!----> <a href="http://www.akokono.com/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Mysite
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><div class="sidebar-group first collapsable"><p class="sidebar-heading"><span>起步</span> <span class="arrow right"></span></p> <!----></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>数据类型</span> <span class="arrow right"></span></p> <!----></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading open"><span>函数</span> <span class="arrow down"></span></p> <ul class="sidebar-group-items"><li><a href="/markdown-note/py/7-文件处理.html" class="sidebar-link">文件处理</a></li><li><a href="/markdown-note/py/8-函数和作用域.html" class="active sidebar-link">函数和作用域</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/markdown-note/py/9-深浅拷贝.html" class="sidebar-link">深浅拷贝</a></li><li><a href="/markdown-note/py/10-闭包和装饰器.html" class="sidebar-link">闭包和装饰器</a></li><li><a href="/markdown-note/py/11-三目和列表解析.html" class="sidebar-link">三目运算符</a></li><li><a href="/markdown-note/py/12-迭代器和生成器.html" class="sidebar-link">迭代器和生成器</a></li></ul></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>常用模块</span> <span class="arrow right"></span></p> <!----></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>面向对象</span> <span class="arrow right"></span></p> <!----></div></li><li><div class="sidebar-group collapsable"><p class="sidebar-heading"><span>网络编程</span> <span class="arrow right"></span></p> <!----></div></li></ul> </div> <div class="page"> <div class="content"><h1 id="函数和作用域"><a href="#函数和作用域" aria-hidden="true" class="header-anchor">#</a> 函数和作用域</h1> <h4 id="函数声明格式"><a href="#函数声明格式" aria-hidden="true" class="header-anchor">#</a> 函数声明格式:</h4> <div class="language-python extra-class"><pre class="language-python"><code>   <span class="token keyword">def</span> 函数名<span class="token punctuation">(</span>形参<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        code
+        <span class="token keyword">return</span>
+</code></pre></div><p>return默认为<code>None</code>
+return多个变为元组</p> <h5 id="传递实参"><a href="#传递实参" aria-hidden="true" class="header-anchor">#</a> 传递实参:</h5> <div class="language-python extra-class"><pre class="language-python"><code>    foo<span class="token punctuation">(</span>a<span class="token punctuation">,</span>b<span class="token punctuation">,</span>c<span class="token punctuation">)</span><span class="token comment">#位置参数一一对应</span>
+    foo<span class="token punctuation">(</span>a<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span>b<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span>c<span class="token operator">=</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token comment">#关键字参数</span>
+    <span class="token comment">#混合使用时位置参数要在左边对应</span>
+</code></pre></div><h5 id="默认参数"><a href="#默认参数" aria-hidden="true" class="header-anchor">#</a> 默认参数:</h5> <div class="language-python extra-class"><pre class="language-python"><code>    <span class="token keyword">def</span> <span class="token function">foo</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span>b<span class="token punctuation">,</span>c<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+</code></pre></div><h5 id="剩余参数"><a href="#剩余参数" aria-hidden="true" class="header-anchor">#</a> 剩余参数:</h5> <p>​	 *列表 **字典</p> <div class="language-python extra-class"><pre class="language-python"><code>    <span class="token keyword">def</span> <span class="token function">foo</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span><span class="token operator">*</span>args<span class="token punctuation">)</span> 
+</code></pre></div><h5 id="作用域"><a href="#作用域" aria-hidden="true" class="header-anchor">#</a> 作用域:</h5> <p>​    函数可以访问它的定义所在的作用域
+不同作用域中区分声明和赋值:</p> <div class="language-python extra-class"><pre class="language-python"><code>    <span class="token keyword">global</span> name
+    <span class="token keyword">nonlocal</span> name
+</code></pre></div><blockquote><p>Python中通过提供 namespace 来实现重名函数/方法、变量等信息的识别，其一共有三种 namespace，分别为：</p> <ul><li>local namespace: 作用范围为当前函数或者类方法</li> <li>global namespace: 作用范围为当前模块</li> <li>build-in namespace: 作用范围为所有模块</li></ul> <p>当函数/方法、变量等信息发生重名时，Python会按照 “local namespace -&gt; global namespace -&gt; build-in namespace”的顺序搜索用户所需元素，并且以第一个找到此元素的 namespace 为准。</p> <p>同时，Python中的内建函数locals()和globals()可以用来查看不同namespace中定义的元素。</p></blockquote> <h3 id="匿名函数"><a href="#匿名函数" aria-hidden="true" class="header-anchor">#</a> 匿名函数:</h3> <p>return冒号右边的语句的返回值</p> <div class="language-python extra-class"><pre class="language-python"><code>    <span class="token keyword">lambda</span> x<span class="token punctuation">:</span>x<span class="token operator">+</span><span class="token number">1</span>
+</code></pre></div><h4 id="函数式编程"><a href="#函数式编程" aria-hidden="true" class="header-anchor">#</a> 函数式编程:</h4> <p>​    不可变:不用变量保存状态,不修改变量
+第一类对象:函数即变量</p> <h4 id="尾递归优化"><a href="#尾递归优化" aria-hidden="true" class="header-anchor">#</a> 尾递归优化:</h4> <p>​    最后一步调用,形成&quot;调用栈&quot;
+复杂度 O(n) =&gt; O(1)</p> <h4 id="高阶函数-map-filter-reduce"><a href="#高阶函数-map-filter-reduce" aria-hidden="true" class="header-anchor">#</a> 高阶函数 <code>map()</code> <code>filter()</code> <code>reduce()</code></h4> <p>Py3里 <code>reduce()</code>被收入了<code>functools</code>模块中</p> <p>Py2.x 中返回的是列表, 而 Py3 中返回到是一个类。这些类实现了 <code>__iter__</code> 和 <code>__next__</code> 方法,</p> <div class="language-python extra-class"><pre class="language-python"><code><span class="token comment"># 计算列表各个元素的平方</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">map</span><span class="token punctuation">(</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x <span class="token operator">**</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">,</span> <span class="token number">25</span><span class="token punctuation">]</span>
+<span class="token comment"># 提供了两个列表，对相同位置的列表数据进行相加</span>
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">map</span><span class="token punctuation">(</span><span class="token keyword">lambda</span> x<span class="token punctuation">,</span> y<span class="token punctuation">:</span> x <span class="token operator">+</span> y<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">,</span> <span class="token number">15</span><span class="token punctuation">,</span> <span class="token number">19</span><span class="token punctuation">]</span>
+</code></pre></div><div class="language-python extra-class"><pre class="language-python"><code><span class="token comment">#过滤出列表中的所有奇数：</span>
+<span class="token keyword">def</span> <span class="token function">is_odd</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> n <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">1</span>
+    
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span><span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">filter</span><span class="token punctuation">(</span>is_odd<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">]</span>
+</code></pre></div><div class="language-python extra-class"><pre class="language-python"><code><span class="token comment">#使用reduce记录词频：</span>
+<span class="token keyword">from</span> functools <span class="token keyword">import</span> <span class="token builtin">reduce</span>
+<span class="token keyword">def</span> <span class="token function">statistics</span><span class="token punctuation">(</span>dic<span class="token punctuation">,</span>k<span class="token punctuation">)</span><span class="token punctuation">:</span> 
+  <span class="token keyword">if</span> <span class="token keyword">not</span> k <span class="token keyword">in</span> dic<span class="token punctuation">:</span> 
+    dic<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span> 
+  <span class="token keyword">else</span><span class="token punctuation">:</span> 
+    dic<span class="token punctuation">[</span>k<span class="token punctuation">]</span> <span class="token operator">+=</span><span class="token number">1</span> 
+  <span class="token keyword">return</span> dic 
+lst <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">,</span><span class="token number">7</span><span class="token punctuation">,</span><span class="token number">7</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">]</span> 
+
+<span class="token operator">&gt;&gt;</span><span class="token operator">&gt;</span><span class="token builtin">reduce</span><span class="token punctuation">(</span>statistics<span class="token punctuation">,</span>lst<span class="token punctuation">,</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span> 
+<span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">:</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">:</span> <span class="token number">2</span><span class="token punctuation">}</span>
+</code></pre></div><h4 id="内置函数"><a href="#内置函数" aria-hidden="true" class="header-anchor">#</a> 内置函数</h4> <p>每一个函数请自己敲一遍哦
+比如enumerate()方法我就忘记了,一点印象都没有
+没事水水群,多看别人的代码还是有好处的</p> <div class="language-txt extra-class"><pre class="language-text"><code>作用域相关
+    globals()——获取全局变量的字典
+    locals()——获取执行本方法所在命名空间内的局部变量的字典
+
+文件操作相关
+    open()  打开一个文件，返回一个文件操作符(文件句柄)
+        操作文件的模式有r,w,a,r+,w+,a+ 共6种，每一种方式都可以用二进制的形式操作
+        (rb,wb,ab,rb+,wb+,ab+)
+        可以用encoding指定编码.
+
+输入输出相关
+    input() 输入
+    print() 输出
+        print(value, ..., sep=' ', end='\n', file=sys.stdout, flush=False)
+            file:  默认是输出到屏幕，如果设置为文件句柄，输出到文件
+            sep:   打印多个值之间的分隔符，默认为空格
+            end:   每一次打印的结尾，默认为换行符
+            flush: 立即把内容输出到流文件，不作缓存
+
+数据类型相关
+    type(o) 返回变量o的数据类型
+
+内存相关
+    id(o) o是参数，返回一个变量的内存地址
+    hash(o) o是参数，返回一个可hash变量的哈希值，不可hash的变量被hash之后会报错。
+
+帮助方法
+        在控制台执行help()进入帮助模式。可以随意输入变量或者变量的类型。输入q退出
+        或者直接执行help(o)，o是参数，查看和变量o有关的操作。。。
+
+和调用相关
+    callable(o)，o是参数，看这个变量是不是可调用。如果o是一个函数名，就会返回True
+
+和数字相关
+    数据类型相关：bool，int，float，complex
+    进制转换相关：bin，oct，hex
+    数学运算：abs，divmod，min，max，sum，round，pow
+        abs()#绝对值
+        bin()#十进制转二进制
+        hex()#十进制转十六进制
+        oct()#十进制转八进制
+        bool()#转布尔类型
+        max(list)#可迭代对象内部逐位比较 最大
+        min(list)#                       小
+        max(list,key=lamdba dic:dic['keyname'])#元素之间比较
+        pow(a,b)# a**b
+        pow(a,b,c) #a**b%c
+        round(num)#四舍五入
+        divmod(被除数,除数)#返回元组:(商,余数)
+
+和数据结构相关
+    序列——列表和元组相关的：list和tuple
+    序列——字符串相关的：str，format，bytes，bytearry，memoryview，ord，chr，ascii，repr
+    序列：reversed，slice
+    数据集合——字典和集合：dict，set，frozenset
+    数据集合：len，sorted，enumerate，all，any，zip，filter，map
+    
+	    bytes(str,encoding='utf-8')#编码
+        	str.decode('utf-8')#解码
+
+        chr(int)#数字转asc字符
+        ord(char)#字符转asc码
+        
+        slice(start,stop,step)#切片对象
+                #str[切片对象]
+                #切片对象.start/.stop/.step
+                
+        reversed(list)#临时翻转
+        sorted()#临时排序  本质是比较大小
+        
+        zip(list1,list2)#拉链 返回若干小元组(list1[0],list2[0])        
+        enumerate()#函数用于将一个可遍历的数据对象(如列表、元组或字符串)
+        			组合为一个索引序列，同时列出数据和数据下标，一般用在 for 循环当中。
+        
+        all()#是否所有元素都为真 空容器也为真
+        any()#是否存在元素为真
+       
+模块操作相关
+    __import__(str) #导入模块
+    
+其他
+   dir()#属性展开
+   eval()#将字符串当做python代码执行 是一个魔鬼方法 据说用了不安全还会被批评
+   vars(obj) #查看对象下所有方法返回为字典 若无参数相当于locals()
+   ......
+   在学完面向对象之后补充与面向对象有关的内置方法
+</code></pre></div><p>​</p></div> <div class="page-edit"><!----> <!----></div> <!----> </div> <!----></div></div>
+    <script src="/markdown-note/assets/js/app.6e2a47d9.js" defer></script><script src="/markdown-note/assets/js/32.9ccdcc5f.js" defer></script>
+  </body>
+</html>
