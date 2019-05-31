@@ -1,0 +1,30 @@
+{
+  "name": "markdown-note",
+  "version": "1.0.0",
+  "description": "Lee's Blog",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nanarino/markdown-note.git"
+  },
+  "keywords": [
+    "VuePress"
+  ],
+  "author": "Lee",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nanarino/markdown-note/issues"
+  },
+  "homepage": "https://github.com/nanarino/markdown-note#readme",
+  "devDependencies": {
+    "vuepress": "^0.14.10"
+  }
+}
