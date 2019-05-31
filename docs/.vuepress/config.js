@@ -66,7 +66,8 @@ module.exports = {
                         '23-排序算法的实现',
                         '24-回调和异步',
                         '25-async和await',
-                        '26-ajax',
+                        '26-Proxy和Reflect',
+                        '27-ajax和fetch'
 					]
 				},
 			],

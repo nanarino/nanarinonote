@@ -1,4 +1,4 @@
-# 前后交互：AJAX
+# ajax和fetch
 
 ## AJAX
 
@@ -347,6 +347,19 @@ JavaScript只能访问和操作自己域下的资源，不能访问和操作其�
   * 在后台添加允许跨域："跨域资源共享"（Cross-origin resource sharing）。它允许浏览器向跨源(协议 + 域名 + 端口)服务器，发出XMLHttpRequest请求，从而克服了AJAX只能同源使用的限制。
 
 * 第三方（也就是代理服务器）
+
+
+
+## fetch
+
+```
+fetch(...).then(fun2)
+          .then(fun3) //各依赖有序执行
+          .....
+          .catch(fun)
+```
+
+从上边的代码可以看出，fetch用起来像jQuery一样简单，虽然还是有Callback的影子，但是看起来舒服多了，它基于Promise
 
 
 
