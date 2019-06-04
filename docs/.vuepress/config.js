@@ -70,6 +70,13 @@ module.exports = {
                         '27-ajax和fetch'
 					]
 				},
+                {
+					title: 'WEB框架',
+					children: [
+                        '28-nodejs',
+                        '29-mongodb',
+					]
+				},
 			],
 			
       '/py/': [
@@ -143,6 +150,7 @@ module.exports = {
 					title: 'WEB框架',
 					children: [
                         '31-SQL语句',
+                        '32-Django'
                     ]
 				},
 			],
