@@ -3,7 +3,15 @@
 
 写着写着就变成了一个教程差不多的东西了
 
-我的学习过程：
+
+
+## 笔记build在
+
+<https://nanarino.github.io/markdown-note/>
+
+
+
+### 我的学习过程
 
 ​    先是css
 
@@ -29,6 +37,21 @@
 
 
 
-## 笔记build在
+### 参考
 
-<https://nanarino.github.io/markdown-note/>
+老男孩教育的一些老师的博客园
+
+基础：<https://www.cnblogs.com/Eva-J/p/7277026.html>
+
+django：<https://www.cnblogs.com/liwenzhou/p/9959979.html>
+
+django rest framework：<https://www.cnblogs.com/GGGG-XXXX/p/9564651.html>
+
+设计模式：<https://www.cnblogs.com/alex3714/articles/5760582.html>
+
+
+
+##### 推荐联系方式
+
+ 私信b站账号
+

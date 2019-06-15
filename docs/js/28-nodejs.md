@@ -1,6 +1,8 @@
 # node.js
 
-未完成
+Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境
+
+
 
 ## CommonJS规范
 
@@ -10,7 +12,31 @@
 
 输出模块变量的最好方法是使用`module.exports`对象。
 
-## 常用模块
 
-未完成
+
+## 官方文档
+
+<http://nodejs.cn/api/>
+
+
+
+## 事件轮询机制
+
+异步优先级：DLE观察者 > I/O观察者 > check观察者
+
+macro-tack：`<script/>`  > `setTimeout/setInterval` > `setImmediate` > I/O
+
+micro-tack：`process.nextTick` > (Promise)`.then`
+
+
+
+## 常用的模块
+
+- fs模块 - 文件读写
+- events模块 - 事件触发器
+- crypto模块 - 加密
+- path模块 - 路径
+- URL模块/HTTP模块
+
+
 

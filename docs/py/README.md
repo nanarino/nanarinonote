@@ -49,9 +49,8 @@ Type "copyright", "credits" or "license()" for more information.
 
 ## 常见问题
 
-window下安装后:
+- windows下安装后:
 
-1.
 
 ```shell
 C:\Users\Administrator>python -V
@@ -59,9 +58,9 @@ C:\Users\Administrator>python -V
 或批处理文件。
 ```
 
-这就是没设好环境变量,解决方法百度
+可能是在使用安装包安装的时候未勾选add to path，可以手动添加环境变量
 
-2.
+- windows下安装后:
 
 ```shell
 C:\Users\Administrator>pip -V
@@ -69,12 +68,20 @@ C:\Users\Administrator>pip -V
 或批处理文件。
 ```
 
-可能是没设置好环境变量,或者pip压根没装  解决方法重新安装
+可能是没设置好环境变量,或者pip压根没装  可以通过重新安装来解决
 
 若是提醒升级可以不必在意
 
-3.
+- windows下安装后: ` .py`文件 鼠标右键中没有  `edit with IDLE`
 
-.py文件 鼠标右键中没有 edit with IDLE
 
 解决方法 修改注册表 有3个文件夹(新建)的默认值要修改 具体百度
+
+- pip下载模块速度过慢
+
+可以使用清华大学镜像
+
+```shell
+pip install pymysql -i https://pypi.tuna.tsinghua.edu.cn/simple
+```
+

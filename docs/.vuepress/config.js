@@ -39,10 +39,10 @@ module.exports = {
 					]
 				},
                 {
-					title: '数据类型和对象',
+					title: '对象和方法',
 					children: [
                         '11-字符串和数组',
-                        '12-解构赋值',
+                        '12-ES6解构赋值',
                         '13-数学对象和日期对象',
                         '14-ES6方法扩展',
                         '15-正则对象',
@@ -51,7 +51,7 @@ module.exports = {
 					]
 				},
                 {
-					title: 'BOM和DOM对象',
+					title: 'BOM和DOM',
 					children: [
                         '18-DOM方法',
                         '19-事件的实现',
@@ -75,6 +75,7 @@ module.exports = {
 					children: [
                         '28-nodejs',
                         '29-mongodb',
+                        '30-Koa2'
 					]
 				},
 			],
@@ -102,8 +103,8 @@ module.exports = {
 					children: [
                         '7-文件处理',
                         '8-函数和作用域',
-                        '9-深浅拷贝',
-                        '10-闭包和装饰器',
+                        '9-闭包和装饰器',
+                        '10-递归和深拷贝',
                         '11-三目和列表解析',
                         '12-迭代器和生成器',
                     ]
@@ -143,14 +144,15 @@ module.exports = {
                 {
 					title: 'GUI编程',
 					children: [
-                        '30-tkinter模块',
+                        '30-Tkinter模块',
+                        '31-PyInstaller模块'
                     ]
 				},
                 {
 					title: 'WEB框架',
 					children: [
-                        '31-SQL语句',
-                        '32-Django'
+                        '32-SQL语句',
+                        '33-Django'
                     ]
 				},
 			],

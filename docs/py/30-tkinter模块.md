@@ -1,4 +1,4 @@
-# tkinter模块
+# Tkinter模块
 
 Python3自带的GUI模块
 
@@ -371,7 +371,7 @@ import tkinter
 root = tkinter.Tk()
 root.geometry('280x500')
 root.resizable(0,0)
-root.title('keisannki') 
+root.title('计算器') 
 result = tkinter.StringVar()
 result.set('0')
 result2 = tkinter.StringVar()
@@ -379,7 +379,7 @@ result2.set('')
 label = tkinter.Label(root,font = ('微软雅黑',20),bg = '#EEE9E9',bd ='9',fg = '#828282',anchor = 'se',textvariable = result2)
 label.place(width = 280,height = 170)
 label2 = tkinter.Label(root,font = ('微软雅黑',30),bg = '#EEE9E9',bd ='9',fg = 'black',anchor = 'se',textvariable = result)
-label2.place(y = 170,width = 280,height = 60)  
+label2.place(y = 170,width = 280,height = 65)  
 btn7 = tkinter.Button(root,text = '7',font = ('微软雅黑',20),fg = ('#4F4F4F'),bd = 0.5,command = lambda : pressBtn('7'))
 btn7.place(x = 0,y = 285,width = 70,height = 55)
 btn8 = tkinter.Button(root,text = '8',font = ('微软雅黑',20),fg = ('#4F4F4F'),bd = 0.5,command = lambda : pressBtn('8'))
@@ -492,6 +492,5 @@ def pressEqual():
         endNum = "ERROR"
     result.set(endNum) 
 root.mainloop()
-
 ```
 
