@@ -2,7 +2,7 @@
 
 绝大多数人电脑里都没有Python编译器，所以打包成exe，让用户（windows）双击就可以打开
 
-PyInstaller模块是用来打包的一个办法之一
+PyInstaller模块是用来打包的办法之一
 
 
 
@@ -27,7 +27,7 @@ pyinstaller -F myfile.py
 
 项目中需要在python中执行shell脚本，os模块的方法则不推荐使用，
 
-如~~os.system~~、 ~~os.popen~~ 等方法。否则影响使用体验（黑窗口一闪而过）
+如~~os.system~~、 ~~os.popen~~ 等方法。否则影响GUI界面的使用体验（黑窗口一闪而过）
 
 ##### 使用内置模块subprocess
 
@@ -45,6 +45,9 @@ pyinstaller -F myfile.py
 s = subprocess.Popen("shutdown -s -t 3600", shell=True)
 s.wait()#阻塞进程等待shell命令执行完毕
 ```
+
+
+
 
 
 ## 若使用第三方库
@@ -71,3 +74,12 @@ pip install pyinstaller
 #开始打包
 pyinstaller -Fw xx.py
 ```
+
+
+
+## 其他注意事项
+
+~~基于当前系统配置PyInstaller，如果更换了Python版本，需要重新下载相应版本的PyInstaller并重新执行Configure.py~~（pip安装的PyInstaller不必如此）
+
+ 注意关注运行过程中的警告和错误，最好没有警告和错误，如果出现找不到某dll，可以下载后放到C:\Windows\system32下，一般都能解决。
+

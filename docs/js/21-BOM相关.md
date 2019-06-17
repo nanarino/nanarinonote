@@ -2,6 +2,8 @@
 
 BOM是(Browser Object Model)的简称,中文名叫浏览器对象模型.在浏览器环境中抽象浏览器的语言是JavaScript, 所以JS中的原型链以及继承的性质将在BOM中实现.其中最大的就是window.对应的DOM中的document.
 
+
+
 ## window对象
 
 一个浏览器窗口(网页)就是一个window对象.里面包含了各种方法与参数, 这些东西可以帮助我们使用操作浏览器.比如浏览器的尺寸, 浏览器绑定的事件, 视图动画相关的方法, css单位系统. 
@@ -47,6 +49,7 @@ scrollX, scrollY 表示浏览器的滚动的位置
     * scrollTo(x, y)偏移到多少得位值
     * confirm() 确认
     * prompt() 输入信息并返回
+
 
 
 ## location对象

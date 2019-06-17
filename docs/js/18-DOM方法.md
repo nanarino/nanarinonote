@@ -47,6 +47,8 @@
   //arr2 NodeList
   ```
 
+
+
 #### HTMLCollection和NodeList本质上共同点和不同:
 
 都是**DOM节点的集合**，两者都属于Collections范畴，但是NodeList的范围要更广泛一点，它可以包含节点对象和文本对象。HTMLCollection比NodeList多了一个namedItem方法，其他方法保持一致
@@ -290,7 +292,9 @@ temp.__proto__.__proto__.__proto__.__proto__.__proto__ // EventTarget 事件对�
 temp.__proto__.__proto__.__proto__.__proto__.__proto__.__proto__ // Object的原型
 ```
 
-## 文档宽高、窗口宽高、元素宽高属性
+
+
+## 文档/窗口/元素的宽高属性
 
 1. **元素宽高相关的属性**
 
@@ -380,8 +384,6 @@ temp.__proto__.__proto__.__proto__.__proto__.__proto__.__proto__ // Object的原
 
    offsetLeft 元素左边到定位父级元素左边距离, 不包括定位父级的边框部分
 
-
-
    **元素到body顶部的距离方法： 没有包括父级边框**
 
    ```js
@@ -400,7 +402,7 @@ temp.__proto__.__proto__.__proto__.__proto__.__proto__.__proto__ // Object的原
    //这里忽略掉了所有的边框
    ```
 
-   **包括父级边框的，元素到body顶部的距离**
+ **包括父级边框的，元素到body顶部的距离**
 
    ```js
    function getOffset(dom){
@@ -430,6 +432,8 @@ temp.__proto__.__proto__.__proto__.__proto__.__proto__.__proto__ // Object的原
 
    但是当添加overflow属性的时候。会计算全部的padding + 内容宽/高 + 超出的子级宽/高
 
+
+
    ### 滚动高度：可读可写
 
    获取元素的y轴或者x轴方向的被滚动挡住的那部分的宽度高度。等价于滚动过的部分
@@ -457,6 +461,8 @@ temp.__proto__.__proto__.__proto__.__proto__.__proto__.__proto__ // Object的原
    ```js
    document.body.scrollTop || document.documentElement.scrollTop
    ```
+
+
 
    ### 鼠标位值相关的坐标
 

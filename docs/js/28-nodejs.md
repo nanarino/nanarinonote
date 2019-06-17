@@ -28,6 +28,35 @@ macro-tack：`<script/>`  > `setTimeout/setInterval` > `setImmediate` > I/O
 
 micro-tack：`process.nextTick` > (Promise)`.then`
 
+```js
+const p = new Promise((resolve,reject)=>{
+    setTimeout(()=>{
+        console.log('1');
+        resolve('2')
+    })
+}).then((m)=>{
+    console.log(m)
+})
+
+;+(()=>p)
+
+setImmediate(()=>{
+    console.log('3');
+})
+
+process.nextTick(()=>{
+    console.log('4')
+})
+
+setTimeout(()=>{
+    process.nextTick(()=>{
+        console.log('5')
+    })
+})
+```
+
+思考：上面代码打印12345的顺序是？
+
 
 
 ## 常用的模块

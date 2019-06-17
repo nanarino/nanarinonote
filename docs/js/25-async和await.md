@@ -1,5 +1,7 @@
 # async和await
 
+
+
 ## async和await
 
 async叫异步函数。是ES2017新出得，这让异步操作变得更简单了。本质上是Generator得语法糖，所以本质上还是操作promise对象观察状态。

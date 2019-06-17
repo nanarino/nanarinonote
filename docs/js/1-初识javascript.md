@@ -1,6 +1,6 @@
 # 初识javascript
 
-#### javascript历史
+**javascript历史**
 
 > 背景： 互联网发展初期，不存在客户端处理程序，但是网页变得更加复杂功能更加丰富，需要处理的事情越来越多，如果任何处理逻辑都放到后端，效率低下（带宽，服务器负担）。Netscape(网景)的Brendan Eich(布兰登·艾奇)在1995年5月被公司要求做一个“看上去和Java相似，但是比java简单的网页脚本语言”，他本身对Java不感兴趣，花了10天设计了JavaScript满足了公司要求。其设计思想：
 >
@@ -8,11 +8,11 @@
 >
 > 2.Java数据类型于内存管理 
 >
-> 3.函数第一等公民 4.基于原型(prototype).
+> 3.函数第一等公民 4.基于原型(`prototype`).
 
 
 
-#### javascript特点
+## javascript特点
 
 1.**基于原型，动态类型，解释型，弱类型 脚本语言** 
 
@@ -35,7 +35,7 @@
 
 
 
-### script标签引入
+## script标签引入
 
 ```html
 <script type='text/javascript'>
@@ -51,7 +51,9 @@ script标签可以在页面任意位置  从上到下执行
 
 初学者最好把标签放在紧贴body的结束标签之前
 
-### 注释和打印
+
+
+## 注释和打印
 
 ```js
 //单行注释
@@ -133,7 +135,7 @@ let box = document.getElementById("box");//声明和赋值一起写
 
 为了解决javascript执行的时候可能页面的标签还没有加载的问题，
 
-(这个问题在script标签紧贴body结束标签时是不存在的)
+(这个问题在`script`标签紧贴`body`结束标签时是不存在的)
 
 我们有如下操作:
 
@@ -150,6 +152,8 @@ box.onclick = function(){
 }
 ```
 
+
+
 ## 修改样式
 
 通过 `.style`的方式访问css样式表
@@ -163,6 +167,8 @@ box.style.cssText = "background-color: red;color: blue";
 box.style.backgroundColor = "red";
 box.style.color = "blue";
 ```
+
+
 
 ## 修改标签内的内容
 

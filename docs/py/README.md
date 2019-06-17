@@ -11,7 +11,7 @@ Type "copyright", "credits" or "license()" for more information.
 >>>
 ```
 
-那么你就成功了一半
+那么已经成功了一半
 
 # print("Hello World!")
 
@@ -21,11 +21,9 @@ Type "copyright", "credits" or "license()" for more information.
 
 这是宇宙级代码 不许笑
 
-按下Enter 恭喜你入门了
-
 这个python学习路线是速成的 而且已经学过了JavaScript 所以进度会快一些
 
-这个是kogawa nanari no python基础知识笔记
+这是我的python基础知识笔记
 
 ## 推荐资源
 
