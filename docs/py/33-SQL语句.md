@@ -16,39 +16,40 @@
 
 ## 下载安装和客户端的启动
 
-##### Linux版本
+### Linux版本
 
-安装  
+#### 安装  
 
 ```
 yum install mysql-server　　
 ```
 
-个人推荐宝塔Linux面板一键安装 然后重置密码
+个人推荐使用 宝塔Linux面板 一键安装 然后重置密码
 
-服务端启动  
+#### 服务端启动  
 
 ```
 [root@akokono.com ~]# service mysqld start
 Starting mysqld:                                           [  OK  ]
 ```
 
-客户端连接 
+#### 客户端连接 
 
 ```
 连接：
-	和win一样
+	#和win一样
     mysql -h host -u user -p
  
-    常见错误：
-        ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/tmp/mysql.sock' (2), it means that the MySQL server daemon (Unix) or service (Windows) is not running.
+常见错误：
+    ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/tmp/mysql.sock' (2), it means that the MySQL server daemon (Unix) or service (Windows) is not running.
+
 退出：
     QUIT 或者 Control+D
 ```
 
 
 
-##### Window版本
+### Windows版本
 
 MySQL解压后的 bin 目录下有一大堆的可执行文件，执行如下命令初始化数据： 
 
@@ -114,11 +115,12 @@ show databases;
 
 默认已存在的数据库：
 
- 　　mysql - 用户权限相关数据 
+- mysql - 用户权限相关数据 
 
-　　test - 用于用户测试数据 
+- test - 用于用户测试数据 
 
-　　information_schema - MySQL本身架构相关数据 
+- information_schema - MySQL本身架构相关数据 
+
 
 
 

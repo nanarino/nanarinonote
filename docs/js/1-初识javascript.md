@@ -8,7 +8,9 @@
 >
 > 2.Java数据类型于内存管理 
 >
-> 3.函数第一等公民 4.基于原型(`prototype`).
+> 3.函数第一等公民
+>
+> 4.基于原型(`prototype`).
 
 
 
@@ -49,7 +51,7 @@
 
 script标签可以在页面任意位置  从上到下执行
 
-初学者最好把标签放在紧贴body的结束标签之前
+刚开始学的时候最好把标签放在紧贴body的结束标签之前
 
 
 
@@ -135,7 +137,7 @@ let box = document.getElementById("box");//声明和赋值一起写
 
 为了解决javascript执行的时候可能页面的标签还没有加载的问题，
 
-(这个问题在`script`标签紧贴`body`结束标签时是不存在的)
+(`script`标签紧贴`body`结束标签就是一种解决办法)
 
 我们有如下操作:
 
@@ -172,8 +174,6 @@ box.style.color = "blue";
 
 ## 修改标签内的内容
 
-通过 `.innerHTML`或者`.innerText`
-
  `.innerHTML`： 支持标签
 
  `.innerText`： 不支持标签
@@ -183,8 +183,6 @@ let box = document.getElementById("box");
 console.log(box.innerHTML);//读取
 box.innerHTML = box.innerHTML + 1;//修改
 ```
-
-
 
 请自己练习点击改变样式和文字的操作
 

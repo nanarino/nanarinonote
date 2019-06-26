@@ -33,7 +33,7 @@ sk.close()            # 关闭客户套接字
 
 ### 在重启服务端时可能会遇到
 
-![img](../.vuepress/public/img/socket1.png)解决方法： 
+![img](../.vuepress/public/img/socket1.jpg)解决方法： 
 
 ```python
 #加入一条socket配置，重用ip和端口
