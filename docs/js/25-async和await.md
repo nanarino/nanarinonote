@@ -4,13 +4,11 @@
 
 ## async和await
 
-async叫异步函数。是ES2017新出得，这让异步操作变得更简单了。本质上是Generator得语法糖，所以本质上还是操作promise对象观察状态。
+async叫异步函数。是ES2017新出的，这让异步操作变得更简单了。
 
-将promise方法中得generator和yield替换成async和await结合使用，也就是一个语法糖
+本质上还是操作promise对象观察状态。
 
-**语法糖**：同样的代码效果，只用了更好的写法用法，也更用于理解，有利于编码风格的优化。比如es6的class，与之对应的是语法盐
 
-**语法盐**：通过反人类的语法，使你写代码更加痛苦。虽然也能避免写的时候出错。但是编程效率堪忧，学习门槛高。。
 
 await之前（需要node环境）
 
@@ -61,11 +59,22 @@ async function Print(ms, str){//添加延时输出功能
 Print(2000,"hello")
 ```
 
-**async和Generator的区别**:
-
- 	1. 内置执行器：直接执行就可以，不需要next等其他方法
- 	2. 良好的语义。async表示异步函数，await需要等待后面的表达式结果结束。
- 	3. Generator返回的是Iterator对象，async返回的是promise对象。可以后续then继续操作。
 
 
+## **async和Generator的区别**:
 
+#### 表面区别：
+
+   	1. async内置执行器：直接执行就可以，不需要next等其他方法
+      	2. async良好的语义。async表示异步函数，await需要等待后面的表达式结果结束。
+         	3. Generator返回的是Iterator对象，async返回的是promise对象,可以后续then继续操作。
+
+#### 内在联系：
+
+两者都能解救回调地狱的问题，对于开发者，两者都是黑匣子。
+
+Generator功能更强大，async的语义更好，各有优点。
+
+在node.js的执行过程可以发现：async会预编译为Generator和Promise的组合语法，而await关键字则会编译为为yield关键字
+
+也就是说async是对Generator的再次封装

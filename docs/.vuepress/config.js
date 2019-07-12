@@ -9,7 +9,7 @@ module.exports = {
 			{
 				text: 'Other',
 				items: [
-				  { text: 'Github', link: 'https://github.com/nanarino/markdown-note' },
+				  { text: 'Github', link: 'https://github.com/nanarino' },
 				  { text: 'Mysite', link: 'http://www.akokono.com/' }
 				]
 			}
@@ -62,9 +62,9 @@ module.exports = {
                 {
 					title: '补充知识点',
 					children: [
-                        '22-一些方法的重写',
+                        '22-重新实现某些方法',
                         '23-排序算法的实现',
-                        '24-回调和异步',
+                        '24-生成器和Promise',
                         '25-async和await',
                         '26-Proxy和Reflect',
                         '27-ajax和fetch'
