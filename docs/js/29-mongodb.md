@@ -10,7 +10,7 @@ mongodb是非关系型数据库中最像关系型数据库的数据库，有很�
 
 ### 开启服务
 
-```powershell
+```bash
 #cmd窗口中
 mongod --dbpath 路径
 ```

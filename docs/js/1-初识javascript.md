@@ -2,15 +2,8 @@
 
 **javascript历史**
 
-> 背景： 互联网发展初期，不存在客户端处理程序，但是网页变得更加复杂功能更加丰富，需要处理的事情越来越多，如果任何处理逻辑都放到后端，效率低下（带宽，服务器负担）。Netscape(网景)的Brendan Eich(布兰登·艾奇)在1995年5月被公司要求做一个“看上去和Java相似，但是比java简单的网页脚本语言”，他本身对Java不感兴趣，花了10天设计了JavaScript满足了公司要求。其设计思想：
+> 背景： 互联网发展初期，不存在客户端处理程序，但是网页变得更加复杂功能更加丰富，需要处理的事情越来越多，如果任何处理逻辑都放到后端，效率低下（带宽，服务器负担）。Netscape(网景)的Brendan Eich(布兰登·艾奇)在1995年5月被公司要求做一个“看上去和Java相似，但是比java简单的网页脚本语言”，他本身对Java不感兴趣，花了10天设计了JavaScript满足了公司要求。
 >
-> 1.C语言语法；
->
-> 2.Java数据类型于内存管理 
->
-> 3.函数第一等公民
->
-> 4.基于原型(`prototype`).
 
 
 
@@ -27,7 +20,7 @@
 
 2.**在浏览器环境中由 ECMAScript  DOM  BOM 三部分组成**
 
-- ​    ECMAScript 语法约束 我们平时讲的es5 es6
+- ​    ECMAScript 语法约束 我们平时讲的es5 es6版本
 
 - ​    BOM	BrowserObjectModel 浏览器对象模型
 
@@ -78,7 +71,7 @@ JS对页面元素进行操作，需要获取元素，类似于CSS选择器去匹
 document.getElementById("box");//返回ID名叫做box的元素
 ```
 
-获取标签的方法有很多
+这属于DOM方法，获取标签的方法还有很多
 
 ```js
 document.getElementsByClassName("box");//返回类名叫box的元素的集合
@@ -86,7 +79,7 @@ document.getElementsByTagName("li");//返回标签名叫li的元素的集合
 document.getElementsByName("box");//返回name名叫box的元素的集合
 ```
 
-类名获取元素 ie浏览器貌似不支持
+类名获取元素 ie浏览器可能不支持
 
 一些特殊标签:
 
@@ -137,9 +130,7 @@ let box = document.getElementById("box");//声明和赋值一起写
 
 为了解决javascript执行的时候可能页面的标签还没有加载的问题，
 
-(`script`标签紧贴`body`结束标签就是一种解决办法)
-
-我们有如下操作:
+有如下操作:
 
 ```js
 window.onload = function(){console.log("页面已经加载完了")}；
@@ -150,9 +141,11 @@ window.onload = function(){console.log("页面已经加载完了")}；
 ```js
 let box = document.getElementById("box");
 box.onclick = function(){
-    console.log("box正在被点击中");
+    console.log("box正在被点击");
 }
 ```
+
+此外，将`script`标签紧贴`body`结束标签也是一种解决办法
 
 
 

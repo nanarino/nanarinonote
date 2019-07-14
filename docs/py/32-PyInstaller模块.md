@@ -10,7 +10,7 @@ PyInstaller模块是用来打包的办法之一
 
 打开cmd窗口，把路径切换到入口文件所在路径，输入以下内容（最后的是文件名）：
 
-```shell
+```bash
 pyinstaller -F myfile.py
 ```
 
@@ -62,7 +62,7 @@ s.wait()#阻塞进程等待shell命令执行完毕
 
 使用虚拟环境 如 pipenv
 
-```shell
+```bash
 #建立虚拟环境
 pipenv install
 #进入虚拟环境

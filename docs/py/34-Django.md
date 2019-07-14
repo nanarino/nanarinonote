@@ -10,7 +10,7 @@
 
 推荐版本
 
-```
+```bash
 Django==1.11.20
 ```
 
@@ -22,7 +22,7 @@ Django==1.11.20
 
 推荐版本
 
-```
+```bash
 django==1.11.20
 django-cors-headers==3.0.2
 djangorestframework==3.9.4
@@ -36,20 +36,20 @@ djangorestframework==3.9.4
 
 迁移数据库
 
-```
+```bash
 python manage.py makemigrations
 python manage.py migrate  
 ```
 
 生成超级管理员
 
-```
+```bash
 python manage.py createsuperuser
 ```
 
 启动服务到80端口
 
-```
+```bash
 python manage.py runserver 0.0.0.0:80
 ```
 
@@ -59,7 +59,7 @@ python manage.py runserver 0.0.0.0:80
 
 `settings.py`中：
 
-```
+```python
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
@@ -74,7 +74,7 @@ DATABASES = {
 
 `__init__.py`中：
 
-```
+```python
 import pymysql
 pymysql.install_as_MySQLdb()
 ```

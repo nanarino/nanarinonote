@@ -20,7 +20,7 @@
 
 #### 安装  
 
-```
+```bash
 yum install mysql-server　　
 ```
 
@@ -28,14 +28,14 @@ yum install mysql-server　　
 
 #### 服务端启动  
 
-```
+```bash
 [root@akokono.com ~]# service mysqld start
 Starting mysqld:                                           [  OK  ]
 ```
 
 #### 客户端连接 
 
-```
+```bash
 连接：
 	#和win一样
     mysql -h host -u user -p
@@ -55,7 +55,7 @@ MySQL解压后的 bin 目录下有一大堆的可执行文件，执行如下命�
 
 其默认未给root账户设置密码 
 
-```
+```bash
 cd c:\mysql-5.7.16-winx64\bin
  
 mysqld --initialize-insecure
@@ -63,7 +63,7 @@ mysqld --initialize-insecure
 
 进入可执行文件目录启动,或将MySQL可执行文件添加到环境变量中 :
 
-```
+```bash
 # 进入可执行文件目录
 cd c:\mysql-5.7.16-winx64\bin
  
@@ -73,7 +73,7 @@ mysqld
 
 启动MySQL客户端并连接MySQL服务 
 
-```
+```bash
 # 进入可执行文件目录
 cd c:\mysql-5.7.16-winx64\bin
  
@@ -85,7 +85,7 @@ mysql -u root -p
 
 如想日后操作简便，可以做如下操作     :   将MySQL服务制作成windows服务 
 
-```
+```bash
 # 制作MySQL的Windows服务，在终端执行此命令：
 "c:\mysql-5.7.16-winx64\bin\mysqld" --install
  
@@ -95,7 +95,7 @@ mysql -u root -p
 
 注册成服务之后，以后再启动和关闭MySQL服务时，仅需执行如下命令： 
 
-```
+```bash
 # 启动MySQL服务
 net start mysql
  
@@ -109,7 +109,7 @@ net stop mysql
 
 #### 显示数据库 
 
-```
+```powershell
 show databases; 
 ```
 
@@ -126,7 +126,7 @@ show databases;
 
 #### 创建数据库 
 
-```
+```powershell
 # utf-8
 CREATE DATABASE 数据库名称 DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
  
@@ -136,7 +136,7 @@ CREATE DATABASE 数据库名称 DEFAULT CHARACTER SET gbk COLLATE gbk_chinese_ci
 
 #### 使用数据库 
 
-```
+```powershell
 use 数据库名称;
 
 #显示当前使用的数据库中所有表：
@@ -147,22 +147,22 @@ show tables;
 
 ##### 用户管理 
 
-```
-创建用户
+```powershell
+#创建用户
     create user '用户名'@'IP地址' identified by '密码';
-删除用户
+#删除用户
     drop user '用户名'@'IP地址';
-修改用户
+#修改用户
     rename user '用户名'@'IP地址'; to '新用户名'@'IP地址';;
-修改密码
+#修改密码
     set password for '用户名'@'IP地址' = Password('新密码')
   
-PS：用户权限相关数据保存在mysql数据库的user表中，所以也可以直接对其进行操作（不建议）
+#用户权限相关数据保存在mysql数据库的user表中，所以也可以直接对其进行操作（不建议）
 ```
 
 ##### 授权管理 
 
-```
+```powershell
 show grants for '用户'@'IP地址'                  -- 查看权限
 grant  权限 on 数据库.表 to   '用户'@'IP地址'      -- 授权
 revoke 权限 on 数据库.表 from '用户'@'IP地址'      -- 取消权限
@@ -170,7 +170,7 @@ revoke 权限 on 数据库.表 from '用户'@'IP地址'      -- 取消权限
 
 ​    权限选项
 
-```
+```powershell
 all privileges  除grant外的所有权限
 select          仅查权限
 select,insert   查和插入权限
@@ -203,7 +203,7 @@ replication client      服务器位置的访问
 replication slave       由复制从属使用
 ```
 
-```
+```powershell
  对于目标数据库以及内部其他：
             数据库名.*           数据库中的所有
             数据库名.表          指定数据库中的某张表
@@ -211,7 +211,7 @@ replication slave       由复制从属使用
             *.*                所有数据库
 ```
 
-```
+```powershell
             用户名@IP地址         用户只能在改IP下才能访问
             用户名@192.168.1.%   用户只能在改IP段下才能访问(通配符%表示任意)
             用户名@%             用户可以再任意IP下访问(默认IP地址为%)
@@ -219,7 +219,7 @@ replication slave       由复制从属使用
 
 > 示例
 >
-> ```
+> ```powershell
 >             grant all privileges on db1.tb1 TO '用户名'@'IP'
 > 
 >             grant select on db1.* TO '用户名'@'IP'
@@ -231,13 +231,13 @@ replication slave       由复制从属使用
 
 特殊的： 
 
-```
+```powershell
 flush privileges，将数据读取到内存中，从而立即生效。 
 ```
 
 忘记密码:
 
-```
+```bash
 # 启动免授权服务端
 mysqld --skip-grant-tables
 
@@ -255,7 +255,7 @@ flush privileges;
 
 #### 创建表 
 
-```
+```powershell
 create table 表名(
     列名  类型  是否可以为空，
     列名  类型  是否可以为空
@@ -266,14 +266,14 @@ create table 表名(
 #engine=myisam 支持全局索引 失败不回滚 默认
 ```
 
-```
+```powershell
 是否可空，null表示空，非字符串
             not null    - 不可空
             null        - 可空
 当插入数据时如果未设置，则打印时为NULL
 ```
 
-```
+```powershell
 默认值，创建列时可以指定默认值，当插入数据时如果未主动设置，则自动添加默认值
             create table tb1(
                 nid int not null defalut 2,
@@ -281,7 +281,7 @@ create table 表名(
             )
 ```
 
-```
+```powershell
 自增，如果为某列设置自增列，插入数据时无需设置此列，默认将自增（表中只能有一个自增列）
             create table tb1(
                 nid int not null auto_increment primary key,
@@ -304,7 +304,7 @@ create table 表名(
                      set global auto_increment_offset=10;
 ```
 
-```
+```powershell
 主键，一种特殊的唯一索引，不允许有空值，如果主键使用单个列，则它的值必须唯一，如果是多列，则其组合必须唯一。
             create table tb1(
                 nid int not null auto_increment primary key,
@@ -318,7 +318,7 @@ create table 表名(
             )
 ```
 
-```
+```powershell
 外键，一个特殊的索引，只能是指定内容
             creat table color(
                 nid int not null primary key,
@@ -335,20 +335,20 @@ create table 表名(
 
 #### 删除表
 
-```
+```powershell
 drop table 表名
 ```
 
 #### 清空表 
 
-```
+```powershell
 delete from 表名
 truncate table 表名
 ```
 
 #### 修改表 
 
-```
+```powershell
 添加列：alter table 表名 add 列名 类型
 删除列：alter table 表名 drop column 列名
 修改列：
@@ -372,7 +372,7 @@ truncate table 表名
 
 存值的基本数据类型     --------MySQL的数据类型大致分为：数值、时间和字符串 
 
-```
+```powershell
 bit[(m)]
     二进制位（101001），m表示二进制位的长度（1-64），默认m＝1
 
@@ -486,7 +486,7 @@ TIMESTAMP
 
 #### 增
 
-```
+```powershell
 insert into 表 (列名,列名...) values (值,值,值...)
 insert into 表 (列名,列名...) values (值,值,值...),(值,值,值...)
 insert into 表 (列名,列名...) select (列名,列名...) from 表
@@ -494,20 +494,20 @@ insert into 表 (列名,列名...) select (列名,列名...) from 表
 
 #### 删
 
-```
+```powershell
 delete from 表
 delete from 表 where id＝1 and name＝'alex'1
 ```
 
 #### 改
 
-```
+```powershell
 update 表 set name ＝ 'alex' where id>1
 ```
 
 #### 查
 
-```
+```powershell
 #打印完整表
 select * from 表
 
@@ -517,7 +517,7 @@ select nid,name,gender as gg from 表 where id > 1
 
 #### 其他
 
-```
+```powershell
 a、条件
     select * from 表 where id > 1 and name != 'alex' and num = 12;
  
