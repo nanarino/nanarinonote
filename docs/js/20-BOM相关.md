@@ -1,6 +1,6 @@
 # BOM相关
 
-BOM是(Browser Object Model)的简称,中文名叫浏览器对象模型.在浏览器环境中抽象浏览器的语言是JavaScript, 所以JS中的原型链以及继承的性质将在BOM中实现.其中最大的就是window.对应的DOM中的document.
+BOM是(Browser Object Model)的简称,中文名叫浏览器对象模型.在浏览器环境中抽象浏览器的语言是JavaScript, 所以JS中的原型链以及继承的性质将在BOM中实现.其中最根部的就是window.对应的DOM中的document.
 
 
 
@@ -13,9 +13,9 @@ BOM是(Browser Object Model)的简称,中文名叫浏览器对象模型.在浏�
 每当新打开一个页面的时候. 此页面都会新建一个window对象.属性各不相同内容也不近相同(几乎都会初始化).甚至是跳转页面的时候都会使得window变化. 但是在(非新建页面)跳转页面的时候, 会有一个window.name的属性保留下来.就是当前窗口的名字
 
 ```js
-window.name = "Gin"
+window.name = "bilibili"
 //跳转或者输入网址回车
-console.log(window.name)//"Gin"
+console.log(window.name)//"bilibili"
 ```
 
 window.name 具有如此性质可以做到跨网站交互信息.所以在全局中请不要尝试修改window.name或者var name
@@ -46,7 +46,7 @@ scrollX, scrollY 表示浏览器的滚动的位置
     * close 关闭
     * blur 获取焦点
     * scrollBy(x, y)偏移多少像素
-    * scrollTo(x, y)偏移到多少得位值
+    * scrollTo(x, y)偏移到多少的位值
     * confirm() 确认
     * prompt() 输入信息并返回
 
