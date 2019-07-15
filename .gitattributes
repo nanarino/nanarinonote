@@ -1,5 +1,4 @@
-*.html linguist-language=Vue
-*.css linguist-language=Vue
-*.js linguist-language=Vue
-*.md linguist-language=Vue
-*.sh linguist-language=Vue
+*.css linguist-language=HTML
+*.js linguist-language=HTML
+*.md linguist-language=HTML
+*.sh linguist-language=HTML
