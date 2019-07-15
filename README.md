@@ -61,4 +61,4 @@ npm run docs:dev
 npm run docs:build
 ```
 
-For a detailed explanation on how things work, check out [docs for vue-loader](https://github.com/vuejs/vuepress).
+For a detailed explanation on how things work, check out [docs for vuepress](https://github.com/vuejs/vuepress).
