@@ -1,7 +1,7 @@
 {
   "name": "markdown-note",
   "version": "1.0.0",
-  "description": "Lee's Blog",
+  "description": "NANARIno notebook",
   "main": "index.js",
   "directories": {
     "doc": "docs"
