@@ -267,9 +267,9 @@ li.previousElementSibing //前一个元素节点
 ```js
 let temp = document.createElement("div")// div标签节点
 temp.__proto__ // HTMLDivElement div构造函数的原型，上面有div节点独有的方法
-temp.__proto__.__proto__ // HTMLCollection html元素节点构造函数得原型，节点的共有性质都在这
+temp.__proto__.__proto__ // HTMLCollection html元素节点构造函数的原型，节点的共有性质都在这
 temp.__proto__.__proto__.__proto__ //  Element 本质上和Document同级都是Node下面的一个元素
-temp.__proto__.__proto__.__proto__.__proto__ // Node 所有节的构造函数得原型，存放节点基础方法
+temp.__proto__.__proto__.__proto__.__proto__ // Node 所有节的构造函数的原型，存放节点基础方法
 temp.__proto__.__proto__.__proto__.__proto__.__proto__ // EventTarget 事件对象的构造函数的原型
 temp.__proto__.__proto__.__proto__.__proto__.__proto__.__proto__ // Object的原型
 ```
@@ -410,7 +410,7 @@ function getOffset(dom){
 
    scrollHeight
 
-   子元素超出的时候， 会加上 超出得子元素的宽度/高度。当超出的时候，左padding或者上padding加上内容宽度或者高度。右padding或者下padding已经失去意义所以不会结算。
+   子元素超出的时候， 会加上 超出的子元素的宽度/高度。当超出的时候，左padding或者上padding加上内容宽度或者高度。右padding或者下padding已经失去意义所以不会结算。
 
    但是当添加overflow属性的时候。会计算全部的padding + 内容宽/高 + 超出的子级宽/高
 

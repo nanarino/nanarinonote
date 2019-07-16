@@ -1,7 +1,5 @@
 # 初识javascript
 
-**javascript历史**
-
 > 背景： 互联网发展初期，不存在客户端处理程序，但是网页变得更加复杂功能更加丰富，需要处理的事情越来越多，如果任何处理逻辑都放到后端，效率低下（带宽，服务器负担）。Netscape(网景)的Brendan Eich(布兰登·艾奇)在1995年5月被公司要求做一个“看上去和Java相似，但是比java简单的网页脚本语言”，他本身对Java不感兴趣，花了10天设计了JavaScript满足了公司要求。
 >
 
@@ -9,24 +7,24 @@
 
 ## javascript特点
 
-1.**基于原型，动态类型，解释型，弱类型 脚本语言** 
+基于原型，动态类型，解释型，弱类型脚本语言
 
-- ​    基于原型:万物皆对象
+- 基于原型:万物皆对象
 
-- ​    动态类型:变量声明不需要规定类型,和python一样
+- 动态类型:变量声明不需要规定类型,和python一样
 
-- ​    解释型:没有编译过程,和python一样
-- ​    弱类型:运算时经常进行隐式类型转换,和php一样
+- 解释型:没有编译过程,和python一样
+- 弱类型:运算时经常进行隐式类型转换,和php一样
 
-2.**在浏览器环境中由 ECMAScript  DOM  BOM 三部分组成**
+在浏览器环境中由 ECMAScript  DOM  BOM 三部分组成
 
-- ​    ECMAScript 语法约束 我们平时讲的es5 es6版本
+- ECMAScript 语法约束 es5 es6版本
 
-- ​    BOM	BrowserObjectModel 浏览器对象模型
+- BOM	BrowserObjectModel 浏览器对象模型
 
-- ​    DOM	DocumentObjectModel 文档对象模型
+- DOM	DocumentObjectModel 文档对象模型
 
-3.**java 同 javascript 之间没关系**
+java 同 javascript 之间没关系
 
 
 
@@ -42,9 +40,9 @@
 <script type='text/javascript' src='...'></script>
 ```
 
-script标签可以在页面任意位置  从上到下执行
+和css一样，script标签可以在页面任意位置  从上到下执行
 
-刚开始学的时候最好把标签放在紧贴body的结束标签之前
+刚开始学的时候最好把标签放在紧贴body的结束标签之前。
 
 
 
@@ -52,11 +50,9 @@ script标签可以在页面任意位置  从上到下执行
 
 ```js
 //单行注释
-
 /*
  *   多行注释
  */
-
 console.log("打印日志")
 //打印的其他内容甚至打印图片等花里胡哨的操作可以百度
 ```
@@ -79,8 +75,6 @@ document.getElementsByTagName("li");//返回标签名叫li的元素的集合
 document.getElementsByName("box");//返回name名叫box的元素的集合
 ```
 
-类名获取元素 ie浏览器可能不支持
-
 一些特殊标签:
 
 ```js
@@ -89,9 +83,7 @@ document.title；//返回页面标题
 document.body;//返回body元素
 ```
 
-以上都是动态获取
-
-静态获取:
+以上都是动态获取，静态获取:
 
 ```js
 document.querySelector(".box");//用CSS的选择器选择方式返回满足条件的第一个元素
@@ -102,15 +94,13 @@ document.querySelectorAll(".box li");//用CSS的选择器选择方式返回满�
 
 
 
-### 变量和常量
+## 变量和常量
 
 ```js
 var a;   //es5 变量
 let b;   //es6 变量
 const c;   //es6 常量 不希望被修改时使用
-
 var x,y,z;//一次性声明多个变量，用英文逗号分隔
-
 let box = document.getElementById("box");//声明和赋值一起写
 ```
 
@@ -122,15 +112,13 @@ let box = document.getElementById("box");//声明和赋值一起写
 
 - 常量采用全字母大写加下划线拼接
 
-- 回避关键字和保留字(依靠编辑器的语法高亮判断)
+- 回避关键字和保留字(依靠编辑器判断)
 
 
 
 ## 事件绑定
 
-为了解决javascript执行的时候可能页面的标签还没有加载的问题，
-
-有如下操作:
+为了解决javascript执行的时候可能页面的标签还没有加载的问题：
 
 ```js
 window.onload = function(){console.log("页面已经加载完了")}；
@@ -145,15 +133,13 @@ box.onclick = function(){
 }
 ```
 
-此外，将`script`标签紧贴`body`结束标签也是一种解决办法
+此外，将`script`标签紧贴`body`结束标签也是一种解决未加载问题的办法。
 
 
 
 ## 修改样式
 
-通过 `.style`的方式访问css样式表
-
-可以通过 `.cssText`修改原本的样式，也可以通过`.style.color`这种来修改
+可以通过 `.cssText`修改原本的样式，也可以通过`.style.color`等来修改
 
 ```js
 let box = document.getElementById("box");
@@ -176,6 +162,4 @@ let box = document.getElementById("box");
 console.log(box.innerHTML);//读取
 box.innerHTML = box.innerHTML + 1;//修改
 ```
-
-请自己练习点击改变样式和文字的操作
 

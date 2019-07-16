@@ -80,7 +80,7 @@ a[toString]() // 1
 
 * `Symbol`的作为属性名的遍历
 
-`for...in`和`for...of`都无法遍历到`Symbol`值得属性，`Symbol`值作为对象得属性也无法被`Object.keys()`和`Object.getOwnPropertyNames()`来获取。
+`for...in`和`for...of`都无法遍历到`Symbol`值的属性，`Symbol`值作为对象的属性也无法被`Object.keys()`和`Object.getOwnPropertyNames()`来获取。
 
 可以使用`Object.getOwnPropertySymbols()`来获取。
 
@@ -100,7 +100,7 @@ Object.getOwnPropertySymbols(o)//[Symbol(s1), Symbol(s2)]
 
 * `Symbol.for()`和`Symbol.keyFor()`
 
-  `Symbol.for`接受一个字符串参数，查询有没有这个参数得`Symbol`值，有的话就直接返回这个`Symbol`值，没有就返回一个这个参数得`Symbol()`
+  `Symbol.for`接受一个字符串参数，查询有没有这个参数的`Symbol`值，有的话就直接返回这个`Symbol`值，没有就返回一个这个参数的`Symbol()`
 
   ES5里面的对象的属性名是字符串，当我们**使用别人的对象**的时候，我不知道别人的对象有哪些属性，但是我又想添加一些新属性。如果直接写就有可能存在重名的情况，于是我们借助Symbol来生成一个独一无二的值，这样就可以防止属性名的冲突了。
 
@@ -110,7 +110,7 @@ let s2 = Symbol.for("s2");//Symbol("s2")
 s2 === Symbol.for("s2");//true
 ```
 
-​	`Symbol.keyFor`函数是用来查询`Symbol`得登记状态得，如果没有就返回`undefined`，而`Symbol.for`会将生成得Symbol值登记到全局环境中，`Symbol.keyFor`会查询到`Symbol.for`函数生成得`Symbol`值
+​	`Symbol.keyFor`函数是用来查询`Symbol`的登记状态的，如果没有就返回`undefined`，而`Symbol.for`会将生成的Symbol值登记到全局环境中，`Symbol.keyFor`会查询到`Symbol.for`函数生成的`Symbol`值
 
 ```js
 let s1 = Symbol.for("s1"),
@@ -128,7 +128,7 @@ console.log(Symbol.keyFor(s3))//undefined
 
   * `Symbol.hasInstance`
 
-    * 使用`instanceOf`方法时调用此属性，判断某一对象是否是某构造函数得实例
+    * 使用`instanceOf`方法时调用此属性，判断某一对象是否是某构造函数的实例
 
     ```js
     class OneEnd{ // 判断末尾是否为0 

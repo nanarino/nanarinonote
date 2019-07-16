@@ -57,8 +57,8 @@ for(i of obj){console.log(obj)}；//1 2 3
 
 执行generator后返回的对象的next方法来执行代码：
 
-1. 当函数执行到yield得时候函数会暂停后续得操作，并返回得后续的表达式得值。在返回对象得value里面
-2. 下次调用next得时候从上次结束得地方继续执行，并且有储存当时得状态。
+1. 当函数执行到yield的时候函数会暂停后续的操作，并返回的后续的表达式的值。在返回对象的value里面
+2. 下次调用next的时候从上次结束的地方继续执行，并且有储存当时的状态。
 3. 如果没有遇到yield语句会一只执行到语句结束。直到return语句并且将return后面的表达式的值，作为返回的对象的value属性值，如果没有return就是undefined
 
 无限遍历的情况
@@ -124,7 +124,7 @@ c.next().value//undefined
 
 ### throw抛出错误
 
-可以在遍历器外部抛出错误，在函数得内部捕获错误。内部处理
+可以在遍历器外部抛出错误，在函数的内部捕获错误。内部处理
 
 ```js
 function* foo(){
@@ -147,7 +147,7 @@ f.throw("你这个答案有问题")//Error! 你这个答案有问题
 
 - Generator使用的方法
 
-  状态函数等待外部状态或者函数得出数据，再在此方法中传入参数继续执行迭代。
+  状态函数等待外部状态或者函数的出数据，再在此方法中传入参数继续执行迭代。
 
   比如发送请求，返回多段数据，内部传入迭代函数，每次都整理数据，添加完成之后再抛出。一般是结合async使用
 
@@ -210,7 +210,7 @@ promise.then(()=>{
 })
 ```
 
-* finally实例方法，后续处理操作，无论前面得promise得结果是什么都会执行得内容
+* finally实例方法，后续处理操作，无论前面的promise的结果是什么都会执行的内容
 
 ```js
 promise.then(()=>{
@@ -225,7 +225,7 @@ promise.then(()=>{
 头部的例子
 
 ```js
-function work(){//传入需要按顺序执行得函数
+function work(){//传入需要按顺序执行的函数
     return new Promise((res, rej)=>{
         console.log("开始工作")
         res("work done")
@@ -295,4 +295,4 @@ let p = new Promise((res, rej)=>{
 })
 ```
 
-* Promise.resolve(value) 如果value是普通值（非Promise对象或者不带then方法）那么就会返回一个Fulfilled状态的promise，其余情况得根据参数value得Promise得结果确定。
+* Promise.resolve(value) 如果value是普通值（非Promise对象或者不带then方法）那么就会返回一个Fulfilled状态的promise，其余情况的根据参数value的Promise的结果确定。

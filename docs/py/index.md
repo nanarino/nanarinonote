@@ -31,11 +31,9 @@ Type "copyright", "credits" or "license()" for more information.
 
 那么已经成功了一半
 
----
-
-# print("Hello World!")
-
----
+::: tip >>>print("Hello World!")
+Hello World!
+:::
 
 输入如上字符 回车
 
@@ -45,13 +43,9 @@ Type "copyright", "credits" or "license()" for more information.
 
 哔哩哔哩搜索关键字：老男孩教育
 
-第14期完整（顺序稍乱）
+[第14期完整（顺序稍乱）](https://space.bilibili.com/385868518)
 
- <https://space.bilibili.com/385868518>
-
-第九期（发现尾部不完整）
-
- <https://www.bilibili.com/video/av24702867>
+[第9期（发现尾部不完整）](https://www.bilibili.com/video/av24702867)
 
 
 
@@ -61,26 +55,27 @@ Type "copyright", "credits" or "license()" for more information.
 
 - windows下安装后:
 
-
-```bash
-C:\Users\Administrator>python -V
-'python' 不是内部或外部命令，也不是可运行的程序
-或批处理文件。
-```
+::: danger C:\Users\Administrator>python -V
+'python' 不是内部或外部命令，也不是可运行的程序或批处理文件。
+:::
 
 可能是在使用安装包安装的时候未勾选add to path，可以手动添加环境变量
 
 - windows下安装后:
 
-```bash
-C:\Users\Administrator>pip -V
-'pip' 不是内部或外部命令，也不是可运行的程序
-或批处理文件。
-```
+::: danger C:\Users\Administrator>pip -V
+'pip' 不是内部或外部命令，也不是可运行的程序或批处理文件。
+:::
 
 可能是没设置好环境变量,或者pip压根没装  可以通过重新安装来解决
 
-若是提醒升级可以不必在意
+::: warning C:\Users\Administrator>pip -V
+You are using pip version 10.0.3, however version 19.1.1 is available.
+
+You should consider upgrading via the 'python -m pip install --upgrade pip' command.
+:::
+
+按照上述命令进行升级pip
 
 - windows下安装后: ` .py`文件 鼠标右键中没有  `edit with IDLE`
 

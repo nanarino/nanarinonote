@@ -31,9 +31,17 @@ print(ret)
 sk.close()            # 关闭客户套接字
 ```
 
-### 在重启服务端时可能会遇到
+### 上述代码在重启时报错：
 
-![img](../.vuepress/public/img/socket1.jpg)解决方法： 
+::: danger Traceback(most recent call last):
+File "/client.py"
+
+sk.bind(('127.0.0.1',8898))
+
+OSError: [Error 48] Address already in use
+:::
+
+解决方法： 
 
 ```python
 #加入一条socket配置，重用ip和端口
@@ -81,54 +89,65 @@ print(back_msg.decode('utf-8'),addr)
 
 ### 更多方法介绍
 
-```txt
-服务端套接字函数
-s.bind()    绑定(主机,端口号)到套接字
-s.listen()  开始TCP监听
-s.accept()  被动接受TCP客户的连接,(阻塞式)等待连接的到来
+```python
+#服务端套接字函数
+s.bind()    #绑定(主机,端口号)到套接字
+s.listen()  #开始TCP监听
+s.accept()  #被动接受TCP客户的连接,(阻塞式)等待连接的到来
 
-客户端套接字函数
-s.connect()     主动初始化TCP服务器连接
-s.connect_ex()  connect()函数的扩展版本,出错时返回出错码,而不是抛出异常
+#客户端套接字函数
+s.connect()     #主动初始化TCP服务器连接
+s.connect_ex()  #connect()函数的扩展版本,出错时返回出错码,而不是抛出异常
 
-公共用途的套接字函数
-s.recv()            接收TCP数据
-s.send()            发送TCP数据
-s.sendall()         发送TCP数据
-s.recvfrom()        接收UDP数据
-s.sendto()          发送UDP数据
-s.getpeername()     连接到当前套接字的远端的地址
-s.getsockname()     当前套接字的地址
-s.getsockopt()      返回指定套接字的参数
-s.setsockopt()      设置指定套接字的参数
-s.close()           关闭套接字
+#公共用途的套接字函数
+s.recv()            #接收TCP数据
+s.send()            #发送TCP数据
+s.sendall()         #发送TCP数据
+s.recvfrom()        #接收UDP数据
+s.sendto()          #发送UDP数据
+s.getpeername()     #连接到当前套接字的远端的地址
+s.getsockname()     #当前套接字的地址
+s.getsockopt()      #返回指定套接字的参数
+s.setsockopt()      #设置指定套接字的参数
+s.close()           #关闭套接字
 
-面向锁的套接字方法
-s.setblocking()     设置套接字的阻塞与非阻塞模式
-s.settimeout()      设置阻塞套接字操作的超时时间
-s.gettimeout()      得到阻塞套接字操作的超时时间
+#面向锁的套接字方法
+s.setblocking()     #设置套接字的阻塞与非阻塞模式
+s.settimeout()      #设置阻塞套接字操作的超时时间
+s.gettimeout()      #得到阻塞套接字操作的超时时间
 
-面向文件的套接字的函数
-s.fileno()          套接字的文件描述符
-s.makefile()        创建一个与该套接字相关的文件
+#面向文件的套接字的函数
+s.fileno()          #套接字的文件描述符
+s.makefile()        #创建一个与该套接字相关的文件
 ```
 
 官方文档对socket模块下的socket.send()和socket.sendall()解释如下：
 
-```txt
+```python
 socket.send(string[, flags])
-Send data to the socket. The socket must be connected to a remote socket. The optional flags argument has the same meaning as for recv() above. Returns the number of bytes sent. Applications are responsible for checking that all data has been sent; if only some of the data was transmitted, the application needs to attempt delivery of the remaining data.
+'''Send data to the socket. The socket must be connected to a remote socket.
+The optional flags argument has the same meaning as for recv() above. 
+Returns the number of bytes sent. 
+Applications are responsible for checking that all data has been sent; 
+if only some of the data was transmitted, 
+the application needs to attempt delivery of the remaining data.
 
-send()的返回值是发送的字节数量，这个数量值可能小于要发送的string的字节数，也就是说可能无法发送string中所有的数据。如果有错误则会抛出异常。
+send()的返回值是发送的字节数量，这个数量值可能小于要发送的string的字节数，
+也就是说可能无法发送string中所有的数据。如果有错误则会抛出异常。'''
 
-–
 
 socket.sendall(string[, flags])
-Send data to the socket. The socket must be connected to a remote socket. The optional flags argument has the same meaning as for recv() above. Unlike send(), this method continues to send data from string until either all data has been sent or an error occurs. None is returned on success. On error, an exception is raised, and there is no way to determine how much data, if any, was successfully sent.
-
+'''Send data to the socket. 
+The socket must be connected to a remote socket. 
+The optional flags argument has the same meaning as for recv() above. 
+Unlike send(), this method continues to send data 
+from string until either all data has been sent or an error occurs. 
+None is returned on success. 
+On error, an exception is raised, 
+and there is no way to determine how much data, 
+if any, was successfully sent.
 尝试发送string的所有数据，成功则返回None，失败则抛出异常。
-
-故，下面两段代码是等价的：
+故，下面两段代码是等价的：'''
 
 #sock.sendall('Hello world\n')
 

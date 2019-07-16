@@ -2,15 +2,6 @@
 
 > MySQL是一个关系型数据库管理系统，由瑞典MySQL AB 公司开发，目前属于 Oracle 旗下公司。MySQL 最流行的关系型数据库管理系统，在 WEB 应用方面MySQL是最好的 RDBMS (Relational Database Management System，关系数据库管理系统) 应用软件之一。 
 >
-> 想要使用MySQL来存储并操作数据，则需要做几件事情：
->
-> ​    a. 安装MySQL服务端
->
-> ​    b. 安装MySQL客户端
->
-> ​    c. 【客户端】连接【服务端】
->
-> ​    d. 【客户端】发送命令给【服务端】:服务端接受命令并执行相应操作(增删改查等)
 
 
 
@@ -220,13 +211,10 @@ replication slave       由复制从属使用
 > 示例
 >
 > ```powershell
->             grant all privileges on db1.tb1 TO '用户名'@'IP'
-> 
->             grant select on db1.* TO '用户名'@'IP'
-> 
->             grant select,insert on *.* TO '用户名'@'IP'
-> 
->             revoke select on db1.tb1 from '用户名'@'IP'
+>          grant all privileges on db1.tb1 TO '用户名'@'IP'
+>          grant select on db1.* TO '用户名'@'IP'
+>          grant select,insert on *.* TO '用户名'@'IP'
+>          revoke select on db1.tb1 from '用户名'@'IP'
 > ```
 
 特殊的： 
@@ -586,6 +574,5 @@ g、组合
     union all
     select name
     from B
-
 ```
 

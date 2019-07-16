@@ -25,11 +25,10 @@
 
 输入宇宙级代码
 
----
+::: tip >console.log("Hello World!")
+Hello World!
+:::
 
-# console.log("Hello World!")
-
----
 
 前期代码调试报错都会在这个窗口 
 
