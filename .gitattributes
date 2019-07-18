@@ -1,4 +1,2 @@
-*.css linguist-language=HTML
-*.js linguist-language=HTML
-*.md linguist-language=HTML
-*.sh linguist-language=HTML
+# Auto detect text files and perform LF normalization
+* text=auto
