@@ -16,11 +16,12 @@ logging.critical('critical message')  #严重错误信息
 
 两种配置方法:
 
-### 配置参数： 
+## 配置参数： 
 
-缺点:中文乱码,不能同时控制台打印和写入文件
+- 缺点：中文会乱码,不能同时控制台打印和写入文件
 
-灵活配置日志级别，日志格式，输出位置:
+- 优点：灵活配置日志级别，日志格式，和输出位置
+
 
 ```python
 import logging  
@@ -37,7 +38,7 @@ logging.error('error message')
 logging.critical('critical message')
 ```
 
-更多的配置选项:
+### 更多的配置选项:
 
 ```txt
 logging.basicConfig()函数中可通过具体参数来更改logging模块默认行为，可用参数有：
@@ -69,7 +70,7 @@ format参数中可能用到的格式化串：
 
 
 
-### 配置logger对象
+## 配置logger对象
 
 ```python
 import logging
@@ -95,6 +96,13 @@ logger.error('logger error message')
 logger.critical('logger critical message')
 ```
 
-logging库提供了多个组件：Logger、Handler、Filter、Formatter。Logger对象提供应用程序可直接使用的接口，Handler发送日志到适当的目的地，Filter提供了过滤日志信息的方法，Formatter指定日志显示格式。另外，可以通过：logger.setLevel(logging.Debug)设置级别,当然，也可以通过
+logging库提供了多个组件：Logger、Handler、Filter、Formatter。
 
-fh.setLevel(logging.Debug)单对文件流设置某个级别。
+- Logger对象提供应用程序可直接使用的接口，
+- Handler发送日志到适当的目的地，
+- Filter提供了过滤日志信息的方法，
+- Formatter指定日志显示格式。
+
+另外，可以通过：logger.setLevel(logging.Debug)设置级别,
+
+当然，也可以通过fh.setLevel(logging.Debug)单对文件流设置某个级别。

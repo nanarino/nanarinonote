@@ -41,7 +41,7 @@ with open('example.ini', 'w') as configfile:
    config.write(configfile)
 ```
 
-读取
+## 读取
 
 ```python
 import configparser
@@ -79,7 +79,7 @@ print(config.items('bitbucket.org'))    #找到'bitbucket.org'下所有键值对
 print(config.get('bitbucket.org','compression')) # yes       get方法Section下的key对应的value
 ```
 
-修改
+## 修改
 
 ```python
 import configparser

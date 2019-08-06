@@ -14,7 +14,7 @@ Counter、deque、defaultdict、namedtuple和OrderedDict等。
 >
 > 5.defaultdict: 带有默认值的字典
 
-### namedtuple
+## namedtuple
 
 我们知道`tuple`可以表示不变集合，例如，一个点的二维坐标就可以表示成：
 
@@ -43,7 +43,7 @@ Counter、deque、defaultdict、namedtuple和OrderedDict等。
 Circle = namedtuple('Circle', ['x', 'y', 'r'])
 ```
 
-### deque
+## deque
 
 使用list存储数据时，按索引访问元素很快，但是插入和删除元素就很慢了，因为list是线性存储，数据量大的时候，插入和删除效率很低。
 
@@ -60,7 +60,7 @@ deque(['y', 'a', 'b', 'c', 'x'])
 
 deque除了实现list的`append()`和`pop()`外，还支持`appendleft()`和`popleft()`，这样就可以非常高效地往头部添加或删除元素。
 
-### OrderedDict
+## OrderedDict
 
 使用dict时，Key是无序的。在对dict做迭代时，我们无法确定Key的顺序。
 
@@ -87,7 +87,7 @@ OrderedDict([('a', 1), ('b', 2), ('c', 3)])
 ['z', 'y', 'x']
 ```
 
-### defaultdict 
+## defaultdict 
 
 ```
 有如下值集合 [11,22,33,44,55,66,77,88,99,90...]，将所有大于66的值保存至字典的第一个key中，将小于66的值保存至第二个key的值中。
@@ -141,7 +141,7 @@ for value in  values:
 'N/A'
 ```
 
-### Counter
+## Counter
 
 Counter类的目的是用来跟踪值出现的次数。它是一个无序的容器类型，以字典的键值对形式存储，其中元素作为key，其计数作为value。计数值可以是任意的Interger（包括0和负数）。Counter类和其他语言的bags或multisets很相似。
 
