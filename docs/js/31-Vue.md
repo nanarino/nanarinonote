@@ -33,7 +33,7 @@ npm config set registry https://registry.npm.taobao.org --global
 如果没安装webpack：
 
 ```bash
-npm npm i webpack webpack-cli -g
+npm i webpack webpack-cli -g
 ```
 
 ### vue-cli 2.x
