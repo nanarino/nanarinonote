@@ -4,7 +4,9 @@
 
 PyInstaller模块是用来打包的办法之一
 
-
+::: tip 关于本模块
+本笔记只记录基础，详细的API用法请左转其官方文档。
+:::
 
 ## 使用方法
 
@@ -14,7 +16,7 @@ PyInstaller模块是用来打包的办法之一
 pyinstaller -F myfile.py
 ```
 
-##### 参数的含义
+### 参数的含义
 
 - -F 表示生成单个可执行文件
 - -w 表示去掉控制台窗口，这在GUI界面时非常有用。不过如果是命令行程序的话那就把这个选项删除吧！
@@ -29,15 +31,15 @@ pyinstaller -F myfile.py
 
 如~~os.system~~、 ~~os.popen~~ 等方法。否则影响GUI界面的使用体验（黑窗口一闪而过）
 
-##### 使用内置模块subprocess
+### 使用内置模块subprocess
 
-> subprocess模块是在python2.4版本中新增的，官方文档中描述为可以用来替换以下函数：
->
-> os.system、os.spawn、os.popen、popen2
->
-> subprocess模块目的是**启动一个新的进程并与之通信**，最常用是定义类Popen，
->
-> 使用Popen可以创建进程，并与进程进行复杂的交互
+subprocess模块是在python2.4版本中新增的，官方文档中描述为可以用来替换以下函数：
+
+`os.system`、`os.spawn`、`os.popen`、`popen2`
+
+subprocess模块目的是**启动一个新的进程并与之通信**，最常用是定义类Popen，
+
+使用Popen可以创建进程，并与进程进行复杂的交互
 
 设定一小时后关机
 
@@ -60,7 +62,7 @@ s.wait()#阻塞进程等待shell命令执行完毕
 
 ## 解决打包后体积太大
 
-使用虚拟环境 如 pipenv
+使用虚拟环境 如 `pipenv`
 
 ```bash
 #建立虚拟环境

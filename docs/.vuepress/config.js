@@ -75,7 +75,8 @@ module.exports = {
 					children: [
                         '28-nodejs',
                         '29-mongodb',
-                        '30-Koa2'
+                        '30-Koa2',
+                        '31-Vue'
 					]
 				},
 			],

@@ -23,23 +23,27 @@
 3. Python→MySQL→django→drf→Redis
 4. JavaScript→Vue→React
 
+本笔记只记录基础，详细的框架用法请左转其官方文档。
+
 
 
 ### 参考
 
 老男孩教育的一些老师的博客园
 
-[基础](https://www.cnblogs.com/Eva-J/p/7277026.html)
+[Python基础](https://www.cnblogs.com/Eva-J/p/7277026.html)
 
-[django](https://www.cnblogs.com/liwenzhou/p/9959979.html)
+[django：Python的web框架](https://www.cnblogs.com/liwenzhou/p/9959979.html)
 
-[django rest framework](https://www.cnblogs.com/GGGG-XXXX/p/9564651.html)
+[django rest framework：Python编写API接口](https://www.cnblogs.com/GGGG-XXXX/p/9564651.html)
 
-[设计模式](https://www.cnblogs.com/alex3714/articles/5760582.html)
+[Python中的设计模式](https://www.cnblogs.com/alex3714/articles/5760582.html)
 
 
 
 ## page-cli-setup
+
+本文档采用vuepress展示，其安装和部署如下：
 
 在使用npm安装package.json中的依赖后无法启动服务时，请尝试使用yarn安装同名依赖。
 

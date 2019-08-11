@@ -1,7 +1,10 @@
 # SQL语句
 
-> MySQL是一个关系型数据库管理系统，由瑞典MySQL AB 公司开发，目前属于 Oracle 旗下公司。MySQL 最流行的关系型数据库管理系统，在 WEB 应用方面MySQL是最好的 RDBMS (Relational Database Management System，关系数据库管理系统) 应用软件之一。 
->
+MySQL是一个关系型数据库管理系统，由瑞典MySQL AB 公司开发，目前属于 Oracle 旗下公司。MySQL 最流行的关系型数据库管理系统，在 WEB 应用方面MySQL是最好的 RDBMS (Relational Database Management System，关系数据库管理系统) 应用软件之一。 
+
+::: tip 关于数据库
+本笔记只记录基础命令，详细的数据库用法请左转其官方文档。
+:::
 
 
 
@@ -32,7 +35,9 @@ Starting mysqld:                                           [  OK  ]
     mysql -h host -u user -p
  
 常见错误：
-    ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/tmp/mysql.sock' (2), it means that the MySQL server daemon (Unix) or service (Windows) is not running.
+    ERROR 2002 (HY000):
+    	Can't connect to local MySQL server through socket '/tmp/mysql.sock' (2), 
+    	it means that the MySQL server daemon (Unix) or service (Windows) is not running.
 
 退出：
     QUIT 或者 Control+D
@@ -48,7 +53,6 @@ MySQL解压后的 bin 目录下有一大堆的可执行文件，执行如下命�
 
 ```bash
 cd c:\mysql-5.7.16-winx64\bin
- 
 mysqld --initialize-insecure
 ```
 
@@ -57,7 +61,6 @@ mysqld --initialize-insecure
 ```bash
 # 进入可执行文件目录
 cd c:\mysql-5.7.16-winx64\bin
- 
 # 启动MySQL服务
 mysqld
 ```
@@ -67,19 +70,16 @@ mysqld
 ```bash
 # 进入可执行文件目录
 cd c:\mysql-5.7.16-winx64\bin
- 
 # 连接MySQL服务器
 mysql -u root -p
- 
 # 提示请输入密码，直接回车
 ```
 
-如想日后操作简便，可以做如下操作     :   将MySQL服务制作成windows服务 
+如想日后操作简便，可以做如下操作：将MySQL服务制作成windows服务 
 
 ```bash
 # 制作MySQL的Windows服务，在终端执行此命令：
 "c:\mysql-5.7.16-winx64\bin\mysqld" --install
- 
 # 移除MySQL的Windows服务，在终端执行此命令：
 "c:\mysql-5.7.16-winx64\bin\mysqld" --remove
 ```
@@ -89,7 +89,6 @@ mysql -u root -p
 ```bash
 # 启动MySQL服务
 net start mysql
- 
 # 关闭MySQL服务
 net stop mysql
 ```
@@ -120,7 +119,6 @@ show databases;
 ```powershell
 # utf-8
 CREATE DATABASE 数据库名称 DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
- 
 # gbk
 CREATE DATABASE 数据库名称 DEFAULT CHARACTER SET gbk COLLATE gbk_chinese_ci;
 ```
@@ -129,7 +127,6 @@ CREATE DATABASE 数据库名称 DEFAULT CHARACTER SET gbk COLLATE gbk_chinese_ci
 
 ```powershell
 use 数据库名称;
-
 #显示当前使用的数据库中所有表：
 show tables;
 ```
@@ -147,16 +144,16 @@ show tables;
     rename user '用户名'@'IP地址'; to '新用户名'@'IP地址';;
 #修改密码
     set password for '用户名'@'IP地址' = Password('新密码')
-  
-#用户权限相关数据保存在mysql数据库的user表中，所以也可以直接对其进行操作（不建议）
+#用户权限相关数据保存在mysql数据库的user表中，
+#所以也可以直接对其进行操作（不建议）
 ```
 
 ##### 授权管理 
 
 ```powershell
-show grants for '用户'@'IP地址'                  -- 查看权限
-grant  权限 on 数据库.表 to   '用户'@'IP地址'      -- 授权
-revoke 权限 on 数据库.表 from '用户'@'IP地址'      -- 取消权限
+show grants for '用户'@'IP地址'               -- 查看权限
+grant  权限 on 数据库.表 to   '用户'@'IP地址'   -- 授权
+revoke 权限 on 数据库.表 from '用户'@'IP地址'   -- 取消权限
 ```
 
 ​    权限选项
@@ -172,7 +169,7 @@ alter routine           使用alter procedure和drop procedure
 create                  使用create table
 create routine          使用create procedure
 create temporary tables 使用create temporary tables
-create user             使用create user、drop user、rename user和revoke all 								privileges
+create user             使用create user、drop user、rename user和revoke all privileges
 create view             使用create view
 delete                  使用delete
 drop                    使用drop table
@@ -189,7 +186,8 @@ show view               使用show view
 update                  使用update
 reload                  使用flush
 shutdown                使用mysqladmin shutdown(关闭MySQL)
-super                   使用change master、kill、logs、purge、master和set									global。还允许mysqladmin调试登陆
+super                   使用change master、kill、logs、purge、master和set global。
+                        还允许mysqladmin调试登陆
 replication client      服务器位置的访问
 replication slave       由复制从属使用
 ```
@@ -220,7 +218,7 @@ replication slave       由复制从属使用
 特殊的： 
 
 ```powershell
-flush privileges，将数据读取到内存中，从而立即生效。 
+flush privileges，#将数据读取到内存中，从而立即生效。 
 ```
 
 忘记密码:
@@ -228,10 +226,8 @@ flush privileges，将数据读取到内存中，从而立即生效。
 ```bash
 # 启动免授权服务端
 mysqld --skip-grant-tables
-
 # 客户端
 mysql -u root -p
-
 # 修改用户名密码
 update mysql.user set authentication_string=password('666') where user='root';
 flush privileges;
@@ -255,14 +251,20 @@ create table 表名(
 ```
 
 ```powershell
-是否可空，null表示空，非字符串
+是否可空，
+null表示空，
+非字符串
             not null    - 不可空
             null        - 可空
-当插入数据时如果未设置，则打印时为NULL
+当插入数据时如果未设置，
+则打印时为NULL
 ```
 
 ```powershell
-默认值，创建列时可以指定默认值，当插入数据时如果未主动设置，则自动添加默认值
+默认值，
+创建列时可以指定默认值，
+当插入数据时如果未主动设置，
+则自动添加默认值
             create table tb1(
                 nid int not null defalut 2,
                 num int not null
@@ -270,7 +272,10 @@ create table 表名(
 ```
 
 ```powershell
-自增，如果为某列设置自增列，插入数据时无需设置此列，默认将自增（表中只能有一个自增列）
+自增，
+如果为某列设置自增列，
+插入数据时无需设置此列，
+默认将自增（表中只能有一个自增列）
             create table tb1(
                 nid int not null auto_increment primary key,
                 num int null
@@ -281,8 +286,9 @@ create table 表名(
                 num int null,
                 index(nid)
             )
-注意：1、对于自增列，必须是索引（含主键）。
-     2、对于自增可以设置步长和起始值
+注意：
+1、对于自增列，必须是索引（含主键）。
+2、对于自增可以设置步长和起始值
                      show session variables like 'auto_inc%';
                      set session auto_increment_increment=2;
                      set session auto_increment_offset=10;
@@ -293,7 +299,10 @@ create table 表名(
 ```
 
 ```powershell
-主键，一种特殊的唯一索引，不允许有空值，如果主键使用单个列，则它的值必须唯一，如果是多列，则其组合必须唯一。
+主键，
+一种特殊的唯一索引，不允许有空值，
+如果主键使用单个列，则它的值必须唯一，
+如果是多列，则其组合必须唯一。
             create table tb1(
                 nid int not null auto_increment primary key,
                 num int null
@@ -339,19 +348,17 @@ truncate table 表名
 ```powershell
 添加列：alter table 表名 add 列名 类型
 删除列：alter table 表名 drop column 列名
-修改列：
-        alter table 表名 modify column 列名 类型;  -- 类型
-        alter table 表名 change 原列名 新列名 类型; -- 列名，类型
+修改列：alter table 表名 modify column 列名 类型;  -- 类型
+	   alter table 表名 change 原列名 新列名 类型; -- 列名，类型
   
-添加主键：
-        alter table 表名 add primary key(列名);
-删除主键：
-        alter table 表名 drop primary key;
-        alter table 表名  modify  列名 int, drop primary key;
+添加主键：alter table 表名 add primary key(列名);
+删除主键：alter table 表名 drop primary key;
+		 alter table 表名  modify  列名 int, drop primary key;
   
-添加外键：alter table 从表 add constraint 外键名称（形如：FK_从表_主表） foreign key 从表(外键字段) references 主表(主键字段);
+添加外键：alter table 从表 add constraint 外键名称（形如：FK_从表_主表）
+		 foreign key 从表(外键字段) references 主表(主键字段);
 删除外键：alter table 表名 drop foreign key 外键名称
-  
+
 修改默认值：alter table testalter_tbl alter i set default 1000;
 删除默认值：alter table testalter_tbl alter i drop default;
 ```
@@ -419,11 +426,16 @@ double[(m,d)] [unsigned] [zerofill]
 
 
 char (m)
-    char数据类型用于表示固定长度的字符串，可以包含最多达255个字符。其中m代表字符串的长度。
+    char数据类型用于表示固定长度的字符串，可以包含最多达255个字符。
+    	其中m代表字符串的长度。
     PS: 即使数据小于m长度，也会占用m长度
     varchar(m)
-    varchars数据类型用于变长的字符串，可以包含最多达255个字符。其中m代表该数据类型所允许保存的字符串的最大长度，只要长度小于该最大值的字符串都可以被保存在该数据类型中。
-    注：虽然varchar使用起来较为灵活，但是从整个系统的性能角度来说，char数据类型的处理速度更快，有时甚至可以超出varchar处理速度的50%。因此，用户在设计数据库时应当综合考虑各方面的因素，以求达到最佳的平衡
+    varchars数据类型用于变长的字符串，可以包含最多达255个字符。
+    	其中m代表该数据类型所允许保存的字符串的最大长度，
+    	只要长度小于该最大值的字符串都可以被保存在该数据类型中。
+    	注：虽然varchar使用起来较为灵活，但是从整个系统的性能角度来说，
+    	char数据类型的处理速度更快，有时甚至可以超出varchar处理速度的50%。
+    	因此，用户在设计数据库时应当综合考虑各方面的因素，以求达到最佳的平衡
 
 text
    text数据类型用于保存变长的大字符串，可以组多到65535 (2**16 − 1)个字符。
@@ -527,13 +539,13 @@ c、限制
 d、排序
     select * from 表 order by 列 asc              - 根据 “列” 从小到大排列
     select * from 表 order by 列 desc             - 根据 “列” 从大到小排列
-    select * from 表 order by 列1 desc,列2 asc    - 根据 “列1” 从大到小排列，如果										相同则按列2从小到大排序
+    select * from 表 order by 列1 desc,列2 asc    - 根据 “列1” 从大到小排列，如果相同则按列2从小到大排序
  
 e、分组
     select num from 表 group by num
     select num,nid from 表 group by num,nid
     select num,nid from 表  where nid > 10 group by num,nid order nid desc
-    select num,nid,count(*),sum(score),max(score),min(score) from 表 group by 										num,nid
+    select num,nid,count(*),sum(score),max(score),min(score) from 表 group by num,nid
  
     select num from 表 group by num having max(id) > 10
  

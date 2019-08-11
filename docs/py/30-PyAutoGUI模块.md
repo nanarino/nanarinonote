@@ -2,6 +2,10 @@
 
 PyAutoGUI是一个纯Python的GUI自动化工具，其目的是可以用程序自动控制鼠标和键盘操作，多平台支持（Windows，OS X，Linux）。可以使用`pip`安装，Github上有[源代码](https://github.com/asweigart/pyautogui)。
 
+::: tip 关于本模块
+本笔记只记录基础，详细的API用法请左转其官方文档。
+:::
+
 
 
 ## 参考中文文档
@@ -113,7 +117,15 @@ pyautogui.hotkey('ctrl', 'v') # 粘贴
 
 ## 保护措施
 
-为了能够及时中断，PyAutoGUI提供了一个保护措施。当`pyautogui.FAILSAFE = True`时，如果把鼠标光标在屏幕左上角，PyAutoGUI函数就会产生`pyautogui.FailSafeException`异常。如果失控了，需要中断PyAutoGUI函数，就把鼠标光标在屏幕左上角。要禁用这个特性，就把`FAILSAFE`设置成`False`：
+为了能够及时中断，PyAutoGUI提供了一个保护措施。
+
+当`pyautogui.FAILSAFE = True`时，如果把鼠标光标在屏幕左上角，
+
+PyAutoGUI函数就会产生`pyautogui.FailSafeException`异常。
+
+如果失控了，需要中断PyAutoGUI函数，就把鼠标光标在屏幕左上角。
+
+要禁用这个特性，就把`FAILSAFE`设置成`False`：
 
 ```python
 pyautogui.FAILSAFE = False
