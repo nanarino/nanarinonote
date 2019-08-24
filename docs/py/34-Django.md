@@ -109,14 +109,46 @@ pymysql.install_as_MySQLdb()
 
 
 
-### 时区问题
+### 时区/语言问题
 
-不作修改，时间将为格林尼治时间
+时间默认为格林尼治时间
 
-`settings.py`中做出如下修改：
+admin中的语言默认为英文
+
+可以在`settings.py`中做出如下修改：
 
 ```python
+#LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'zh-Hans'
+
 #TIME_ZONE = 'UTC'
 TIME_ZONE = 'Asia/Shanghai'
 ```
 
+
+
+### 部署问题
+
+一般用`nginx`+`uwsgi`来部署django项目到生产环境。
+
+通过配置，`nginx`与`uwsgi`之间进行socket通信，
+
+nginx提供static目录的静态文件访问。
+
+具体可以参考我在[cdb仓库](https://github.com/nanarino/cdb)中的配置文件示例。
+
+开发之前`settings.py`中就应该做出如下设置：
+
+```python
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR,"static")
+]
+```
+
+在部署之后，如admin的静态资源会出现404的情况，解决办法：
+
+默认安装的python，admin的静态资源一般在
+
+`C:\Users\Administrator\AppData\Local\Programs\Python\Python37\Lib\site-packages\django\contrib\admin\static\admin`目录中，
+
+将其拷贝到项目的static目录，以便被nginx访问。

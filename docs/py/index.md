@@ -19,11 +19,11 @@
 
 ## 安装环境
 
-推荐python3.7.0和python3.6.8
+推荐python3.7.0或python3.6.8
 
 勾选好`环境变量`和`pip`
 
-在Windows的cmd中
+这里以Windows为例，在cmd中输入Python，回车：
 
 ```bash
 Python 3.7.0 (v3.7.0:1bf9cc5093, Jun 27 2018, 04:59:51) [MSC v.1914 64 bit (AMD64)] on win32
@@ -38,6 +38,12 @@ Hello World!
 :::
 
 输入如上字符 回车
+
+---
+
+需要在CentOS下安装Python3的可以参考[这里](https://www.cnblogs.com/pyyu/p/7402145.html),
+
+也可以借助`宝塔Linux面板`的`Python项目管理器`一键安装。
 
 
 
@@ -92,3 +98,8 @@ You should consider upgrading via the 'python -m pip install --upgrade pip' comm
 pip install pymysql -i https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 
+
+
+------
+
+这份笔记还在整理中，欢迎对本笔记进行勘误
