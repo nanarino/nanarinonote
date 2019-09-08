@@ -20,7 +20,7 @@ PyAutoGUI是一个纯Python的GUI自动化工具，其目的是可以用程序�
 
 安装
 
-```shell
+```bash
 pip install pyautogui
 ```
 
@@ -45,6 +45,14 @@ pip install pyautogui
 
 ```python
 import pyautogui
+```
+
+弹窗
+
+```python
+pyautogui.alert('弹窗文字+OK按钮+Cancel按钮')
+pyautogui.prompt('弹窗文字+输入文字+OK按钮')
+pyautogui.confirm('弹窗文字+输入文字+OK按钮+Cancel按钮')
 ```
 
 获取当前鼠标的坐标
@@ -87,7 +95,7 @@ pyautogui.click(x=moveToX, y=moveToY, clicks=num_of_clicks, interval=secs_betwee
 
 鼠标按下和松开
 
-```
+```python
 pyautogui.mouseDown(x=moveToX, y=moveToY, button='left')
 pyautogui.mouseUp(x=moveToX, y=moveToY, button='left')
 ```
@@ -99,16 +107,28 @@ pyautogui.keyDown(key_name)
 pyautogui.keyUp(key_name)
 ```
 
-键盘输入（中文好像不行）
+键盘输入
 
-```
+```python
 pyautogui.typewrite(['a', 'b', 'c', 'left', 'backspace', 'enter', 'f1'], interval=secs_between_keys)
 ```
 
-```
+热键
+
+```python
 pyautogui.hotkey('ctrl', 'a') # 全选
 pyautogui.hotkey('ctrl', 'c') # 复制
 pyautogui.hotkey('ctrl', 'v') # 粘贴
+```
+
+想要输入中文，需要使用读写粘贴板的第三方库`pyperclip`
+
+```python
+import pyperclip
+#读取
+print(pyperclip.paste())
+#写入
+pyperclip.copy('需要复制的文字')
 ```
 
 其他函数如 拖拽 滚轮等 比较少用 这里省略

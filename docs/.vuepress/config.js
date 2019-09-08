@@ -77,7 +77,8 @@ module.exports = {
                         '29-mongodb',
                         '30-Koa2',
                         '31-webpack',
-                        '32-Vue'
+                        '32-Vue',
+                        '33-Electron'
 					]
 				},
 			],

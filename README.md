@@ -16,28 +16,14 @@
 
 
 
-### 学习路线
+## 学习路线
 
-1. DIV→CSS3
-2. JavaScript→Node→Koa2→MongoDB
-3. Python→MySQL→django→drf→Redis
-4. JavaScript→Vue→React
+1. 〖DIV〗→〖CSS3〗
+2. 【JavaScript】→【Node】→【Koa2】→【MongoDB】
+3. 【Python】→【MySQL】→【django】→【drf】→〖Redis〗
+4. 【JavaScript】→【Vue】→〖React〗
 
-本笔记只记录基础，详细的框架用法请左转其官方文档。
-
-
-
-### 参考
-
-老男孩教育的一些老师的博客园
-
-[Python基础](https://www.cnblogs.com/Eva-J/p/7277026.html)
-
-[django：Python的web框架](https://www.cnblogs.com/liwenzhou/p/9959979.html)
-
-[django rest framework：Python编写API接口](https://www.cnblogs.com/GGGG-XXXX/p/9564651.html)
-
-[Python中的设计模式](https://www.cnblogs.com/alex3714/articles/5760582.html)
+本笔记只记录【基础语法知识】，〖详细的框架用法〗请左转其官方文档。
 
 
 
@@ -66,3 +52,17 @@ npm run docs:build
 ```
 
 For a detailed explanation on how things work, check out [docs for vuepress](https://github.com/vuejs/vuepress).
+
+
+
+## 笔记参考
+
+老男孩教育的一些老师的博客园
+
+[Python基础](https://www.cnblogs.com/Eva-J/p/7277026.html)
+
+[django：Python的web框架](https://www.cnblogs.com/liwenzhou/p/9959979.html)
+
+[django rest framework：Python编写API接口](https://www.cnblogs.com/GGGG-XXXX/p/9564651.html)
+
+[Python中的设计模式](https://www.cnblogs.com/alex3714/articles/5760582.html)
