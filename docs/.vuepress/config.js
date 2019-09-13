@@ -145,19 +145,20 @@ module.exports = {
                     ]
 				},
                 {
-					title: 'GUI编程',
+					title: 'WEB框架',
 					children: [
-                        '30-PyAutoGUI模块',
-                        '31-Tkinter模块',
-                        '32-PyInstaller模块',
+                        '30-SQL语句',
+                        '31-Django',
+                        '32-Tornado',
                     ]
 				},
                 {
-					title: 'WEB框架',
+					title: '杂项知识点',
 					children: [
-                        '33-SQL语句',
-                        '34-Django',
-                        '35-Tornado',
+                        '33-PyAutoGUI模块',
+                        '34-Tkinter模块',
+                        '35-PyInstaller模块',
+                        '36-pymssql模块',
                     ]
 				},
 			],

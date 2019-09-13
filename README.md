@@ -18,10 +18,10 @@
 
 ## 学习路线
 
-1. 〖DIV〗→〖CSS3〗
+1. 〖DIV〗→〖CSS3〗→〖less〗/〖sass〗/〖stylus〗
 2. 【JavaScript】→【Node】→【Koa2】→【MongoDB】
 3. 【Python】→【MySQL】→【django】→【drf】→〖Redis〗
-4. 【JavaScript】→【Vue】→〖React〗
+4. 【JavaScript】→【Vue】→〖React〗→〖Nuxt〗
 
 本笔记只记录【基础语法知识】，〖详细的框架用法〗请左转其官方文档。
 

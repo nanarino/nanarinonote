@@ -61,6 +61,8 @@ python manage.py runserver 0.0.0.0:80
 
 ## 与mysql连接
 
+首先需要安装第三方库`PyMySQL`模块
+
 `settings.py`中：
 
 ```python

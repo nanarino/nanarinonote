@@ -90,12 +90,12 @@ You should consider upgrading via the 'python -m pip install --upgrade pip' comm
 
 解决方法 修改注册表 有3个文件夹(新建)的默认值要修改 具体谷歌
 
-- pip下载模块速度过慢
+- pip下载非标准库/第三方模块速度过慢
 
 可以使用清华大学镜像
 
 ```bash
-pip install pymysql -i https://pypi.tuna.tsinghua.edu.cn/simple
+pip install 第三方模块名字 -i https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 
 
