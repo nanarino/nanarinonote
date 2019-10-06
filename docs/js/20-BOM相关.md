@@ -57,7 +57,7 @@ scrollX, scrollY 表示浏览器的滚动的位置
 location是一个对象，描述的是当前文档的相关位置信息。他是window对象下面的属性
 
 ```js
-console.log(window.location)
+console.dir(window.location)
 ```
 
 * host： 主机名加端口
@@ -68,9 +68,12 @@ console.log(window.location)
 * search： 请求的内容，通常是get请求发送给后台的信息
 * href： 整体路径
 
-通过这个信息你就直到你在哪你在干什么了。
+获取到的以上属性都在字符串，如果对其直接赋值，会导致浏览器重新解析地址栏，达到跳转的效果。
 
-如果我们直接访问location或者参与字符串操作会有内置toString方法输出href
+```js
+location.reload() //刷新页面
+location.reload(true) //绕过缓存刷新页面
+```
 
 
 
@@ -95,8 +98,8 @@ history.go()// 传入一个数值，0表示当前页面，1表示下个页面，
 navigator.appVersion//只读：返回浏览器的平台和版本信息
 navigator.appCodeName// 声明了浏览器的代码版本， 一般都是Mozilla
 navigator.userAgent //用户本地的信息组合
-// 这些信息会在前后端请求的时候编排在请求头文件中发送给后台方便后台识别
-//等等
+//这些信息会在前后端请求的时候编排在请求头文件中发送给后台方便后台识别
+//...
 ```
 
 

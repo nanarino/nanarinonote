@@ -1,18 +1,18 @@
 # ajax和fetch
 
-html是我们获取的信息的一种, 相对应的也有xml。
+ajax（Asynchronous JavaScript and XML）：
 
-XML: 是具有结构性的标记语言, 在JavaScript中等价于JSON对象。
+是用**异步**javascript请求JSON数据并**动态渲染**到页面的一种行为。
 
-ajax(Asynchronous JavaScript and XML)
+XML
 
-是用**异步**javascript请求JSON数据, 并**动态渲染**到页面的一种行为。
+是具有结构性的标记语言，用途于JSON字符串相同，其与JSON格式的优劣这里不讨论。
 
 使用ajax的优点：
 
 * 页面局部刷新, 不会整体刷新, 单独的几个请求,请求的是核心数据,减少了请求数的压力
 * 带宽无压力
-* 服务器不用做太多操作,JSON返回就ok了
+* 服务器不用做太多操作只需要JSON或XML
 
 
 
@@ -266,6 +266,7 @@ JavaScript只能访问和操作自己域下的资源，不能访问和操作其�
   * script标签src允许跨域，我们利用script标签得src来访问资源，然后使用callback来承接返回得数据，处理。
 
   ```js
+  //这里以哔哩哔哩的内容搜索框为例
   let input = document.queryselector("input")
   
   input.oninput = function(){
@@ -290,21 +291,24 @@ JavaScript只能访问和操作自己域下的资源，不能访问和操作其�
 * CORS 后台允许跨域
 
   * 在后台添加允许跨域："跨域资源共享"（Cross-origin resource sharing）。它允许浏览器向跨源(协议 + 域名 + 端口)服务器，发出XMLHttpRequest请求，从而克服了AJAX只能同源使用的限制。
+  * 一般在前后端分离的开发过程中会让使用CORS，上线后会关闭CORS。
 
-* 第三方（也就是代理服务器）
+* 第三方（也就是代理服务器，在前端模块化开发时，脚手架中会使用到）
 
 
 
 ## fetch
 
-```
+它是基于Promise的ajax请求的二度封装
+
+```js
 fetch(...).then(fun2)
           .then(fun3) //各依赖有序执行
           .....
           .catch(fun)
 ```
 
-从上边的代码可以看出，fetch用起来像jQuery一样简单，虽然还是有Callback的影子，但是看起来舒服多了，它基于Promise
+从上边的代码可以看出，fetch用起来像jQuery一样简单，虽然还是有Callback的影子，但是看起来舒服多了
 
 
 

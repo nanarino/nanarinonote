@@ -36,11 +36,11 @@ const p = new Promise((resolve,reject)=>{
         console.log('1');
         resolve('2')
     })
-}).then((m)=>{
-    console.log(m)
 })
 
-;+(()=>p)
+p.then((m)=>{
+    console.log(m)
+})
 
 setImmediate(()=>{
     console.log('3');

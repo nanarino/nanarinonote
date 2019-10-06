@@ -40,7 +40,7 @@ document.getElementById //通过ID获取某个元素
 document.getElementsByClassName //通过class类名获取,获取是一组,不支持IE8及以下
 document.getElementsByTagName //通过标签名获取,获取是一组
 document.getElementsByName //通过name获取,获取是一组
-querySelector、querySelectorAll//静态获取元素
+querySelector,querySelectorAll//静态获取元素
 ```
 
 其中getElementById和querySelector获取的是元素单个节点。
@@ -91,7 +91,7 @@ nli.length//4	HTMLCollection  会动态改变
 ### 增加：
 
 ```js
-box.innerHTML+="BLABLA"
+box.innerHTML += "BLABLA"
 ```
 
 将box内部的DOM节点转换成字符串，然后字符串添加内容，然后浏览器重新渲染。重新生成DOM结构。等价于重绘和重排。缺点：
@@ -115,7 +115,7 @@ box.innerHTML+="BLABLA"
 
    无论是不是动态获取元素。
 
-   ---
+---
 
 **正确的方式**： 
 
@@ -140,7 +140,7 @@ document.body.appendChild(li)//放置
 
 ### 删除
 
-同样也不要innerHTML。
+同样也不要`.innerHTML`。
 
 ```html
 <ul class='list'>
@@ -155,7 +155,7 @@ let list = document.querySelector(".list")
 list.removeChild(ali[0])// 从父元素中删除节点。必须是父子关系。
 ```
 
-修改=增加+删除
+修改 = 增加 + 删除
 
 ```js
 list.replaceChild(document.createElement("a"), ali[0])//选中儿子ali[0]替换成新建的a元素节点
@@ -230,11 +230,11 @@ li.previousElementSibing //前一个元素节点
   子元素可能是多个，也可能是一个。
 
   ```html
-  <ul>
-      <li></li>
-      asdasd
-      <li></li>
-  </ul>
+<ul>
+    <li></li>
+    asdasd
+    <li></li>
+</ul>
   ```
 
   ```js
@@ -266,12 +266,12 @@ li.previousElementSibing //前一个元素节点
 
 ```js
 let temp = document.createElement("div")// div标签节点
-temp.__proto__ // HTMLDivElement div构造函数的原型，上面有div节点独有的方法
-temp.__proto__.__proto__ // HTMLCollection html元素节点构造函数的原型，节点的共有性质都在这
-temp.__proto__.__proto__.__proto__ //  Element 本质上和Document同级都是Node下面的一个元素
-temp.__proto__.__proto__.__proto__.__proto__ // Node 所有节的构造函数的原型，存放节点基础方法
-temp.__proto__.__proto__.__proto__.__proto__.__proto__ // EventTarget 事件对象的构造函数的原型
-temp.__proto__.__proto__.__proto__.__proto__.__proto__.__proto__ // Object的原型
+temp.__proto__ //HTMLDivElement:div构造函数的原型，上面有div节点独有的方法
+temp.__proto__.__proto__ //HTMLCollection:html元素节点构造函数的原型，节点的共有性质都在这
+temp.__proto__.__proto__.__proto__ //Element:本质上和Document同级都是Node下面的一个元素
+temp.__proto__.__proto__.__proto__.__proto__ //Node:所有节的构造函数的原型，存放节点基础方法
+temp.__proto__.__proto__.__proto__.__proto__.__proto__ //EventTarget:事件对象的构造函数的原型
+temp.__proto__.__proto__.__proto__.__proto__.__proto__.__proto__ //Object的原型
 ```
 
 

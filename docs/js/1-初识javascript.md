@@ -137,20 +137,6 @@ box.onclick = function(){
 
 
 
-## 修改样式
-
-可以通过 `.cssText`修改原本的样式，也可以通过`.style.color`等来修改
-
-```js
-let box = document.getElementById("box");
-box.style.cssText = "background-color: red;color: blue";
-//或者
-box.style.backgroundColor = "red";
-box.style.color = "blue";
-```
-
-
-
 ## 修改标签内的内容
 
  `.innerHTML`： 支持标签
@@ -163,3 +149,55 @@ console.log(box.innerHTML);//读取
 box.innerHTML = box.innerHTML + 1;//修改
 ```
 
+
+
+## 修改样式
+
+获取标签节点后，可以通过 `.cssText`修改样式
+
+也可以通过`.style.color`来修改
+
+还可以通过`.style.setProperty(属性名,属性值,可选的important优先级)`来修改
+
+```js
+let box = document.getElementById("box");
+
+//通过.style.color
+box.style.color = "blue";
+
+//通过.cssText
+box.style.cssText = "background-color: red;color: blue";
+
+/*    通过.style.setProperty可以方便给css3中自定义变量赋值：
+ *    div{
+ *        --x:0;
+ *        background: hsl(var(--x), 50%, 50%);
+ *     }
+ */
+h = 150
+box.style.setProperty("--x",h)
+```
+
+上述方法都是添加的行内的样式。相当于在`<div id='box' style='这里添加' >`。
+
+::: warning 注意
+上文中的CSS自定义变量功能不属于Sass等预处理语言，你可能需要了解CSS3的拓展知识
+
+以下内容并不适合符合本节的初识JS标题，只是为了方便查阅所以归档在这里
+:::
+
+
+
+如果想要在style标签中添加如字体颜色（color）的样式：
+
+- 可以用document对象的`CSSStyleDeclaration`例如：
+
+  `document.styleSheets[0].cssRules[0].style`
+
+  它和标签节点的使用方法一样有`setProperty()`和`cssText`
+
+- `(ele.currentStyle || getComputedStyle(ele)).color`
+
+  ele是获取的标签节点，这里使用了兼容的写法，逻辑或运算
+
+  当`.currentStyle`属性不存在（说明不是IE浏览器）时使用`getComputedStyle()`
