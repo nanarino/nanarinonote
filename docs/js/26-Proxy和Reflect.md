@@ -21,7 +21,7 @@ let n = {
     b:1,
 }; 
 
-m = new Proxy(n, {
+let m = new Proxy(n, {
     get(target, key, value, proxy) { 
         return Reflect.get(target, key, value, proxy)
     },
