@@ -57,6 +57,10 @@ console.log("打印日志")
 //打印的其他内容甚至打印图片等花里胡哨的操作可以百度
 ```
 
+在低版本ie浏览器中只有按下F12打开了控制台之后才能使用console
+
+可以使用`window.console && console.log("打印日志")`
+
 
 
 ## 获取标签节点
@@ -94,7 +98,7 @@ document.querySelectorAll(".box li");//用CSS的选择器选择方式返回满�
 
 
 
-## 变量和常量
+## 变量声明
 
 ```js
 var a;   //es5 变量
@@ -137,11 +141,13 @@ box.onclick = function(){
 
 
 
-## 修改标签内的内容
+## 页面内容修改
 
- `.innerHTML`： 支持标签
+获取标签对象后可以使用以下方法
 
- `.innerText`： 不支持标签
+ `.innerHTML`： 支持标签，HTML代码被渲染
+
+ `.innerText`： 不支持标签，标签显示为标签代码
 
 ```js
 let box = document.getElementById("box");
@@ -151,7 +157,7 @@ box.innerHTML = box.innerHTML + 1;//修改
 
 
 
-## 修改样式
+## 样式修改
 
 获取标签节点后，可以通过 `.cssText`修改样式
 
