@@ -8,29 +8,30 @@
 
 ### 属性
 
-```txt
-os.sep    输出操作系统特定的路径分隔符，win下为"\\",Linux下为"/"
-os.linesep    输出当前平台使用的行终止符，win下为"\r\n",Linux下为"\n"
-os.pathsep    输出用于分割文件路径的字符串 win下为;,Linux下为:
-os.name    输出字符串指示当前使用平台。win->'nt'; Linux->'posix'
-os.curdir 返回当前目录:"."
-os.pardir 获取当前目录的父目录字符串名:".."
-os.path 获取环境变量
+```python
+os.sep        #输出操作系统特定的路径分隔符，win下为"\\",Linux下为"/"
+os.linesep    #输出当前平台使用的行终止符，win下为"\r\n",Linux下为"\n"
+os.pathsep    #输出用于分割文件路径的字符串 win下为;,Linux下为:
+os.name       #输出字符串指示当前使用平台。win->'nt'; Linux->'posix'
+os.curdir     #返回当前目录:"."
+os.pardir     #获取当前目录的父目录字符串名:".."
+os.path       #获取环境变量
 ```
 
 ### 方法
 
-```txt
-os.getcwd() 获取工作目录 即当前python脚本工作的目录路径
-os.chdir("dirname") 改版当前脚本工作目录 相当于cd
-os.makedirs('dirname1/dirname2')    可生成多层递归目录
-os.removedirs('dirname1')    若目录为空，则删除，并递归到上一级目录，如若也为空，则删除，依此类推
-os.mkdir('dirname')    生成单级目录；相当于shell中mkdir dirname
-os.rmdir('dirname')    删除单级空目录，若目录不为空则无法删除，报错；相当于shell中rmdir dirname
-os.listdir('dirname')    列出指定目录下的所有文件和子目录，包括隐藏文件，并以列表方式打印
-os.remove()  删除一个文件
-os.rename("oldname","newname")  重命名文件/目录
-os.stat('path/filename')  获取文件/目录信息
+```python
+os.getcwd() #获取工作目录 即当前python脚本工作的目录路径
+os.chdir("dirname") #改版当前脚本工作目录 相当于cd
+os.makedirs('dirname1/dirname2')    #可生成多层递归目录
+os.removedirs('dirname1')    #若目录为空，则删除，并递归到上一级目录，如若也为空，则删除，依此类推
+os.mkdir('dirname')    #生成单级目录；相当于shell中mkdir dirname
+os.rmdir('dirname')    #删除单级空目录，若目录不为空则无法删除，报错；相当于shell中rmdir dirname
+os.listdir('dirname')    #列出指定目录下的所有文件和子目录，包括隐藏文件，并以列表方式打印
+os.remove()  #删除一个文件
+os.rename("oldname","newname")  #重命名文件/目录
+os.stat('path/filename')  #获取文件/目录信息
+'''
 	st_mode: inode 保护模式
 	st_ino: inode 节点号。
 	st_dev: inode 驻留的设备。
@@ -41,37 +42,46 @@ os.stat('path/filename')  获取文件/目录信息
 	st_atime: 上次访问的时间。
 	st_mtime: 最后一次修改的时间。
 	st_ctime: 由操作系统报告的"ctime"。在某些系统上（如Unix）是最新的元数据更改的时间，在其它系统上（如Windows）是创建时间（详细信息参见平台的文档）。
+'''
+os.system("bash command")  #运行shell命令，直接显示
+os.popen("bash command").read()  #运行shell命令，获取执行结果
+os.getcwd() #获取当前工作目录，即当前python脚本工作的目录路径
+os.chdir("dirname")  #改变当前脚本工作目录；相当于shell下cd
 
-os.system("bash command")  运行shell命令，直接显示
-os.popen("bash command").read()  运行shell命令，获取执行结果
-os.getcwd() 获取当前工作目录，即当前python脚本工作的目录路径
-os.chdir("dirname")  改变当前脚本工作目录；相当于shell下cd
-
-os.path.abspath(path) 返回path规范化的绝对路径
-os.path.split(path) 将path分割成目录和文件名二元组返回 
-os.path.dirname(path) 返回path的目录。其实就是os.path.split(path)的第一个元素 
-os.path.basename(path) 返回path最后的文件名。如何path以／或\结尾，那么就会返回空值。即os.path.split(path)的第二个元素
-os.path.exists(path)  如果path存在，返回True；如果path不存在，返回False
-os.path.isabs(path)  如果path是绝对路径，返回True
-os.path.isfile(path)  如果path是一个存在的文件，返回True。否则返回False
-os.path.isdir(path)  如果path是一个存在的目录，则返回True。否则返回False
-os.path.join(path1[, path2[, ...]])  将多个路径组合后返回，第一个绝对路径之前的参数将被忽略
-os.path.getatime(path)  返回path所指向的文件或者目录的最后访问时间
-os.path.getmtime(path)  返回path所指向的文件或者目录的最后修改时间
-os.path.getsize(path) 返回path的大小 文件夹固定4096不准确
+os.path.abspath(path) #返回path规范化的绝对路径
+os.path.split(path) #将path分割成目录和文件名二元组返回 
+os.path.dirname(path) #返回path的目录。其实就是os.path.split(path)的第一个元素 
+os.path.basename(path) #返回path最后的文件名。若path以／或\结尾，那么就会返回空值。即os.path.split(path)的第二个元素
+os.path.exists(path)  #如果path存在，返回True；如果path不存在，返回False
+os.path.isabs(path)  #如果path是绝对路径，返回True
+os.path.isfile(path)  #如果path是一个存在的文件，返回True。否则返回False
+os.path.isdir(path)  #如果path是一个存在的目录，则返回True。否则返回False
+os.path.join(path1[, path2[, ...]])  #将多个路径组合后返回，第一个绝对路径之前的参数将被忽略
+os.path.getatime(path)  #返回path所指向的文件或者目录的最后访问时间
+os.path.getmtime(path)  #返回path所指向的文件或者目录的最后修改时间
+os.path.getsize(path) #返回path的大小 文件夹固定4096不准确
 ```
+
+
+
+::: warning 关于__file__的使用
+不要直接使用`__file__`，因为它在shell、IDLE、Pycharm中的表示形式各不相同。
+
+可以以`os.path.abspath(__file__)`的方式来使用
+:::
+
 
 
 ## sys模块
 
 > sys模块是与python解释器交互的一个接口 
 
-```txt
-sys.argv           命令行参数List，第一个元素是程序本身路径
-sys.exit(n)        退出程序，正常退出时exit(0),错误退出sys.exit(1)
-sys.version        获取Python解释程序的版本信息
-sys.path           返回模块的搜索路径，初始化时使用PYTHONPATH环境变量的值
-sys.platform       返回操作系统平台名称
+```python
+sys.argv           #命令行参数List，第一个元素是程序本身路径
+sys.exit(n)        #退出程序，正常退出时exit(0),错误退出sys.exit(1)
+sys.version        #获取Python解释程序的版本信息
+sys.path           #返回模块的搜索路径，初始化时使用PYTHONPATH环境变量的值
+sys.platform       #返回操作系统平台名称
 ```
 
  异常处理和status    后面会专门有一节说一下异常
@@ -84,3 +94,82 @@ except SystemExit as e:
     print(e)
 ```
 
+
+
+## subprocess模块
+
+subprocess模块是在python2.4版本中新增的，官方文档中描述为可以用来替换以下函数：
+
+`os.system`、`os.spawn`、`os.popen`、`popen2`
+
+| 函数                            | 描述                                                         |
+| ------------------------------- | ------------------------------------------------------------ |
+| subprocess.run()                | Python 3.5中新增的函数。执行指定的命令，等待命令执行完成后返回一个包含执行结果的CompletedProcess类的实例。 |
+| subprocess.call()               | 执行指定的命令，返回命令执行状态，其功能类似于os.system(cmd)。 |
+| subprocess.check_call()         | Python 2.5中新增的函数。 执行指定的命令，如果执行成功则返回状态码，否则抛出异常。其功能等价于subprocess.run(..., check=True)。 |
+| subprocess.check_output()       | Python 2.7中新增的的函数。执行指定的命令，如果执行状态码为0则返回命令执行结果，否则抛出异常。 |
+| subprocess.getoutput(cmd)       | 接收字符串格式的命令，执行命令并返回执行结果，其功能类似于os.popen(cmd).read()和commands.getoutput(cmd)。 |
+| subprocess.getstatusoutput(cmd) | 执行cmd命令，返回一个元组(命令执行状态, 命令执行结果输出)，其功能类似于commands.getstatusoutput()。 |
+
+### 模块方法说明
+
+1. 在Python 3.5之后的版本中，官方文档中提倡通过`subprocess.run()`函数替代其他函数来使用subproccess模块的功能；
+2. 在Python 3.5之前的版本中，我们可以通过`subprocess.call()`，`subprocess.getoutput()`等上面列出的其他函数来使用subprocess模块的功能；
+3. `subprocess.run()`、`subprocess.call()`、`subprocess.check_call()`和`subprocess.check_output()`都是通过对`subprocess.Popen`的封装来实现的高级函数，因此如果我们需要更复杂功能时，可以通过`subprocess.Popen`来完成。
+4. `subprocess.getoutput()`和`subprocess.getstatusoutput()`函数是来自Python 2.x的commands模块的两个遗留函数。它们隐式的调用系统shell，并且不保证其他函数所具有的安全性和异常处理的一致性。另外，它们从Python 3.3.4开始才支持Windows平台。
+
+subprocess模块目的是**启动一个新的进程并与之通信**，最常用是定义类`Popen`，
+
+使用`Popen`可以创建进程，并与进程进行复杂的交互。
+
+```python
+>>> import subprocess
+>>> p = subprocess.Popen('dir', stdout=subprocess.PIPE, shell=True)
+>>> print(p.stdout.read())
+```
+
+
+
+### `Popen`类参数说明
+
+- ***args：\*** 要执行的shell命令，可以是字符串，也可以是命令各个参数组成的序列。当该参数的值是一个字符串时，该命令的解释过程是与平台相关的，因此通常建议将args参数作为一个序列传递。
+- ***bufsize：\*** 指定缓存策略，0表示不缓冲，1表示行缓冲，其他大于1的数字表示缓冲区大小，负数 表示使用系统默认缓冲策略。
+- ***stdin, stdout, stderr：\*** 分别表示程序标准输入、输出、错误句柄。
+- ***preexec_fn：\*** 用于指定一个将在子进程运行之前被调用的可执行对象，只在Unix平台下有效。
+- ***close_fds：\*** 如果该参数的值为True，则除了0,1和2之外的所有文件描述符都将会在子进程执行之前被关闭。
+- ***shell：\*** 该参数用于标识是否使用shell作为要执行的程序，如果shell值为True，则建议将args参数作为一个字符串传递而不要作为一个序列传递。
+- ***cwd：\*** 如果该参数值不是None，则该函数将会在执行这个子进程之前改变当前工作目录。
+- ***env：\*** 用于指定子进程的环境变量，如果env=None，那么子进程的环境变量将从父进程中继承。如果env!=None，它的值必须是一个映射对象。
+- ***universal_newlines：\*** 如果该参数值为True，则该文件对象的stdin，stdout和stderr将会作为文本流被打开，否则他们将会被作为二进制流被打开。
+- ***startupinfo和creationflags：\*** 这两个参数只在Windows下有效，它们将被传递给底层的CreateProcess()函数，用于设置子进程的一些属性，如主窗口的外观，进程优先级等。
+
+使用python调用cmd中的python打印helloworld：
+
+```python
+>>> obj = subprocess.Popen(["python"], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+>>> out,err = obj.communicate(input='print("helloworld！") \n')
+>>> print(out)
+helloworld！
+
+>>> print(err)
+```
+
+### `Popen`类方法说明
+
+| 方法                                        | 描述                                                         |
+| ------------------------------------------- | ------------------------------------------------------------ |
+| Popen.poll()                                | 用于检查子进程（命令）是否已经执行结束，没结束返回None，结束后返回状态码。 |
+| Popen.wait(timeout=None)                    | 等待子进程结束，并返回状态码；如果在timeout指定的秒数之后进程还没有结束，将会抛出一个TimeoutExpired异常。 |
+| Popen.communicate(input=None, timeout=None) | 该方法可用来与进程进行交互，比如发送数据到stdin，从stdout和stderr读取数据，直到到达文件末尾。 |
+| Popen.send_signal(signal)                   | 发送指定的信号给这个子进程。                                 |
+| Popen.terminate()                           | 停止该子进程。                                               |
+| Popen.kill()                                | 杀死该子进程。                                               |
+
+其实例化对象可以用`.wait()`方法来等返回结果，否则不会阻塞。
+
+设定一小时后关机
+
+```python
+>>> s = subprocess.Popen("shutdown -s -t 3600", shell=True)
+>>> s.wait()#阻塞进程等待shell命令执行完毕
+```

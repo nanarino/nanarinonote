@@ -33,13 +33,9 @@ pyinstaller -F myfile.py
 
 ### 使用内置模块subprocess
 
-subprocess模块是在python2.4版本中新增的，官方文档中描述为可以用来替换以下函数：
+通过subprocess.Popen创建子进程类就不会造成cmd窗口一闪而过。
 
-`os.system`、`os.spawn`、`os.popen`、`popen2`
-
-subprocess模块目的是**启动一个新的进程并与之通信**，最常用是定义类Popen，
-
-使用Popen可以创建进程，并与进程进行复杂的交互
+其实例化对象可以用`.wait()`方法来等返回结果，否则不会阻塞。
 
 设定一小时后关机
 
@@ -47,8 +43,6 @@ subprocess模块目的是**启动一个新的进程并与之通信**，最常用
 s = subprocess.Popen("shutdown -s -t 3600", shell=True)
 s.wait()#阻塞进程等待shell命令执行完毕
 ```
-
-
 
 
 
