@@ -1,5 +1,6 @@
-# markdown-note
-这是我的语言基础知识的学习笔记，包含
+# markdown-note: docs
+
+本仓库的docs目录是我的语言基础知识的学习笔记，包含
 
 - JavaScript（es5/6+）
 - Python（3.6.8）
@@ -8,9 +9,13 @@
 
 写着写着就变成了一个教程差不多的东西了
 
+而.other_docs目录则是放着其他的个人的杂项笔记，如某些软件的用法。
+
 
 
 ## page-build
+
+本仓库的docs目录中的笔记内容被部署在了仓库的页面中方便访问：
 
 <https://nanarino.github.io/markdown-note/>
 
