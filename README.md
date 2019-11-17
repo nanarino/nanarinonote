@@ -7,9 +7,7 @@
 
 也包含了一些数据库指令，web框架的简单知识
 
-写着写着就变成了一个教程差不多的东西了
-
-而.other_docs~~目录~~分支则是放着其他的个人的杂项笔记，如某些软件的用法。
+写着写着就变成了一个教程差不多的东西了。
 
 
 
@@ -18,6 +16,8 @@
 本仓库的docs目录中的笔记内容被部署在了仓库的页面中方便访问：
 
 <https://nanarino.github.io/markdown-note/>
+
+部署的脚本在根目录的`deploy.sh`。
 
 
 
@@ -34,19 +34,19 @@
 
 ## page-cli-setup
 
-本文档采用vuepress展示，其安装和部署如下：
+本文档采用vuepress展示，其安装依赖和本地运行的命令如下：
 
-在使用npm安装package.json中的依赖后无法启动服务时，请尝试使用yarn安装同名依赖。
+若在使用npm安装依赖后无法启动服务，请尝试使用yarn安装依赖。
 
-由于同级目录下的yarn.lock文件和不一定正确，请使用如下命令：
+由于yarn.lock文件不一定正确，届时请使用如下命令：
 
 ```bash
 yarn add vuepress -D
-#无法启动再尝试下面的
+#无法启动再尝试下面的（这也是大家都知道的webpack的老bug）
 yarn add webpack-dev-middleware@3.6.0 -D
 ```
 
-安装依赖完成后，使用如下命令使用脚手架：
+安装依赖完成后使用如下命令使用脚手架，（不必，已写好.cmd脚本）：
 
 ```bash
 # serve with hot reload at localhost:8080
