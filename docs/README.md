@@ -1,6 +1,6 @@
 ---
 home: true
-heroImage: /img/cdb.jpg
+heroImage: /img/ayame.jpg
 actionText: Enter
 actionLink: /js/
 features:
