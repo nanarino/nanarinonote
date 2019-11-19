@@ -12,6 +12,15 @@ Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境
 
 输出模块变量的最好方法是使用`module.exports`对象。
 
+```js
+//导出
+"use strict";function JQuery(){...};
+module.exports.$ = JQuery;
+//导入
+const { $ } = require('./til.js')
+new $()...
+```
+
 
 
 ## 官方文档
