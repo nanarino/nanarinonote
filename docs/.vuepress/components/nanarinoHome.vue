@@ -4,9 +4,10 @@
       <img
         v-if="data.heroImage"
         :src="$withBase(data.heroImage)"
-        alt="hero" @load="iconload($event)"
+        alt="hero"
+        @load="iconload($event)"
       >
-      <canvas ref="canvas" width="32" height="32"></canvas>
+      <canvas ref="canvas" width="32" height="32" @click="coco"></canvas>
 
       <h1>{{ data.heroText || $title || 'Hello' }}</h1>
 
@@ -57,24 +58,70 @@ export default {
   components: { NavLink },
 
   computed: {
-    data () {
+    data() {
       return this.$page.frontmatter
     },
-
-    actionLink () {
+    actionLink() {
       return {
         link: this.data.actionLink,
         text: this.data.actionText
       }
     }
   },
-  
   methods:{
     iconload(event) {
       const c = this.$refs.canvas.getContext("2d");
       c.fillStyle = c.createPattern(event.target, "repeat");
       c.rect(0, 0, 32, 32);
       c.fill();
+      const px = c.getImageData(0, 0, 32, 32);
+      const that = this
+      const toBlack = time => {
+          for(let i = 0; i < px.data.length; i += 4) {
+            px.data[i] *= 0.99;
+            px.data[i+1] *= 0.98;
+            px.data[i+2] *= 0.98;
+          }
+          c.putImageData(px, 0, 0);
+        if(time > 3000){
+          cancelAnimationFrame(toBlack)
+          brighten(time)
+        }else{
+          requestAnimationFrame(toBlack)
+        }
+      }
+      const brighten = (time)=>{
+        px.data[1084] = Math.min(255,px.data[1084]*1.2)
+        px.data[1085] = Math.min(255,px.data[1085]*1.2)
+        px.data[1086] = Math.min(255,px.data[1086]*1.2)
+        px.data[1087] = Math.min(255,px.data[1087]*1.2)
+        px.data[1212] = Math.min(255,px.data[1212]*1.2)
+        px.data[1213] = Math.min(255,px.data[1213]*1.2)
+        px.data[1214] = Math.min(255,px.data[1214]*1.2)
+        px.data[1215] = Math.min(255,px.data[1215]*1.2)
+        c.putImageData(px, 0, 0);
+        if(px.data[1085] == 255){
+          cancelAnimationFrame(brighten)
+          if(time > 5000){
+            px.data[1084] = 12
+            px.data[1085] = 10
+            px.data[1086] = 10
+            px.data[1087] = 255
+            px.data[1212] = 12
+            px.data[1213] = 10
+            px.data[1214] = 10
+            px.data[1215] = 255
+            c.putImageData(px, 0, 0);
+            that.coco()
+          }
+        }else{
+          requestAnimationFrame(brighten)
+        }
+      }
+      toBlack(brighten);
+    },
+    coco(){
+      alert("咕咕咕")
     }
   }
 }
@@ -89,11 +136,15 @@ export default {
   margin 0px auto
   .hero
     text-align center
-    img,canvas
+    img
+      display none
+    canvas
       height 280px
       display block
       margin 3rem auto 1.5rem
       image-rendering pixelated
+    canvas:hover
+      transform: matrix(-1, 0, 0, 1, 0, 0)
     h1
       font-size 3rem
     h1, .description, .action
@@ -155,7 +206,7 @@ export default {
     padding-left 1.5rem
     padding-right 1.5rem
     .hero
-      img,canvas
+      canvas
         height 210px
         margin 2rem auto 1.2rem
       h1
