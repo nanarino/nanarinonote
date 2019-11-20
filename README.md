@@ -34,7 +34,9 @@
 
 ## page-cli-setup
 
-本文档采用vuepress展示，其安装依赖和本地运行的命令如下：
+本文档采用vuepress展示，版本为"vuepress": "^0.14.10"。
+
+0.x的更高版本应该也兼容。其安装依赖和本地运行的命令如下：
 
 ```bash
 npm install

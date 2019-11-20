@@ -1,6 +1,7 @@
 ---
 home: true
-heroImage: /img/ayame.jpg
+layout: nanarinoHome
+heroImage: /favicon.ico
 actionText: Enter
 actionLink: /js/
 features:

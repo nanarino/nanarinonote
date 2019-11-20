@@ -1,6 +1,9 @@
 module.exports = {
 	base: '/markdown-note/',
 	title: 'nanarino note',
+    head: [
+		['link', { rel: 'shortcut icon', href: `./favicon.ico` }]
+	],
 	description: 'a note I took with markdown',
 	themeConfig: {
 		nav: [
@@ -9,14 +12,13 @@ module.exports = {
 			{
 				text: 'Other',
 				items: [
-				  { text: 'Github', link: 'https://github.com/nanarino' },
-				  { text: 'Mysite', link: 'http://www.akokono.com/' }
+                    { text: 'Github', link: 'https://github.com/nanarino' },
+                    { text: 'Mysite', link: 'http://www.akokono.com/' }
 				]
 			}
 		],
 		sidebar: {
-
-      '/js/': [
+            '/js/': [
             	{
 					title: '起步',
 					children: [
@@ -82,8 +84,7 @@ module.exports = {
 					]
 				},
 			],
-			
-      '/py/': [
+            '/py/': [
 				{
 					title: '起步',
 					children: [
@@ -163,6 +164,5 @@ module.exports = {
 				},
 			],
 		},
-		// displayAllHeaders: true,
 	}
 }
