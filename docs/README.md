@@ -1,6 +1,5 @@
 ---
-home: true
-layout: nanarinoHome
+layout: Coco
 heroImage: /favicon.ico
 actionText: Enter
 actionLink: /js/

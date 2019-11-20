@@ -1,5 +1,5 @@
 module.exports = {
-	base: '/markdown-note/',
+	base: '/',
 	title: 'nanarino note',
     head: [
 		['link', { rel: 'shortcut icon', href: `./favicon.ico` }]
