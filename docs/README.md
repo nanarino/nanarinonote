@@ -1,4 +1,5 @@
 ---
+home: true
 layout: Coco
 heroImage: /favicon.ico
 actionText: Enter

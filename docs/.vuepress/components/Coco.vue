@@ -1,224 +1,148 @@
 <template>
-  <div class="home">
-    <div class="hero">
-      <img
-        v-if="data.heroImage"
-        :src="$withBase(data.heroImage)"
-        alt="hero"
-        @load="iconload($event)"
-      >
-      <canvas ref="canvas" width="32" height="32" @click="coco"></canvas>
-
-      <h1>{{ data.heroText || $title || 'Hello' }}</h1>
-
-      <p class="description">
-        {{ data.tagline || $description || 'Welcome to your VuePress site' }}
-      </p>
-
-      <p
-        class="action"
-        v-if="data.actionText && data.actionLink"
-      >
-        <NavLink
-          class="action-button"
-          :item="actionLink"
-        />
-      </p>
-    </div>
+  <div
+    class="theme-container"
+    :class="pageClasses"
+    @touchstart="onTouchStart"
+    @touchend="onTouchEnd"
+  >
+    <Navbar
+      v-if="shouldShowNavbar"
+      @toggle-sidebar="toggleSidebar"
+    />
 
     <div
-      class="features"
-      v-if="data.features && data.features.length"
-    >
-      <div
-        class="feature"
-        v-for="(feature, index) in data.features"
-        :key="index"
-      >
-        <h2>{{ feature.title }}</h2>
-        <p>{{ feature.details }}</p>
-      </div>
-    </div>
+      class="sidebar-mask"
+      @click="toggleSidebar(false)"
+    ></div>
 
-    <Content custom/>
-
-    <div
-      class="footer"
-      v-if="data.footer"
+    <Sidebar
+      :items="sidebarItems"
+      @toggle-sidebar="toggleSidebar"
     >
-      {{ data.footer }}
-    </div>
+      <slot
+        name="sidebar-top"
+        #top
+      />
+      <slot
+        name="sidebar-bottom"
+        #bottom
+      />
+    </Sidebar>
+
+    <Home v-if="$page.frontmatter.home"/>
+
+    <Page
+      v-else
+      :sidebar-items="sidebarItems"
+    >
+      <slot
+        name="page-top"
+        #top
+      />
+      <slot
+        name="page-bottom"
+        #bottom
+      />
+    </Page>
   </div>
 </template>
 
 <script>
-import NavLink from 'vuepress/lib/default-theme/NavLink.vue'
+import Home from './Home.vue'
+import Navbar from '@theme/components/Navbar.vue'
+import Page from '@theme/components/Page.vue'
+import Sidebar from '@theme/components/Sidebar.vue'
+import { resolveSidebarItems } from '@theme/util'
 
 export default {
-  components: { NavLink },
+  components: { Home, Page, Sidebar, Navbar },
 
-  computed: {
-    data() {
-      return this.$page.frontmatter
-    },
-    actionLink() {
-      return {
-        link: this.data.actionLink,
-        text: this.data.actionText
-      }
+  data () {
+    return {
+      isSidebarOpen: false
     }
   },
-  methods:{
-    iconload(event) {
-      const c = this.$refs.canvas.getContext("2d");
-      c.fillStyle = c.createPattern(event.target, "repeat");
-      c.rect(0, 0, 32, 32);
-      c.fill();
-      const px = c.getImageData(0, 0, 32, 32);
-      const that = this
-      const toBlack = time => {
-          for(let i = 0; i < px.data.length; i += 4) {
-            px.data[i] *= 0.99;
-            px.data[i+1] *= 0.98;
-            px.data[i+2] *= 0.98;
-          }
-          c.putImageData(px, 0, 0);
-        if(time > 3000){
-          cancelAnimationFrame(toBlack)
-          brighten(time)
-        }else{
-          requestAnimationFrame(toBlack)
-        }
+
+  computed: {
+    shouldShowNavbar () {
+      const { themeConfig } = this.$site
+      const { frontmatter } = this.$page
+      if (
+        frontmatter.navbar === false
+        || themeConfig.navbar === false) {
+        return false
       }
-      const brighten = (time)=>{
-        px.data[1084] = Math.min(255,px.data[1084]*1.2)
-        px.data[1085] = Math.min(255,px.data[1085]*1.2)
-        px.data[1086] = Math.min(255,px.data[1086]*1.2)
-        px.data[1087] = Math.min(255,px.data[1087]*1.2)
-        px.data[1212] = Math.min(255,px.data[1212]*1.2)
-        px.data[1213] = Math.min(255,px.data[1213]*1.2)
-        px.data[1214] = Math.min(255,px.data[1214]*1.2)
-        px.data[1215] = Math.min(255,px.data[1215]*1.2)
-        c.putImageData(px, 0, 0);
-        if(px.data[1085] == 255){
-          cancelAnimationFrame(brighten)
-          if(time > 5000){
-            px.data[1084] = 12
-            px.data[1085] = 10
-            px.data[1086] = 10
-            px.data[1087] = 255
-            px.data[1212] = 12
-            px.data[1213] = 10
-            px.data[1214] = 10
-            px.data[1215] = 255
-            c.putImageData(px, 0, 0);
-            that.coco()
-          }
-        }else{
-          requestAnimationFrame(brighten)
-        }
-      }
-      toBlack(brighten);
+      return (
+        this.$title
+        || themeConfig.logo
+        || themeConfig.repo
+        || themeConfig.nav
+        || this.$themeLocaleConfig.nav
+      )
     },
-    coco(){
-      alert("咕咕咕")
+
+    shouldShowSidebar () {
+      const { frontmatter } = this.$page
+      return (
+        !frontmatter.home
+        && frontmatter.sidebar !== false
+        && this.sidebarItems.length
+      )
+    },
+
+    sidebarItems () {
+      return resolveSidebarItems(
+        this.$page,
+        this.$page.regularPath,
+        this.$site,
+        this.$localePath
+      )
+    },
+
+    pageClasses () {
+      const userPageClass = this.$page.frontmatter.pageClass
+      return [
+        {
+          'no-navbar': !this.shouldShowNavbar,
+          'sidebar-open': this.isSidebarOpen,
+          'no-sidebar': !this.shouldShowSidebar
+        },
+        userPageClass
+      ]
+    }
+  },
+
+  mounted () {
+    this.$router.afterEach(() => {
+      this.isSidebarOpen = false
+    })
+  },
+
+  methods: {
+    toggleSidebar (to) {
+      this.isSidebarOpen = typeof to === 'boolean' ? to : !this.isSidebarOpen
+      this.$emit('toggle-sidebar', this.isSidebarOpen)
+    },
+
+    // side swipe
+    onTouchStart (e) {
+      this.touchStart = {
+        x: e.changedTouches[0].clientX,
+        y: e.changedTouches[0].clientY
+      }
+    },
+
+    onTouchEnd (e) {
+      const dx = e.changedTouches[0].clientX - this.touchStart.x
+      const dy = e.changedTouches[0].clientY - this.touchStart.y
+      if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+        if (dx > 0 && this.touchStart.x <= 80) {
+          this.toggleSidebar(true)
+        } else {
+          this.toggleSidebar(false)
+        }
+      }
     }
   }
 }
 </script>
-
-<style lang="stylus">
-@import '~vuepress/lib/default-theme/styles/config.styl'
-
-.home
-  padding $navbarHeight 2rem 0
-  max-width 960px
-  margin 0px auto
-  .hero
-    text-align center
-    img
-      display none
-    canvas
-      height 280px
-      display block
-      margin 3rem auto 1.5rem
-      image-rendering pixelated
-    canvas:hover
-      transform: matrix(-1, 0, 0, 1, 0, 0)
-    h1
-      font-size 3rem
-    h1, .description, .action
-      margin 1.8rem auto
-    .description
-      max-width 35rem
-      font-size 1.6rem
-      line-height 1.3
-      color lighten($textColor, 40%)
-    .action-button
-      display inline-block
-      font-size 1.2rem
-      color #fff
-      background-color $accentColor
-      padding 0.8rem 1.6rem
-      border-radius 4px
-      transition background-color .1s ease
-      box-sizing border-box
-      border-bottom 1px solid darken($accentColor, 10%)
-      &:hover
-        background-color lighten($accentColor, 10%)
-  .features
-    border-top 1px solid $borderColor
-    padding 1.2rem 0
-    margin-top 2.5rem
-    display flex
-    flex-wrap wrap
-    align-items flex-start
-    align-content stretch
-    justify-content space-between
-  .feature
-    flex-grow 1
-    flex-basis 30%
-    max-width 30%
-    h2
-      font-size 1.4rem
-      font-weight 500
-      border-bottom none
-      padding-bottom 0
-      color lighten($textColor, 10%)
-    p
-      color lighten($textColor, 25%)
-  .footer
-    padding 2.5rem
-    border-top 1px solid $borderColor
-    text-align center
-    color lighten($textColor, 25%)
-
-@media (max-width: $MQMobile)
-  .home
-    .features
-      flex-direction column
-    .feature
-      max-width 100%
-      padding 0 2.5rem
-
-@media (max-width: $MQMobileNarrow)
-  .home
-    padding-left 1.5rem
-    padding-right 1.5rem
-    .hero
-      canvas
-        height 210px
-        margin 2rem auto 1.2rem
-      h1
-        font-size 2rem
-      h1, .description, .action
-        margin 1.2rem auto
-      .description
-        font-size 1.2rem
-      .action-button
-        font-size 1rem
-        padding 0.6rem 1.2rem
-    .feature
-      h2
-        font-size 1.25rem
-</style>
