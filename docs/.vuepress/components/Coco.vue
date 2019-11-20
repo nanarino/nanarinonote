@@ -49,10 +49,10 @@
 
 <script>
 import Home from './Home.vue'
-import Navbar from '@theme/components/Navbar.vue'
-import Page from '@theme/components/Page.vue'
-import Sidebar from '@theme/components/Sidebar.vue'
-import { resolveSidebarItems } from '@theme/util'
+import Navbar from '@vuepress/theme-default/components/Navbar.vue'
+import Page from '@vuepress/theme-default/components/Page.vue'
+import Sidebar from '@vuepress/theme-default/components/Sidebar.vue'
+import { resolveSidebarItems } from '@vuepress/theme-default/util'
 
 export default {
   components: { Home, Page, Sidebar, Navbar },

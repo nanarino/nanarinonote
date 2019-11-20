@@ -52,7 +52,7 @@
 </template>
 
 <script>
-import NavLink from '@theme/components/NavLink.vue'
+import NavLink from '@vuepress/theme-default/components/NavLink.vue'
 
 export default {
   components: { NavLink },
