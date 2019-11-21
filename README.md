@@ -36,7 +36,7 @@
 
 本文档采用vuepress展示，版本为"vuepress": "^1.2.0"。
 
-0.x的更高版本应该也兼容。其安装依赖和本地运行的命令如下：
+其安装依赖和本地运行的命令如下：
 
 ```bash
 npm install
@@ -48,8 +48,6 @@ npm install
 
 ```bash
 yarn add vuepress -D
-#无法启动再尝试下面的（这也是大家都知道的webpack的老bug）
-yarn add webpack-dev-middleware@3.6.0 -D
 ```
 
 安装依赖完成后使用如下命令使用脚手架，（不必，已写好.cmd脚本）：
