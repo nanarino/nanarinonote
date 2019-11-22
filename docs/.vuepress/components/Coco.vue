@@ -3,7 +3,6 @@
     <header class="hero">
       <img
         v-if="data.heroImage"
-        v-show="false"
         :src="$withBase(data.heroImage)"
         :alt="data.heroAlt || 'hero'"
         @load="iconload($event)"

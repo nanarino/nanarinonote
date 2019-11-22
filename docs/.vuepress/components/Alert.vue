@@ -1,13 +1,10 @@
 <template>
-  <div class="popover" ref='popover'>
+  <div class="popover" v-show="msg">
     <h3>{{msg}}</h3>
   </div>
 </template>
 <script>
 export default {
-  created: function(){
-
-  },
   props:["msg"],
   watch: {
     'msg': function(newdata, olddata){
@@ -28,7 +25,7 @@ export default {
   left 50%
   margin -0px 0 0 -70px
   width 100px
-  background-color lighten($accentColor, 90%)
+  background-color lighten($accentColor, 86%)
   padding 0 20px 0
   border-radius 4px
   overflow hidden
@@ -40,5 +37,5 @@ export default {
     font-size 18px
     font-weight bold
     text-align center
-    margin 0 15px 0
+    margin 0 5px 0
 </style>

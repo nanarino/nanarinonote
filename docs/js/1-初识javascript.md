@@ -180,7 +180,7 @@ box.style.cssText = "background-color: red;color: blue";
  *        background: hsl(var(--x), 50%, 50%);
  *     }
  */
-h = 150
+let h = 150
 box.style.setProperty("--x",h)
 ```
 
