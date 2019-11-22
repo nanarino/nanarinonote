@@ -104,3 +104,18 @@ Python中常用的加密模块是第三方模块`pycrypt`
 提供了常用的几种对称加密算法（AES等）
 
 具体用法请参考文档。
+
+
+
+## UUID模块
+
+生成唯一标识的工具
+
+例子：
+
+```python
+import uuid
+
+print(uuid.uuid3(uuid.NAMESPACE_DNS,"nanarino"))
+```
+
