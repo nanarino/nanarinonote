@@ -100,9 +100,8 @@ Object.getOwnPropertySymbols(o)//[Symbol(s1), Symbol(s2)]
 
 * `Symbol.for()`和`Symbol.keyFor()`
 
-  `Symbol.for`接受一个字符串参数，查询有没有这个参数的`Symbol`值，有的话就直接返回这个`Symbol`值，没有就返回一个这个参数的`Symbol()`
+  `Symbol.for`接受一个字符串参数，查询有没有这个参数的`Symbol`值，有的话就直接返回这个`Symbol`值，没有就返回一个这个参数的`Symbol()`。
 
-  ES5里面的对象的属性名是字符串，当我们**使用别人的对象**的时候，我不知道别人的对象有哪些属性，但是我又想添加一些新属性。如果直接写就有可能存在重名的情况，于是我们借助Symbol来生成一个独一无二的值，这样就可以防止属性名的冲突了。
 
 ```js
 let s1 = Symbol("s1")
