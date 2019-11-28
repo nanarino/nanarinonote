@@ -84,7 +84,7 @@ sys.path           #返回模块的搜索路径，初始化时使用PYTHONPATH�
 sys.platform       #返回操作系统平台名称
 ```
 
- 异常处理和status    后面会专门有一节说一下异常
+ 异常处理归档在：`20-异常抛出和捕获`
 
 ```python
 import sys
