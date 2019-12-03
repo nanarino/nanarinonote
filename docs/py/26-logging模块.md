@@ -40,7 +40,7 @@ logging.critical('critical message')
 
 ### 更多的配置选项:
 
-```txt
+```bash
 logging.basicConfig()函数中可通过具体参数来更改logging模块默认行为，可用参数有：
 
 filename：用指定的文件名创建FiledHandler，这样日志会被存储在指定的文件中。
