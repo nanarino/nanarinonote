@@ -83,12 +83,13 @@ export default {
       c.fill();
       const px = c.getImageData(0, 0, 32, 32);
       const toBlack = time => {
-          for(let i = 0; i < px.data.length; i += 4) {
-            px.data[i] *= 0.99;
-            px.data[i+1] *= 0.98;
-            px.data[i+2] *= 0.98;
-          }
-          c.putImageData(px, 0, 0);
+        for(let i = 0; i < px.data.length; i += 4) {
+          if(+Math.random().toFixed())continue;
+          px.data[i] *= 0.99;
+          px.data[i+1] *= 0.98;
+          px.data[i+2] *= 0.98;
+        }
+        c.putImageData(px, 0, 0);
         if(new Date - this.date > 4000){
           cancelAnimationFrame(toBlack)
           brighten(time)
@@ -96,15 +97,13 @@ export default {
           requestAnimationFrame(toBlack)
         }
       }
-      const brighten = (time)=>{
-        px.data[1084] = Math.min(255,px.data[1084]*1.2)
-        px.data[1085] = Math.min(255,px.data[1085]*1.2)
-        px.data[1086] = Math.min(255,px.data[1086]*1.2)
-        px.data[1087] = Math.min(255,px.data[1087]*1.2)
-        px.data[1212] = Math.min(255,px.data[1212]*1.2)
-        px.data[1213] = Math.min(255,px.data[1213]*1.2)
-        px.data[1214] = Math.min(255,px.data[1214]*1.2)
-        px.data[1215] = Math.min(255,px.data[1215]*1.2)
+      const brighten = time => {
+        px.data[1084] = Math.min(255, px.data[1084]*1.2)
+        px.data[1085] = Math.min(255, px.data[1085]*1.2)
+        px.data[1086] = Math.min(255, px.data[1086]*1.2)
+        px.data[1212] = Math.min(255, px.data[1212]*1.2)
+        px.data[1213] = Math.min(108, px.data[1213]*1.2)
+        px.data[1214] = Math.min(108, px.data[1214]*1.2)
         c.putImageData(px, 0, 0);
         if(px.data[1085] == 255){
           cancelAnimationFrame(brighten)

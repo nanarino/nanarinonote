@@ -66,12 +66,10 @@ For a detailed explanation on how things work, check out [docs for vuepress](htt
 
 ## 笔记参考
 
-老男孩教育的一些老师的博客园
+[Eva-J](https://www.cnblogs.com/Eva-J/p/7277026.html)
 
-[Python基础](https://www.cnblogs.com/Eva-J/p/7277026.html)
+[李文周](https://www.cnblogs.com/liwenzhou/p/9959979.html)
 
-[django：Python的web框架](https://www.cnblogs.com/liwenzhou/p/9959979.html)
+[GGGG-XXXX](https://www.cnblogs.com/GGGG-XXXX/p/9564651.html)
 
-[django rest framework：Python编写API接口](https://www.cnblogs.com/GGGG-XXXX/p/9564651.html)
-
-[Python中的设计模式](https://www.cnblogs.com/alex3714/articles/5760582.html)
+[Alex](https://www.cnblogs.com/alex3714/articles/5760582.html)

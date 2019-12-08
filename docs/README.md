@@ -2,7 +2,7 @@
 home: true
 layout: Nanarino
 heroImage: /favicon.ico
-actionText: Enter
+actionText: Henshin
 actionLink: /js/
 features:
 - title: Chunk it up
