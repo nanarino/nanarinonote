@@ -1,40 +1,22 @@
 <template>
-  <main class="home" aria-labelledby="main-title">
+  <main class="home" aria-labelledby="main-title" onselectstart="return false;">
     <header class="hero">
-      <img
-        v-if="data.heroImage"
-        :src="$withBase(data.heroImage)"
-        :alt="data.heroAlt || 'hero'"
-        @load="iconload($event)"
-      >
-      <canvas ref="canvas" width="32" height="32" @click="coco('咕咕咕')"></canvas>
+      <img v-if="data.heroImage" :src="$withBase(data.heroImage)" @load="iconload($event)">
+      <canvas ref="canvas" @click="coco('YABEEI!')"></canvas>
       <Alert @coco='coco' :msg="msg"/>
-      <h1 v-if="data.heroText !== null" id="main-title">{{ data.heroText || $title || 'Hello' }}</h1>
+      <h1 v-if="data.heroText !== null" id="main-title">{{ data.heroText || $title || 'Coco' }}</h1>
 
       <p class="description">
-        {{ data.tagline || $description || 'Welcome to your VuePress site' }}
+        {{ data.tagline || $description || 'Coco' }}
       </p>
 
-      <p
-        class="action"
-        v-if="data.actionText && data.actionLink"
-      >
-        <NavLink
-          class="action-button"
-          :item="actionLink"
-        />
+      <p class="action" v-if="data.actionText && data.actionLink">
+        <NavLink class="action-button" :item="actionLink"/>
       </p>
     </header>
 
-    <div
-      class="features"
-      v-if="data.features && data.features.length"
-    >
-      <div
-        class="feature"
-        v-for="(feature, index) in data.features"
-        :key="index"
-      >
+    <div class="features" v-if="data.features && data.features.length">
+      <div class="feature" v-for="(feature, index) in data.features" :key="index">
         <h2>{{ feature.title }}</h2>
         <p>{{ feature.details }}</p>
       </div>
@@ -42,10 +24,7 @@
 
     <Content class="theme-default-content custom"/>
 
-    <div
-      class="footer"
-      v-if="data.footer"
-    >
+    <div class="footer" v-if="data.footer">
       {{ data.footer }}
     </div>
   </main>
@@ -77,48 +56,59 @@ export default {
   },
   methods:{
     iconload(event) {
-      const c = this.$refs.canvas.getContext("2d");
-      c.fillStyle = c.createPattern(event.target, "repeat");
-      c.rect(0, 0, 32, 32);
-      c.fill();
-      const px = c.getImageData(0, 0, 32, 32);
+      const width = event.target.width, height = event.target.height
+      Object.assign(this.$refs.canvas, {width, height})
+      const c = this.$refs.canvas.getContext("2d")
+      c.fillStyle = c.createPattern(event.target, "repeat")
+      c.rect(0, 0, width, height)
+      c.fill()
+      const px = c.getImageData(0, 0, width, height)
+      
+      //定义动画函数【coco黑化】
       const toBlack = time => {
         for(let i = 0; i < px.data.length; i += 4) {
           if(+Math.random().toFixed())continue;
-          px.data[i] *= 0.99;
-          px.data[i+1] *= 0.98;
-          px.data[i+2] *= 0.98;
+          px.data[i] *= 0.99
+          px.data[i+1] *= 0.98
+          px.data[i+2] *= 0.98
         }
-        c.putImageData(px, 0, 0);
+        c.putImageData(px, 0, 0)
         if(new Date - this.date > 4000){
+          //【coco黑化】完成后回调【coco亮眼】
           cancelAnimationFrame(toBlack)
-          brighten(time)
+          briEye(time)
         }else{
           requestAnimationFrame(toBlack)
         }
       }
-      const brighten = time => {
-        px.data[1084] = Math.min(255, px.data[1084]*1.2)
-        px.data[1085] = Math.min(255, px.data[1085]*1.2)
+      
+      //定义动画函数【coco亮眼】
+      const briEye = time => {
+        px.data[1084] = Math.min(36, px.data[1084]*1.2)
+        px.data[1085] = Math.min(135, px.data[1085]*1.2)
         px.data[1086] = Math.min(255, px.data[1086]*1.2)
-        px.data[1212] = Math.min(255, px.data[1212]*1.2)
-        px.data[1213] = Math.min(108, px.data[1213]*1.2)
-        px.data[1214] = Math.min(108, px.data[1214]*1.2)
-        c.putImageData(px, 0, 0);
-        if(px.data[1085] == 255){
-          cancelAnimationFrame(brighten)
+        px.data[1212] = Math.min(252, px.data[1212]*1.2)
+        px.data[1213] = Math.min(195, px.data[1213]*1.2)
+        px.data[1214] = Math.min(81, px.data[1214]*1.2)
+        c.putImageData(px, 0, 0)
+        if(px.data[1086] == 255){
+          cancelAnimationFrame(briEye)
           if(!this.data.initdate){
             this.$page.frontmatter.initdate = time - 4000
             this.coco('加载耗时' + (time/1000 - 4).toFixed(2) + '秒')
+            console.log('加载耗时取决于网络相应时间')
+            console.log('咕咕的黑化程度取决于设备性能')
           }
         }else{
-          requestAnimationFrame(brighten)
+          requestAnimationFrame(briEye)
         }
       }
-      toBlack(brighten);
+      
+      //调用动画【coco黑化】
+      toBlack(briEye)
     },
     coco(m){
-      this.msg = m;
+      this.msg = m
     },
   }
 }

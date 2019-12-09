@@ -4,7 +4,7 @@ module.exports = {
     head: [
         ['link', { rel: 'shortcut icon', href: `./favicon.ico` }]
     ],
-    description: 'a code note nanari took with markdown',
+    description: 'super best match, are you ready',
     themeConfig: {
         nav: [
             { text: 'JavaScript', link: '/js/' },

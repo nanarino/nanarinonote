@@ -6,7 +6,7 @@
 <script>
 export default {
   props:["msg"],
-  watch: {
+  watch:{
     'msg': function(newdata, olddata){
       console.log(olddata)
       if(!olddata){

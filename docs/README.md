@@ -2,6 +2,7 @@
 home: true
 layout: Nanarino
 heroImage: /favicon.ico
+heroAlt: Dove Tank
 actionText: Henshin
 actionLink: /js/
 features:

@@ -1,48 +1,20 @@
 <template>
-  <div
-    class="theme-container"
-    :class="pageClasses"
-    @touchstart="onTouchStart"
-    @touchend="onTouchEnd"
-  >
-    <Navbar
-      v-if="shouldShowNavbar"
-      @toggle-sidebar="toggleSidebar"
-    />
+  <div class="theme-container" :class="pageClasses" @touchstart="onTouchStart" @touchend="onTouchEnd">
+    
+    <Navbar v-if="shouldShowNavbar" @toggle-sidebar="toggleSidebar"/>
 
-    <div
-      class="sidebar-mask"
-      @click="toggleSidebar(false)"
-    ></div>
+    <div class="sidebar-mask" @click="toggleSidebar(false)"></div>
 
-    <Sidebar
-      :items="sidebarItems"
-      @toggle-sidebar="toggleSidebar"
-    >
-      <slot
-        name="sidebar-top"
-        #top
-      />
-      <slot
-        name="sidebar-bottom"
-        #bottom
-      />
+    <Sidebar :items="sidebarItems" @toggle-sidebar="toggleSidebar">
+      <slot name="sidebar-top" #top/>
+      <slot name="sidebar-bottom" #bottom/>
     </Sidebar>
 
     <Coco v-if="$page.frontmatter.home"/>
 
-    <Page
-      v-else
-      :sidebar-items="sidebarItems"
-    >
-      <slot
-        name="page-top"
-        #top
-      />
-      <slot
-        name="page-bottom"
-        #bottom
-      />
+    <Page v-else :sidebar-items="sidebarItems">
+      <slot name="page-top" #top/>
+      <slot name="page-bottom" #bottom/>
     </Page>
   </div>
 </template>
@@ -64,29 +36,14 @@ export default {
 
   computed: {
     shouldShowNavbar () {
-      const { themeConfig } = this.$site
-      const { frontmatter } = this.$page
-      if (
-        frontmatter.navbar === false
-        || themeConfig.navbar === false) {
-        return false
-      }
-      return (
-        this.$title
-        || themeConfig.logo
-        || themeConfig.repo
-        || themeConfig.nav
-        || this.$themeLocaleConfig.nav
-      )
+      const { themeConfig } = this.$site, { frontmatter } = this.$page
+      if (frontmatter.navbar === false || themeConfig.navbar === false) return false;
+      return (this.$title || themeConfig.logo || themeConfig.repo || themeConfig.nav || this.$themeLocaleConfig.nav)
     },
 
     shouldShowSidebar () {
       const { frontmatter } = this.$page
-      return (
-        !frontmatter.home
-        && frontmatter.sidebar !== false
-        && this.sidebarItems.length
-      )
+      return (!frontmatter.home && frontmatter.sidebar !== false && this.sidebarItems.length)
     },
 
     sidebarItems () {
