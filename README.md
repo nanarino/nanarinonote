@@ -13,11 +13,13 @@
 
 ## page-build
 
-本仓库的docs目录中的笔记内容被部署在了仓库的页面中方便访问：
+本仓库的docs目录中的笔记内容被部署在了仓库的页面中：
 
 <https://nanarino.github.io/markdown-note/>
 
 部署的脚本在根目录的`deploy.sh`。
+
+网络不佳可以尝试访问备用的部署：[7ri for a9 (nanari for akokono)](http://www.akokono.com:8024/)
 
 
 
