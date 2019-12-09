@@ -96,7 +96,7 @@ export default {
           if(!this.data.initdate){
             this.$page.frontmatter.initdate = time - 4000
             this.coco('加载耗时' + (time/1000 - 4).toFixed(2) + '秒')
-            console.log('加载耗时取决于网络相应时间')
+            console.log('加载耗时取决于网络响应时间')
             console.log('咕咕的黑化程度取决于设备性能')
           }
         }else{
