@@ -4,6 +4,14 @@
 
 而连接`Microsoft SQL server` 需要用到`pymssql`
 
+## 安装依赖
+
+直接`pip install pymssql`安装可能会报错
+
+可以到https://www.lfd.uci.edu/~gohlke/pythonlibs/上寻找对应版本下载whl文件
+
+然后使用`pip install xxxxxxx.whl`安装
+
 
 
 ## 用数据库账户连接
@@ -90,6 +98,8 @@ querylist = map(lambda row: tuple(map(lambda col: str(col.value).strip(), row)),
 #这里的querylist也是列表嵌套元组的结构，每一行是一个元组。
 pprint(list(querylist), width=60, compact=True)
 ```
+
+
 
 ### 写入数据库
 

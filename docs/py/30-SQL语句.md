@@ -541,7 +541,7 @@ c、限制
 d、排序
     select * from 表 order by 列 asc              - 根据 “列” 从小到大排列
     select * from 表 order by 列 desc             - 根据 “列” 从大到小排列
-    select * from 表 order by 列1 desc,列2 asc    - 根据 “列1” 从大到小排列，如果相同则按列2从小到大排序
+    select * from 表 order by 列1 desc, 列2 asc    - 根据 “列1” 从大到小排列，如果相同则按列2从小到大排序
  
 e、分组
     select num from 表 group by num
@@ -561,18 +561,15 @@ f、连表
  
     无对应关系则不显示
     select A.num, A.name, B.name
-    from A inner join B
-    on A.nid = B.nid
+    from A inner join B on A.nid = B.nid
  
     A表所有显示，如果B中无对应关系，则值为null
     select A.num, A.name, B.name
-    from A left join B
-    on A.nid = B.nid
+    from A left join B on A.nid = B.nid
  
     B表所有显示，如果B中无对应关系，则值为null
     select A.num, A.name, B.name
-    from A right join B
-    on A.nid = B.nid
+    from A right join B on A.nid = B.nid
  
 g、组合
     组合，自动处理重合
