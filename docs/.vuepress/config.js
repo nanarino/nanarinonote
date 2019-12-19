@@ -13,7 +13,7 @@ module.exports = {
                 text: 'about',
                 items: [
                     { text: 'Github', link: 'https://github.com/nanarino' },
-                    { text: 'MySite', link: 'https://www.akokono.com' }
+                    { text: 'MySite', link: 'http://www.akokono.com' }
                 ]
             }
         ],
