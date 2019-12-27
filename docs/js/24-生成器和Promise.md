@@ -25,13 +25,13 @@ work(function chuanyifu(err, data, shuaya){
 
 ## 生成器（Generator）
 
-也叫作**惰性函数**
+生成器函数也叫作**惰性函数**
 
 但是和普通的函数不同，他封装了一个可以存储状态的状态机。
 
-Generator函数执行返回一个迭代器对象（Iterator）。迭代器对象可以遍历Generator的每一个状态。
+在js中，生成器函数执行会创建一个迭代器（Iterator）。
 
-
+这个迭代器可以遍历Generator的每一个状态。
 
 ### 与Iterator接口的关系
 

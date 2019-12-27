@@ -56,7 +56,7 @@ export default {
   },
   methods:{
     iconload(event) {
-      const width = event.target.width, height = event.target.height
+      const {width, height} = event.target
       Object.assign(this.$refs.canvas, {width, height})
       const c = this.$refs.canvas.getContext("2d")
       c.fillStyle = c.createPattern(event.target, "repeat")
