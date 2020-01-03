@@ -33,7 +33,7 @@ Type "copyright", "credits" or "license()" for more information.
 
 那么已经成功了一半
 
-::: tip >>>print("Hello World!")
+::: tip >>> print("Hello World!")
 Hello World!
 :::
 
@@ -45,17 +45,21 @@ Hello World!
 
 也可以借助`宝塔Linux面板`的`Python项目管理器`一键安装。
 
+以上就是python shell交互式环境，可以使用`exit()`或者`quit()`来退出
+
+对于`.py`文件右键的`Edit with IDLE`来运行，也可以在cmd中`python 完整路径文件名`
+
 
 
 ## 推荐资源
+
+除了[官方文档](https://docs.python.org/zh-cn/3/tutorial/)之外
 
 哔哩哔哩搜索关键字：老男孩教育
 
 [第14期完整（顺序稍乱）](https://space.bilibili.com/385868518)
 
 [第9期（发现尾部不完整）](https://www.bilibili.com/video/av24702867)
-
-
 
 
 
