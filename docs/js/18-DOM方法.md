@@ -136,6 +136,16 @@ document.body.appendChild(li)//放置
 
 但是枝叶的修改也是DOM操作，也会有渲染重排的问题。
 
+**`Image()`**构造函数将会创建一个新的[`HTMLImageElement`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLImageElement)实例。
+
+它的功能等价于 [`document.createElement('img')`](https://developer.mozilla.org/zh-CN/docs/Web/API/Document/createElement)
+
+```js
+var myImage = new Image(100, 200);
+myImage.src = 'picture.jpg';
+document.body.appendChild(myImage);
+```
+
 
 
 ### 删除
