@@ -149,17 +149,17 @@ module.exports = {
                     title: 'WEB框架',
                     children: [
                         '30-SQL语句',
-                        '31-Django',
-                        '32-Tornado',
+                        '31-pymssql模块',
+                        '32-Django',
+                        '33-Tornado',
                     ]
                 },
                 {
                     title: '杂项知识点',
                     children: [
-                        '33-PyAutoGUI模块',
                         '34-Tkinter模块',
                         '35-PyInstaller模块',
-                        '36-pymssql模块',
+                        '36-PyAutoGUI模块',
                     ]
                 },
             ],
