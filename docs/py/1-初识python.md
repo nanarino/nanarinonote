@@ -52,6 +52,13 @@ python2默认编码方式是`ascii`码
 
 解决方式：在文件的首行：`#-*- encoding:utf-8 -*-` 
 
+::: danger SyntaxError: Non-UTF-8 code starting with ...
+在python3中的中文也有小概率遇到这种情况
+
+也是通过 `#-*- encoding:utf-8 -*-` 来解决
+:::
+在python3中的中文也有小概率遇到这种情况
+
 
 
 ## 变量
