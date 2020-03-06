@@ -14,6 +14,18 @@ Counter、deque、defaultdict、namedtuple和OrderedDict等。
 >
 > 5.defaultdict: 带有默认值的字典
 
+Python3.8版本以上的问题
+
+::: danger DeprecationWarning:
+ Using or importing the ABCs from 'collections' 
+ instead of from 'collections.abc' is deprecated,
+ and in 3.8 it willstop working
+:::
+
+解决办法：
+
+如将`from collections import Iterable`修改为`from collections.abc import Iterable`
+
 ## namedtuple
 
 我们知道`tuple`可以表示不变集合，例如，一个点的二维坐标就可以表示成：

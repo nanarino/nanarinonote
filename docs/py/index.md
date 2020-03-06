@@ -23,6 +23,10 @@
 
 勾选好`环境变量`和`pip`
 
+以默认位置一键安装即可
+
+默认位置是`C:\Users\Administrator\AppData\Local\Programs\Python\Python37`
+
 这里以Windows为例，在cmd中输入Python，回车：
 
 ```bash
@@ -102,8 +106,34 @@ You should consider upgrading via the 'python -m pip install --upgrade pip' comm
 pip install 第三方模块名字 -i https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 
+---
 
+- 多版本问题
+
+当Windows系统里只安装了一个版本的python时
+
+cmd里直接输入指令`py`打开`C:\Windows\py.exe`和输入`python`是一致的
+
+此时`pip`其实是等效于`py -m pip`和`python -m pip`
+
+在多个版本python共存时的pip版本也可以以`python -m pip`区分
 
 ------
+
+- 3.8版本以上的问题
+
+某些模块第三方库引入之后可能会这样：
+
+::: danger DeprecationWarning:
+ Using or importing the ABCs from 'collections' 
+ instead of from 'collections.abc' is deprecated,
+ and in 3.8 it willstop working
+:::
+
+只能等待库的更新，或者自己修改源码
+
+如将`from collections import Iterable`修改为`from collections.abc import Iterable`
+
+---
 
 这份笔记还在整理中，欢迎对本笔记进行勘误
