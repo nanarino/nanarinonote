@@ -19,7 +19,9 @@
 
 ## 安装环境
 
-推荐python3.7.0或python3.6.8
+服务器上推荐安装兼容最好的python3.6.8。
+
+学习时推荐激进地给PC安装python最高版本。
 
 勾选好`环境变量`和`pip`
 
@@ -27,11 +29,15 @@
 
 默认位置是`C:\Users\Administrator\AppData\Local\Programs\Python\Python37`
 
-这里以Windows为例，在cmd中输入Python，回车：
+这里以Windows为例，在cmd中输入`python`或者`py`，按下回车：
 
 ```bash
+Microsoft Windows [版本 10.0.17763.107]
+(c) 2018 Microsoft Corporation。保留所有权利。
+
+C:\Users\Administrator>python
 Python 3.7.0 (v3.7.0:1bf9cc5093, Jun 27 2018, 04:59:51) [MSC v.1914 64 bit (AMD64)] on win32
-Type "copyright", "credits" or "license()" for more information.
+Type "help", "copyright", "credits" or "license" for more information.
 >>>
 ```
 
@@ -108,15 +114,29 @@ pip install 第三方模块名字 -i https://pypi.tuna.tsinghua.edu.cn/simple
 
 ---
 
-- 多版本问题
+- **多版本**问题
 
 当Windows系统里只安装了一个版本的python时
 
 cmd里直接输入指令`py`打开`C:\Windows\py.exe`和输入`python`是一致的
 
-此时`pip`其实是等效于`py -m pip`和`python -m pip`
+而此时`pip`其实是等效于`py -m pip`和`python -m pip`
 
-在多个版本python共存时的pip版本也可以以`python -m pip`区分
+而如果将python.exe文件名改成其他的如**python37.exe**：
+
+`py`和`pip`指令都将失效
+
+```bash
+C:\Users\Administrator>py
+Can't find a default Python.
+
+C:\Users\Administrator>pip list
+Fatal error in launcher: Unable to create process using
+```
+
+此时`python37`和`python37 -m pip`代替即可上面两个已失效命令，
+
+便可再安装其他版本python。
 
 ------
 

@@ -12,7 +12,7 @@
 
 可以到https://www.lfd.uci.edu/~gohlke/pythonlibs/上寻找对应版本下载`.whl`文件
 
-然后使用`pip install pymssql-x64-xxx.whl`安装
+然后使用如`pip install pymssql-2.1.4-cp38-cp38-win_amd64`来安装
 
 
 
@@ -178,7 +178,7 @@ END
 cursor.callproc('FindPerson', ('Jane Doe',))
 ```
 
-
+`CREATE PROCEDURE`改为 `ALTER PROCEDURE`语句即为修改存储过程
 
 
 
