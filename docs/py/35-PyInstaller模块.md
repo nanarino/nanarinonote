@@ -65,13 +65,28 @@ s.wait()#阻塞进程等待shell命令执行完毕
 pipenv install
 #进入虚拟环境
 pipenv shell
-#安装模块
-pip install 小工具.py里面用到的模块
+#安装依赖的模块
+pip install -r requirements.txt
 #打包的模块也要安装
 pip install pyinstaller
 #开始打包
 pyinstaller -Fw xx.py
 ```
+
+**关于requirements.txt**
+
+- 可以直接将pip list中的内容生成
+
+  ```bash
+  pip freeze > requirements.txt
+  ```
+
+- 更推荐直接手写，格式如下
+
+  ```bash
+  moviepy==0.2.3.2
+  requests==2.18.4
+  ```
 
 
 
