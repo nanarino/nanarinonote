@@ -20,6 +20,8 @@
 
 ### 指定用户名密码连接
 
+注意：host:计算机名\实例名，在python代码斜线需要转义，数据库的连接工具里不要转义。
+
 ```python
 import pymssql
 
@@ -178,7 +180,11 @@ END
 cursor.callproc('FindPerson', ('Jane Doe',))
 ```
 
-`CREATE PROCEDURE`改为 `ALTER PROCEDURE`语句即为修改存储过程
+执行存储过程也可以直接用语句
+
+```python
+cursor.execute("exec SP_NAME 参数1, 参数2")
+```
 
 
 
