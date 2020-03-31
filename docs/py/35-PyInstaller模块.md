@@ -27,7 +27,7 @@ pyinstaller -F myfile.py
 
 ## 若使用shell命令
 
-项目中需要在python中执行shell脚本，os模块的方法则不推荐使用，
+GUI项目中若需执行shell脚本，os模块的方法则不推荐使用，
 
 如~~os.system~~、 ~~os.popen~~ 等方法。否则影响GUI界面的使用体验（黑窗口一闪而过）
 
