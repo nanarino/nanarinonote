@@ -19,8 +19,6 @@
 
 部署的脚本在根目录的`deploy.sh`。
 
-网络不佳可以尝试访问备用的部署：[7ri for a9 (nanari for akokono)](https://www.akokono.com:8024/)
-
 
 
 ## 学习路线
