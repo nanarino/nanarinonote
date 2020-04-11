@@ -26,17 +26,15 @@
 import pymssql
 
 DATABASES = {
-    'default':{
-        "host": '192.168.10.1\\nnr',
-        "user": "sa",
-        "database": "demo_project",
-        "password": "114514"
-    },
+    "host": '192.168.10.1\\nnr',
+    "user": "sa",
+    "database": "demo_project",
+    "password": "114514"
 }
 
-conn = pymssql.connect(**DATABASES['default'])
+conn = pymssql.connect(**DATABASES)
 cur = conn.cursor()
-if not cursor:
+if not cur:
     raise Exception("数据库连接失败")
 else:
     print("数据库连接成功")
@@ -56,10 +54,8 @@ conn.close()
 
 ```python
 DATABASES = {
-    'default':{
-        "host": '127.0.0.1',
-        "database": "demo_project",
-    },
+    "host": '127.0.0.1',
+    "database": "demo_project"
 }
 ```
 
@@ -77,11 +73,13 @@ DATABASES = {
 
 ### execute
 
+它类似于一个生成器函数，使用之后游标对象cursor会变成一个结果集迭代器
+
 ```python
-cur.execute('select top 5 * from nnr_t1')
+cur.execute('select top 5 * from t1')
 
 #获取所有查询结果返回列表,见下
-querylist = cur.fetchall()
+querylist = list(cur)
 
 #标准库中的pprint模块，更美观的打印数据
 from pprint import pprint
@@ -91,10 +89,10 @@ pprint(querylist, width=60, compact=True)
 conn.close()
 ```
 
-第二个参数可以用对sql语句格式化
+第二个参数可以用对SQL语句格式化
 
 ```python
-cursor.execute('SELECT * FROM nnr_t1 WHERE username=%s', 'John Doe')
+curs.execute('SELECT * FROM t1 WHERE username=%s', 'John Doe')
 ```
 
 ### executemany
@@ -104,7 +102,7 @@ cursor.execute('SELECT * FROM nnr_t1 WHERE username=%s', 'John Doe')
 ```python
 # 插入三条测试数据
 cursor.executemany(
-    "INSERT INTO nnr_t1 VALUES (%d, %s, %s)",
+    "INSERT INTO t1 VALUES (%d, %s, %s)",
     [(1, 'John Smith', 'John Doe'),
      (2, 'Jane Doe', 'Joe Dog'),
      (3, 'Mike T.', 'Sarah H.')])
@@ -126,35 +124,37 @@ conn.commit() #修改数据后提交事务
 
 ### 直接遍历Cursor对象
 
+游标对象cursor在execute之后返回结果集，类似于一个迭代器
+
 ```python
-cur.execute('select top 5 * from nnr_t1')
-for row in cursor:
+cur.execute('select top 5 * from t1')
+for row in cur:
     print('row = %r' % (row,))
 ```
 
 如果连接时指定了`as_dict`为True，则返回结果变为字典类型，就能列名来访问
 
 ```python
-cur.execute('select top 5 * from nnr_t1')
-for row in cursor:
+cur.execute('select top 5 * from t1')
+for row in cur:
     print("ID=%d, Name=%s" % (row['id'], row['username']))
 ```
 
 ### fetch系列方法
 
-fetch系列方法，类似`next()`或者`.shift()`
+fetch系列方法，类似`cur.next()`
 
-`fetchone()`会**弹出**第一条数据。
+`fetchone()`会**弹出**第一条（下一条）数据。
 
 ```python
 cur.execute('select top 5 * from nnr_t1')
-row = cursor.fetchone()
+row = cur.fetchone()
 while row:
     print("ID=%d, Name=%s" % (row[0], row[1]))
-    row = cursor.fetchone()
+    row = cur.fetchone()
 ```
 
-另外，还可以使用`fetchmany`和`fetchall`来一次性获取指定数量或者所有的结果。
+另外，还可以使用`fetchmany`和`fetchall`来一次性获取指定数量或者所有（剩下的）的结果。
 
 ::: danger 关于游标对象Cursor
 与pymysql一样，任何时候只会有一个Cursor对象处于查询状态，即使实例化多个Cursor对象。
@@ -169,7 +169,7 @@ while row:
 
 ```python
 # 创建一个存储过程
-cursor.execute("""
+cur.execute("""
 CREATE PROCEDURE FindPerson
      @username VARCHAR(100)
  AS BEGIN
@@ -177,13 +177,13 @@ CREATE PROCEDURE FindPerson
 END
 """)
 # 调用上面的存储过程
-cursor.callproc('FindPerson', ('Jane Doe',))
+cur.callproc('FindPerson', ('Jane Doe',))
 ```
 
 执行存储过程也可以直接用语句
 
 ```python
-cursor.execute("exec SP_NAME 参数1, 参数2")
+cur.execute("exec SP_NAME 参数1, 参数2")
 ```
 
 
@@ -201,11 +201,11 @@ conn.close()
 可以使用with语句来处理Connection和cursor对象，这样就不需要手动关闭他们了：
 
 ```python
-with pymssql.connect(**DATABASES['default']) as conn:
-    with conn.cursor() as cursor:
-        cursor.execute('SELECT * FROM nnr_t1')
-        for row in cursor:
-            print("ID=%d, Name=%s" % (row['id'], row['username']))
+with pymssql.connect(**DATABASES) as conn:
+    with conn.cursor() as cur:
+        cur.execute('SELECT * FROM t1')
+        for row in cur:
+            print(row)
 ```
 
 
@@ -241,11 +241,11 @@ pprint(list(data_list), width=60, compact=True)
 
 ### 写入数据库
 
-创建表的过程省略，表名nnr_t2
+创建表的过程省略，表名t2
 
 ```python
 for i in data_list:
-    cur.execute('INSERT INTO nnr_t2 VALUES '+ i.__repr__())
-    conn.commit() #executemany可能更快
+    cur.execute('INSERT INTO t2 VALUES '+ i.__repr__())
+conn.commit() #若使用executemany更优雅
 conn.close()
 ```
