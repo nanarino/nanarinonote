@@ -251,7 +251,9 @@ print("Received: {}".format(received))
 
 让发送端在发送数据前，发送**固定长度**的报头，然后接收端循环接收完所有数据。
 
-### struct模块
+
+
+## struct模块
 
 该模块可以把以下类型转成固定长度的bytes
 

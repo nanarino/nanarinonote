@@ -36,7 +36,7 @@ Microsoft Windows [版本 10.0.17763.107]
 (c) 2018 Microsoft Corporation。保留所有权利。
 
 C:\Users\Administrator>python
-Python 3.7.0 (v3.7.0:1bf9cc5093, Jun 27 2018, 04:59:51) [MSC v.1914 64 bit (AMD64)] on win32
+Python 3.8.2 (tags/v3.8.2:7b3ab59, Feb 25 2020, 23:03:10) [MSC v.1916 64 bit (AMD64)] on win32
 Type "help", "copyright", "credits" or "license" for more information.
 >>>
 ```
@@ -124,7 +124,7 @@ cmd里直接输入指令`py`打开`C:\Windows\py.exe`和输入`python`是一致�
 
 而如果将python.exe文件名改成其他的如**python37.exe**：
 
-`py`和`pip`指令都将失效
+`py`和`pip`指令都将失效，也无法卸载了。
 
 ```bash
 C:\Users\Administrator>py
@@ -136,7 +136,7 @@ Fatal error in launcher: Unable to create process using
 
 此时`python37`和`python37 -m pip`代替即可上面两个已失效命令，
 
-便可再安装其他版本python。
+便可再安装其他版本python即可，python和pip为最新安装的版本。
 
 ------
 
