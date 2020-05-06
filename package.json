@@ -25,6 +25,6 @@
   },
   "homepage": "https://github.com/nanarino/markdown-note.github.io#readme",
   "devDependencies": {
-    "vuepress": "^1.4.1"
+    "vuepress": "^1.2.0"
   }
 }
