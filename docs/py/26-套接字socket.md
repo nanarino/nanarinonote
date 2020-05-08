@@ -302,7 +302,7 @@ import socket, struct, os, subprocess
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 s.bind(('127.0.0.1', 8080))
-s.listen(5)
+s.listen()
 conn, addr = s.accept()
 while 1:
     cmd = conn.recv(1024)
