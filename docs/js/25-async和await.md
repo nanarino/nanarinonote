@@ -65,9 +65,12 @@ Print(2000,"hello")
 
 #### 表面区别：
 
-   	1. async内置执行器：直接执行就可以，不需要next等其他方法
-            	2. async良好的语义。async表示异步函数，await需要等待后面的表达式结果结束。
-         	3. Generator返回的是Iterator对象，async返回的是promise对象,可以后续then继续操作。
+- async内置执行器：直接执行就可以，不需要next等其他方法 
+
+- async良好的语义。async表示异步函数，await需要等待后面的表达式结果结束。
+
+- Generator返回的是Iterator对象，async返回的是promise对象,可以后续then继续操作。
+
 
 #### 内在联系：
 

@@ -298,48 +298,49 @@ struct.error: 'i' format requires -2147483648 <= number <= 2147483647 #这个是
 服务端（自定制报头） 
 
 ```python
-import socket, struct, subprocess
-s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-s.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1)
-s.bind(('127.0.0.1',8080))
+import socket, struct, os, subprocess
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+s.bind(('127.0.0.1', 8080))
 s.listen(5)
-conn,addr = s.accept()
+conn, addr = s.accept()
 while 1:
     cmd = conn.recv(1024)
-    if not cmd:break
-    print('cmd: %s' %cmd)
+    cd = cmd.split(b'cd ')
+    if len(cd) == 2:
+        os.chdir(str(cd[-1].strip(), 'utf-8'))
+    print('cmd: %s' % cmd)
     res = subprocess.Popen(cmd.decode('utf-8'),
                            shell=True,
                            stdout=subprocess.PIPE,
                            stderr=subprocess.PIPE)
     back_msg = res.stderr.read() or res.stdout.read()
-    conn.send(struct.pack('i',len(back_msg))) #先发自制报头：back_msg的长度
-    conn.sendall(back_msg) #再发真实的报文
+    conn.send(struct.pack('i', len(back_msg)))  #先发报头：back_msg的长度
+    conn.sendall(back_msg)  #再发真实的内容
 conn.close()
-s.close()  
+s.close()
 ```
 
 客户端（自定制报头） 
 
 ```python
-#_*_coding:utf-8_*_
 import socket, struct
-s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-res = s.connect_ex(('127.0.0.1',8080))
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+res = s.connect_ex(('127.0.0.1', 8080))
 res and print(res)
 while 1:
     msg = input('>>> ').strip()
-    if len(msg) == 0:continue
-    if msg == ':q':break
+    if len(msg) == 0: continue
+    if msg == ':q': break
     s.send(msg.encode('utf-8'))
-    data_len = struct.unpack('i',s.recv(4))[0] #接收自制报头
+    data_len = struct.unpack('i', s.recv(4))[0]  #接收报头
     now_len = 0
     all_data = b''
     while now_len < data_len:
         now_data = s.recv(1024)
         all_data += now_data
         now_len += len(now_data)
-    print(all_data.decode('gbk')) #windows默认gbk编码
+    print(all_data.decode('gbk'))  #windows默认gbk编码
 s.close()
 ```
 
