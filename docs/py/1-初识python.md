@@ -39,7 +39,7 @@
 
 速度最快的是`pypy`是python自己实现的自己
 
-其他版本:C++(`Pyston`)    \    Java(`Jython`)    \    C#(`IronPython`) 
+其他版本:C++(`Pyston`)    \\    Java(`Jython`)    \\    C#(`IronPython`) 
 
 ### 从版本:
 
@@ -143,9 +143,9 @@ a = input("请输入")
 
   数字类型可以参与一些算数运算符：加减乘除
 
-  字符串转化成数字：int(str) 条件：str必须是数字组成的。
+  字符串转化成数字：`int(str)` 条件：str必须是数字组成的。
 
-  数字转化成字符串：str(int)
+  数字转化成字符串：`str(int)`
 
 - 布尔值：`bool`
 
@@ -157,9 +157,9 @@ a = input("请输入")
 
   python当中凡是用引号引起来的都是字符串。
 
-  可相加：str + str  拼接
+  可相加：str \+ str  拼接
 
-  可相乘：str * int  复读
+  可相乘：str \* int  复读
 
 - 列表：`list`
 

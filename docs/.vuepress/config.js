@@ -62,7 +62,7 @@ module.exports = {
                     ]
                 },
                 {
-                    title: '补充知识点',
+                    title: '杂项方法',
                     children: [
                         '22-重新实现某些方法',
                         '23-排序算法的实现',
@@ -73,7 +73,7 @@ module.exports = {
                     ]
                 },
                 {
-                    title: 'WEB框架',
+                    title: 'WEB相关',
                     children: [
                         '28-nodejs',
                         '29-mongodb',
@@ -137,7 +137,7 @@ module.exports = {
                     ]
                 },
                 {
-                    title: '系统和多任务',
+                    title: '并发编程',
                     children: [
                         '25-系统有关模块',
                         '26-套接字socket',
@@ -147,7 +147,7 @@ module.exports = {
                     ]
                 },
                 {
-                    title: 'WEB相关知识',
+                    title: 'WEB相关',
                     children: [
                         '30-SQL语句',
                         '31-pymssql模块',
@@ -156,7 +156,7 @@ module.exports = {
                     ]
                 },
                 {
-                    title: '杂项知识点',
+                    title: '杂项模块',
                     children: [
                         '34-Tkinter模块',
                         '35-PyInstaller模块',

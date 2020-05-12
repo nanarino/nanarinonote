@@ -27,7 +27,7 @@
 
 以默认位置一键安装即可
 
-默认位置是`C:\Users\Administrator\AppData\Local\Programs\Python\Python37`
+默认位置是`C:\Users\Administrator\AppData\Local\Programs\Python\Python36`
 
 这里以Windows为例，在cmd中输入`python`或者`py`，按下回车：
 
