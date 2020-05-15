@@ -91,8 +91,7 @@ pymysql.install_as_MySQLdb()
 
 ### 版本问题
 
-在django小于1.11.6且python大于3.7.0的时候，会报出一个错误
-
+在django小于1.11.6且python大于3.7.0的时候，会报出一个错误    
 解决办法有3种，我个人推荐升级django到1.11.20
 
 - python重新安装3.6.x及其以下
@@ -113,10 +112,8 @@ pymysql.install_as_MySQLdb()
 
 ### 时区/语言问题
 
-时间默认为格林尼治时间
-
-admin中的语言默认为英文
-
+时间默认为格林尼治时间    
+admin中的语言默认为英文    
 可以在`settings.py`中做出如下修改：
 
 ```python
@@ -131,14 +128,10 @@ TIME_ZONE = 'Asia/Shanghai'
 
 ### 部署问题
 
-一般用`nginx`+`uwsgi`来部署django项目到生产环境。
-
-通过配置，`nginx`与`uwsgi`之间进行socket通信，
-
-nginx提供static目录的静态文件访问。
-
-具体可以参考我在[cdb仓库](https://github.com/nanarino/cdb)中的配置文件示例。
-
+一般用`nginx`+`uwsgi`来部署django项目到生产环境。    
+通过配置，`nginx`与`uwsgi`之间进行socket通信，    
+nginx提供static目录的静态文件访问。    
+具体可以参考我在[cdb仓库](https://github.com/nanarino/cdb)中的配置文件示例。    
 开发之前`settings.py`中就应该做出如下设置：
 
 ```python
@@ -147,10 +140,7 @@ STATICFILES_DIRS = [
 ]
 ```
 
-在部署之后，如admin的静态资源会出现404的情况，解决办法：
-
-默认安装的python，admin的静态资源一般在
-
-`C:\Users\Administrator\AppData\Local\Programs\Python\Python37\Lib\site-packages\django\contrib\admin\static\admin`目录中，
-
+在部署之后，如admin的静态资源会出现404的情况，解决办法：    
+默认安装的python，admin的静态资源一般在    
+`C:\Users\Administrator\AppData\Local\Programs\Python\Python37\Lib\site-packages\django\contrib\admin\static\admin`目录中，    
 将其拷贝到项目的static目录，以便被nginx访问。

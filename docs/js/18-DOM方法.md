@@ -132,8 +132,7 @@ li.insertBefore(text2, text1)//在li标签里面text1前面添加text2
 document.body.appendChild(li)//放置
 ```
 
-这种添加方式只是对DOM树的某一个枝叶做修改，不会重新种树。
-
+这种添加方式只是对DOM树的某一个枝叶做修改，不会重新种树。    
 但是枝叶的修改也是DOM操作，也会有渲染重排的问题。
 
 **`Image()`**构造函数将会创建一个新的[`HTMLImageElement`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLImageElement)实例。
@@ -311,13 +310,10 @@ document.documentElement.clientHeight //当前文档区域可见高度
 
 用在元素身上:
 
-clientWidth: 元素的content + padding宽/高, **不包括滚动条**
-
-clientHeight
-
-clientLeft
-
-clientTop: 返回元素的content到边框的距离，也就是边框的厚度
+- clientWidth: 元素的content + padding宽/高, **不包括滚动条**
+- clientHeight
+- clientLeft
+- clientTop: 返回元素的content到边框的距离，也就是边框的厚度
 
 注意: 只读属性,不能进行设置
 
@@ -368,13 +364,10 @@ document.documentElement.offsetHeight//当前文档的实际高度
 
 在元素上：
 
-offsetWidth: 元素的content+padding+border
-
-offsetHeight: 
-
-offsetTop 元素顶部到定位父级的顶部距离，不包括定位父级的边框部分
-
-offsetLeft 元素左边到定位父级元素左边距离, 不包括定位父级的边框部分
+- offsetWidth: 元素的content+padding+border
+- offsetHeight: 
+- offsetTop 元素顶部到定位父级的顶部距离，不包括定位父级的边框部分
+- offsetLeft 元素左边到定位父级元素左边距离, 不包括定位父级的边框部分
 
 元素到body顶部的距离方法： 没有包括父级边框
 
@@ -414,10 +407,8 @@ function getOffset(dom){
 
    scroll
 
-   读取元素的content宽度+padding宽度，**包含滚动条**
-
-   scrollWidth
-
+   读取元素的content宽度+padding宽度，**包含滚动条**    
+   scrollWidth    
    scrollHeight
 
    子元素超出的时候， 会加上 超出的子元素的宽度/高度。当超出的时候，左padding或者上padding加上内容宽度或者高度。右padding或者下padding已经失去意义所以不会结算。

@@ -137,14 +137,10 @@ pyperclip.copy('需要复制的文字')
 
 ## 保护措施
 
-为了能够及时中断，PyAutoGUI提供了一个保护措施。
-
-当`pyautogui.FAILSAFE = True`时，如果把鼠标光标在屏幕左上角，
-
-PyAutoGUI函数就会产生`pyautogui.FailSafeException`异常。
-
-如果失控了，需要中断PyAutoGUI函数，就把鼠标光标在屏幕左上角。
-
+为了能够及时中断，PyAutoGUI提供了一个保护措施。    
+当`pyautogui.FAILSAFE = True`时，如果把鼠标光标在屏幕左上角，    
+PyAutoGUI函数就会产生`pyautogui.FailSafeException`异常。    
+如果失控了，需要中断PyAutoGUI函数，就把鼠标光标在屏幕左上角。    
 要禁用这个特性，就把`FAILSAFE`设置成`False`：
 
 ```python
@@ -161,8 +157,7 @@ pyautogui.FAILSAFE = False
 pyautogui.locateAllOnScreen('foo.png')
 ```
 
-识别屏幕，返回图片在屏幕上的中心XY轴坐标值
-
+识别屏幕，返回图片在屏幕上的中心XY轴坐标值    
 （只能识别一个，貌似上比左优先，找不到会抛出错误）
 
 ```python

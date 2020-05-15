@@ -185,16 +185,11 @@ master属性代表父窗口
 | move             | 移动图像参数（图像对象,横移,纵移）                           |
 | coords()         | 传入id，返回对象的位置的两个坐标（4个数字元组）              |
 
-`move()`后需要用`root.update()`刷新即可看到图像的移动
-
-为了使多次移动变得可视，最好加上`time.sleep()`函数；
-
-只要用`create_`方法画了一个图形就会自动返回一个ID
-
-创建一个图形时将它赋值给一个变量，需要ID时就可以使用这个变量名。
-
-对按钮组件、菜单组件等可以在创建组件时通过`command`参数指定其事件处理函数。方法为bind
-
+`move()`后需要用`root.update()`刷新即可看到图像的移动    
+为了使多次移动变得可视，最好加上`time.sleep()`函数；    
+只要用`create_`方法画了一个图形就会自动返回一个ID    
+创建一个图形时将它赋值给一个变量，需要ID时就可以使用这个变量名。    
+对按钮组件、菜单组件等可以在创建组件时通过`command`参数指定其事件处理函数。方法为bind    
 或者用`bind_class`方法进行类绑定，`bind_all`方法将所有组件事件绑定到事件响应函数上。
 
 
@@ -229,19 +224,12 @@ master属性代表父窗口
 ##### Listbox控件
 
 - master代表父窗口
-
 - fg(bg)前(背)景色
-
 - relief装饰边界附近的标签，可以设置的参数(flat、groove、raised、ridge、solid、sunken)
-
 - width(height)设置宽(高)
-
 - state设置组件状态(正常normal；激活active；禁用disabled)
-
 - bd设置边框大小
-
 - selectmode选择模式(MULTIPLE多选；BROWSE鼠标选择；EXTENDED快捷键选择)
-
 - listvariable设置listvariable属性
 
 | select_set         | 选中，如lb.select_set(0,2)                                   |
@@ -319,9 +307,7 @@ result.set(str)#可以修改变量的值
 ## 事件的关联
 
 - `bind(sequence,func,add)`
-
 - `bind_class(className,sequence,func,add)`
-
 - `bind_all(sequence,func,add)`
 
 

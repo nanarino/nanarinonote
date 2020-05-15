@@ -1,17 +1,13 @@
 # pymssql模块
 
-连接`mysql`需要用到`pymysql`模块
-
+连接`mysql`需要用到`pymysql`模块    
 而连接`Microsoft SQL server` 需要用到`pymssql`模块
 
 ## 安装依赖
 
-直接`pip install pymssql`安装。
-
-可能会报错：
-
-可以到https://www.lfd.uci.edu/~gohlke/pythonlibs/上寻找对应版本下载`.whl`文件
-
+直接`pip install pymssql`安装。    
+可能会报错：    
+可以到https://www.lfd.uci.edu/~gohlke/pythonlibs/上寻找对应版本下载`.whl`文件    
 然后使用如`pip install pymssql-2.1.4-cp38-cp38-win_amd64`来安装
 
 
@@ -157,8 +153,7 @@ while row:
 另外，还可以使用`fetchmany`和`fetchall`来一次性获取指定数量或者所有（剩下的）的结果。
 
 ::: danger 关于游标对象Cursor
-与pymysql一样，任何时候只会有一个Cursor对象处于查询状态，即使实例化多个Cursor对象。
-
+与pymysql一样，任何时候只会有一个Cursor对象处于查询状态，即使实例化多个Cursor对象。    
 建议将前一个查询`fetchall()`之后,再来进行另外一个查询,否则永远是最后一个查询的结果。
 :::
 

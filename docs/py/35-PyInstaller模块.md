@@ -1,7 +1,6 @@
 ## PyInstaller模块
 
-绝大多数人电脑里都没有Python编译器，所以打包成exe，让用户（windows）双击就可以打开
-
+绝大多数人电脑里都没有Python编译器，所以打包成exe，让用户（windows）双击就可以打开    
 PyInstaller模块是用来打包的办法之一
 
 ::: tip 关于本模块
@@ -27,16 +26,13 @@ pyinstaller -F myfile.py
 
 ## 若使用shell命令
 
-GUI项目中若需执行shell脚本，os模块的方法则不推荐使用，
-
+GUI项目中若需执行shell脚本，os模块的方法则不推荐使用，    
 如~~os.system~~、 ~~os.popen~~ 等方法。否则影响GUI界面的使用体验（黑窗口一闪而过）
 
 ### 使用内置模块subprocess
 
-通过subprocess.Popen创建子进程类就不会造成cmd窗口一闪而过。
-
-其实例化对象可以用`.wait()`方法来等返回结果，否则不会阻塞。
-
+通过subprocess.Popen创建子进程类就不会造成cmd窗口一闪而过。    
+其实例化对象可以用`.wait()`方法来等返回结果，否则不会阻塞。    
 设定一小时后关机
 
 ```python
@@ -48,10 +44,8 @@ s.wait()#阻塞进程等待shell命令执行完毕
 
 ## 若使用第三方库
 
-在打包之前务必找到第三方库的包，把包复制到到跟myfile.py同目录下，然后再使用以上2种方式打包，否则会打包失败或者即使打包成功，程序也会闪退。
-
-找到第三方库的包，如使用了requests，可以使用查找的方式，找到这个包在哪里，然后把它复制到入口文件同目录下
-
+在打包之前务必找到第三方库的包，把包复制到到跟myfile.py同目录下，然后再使用以上2种方式打包，否则会打包失败或者即使打包成功，程序也会闪退。    
+找到第三方库的包，如使用了requests，可以使用查找的方式，找到这个包在哪里，然后把它复制到入口文件同目录下    
 打包命令加上`--hidden-import  model_name `
 
 
@@ -92,7 +86,6 @@ pyinstaller -Fw xx.py
 
 ## 其他注意事项
 
-~~基于当前系统配置PyInstaller，如果更换了Python版本，需要重新下载相应版本的PyInstaller并重新执行Configure.py~~（pip安装的PyInstaller不必如此）
-
+~~基于当前系统配置PyInstaller，如果更换了Python版本，需要重新下载相应版本的PyInstaller并重新执行Configure.py~~（pip安装的PyInstaller不必如此）    
  注意关注运行过程中的警告和错误，最好没有警告和错误，如果出现找不到某dll，可以下载后放到C:\Windows\system32下，一般都能解决。
 

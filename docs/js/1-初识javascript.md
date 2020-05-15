@@ -3,28 +3,20 @@
 > 背景： 互联网发展初期，不存在客户端处理程序，但是网页变得更加复杂功能更加丰富，需要处理的事情越来越多，如果任何处理逻辑都放到后端，效率低下（带宽，服务器负担）。Netscape(网景)的Brendan Eich(布兰登·艾奇)在1995年5月被公司要求做一个“看上去和Java相似，但是比java简单的网页脚本语言”，他本身对Java不感兴趣，花了10天设计了JavaScript满足了公司要求。
 >
 
-
-
-## javascript特点
-
 基于原型，动态类型，解释型，弱类型脚本语言
 
 - 基于原型:万物皆对象
-
 - 动态类型:变量声明不需要规定类型,和python一样
-
 - 解释型:没有编译过程,和python一样
 - 弱类型:运算时经常进行隐式类型转换,和php一样
 
 在浏览器环境中由 ECMAScript  DOM  BOM 三部分组成
 
 - ECMAScript 语法约束 es5 es6版本
-
 - BOM	BrowserObjectModel 浏览器对象模型
-
 - DOM	DocumentObjectModel 文档对象模型
 
-java 同 javascript 之间没关系
+java 同 javascript 之间没有关系
 
 
 
@@ -40,8 +32,7 @@ java 同 javascript 之间没关系
 <script type='text/javascript' src='...'></script>
 ```
 
-和css一样，script标签可以在页面任意位置  从上到下执行
-
+和css一样，script标签可以在页面任意位置  从上到下执行    
 刚开始学的时候最好把标签放在紧贴body的结束标签之前。
 
 
@@ -57,8 +48,7 @@ console.log("打印日志")
 //打印的其他内容甚至打印图片等花里胡哨的操作可以百度
 ```
 
-在低版本ie浏览器中只有按下F12打开了控制台之后才能使用console
-
+在低版本ie浏览器中只有按下F12打开了控制台之后才能使用console    
 可以使用`window.console && console.log("打印日志")`
 
 
@@ -111,11 +101,8 @@ let box = document.getElementById("box");//声明和赋值一起写
 命名规范
 
 - 变量名要有意义 代码可读性
-
 - 变量采用驼峰命名法
-
 - 常量采用全字母大写加下划线拼接
-
 - 回避关键字和保留字(依靠编辑器判断)
 
 
@@ -143,10 +130,8 @@ box.onclick = function(){
 
 ## 页面内容修改
 
-获取标签对象后可以使用以下方法
-
- `.innerHTML`： 支持标签，HTML代码被渲染
-
+获取标签对象后可以使用以下方法    
+ `.innerHTML`： 支持标签，HTML代码被渲染    
  `.innerText`： 不支持标签，标签显示为标签代码
 
 ```js
@@ -156,13 +141,10 @@ box.innerHTML = box.innerHTML + 1;//修改
 ```
 
 
-
 ## 样式修改
 
-获取标签节点后，可以通过 `.cssText`修改样式
-
-也可以通过`.style.color`来修改
-
+获取标签节点后，可以通过 `.cssText`修改样式    
+也可以通过`.style.color`来修改    
 还可以通过`.style.setProperty(属性名,属性值,可选的important优先级)`来修改
 
 ```js
@@ -187,23 +169,17 @@ box.style.setProperty("--x",h)
 上述方法都是添加的行内的样式。相当于在`<div id='box' style='这里添加' >`。
 
 ::: warning 注意
-上文中的CSS自定义变量功能不属于Sass等预处理语言，你可能需要了解CSS3的拓展知识
-
+上文中的CSS自定义变量功能不属于Sass等预处理语言，你可能需要了解CSS3的拓展知识    
 以下内容并不符合本节的初识JS标题，只是为了方便查阅所以归档在这里
 :::
 
 
-
 如果想要在style标签中添加如字体颜色（color）的样式：
 
-- 可以用document对象的`CSSStyleDeclaration`例如：
-
-  `document.styleSheets[0].cssRules[0].style`
-
+- 可以用document对象的`CSSStyleDeclaration`例如：    
+  `document.styleSheets[0].cssRules[0].style`    
   它和标签节点的使用方法一样有`setProperty()`和`cssText`
 
-- `(ele.currentStyle || getComputedStyle(ele)).color`
-
-  ele是获取的标签节点，这里使用了兼容的写法，逻辑或运算
-
+- `(ele.currentStyle || getComputedStyle(ele)).color`    
+  ele是获取的标签节点，这里使用了兼容的写法，逻辑或运算    
   当`.currentStyle`属性不存在（说明不是IE浏览器）时使用`getComputedStyle()`

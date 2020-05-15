@@ -35,8 +35,7 @@ new $()...
 
 异步优先级：DLE观察者 > I/O观察者 > check观察者
 
-macro-tack：`<script/>`  > `setTimeout/setInterval` > `setImmediate` > I/O
-
+macro-tack：`<script/>`  > `setTimeout/setInterval` > `setImmediate` > I/O    
 micro-tack：`process.nextTick` > (Promise)`.then`
 
 ```js

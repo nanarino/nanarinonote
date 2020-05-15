@@ -10,16 +10,13 @@ Tornado是使用Python编写的一个强大的、可扩展的Web服务器。它�
 
 ## tornado
 
-在内置模块asyncio出现之前，tornado不仅是web框架，同时也可作为一个异步库。
-
+在内置模块asyncio出现之前，tornado不仅是web框架，同时也可作为一个异步库。    
 这里也推荐一本[电子书](http://demo.pythoner.com/itt2zh/index.html)
 
 
 
 ## 注意事项
 
-Tornado官方并不支持Windows系统
-
-学习的时候如果可以就安装一个CentOS系统的虚拟机
-
+Tornado官方并不支持Windows系统    
+学习的时候如果可以就安装一个CentOS系统的虚拟机    
 配上Linux版的Pycharm编辑器还是非常的酸爽

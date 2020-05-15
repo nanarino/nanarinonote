@@ -16,7 +16,6 @@ s = socket.socket()
 
 - AF_INET 面向网络的套接字（默认种族）
 - AF_UNIX 基于文件的套接字
-
 - TCP套接字的名SOCK_STREAM（默认类型）
 - UDP套接字的名SOCK_DGRAM
 
@@ -176,14 +175,10 @@ if any, was successfully sent.
 
 ## socketserver模块
 
-一个server端可以同时和多个client端连接（多线程）
-
-与只使用socket时`conn,addr = sk.accept()`相同的是
-
-继承`socketserver.BaseRequestHandler`之后
-
-`self.request` 就相当于conn
-
+一个server端可以同时和多个client端连接（多线程）    
+与只使用socket时`conn,addr = sk.accept()`相同的是    
+继承`socketserver.BaseRequestHandler`之后    
+`self.request` 就相当于conn    
 `self.client_address` 就相当于addr
 
 ### server端
@@ -235,12 +230,10 @@ print("Received: {}".format(received))
 
 ### 黏包成因
 
-- TCP协议的拆包机制
-
+- TCP协议的拆包机制    
   当发送端缓冲区的长度大于网卡的MTU时TCP会将这次发送的数据拆成几个数据包发送出去。
 
-- 面向流的通信特点和Nagle算法
-
+- 面向流的通信特点和Nagle算法    
   Nagle算法优化后将多次间隔较小且数据量小的数据，合并成一个大的数据块，然后进行封包。
 
 ![img](../.vuepress/public/img/sp1.jpg)
