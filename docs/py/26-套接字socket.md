@@ -5,6 +5,8 @@
 
 ## socket模块
 
+[`socket`](https://docs.python.org/zh-cn/3/library/socket.html)模块提供了访问 BSD套接字的接口
+
 ### 创建套接字
 
 ```python
@@ -175,7 +177,8 @@ if any, was successfully sent.
 
 ## socketserver模块
 
-一个server端可以同时和多个client端连接（多线程）    
+[`socketserver`](https://docs.python.org/zh-cn/3/library/socketserver.html)模块使一个server端可以同时和多个client端连接（多线程)
+
 与只使用socket时`conn,addr = sk.accept()`相同的是    
 继承`socketserver.BaseRequestHandler`之后    
 `self.request` 就相当于conn    
@@ -248,7 +251,7 @@ print("Received: {}".format(received))
 
 ## struct模块
 
-该模块可以把以下类型转成固定长度的bytes
+[`struct`](https://docs.python.org/zh-cn/3/library/struct.html)可以把以下类型转成固定长度的bytes
 
 | Format | C Type             | Python type        | Standard size | Notes  |
 | ------ | ------------------ | ------------------ | ------------- | ------ |

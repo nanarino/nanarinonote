@@ -313,27 +313,27 @@ result.set(str)#可以修改变量的值
 
 事件参数
 
-| func      | 所绑定的事件处理函数    
+| func      | 所绑定的事件处理函数        |
 | --------- | ----------------------- |
-| add       | 可选参数，为空字符或‘+’ |
+| add       | 可选参数，为空字符或‘+’    |
 | sequence  | 所绑定的事件            |
 | className | 所绑定的类              |
 
 鼠标键盘事件
 
-| <Button-1>          | 鼠标左键按下，2表示中键，3表示右键     |
-| ------------------- | -------------------------------------- |
-| <ButtonPress-1>     | 鼠标左键按下，2表示中键，3表示右键     |
-| <ButtonRelease-1>   | 鼠标左键释放                           |
-| <B1-Motion>         | 按住鼠标左键移动                       |
-| <Double-Button-1>   | 双击左键                               |
-| <Enter>             | 鼠标指针进入某一组件区域               |
-| <Leave>             | 鼠标指针离开某一组件区域               |
-| <MouseWheel>        | 滚动滚轮                               |
-| <KeyPress-A>        | 按下A键，A可用其他键替代               |
-| <Alt-KeyPress-A>    | 同时按下alt和A；alt可用ctrl和shift替代 |
-| <Double-KeyPress-A> | 快速按两下A                            |
-| <Lock-KeyPress-A>   | 大写状态下按A                          |
+| `<Button-1>`          | 鼠标左键按下，2表示中键，3表示右键     |
+| --------------------- | -------------------------------------- |
+| `<ButtonPress-1>`     | 鼠标左键按下，2表示中键，3表示右键     |
+| `<ButtonRelease-1>`   | 鼠标左键释放                           |
+| `<B1-Motion>`         | 按住鼠标左键移动                       |
+| `<Double-Button-1>`   | 双击左键                               |
+| `<Enter>`             | 鼠标指针进入某一组件区域               |
+| `<Leave>`             | 鼠标指针离开某一组件区域               |
+| `<MouseWheel>`        | 滚动滚轮                               |
+| `<KeyPress-A>`        | 按下A键，A可用其他键替代               |
+| `<Alt-KeyPress-A>`    | 同时按下alt和A；alt可用ctrl和shift替代 |
+| `<Double-KeyPress-A>` | 快速按两下A                            |
+| `<Lock-KeyPress-A>`   | 大写状态下按A                          |
 
 窗口事件
 

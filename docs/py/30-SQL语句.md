@@ -1,6 +1,6 @@
 # SQL语句
 
-这里以mysql数据库为例：
+这里以mysql数据库为例
 
 MySQL是一个关系型数据库管理系统，由瑞典MySQL AB 公司开发，目前属于 Oracle 旗下公司。MySQL 最流行的关系型数据库管理系统，在 WEB 应用方面MySQL是最好的 RDBMS (Relational Database Management System，关系数据库管理系统) 应用软件之一。 
 
@@ -209,36 +209,24 @@ flush privileges;
 
 #### 创建表 
 
-```sql
-#是否可以为空
--- not null
--- null
-create table 表名(
-    列名  类型  是否可以为空，
-    列名  类型  是否可以为空
-)engine=innodb default charset=utf8
+not null 不可为空    
+defalut 默认值    
+null 可以为空
 
-#最后一项不要加逗号
-#engine=innodb 支持事务性操作 失败回滚
-#engine=myisam 支持全局索引 失败不回滚 默认
-```
+`engine=innodb` mysql支持事务性操作 失败回滚
+`engine=myisam` mysql支持全局索引 失败不回滚 默认
 
 ```sql
-#默认值，
--- 创建列时可以指定默认值，
--- 当插入数据时如果未主动设置，
--- 则自动添加默认值
 create table tb1(
     nid int not null defalut 2,
     num int not null
-)
+)engine=innodb default charset=utf8
 ```
 
+`auto_increment` 自增    
+`primary key` 主键
+
 ```sql
-#自增，
-#如果为某列设置自增列，
-#插入数据时无需设置此列，
-#默认将自增（表中只能有一个自增列）
 create table tb1(
     nid int not null auto_increment primary key,
     num int null
@@ -278,19 +266,26 @@ create table tb1(
 )
 ```
 
-```sql
-#外键，一个特殊的索引，只能是指定内容
-            creat table color(
-                nid int not null primary key,
-                name char(16) not null
-            )
+`foreign key` 外键
 
-            create table fruit(
-                nid int not null primary key,
-                smt char(32) null ,
-                color_id int not null,
-                constraint fk_cc foreign key (color_id) references color(nid)
-            )
+```sql
+creat table color(
+	nid int not null primary key,
+	name char(16) not null
+)
+
+create table fruit(
+	nid int not null primary key,
+	smt char(32) null ,
+	color_id int not null,
+	constraint fk_cc foreign key (color_id) references color(nid)
+)
+```
+
+#### 静态表型数据
+
+```sql
+select * from (values(1,2),(3,4)) as 表名(第一行,第二行)
 ```
 
 #### 删除表
@@ -335,9 +330,12 @@ alter table testalter_tbl alter i set default 1000;
 alter table testalter_tbl alter i drop default;
 ```
 
+
+
+
 ### 表内容基本操作
 
-存值的基本数据类型     --------MySQL的数据类型大致分为：数值、时间和字符串 
+mysql存值的基本数据类型
 
 ```sql
 bit[(m)]
@@ -519,4 +517,6 @@ g、组合
     from B
 ```
 
-篇幅有限。变量，函数，存储过程等知识略过。
+mysql之外的其他关系型数据库的用法大致相同。使用pymysql可用同步执行mysql的事务。
+
+篇幅有限。变量，函数，存储过程，触发器等知识略过。

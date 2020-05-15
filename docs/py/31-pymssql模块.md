@@ -3,6 +3,9 @@
 连接`mysql`需要用到`pymysql`模块    
 而连接`Microsoft SQL server` 需要用到`pymssql`模块
 
+前面章节介绍了基本的sql语句和`sqlite3`模块的用法。    
+`pymssql`模块与`sqlite3`模块方法基本一致
+
 ## 安装依赖
 
 直接`pip install pymssql`安装。    
@@ -241,6 +244,6 @@ pprint(list(data_list), width=60, compact=True)
 ```python
 for i in data_list:
     cur.execute('INSERT INTO t2 VALUES '+ i.__repr__())
-conn.commit() #若使用executemany更优雅
+conn.commit() #也可使用executemany
 conn.close()
 ```
