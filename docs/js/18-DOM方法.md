@@ -461,3 +461,18 @@ function getOffset(dom){
 e = e || window.event
 ```
 
+
+
+## cookie
+
+cookie是浏览器以sqlite格式存储的数据 可以由后台直接给对应的**域（domain）**设置
+
+有一部分cookie是可以在本域里被js读写的
+
+```js
+document.cookie
+```
+
+它的格式为`cookie1=value; cookie2=value; cookie3=value;`
+
+设置过期：时间设置为当前之前即为过期
