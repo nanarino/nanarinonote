@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/nanarino/markdown-note.github.io#readme",
   "devDependencies": {
-    "vuepress": "^1.2.0"
+    "vuepress": "^1.2.0",
+    "vuepress-plugin-mathjax": "^1.2.8"
   }
 }

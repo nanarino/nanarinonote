@@ -2,7 +2,7 @@ module.exports = {
     base: '/markdown-note/',
     evergreen: true,
     locales: {
-        '/markdown-note/': {
+        '/': {
             lang: 'zh-CN',
             title: 'nanarino note',
             description: 'super best match, are you ready'
@@ -172,4 +172,14 @@ module.exports = {
             ],
         },
     },
+    plugins: [
+        [
+            'vuepress-plugin-mathjax',
+            {
+                macros: {
+                    '*': '\\times',
+                },
+            },
+        ],
+    ],
 }
