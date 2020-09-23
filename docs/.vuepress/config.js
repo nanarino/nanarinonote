@@ -1,10 +1,16 @@
 module.exports = {
     base: '/markdown-note/',
-    title: 'nanarino note',
+    evergreen: true,
+    locales: {
+        '/': {
+            lang: 'zh-CN',
+            title: 'nanarino note',
+            description: 'super best match, are you ready'
+        }
+    },
     head: [
         ['link', { rel: 'shortcut icon', href: `./favicon.ico` }]
     ],
-    description: 'super best match, are you ready',
     themeConfig: {
         nav: [
             { text: 'JavaScript', link: '/js/' },
@@ -166,4 +172,14 @@ module.exports = {
             ],
         },
     },
+    plugins: [
+        [
+            'vuepress-plugin-mathjax',
+            {
+                macros: {
+                    '*': '\\times',
+                },
+            },
+        ],
+    ],
 }

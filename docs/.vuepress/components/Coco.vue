@@ -118,7 +118,7 @@ export default {
 .home
   padding $navbarHeight 2rem 0
   max-width 960px
-  margin 0px auto
+  margin 0 auto
   display block
   .hero
     text-align center
@@ -126,7 +126,7 @@ export default {
       display none
     canvas
       max-width: 100%
-      height 280px
+      height 17.5rem
       display block
       margin 3rem auto 1.5rem
       image-rendering pixelated
@@ -194,7 +194,6 @@ export default {
     padding-right 1.5rem
     .hero
       canvas
-        height 210px
         margin 2rem auto 1.2rem
       h1
         font-size 2rem
@@ -204,7 +203,7 @@ export default {
         font-size 1.2rem
       .action-button
         font-size 1rem
-        padding 0.6rem 1.2rem
+        padding .6rem 1.2rem
     .feature
       h2
         font-size 1.25rem

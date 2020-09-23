@@ -22,20 +22,16 @@ export default {
 .popover
   position fixed
   top 5%
-  left 50%
-  margin -0px 0 0 -70px
+  left calc(50% - 4.375rem)
   width 100px
   background-color lighten($accentColor, 86%)
-  padding 0 20px 0
+  padding 0 1.25rem 0
   border-radius 4px
   overflow hidden
   box-shadow 0 1px 5px rgba(0, 0, 0, 0.4)
   z-index 9999
-  text-align center
   h3
     color lighten($textColor, 40%)
-    font-size 18px
     font-weight bold
-    text-align center
-    margin 0 5px 0
+    margin 0 .4rem 0
 </style>
