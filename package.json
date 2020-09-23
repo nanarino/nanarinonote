@@ -1,6 +1,6 @@
 {
   "name": "markdown-note",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "ななりの notebook",
   "main": "index.js",
   "directories": {
@@ -13,17 +13,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nanarino/markdown-note.github.io.git"
+    "url": "git+https://github.com/nanarino/markdown-note.git"
   },
   "keywords": [
     "VuePress"
   ],
-  "author": "Lee",
+  "author": "kogawananari",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/nanarino/markdown-note.github.io/issues"
+    "url": "https://github.com/nanarino/markdown-note/issues"
   },
-  "homepage": "https://github.com/nanarino/markdown-note.github.io#readme",
+  "homepage": "https://nanarino.github.io/markdown-note/",
   "devDependencies": {
     "vuepress": "^1.2.0",
     "vuepress-plugin-mathjax": "^1.2.8"

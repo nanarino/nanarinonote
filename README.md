@@ -42,12 +42,11 @@
 npm install
 ```
 
-若在使用npm安装依赖后无法启动服务，请尝试使用yarn安装依赖。
-
-由于yarn.lock文件不一定正确，届时请使用如下命令：
+若在使用npm安装依赖后无法启动服务，可尝试使用yarn安装依赖。请使用如下命令：
 
 ```bash
 yarn add vuepress -D
+yarn add vuepress-plugin-mathjax -D
 ```
 
 安装依赖完成后使用如下命令使用脚手架，（不必，已写好.cmd脚本）：
