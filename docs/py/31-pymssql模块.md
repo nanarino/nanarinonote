@@ -6,6 +6,8 @@
 前面章节介绍了基本的sql语句和`sqlite3`模块的用法。    
 `pymssql`模块与`sqlite3`模块方法基本一致
 
+值得注意的是，不同于mysql，mssql数据库对大小写几乎忽略。
+
 ## 安装依赖
 
 直接`pip install pymssql`安装。    
@@ -41,7 +43,7 @@ else:
 #查询并打印结果
 cur.execute('select * from sys.tables')
 query_set = cur.fetchall()
-print(query_set, width=60, compact=True)
+print(query_set)
 
 #记得关闭以释放资源
 conn.close()
@@ -94,6 +96,13 @@ conn.close()
 curs.execute('SELECT * FROM t1 WHERE username=%s', 'John Doe')
 ```
 
+python3.8有更直观的格式化
+
+```python
+username = 'John Doe'
+curs.execute(f'SELECT * FROM t1 WHERE {username=}')
+```
+
 ### executemany
 
 可以执行多条语句
@@ -114,6 +123,9 @@ conn.commit()
 如果对数据进行了修改，且在连接时没有设置`autocommit`为True，则需要手动调用commit进行提交修改:
 
 ```python
+username = 'John Doe'
+id = '1919'
+curs.execute(f'update t1 set {username=} where {id=}')
 conn.commit() #修改数据后提交事务
 ```
 
@@ -242,8 +254,9 @@ pprint(list(data_list), width=60, compact=True)
 创建表的过程省略，表名t2
 
 ```python
+#也可使用executemany
 for i in data_list:
-    cur.execute('INSERT INTO t2 VALUES '+ i.__repr__())
-conn.commit() #也可使用executemany
+    cur.execute(f'INSERT INTO t2 VALUES {i!r}')
+conn.commit()
 conn.close()
 ```
