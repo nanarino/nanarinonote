@@ -63,6 +63,36 @@ For a detailed explanation on how things work, check out [docs for vuepress](htt
 
 
 
+## for Node 14+
+
+警告：
+
+```log
+(node:10384) Warning: Accessing non-existent property 'lineno' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:10384) Warning: Accessing non-existent property 'column' of module exports inside circular dependency
+(node:10384) Warning: Accessing non-existent property 'filename' of module exports inside circular dependency
+(node:10384) Warning: Accessing non-existent property 'lineno' of module exports inside circular dependency
+(node:10384) Warning: Accessing non-existent property 'column' of module exports inside circular dependency
+(node:10384) Warning: Accessing non-existent property 'filename' of module exports inside circular dependency
+```
+
+解决：项目中文件： \node_modules\stylus\lib\nodes\index.js ,代码最前面加入一下
+
+```js
+/**
+ * for node 14+.
+ */
+ 
+exports.lineno = null;
+exports.column = null;
+exports.filename = null;
+```
+
+
+
+
+
 ## 笔记参考
 
 [Eva-J](https://www.cnblogs.com/Eva-J/p/7277026.html)
@@ -72,3 +102,4 @@ For a detailed explanation on how things work, check out [docs for vuepress](htt
 [GGGG-XXXX](https://www.cnblogs.com/GGGG-XXXX/p/9564651.html)
 
 [Alex](https://www.cnblogs.com/alex3714/articles/5760582.html)
+
