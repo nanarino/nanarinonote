@@ -34,7 +34,7 @@
 
 ## page-cli-setup
 
-本文档采用vuepress展示，版本为"vuepress": "^1.2.0"。
+本文档采用vuepress展示。
 
 其安装依赖和本地运行的命令如下：
 
@@ -42,12 +42,6 @@
 npm install
 ```
 
-若在使用npm安装依赖后无法启动服务，可尝试使用yarn安装依赖。请使用如下命令：
-
-```bash
-yarn add vuepress -D
-yarn add vuepress-plugin-mathjax -D
-```
 
 安装依赖完成后使用如下命令使用脚手架，（不必，已写好.cmd脚本）：
 
@@ -60,36 +54,6 @@ npm run docs:build
 ```
 
 For a detailed explanation on how things work, check out [docs for vuepress](https://github.com/vuejs/vuepress).
-
-
-
-## for Node 14+
-
-警告：
-
-```log
-(node:10384) Warning: Accessing non-existent property 'lineno' of module exports inside circular dependency
-(Use `node --trace-warnings ...` to show where the warning was created)
-(node:10384) Warning: Accessing non-existent property 'column' of module exports inside circular dependency
-(node:10384) Warning: Accessing non-existent property 'filename' of module exports inside circular dependency
-(node:10384) Warning: Accessing non-existent property 'lineno' of module exports inside circular dependency
-(node:10384) Warning: Accessing non-existent property 'column' of module exports inside circular dependency
-(node:10384) Warning: Accessing non-existent property 'filename' of module exports inside circular dependency
-```
-
-解决：项目中文件： \node_modules\stylus\lib\nodes\index.js ,代码最前面加入一下
-
-```js
-/**
- * for node 14+.
- */
- 
-exports.lineno = null;
-exports.column = null;
-exports.filename = null;
-```
-
-
 
 
 

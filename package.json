@@ -1,6 +1,6 @@
 {
   "name": "markdown-note",
-  "version": "2.0.2",
+  "version": "2.1.0",
   "description": "ななりの notebook",
   "main": "index.js",
   "directories": {
@@ -25,7 +25,8 @@
   },
   "homepage": "https://nanarino.github.io/markdown-note/",
   "devDependencies": {
-    "vuepress": "^1.2.0",
-    "vuepress-plugin-mathjax": "^1.2.8"
+    "vuepress-plugin-mathjax": "^1.2.8",
+    "vue-router": "3.4.5",
+    "vuepress": "^1.7.1"
   }
 }
