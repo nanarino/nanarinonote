@@ -32,7 +32,7 @@
 Microsoft Windows [版本 10.0.17763.107]
 (c) 2018 Microsoft Corporation。保留所有权利。
 
-C:\Users\Administrator>python
+C:\Users\Administrator>py
 Python 3.8.2 (tags/v3.8.2:7b3ab59, Feb 25 2020, 23:03:10) [MSC v.1916 64 bit (AMD64)] on win32
 Type "help", "copyright", "credits" or "license" for more information.
 >>>
@@ -52,8 +52,8 @@ Hello World!
 
 也可以借助`宝塔Linux面板`的`Python项目管理器`一键安装。
 
-以上就是python shell交互式环境，可以使用`exit()`或者`quit()`来退出    
-对于`.py`文件右键的`Edit with IDLE`来运行，也可以在cmd中`python 完整路径文件名`
+以上就是python shell交互（行首有`>>>`），可以使用`exit()`或者`quit()`来退出    
+对于`.py`文件右键的`Edit with IDLE`来运行，也可以在cmd中`py 完整路径文件名`
 
 
 
