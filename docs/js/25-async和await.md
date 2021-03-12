@@ -15,9 +15,9 @@ await之前（需要node环境）
 ```js
 const fs = require("fs")
 //读取文件的操作
-const ReadFile = path =>{
+const ReadFile = filePath =>{
     return new Promise((res,rej)=>{
-        fs.readFile(path, "utf-8", (err, data)=>{//node中读取文件的方法,异步方法
+        fs.readFile(filePath, "utf-8", (err, data)=>{
             if(err) rej(err)
             res(data)
         })
@@ -28,21 +28,29 @@ const Read = path =>{
         console.log(data)
     })
 }
-Read("./data.txt")//最好是绝对路径
+Read("./data.txt")
 ```
 
-用async和await
+用async和await。在用的时候先把回调异步的函数改成返回Promise的函数
+
+可以使用node的`require("util").promisify()`。
 
 ```js
 const fs = require("fs")
-async function asyncReadFile = path => {
-    let d = await fs.readFile(path, "utf-8")//等价于等待promise事件,代码卡住
-    console.log(d)
+const readFile = require("util").promisify(fs.readFile)
+
+const Read = async filePath => {
+    try {
+        const fr = await readFile(filePath, "utf-8")
+        console.log(fr)
+    } catch (err) {
+        console.log('Error', err)
+    }    
 }
-asyncReadFile("./data.txt")
+Read("./4.c")
 ```
 
-上述代码内部fs.readFile其实也是返回了一个promise对象,所以可以await结果
+上述代码内部readFile其实也是返回了一个promise对象,所以可以await结果。
 
 延时输出：
 
@@ -57,6 +65,22 @@ async function Print(ms, str){//添加延时输出功能
 	console.log(str)
 }
 Print(2000,"hello")
+```
+
+如果需要自己实现promisify：
+
+```js
+function promisify(fn) {
+    return function () {
+        var args = Array.prototype.slice.call(arguments);//=[...arguments]
+        return new Promise(function (resolve) {
+            args.push(function (result) {
+                resolve(result);
+            });
+            fn.apply(null, args);//fn(...args)
+        })
+    }
+}
 ```
 
 
