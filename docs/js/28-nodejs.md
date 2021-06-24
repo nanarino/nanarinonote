@@ -21,6 +21,80 @@ const { $ } = require('./til.js')
 new $()...
 ```
 
+而ecma最新的模块化得用mjs文件后缀以做区分 它使用import来导入。
+
+
+
+## 终端输入输出
+
+终端 node.exe 空格 js文件 即可运行
+
+终端支持带颜色的输出流
+
+```python
+"""
+#格式：
+　　设置颜色开始 ：\033[显示方式;前景色;背景色m
+　　\033 \x1b \e 等价 都是ESC键的ASCII，只是进制和其他语言支持不同
+#说明：
+前景色            背景色           颜色
+---------------------------------------
+30                40              黑色
+31                41              红色
+32                42              绿色
+33                43              黃色
+34                44              蓝色
+35                45              紫红色
+36                46              青蓝色
+37                47              白色
+
+显示方式           意义
+-------------------------
+0                终端默认设置
+1                高亮显示
+4                使用下划线
+5                闪烁
+7                反白显示
+8                不可见
+"""
+
+#例子：
+\033[1;31;40m    #1-高亮显示 31-前景色红色  40-背景色黑色
+\033[0m          #采用终端默认设置，即取消颜色设置
+```
+
+输出蓝色helloworld
+
+```js
+console.log('\x1b[36mhelloworld\x1b[39m')
+```
+
+### 等待输入
+
+CommonJS规范引入
+
+```js
+const { createInterface } = require("readline");
+
+const readline = createInterface({
+    input: process.stdin,
+    output: process.stdout
+})
+
+readline.question('input:', input => {
+    console.log(`你输入的是${input}`);
+    readline.close();
+})
+```
+
+ecma最新 JavaScript modules规范引入 文件后缀得是`.ejs`
+
+```js
+import {createInterface} from 'readline'
+```
+
+
+
 
 
 ## 官方文档
