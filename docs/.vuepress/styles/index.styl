@@ -1,0 +1,34 @@
+body // 让整个页面不出现滚动条
+    overflow hidden
+
+main // 让main.page出现滚动条
+    box-sizing border-box
+    height 100vh
+    overflow auto
+
+main, .sidebar // 内容 纵向滚动条样式
+    &::-webkit-scrollbar
+        width  .5rem
+        height 0
+    &::-webkit-scrollbar-thumb
+        border-radius .5rem
+        background    #fff
+
+main.home::-webkit-scrollbar // home页 滚动条隐藏
+    height 0
+    width  0
+
+pre // 代码块 横向滚动条样式
+    &::-webkit-scrollbar
+        height .4rem
+    &::-webkit-scrollbar-thumb
+        border-radius .4rem
+        background    $codeBgColor
+
+main.page, .sidebar, pre // 滚动条hover降低不透明度
+    &:hover
+        &::-webkit-scrollbar-thumb
+            box-shadow inset 0 0 .2rem lighten($accentColor, 90%)
+            background rgba(desaturate($accentColor, 50%), .1)
+            &:hover
+                background rgba(desaturate($accentColor, 50%), .3)

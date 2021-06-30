@@ -1,7 +1,7 @@
 <template>
   <main class="home" aria-labelledby="main-title" onselectstart="return false;">
     <header class="hero">
-      <img v-if="data.heroImage" :src="$withBase(data.heroImage)" @load="iconload($event)">
+      <img class="toCanvas" v-if="data.heroImage" :src="$withBase(data.heroImage)" @load="iconload($event)">
       <canvas ref="canvas" @click="coco('YABEEI!')"></canvas>
       <Alert @coco='coco' :msg="msg"/>
       <h1 v-if="data.heroText !== null" id="main-title">{{ data.heroText || $title || 'Coco' }}</h1>
@@ -122,7 +122,7 @@ export default {
   display block
   .hero
     text-align center
-    img
+    img.toCanvas
       display none
     canvas
       max-width: 100%
