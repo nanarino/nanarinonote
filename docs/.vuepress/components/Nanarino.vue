@@ -10,7 +10,7 @@
       <slot name="sidebar-bottom" #bottom/>
     </Sidebar>
 
-    <Coco v-if="$page.frontmatter.home"/>
+    <Suika v-if="$page.frontmatter.home"/>
 
     <Page v-else :sidebar-items="sidebarItems">
       <slot name="page-top" #top/>

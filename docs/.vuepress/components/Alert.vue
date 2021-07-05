@@ -6,15 +6,22 @@
 <script>
 export default {
   props:["msg"],
+  methods:{
+    setEmptyAfter(ms){
+      setTimeout(()=>{
+        this.$emit('setMsg','')
+      },ms)
+    }
+  },
   watch:{
-    'msg': function(newdata, olddata){
-      console.log(olddata)
-      if(!olddata){
-        setTimeout(()=>{
-          this.$emit('coco','')
-        },1000)
+    'msg': function(newMsg, oldMsg){
+      if(!oldMsg){
+        this.setEmptyAfter(1000)
       }
-    },
+    }
+  },
+  mounted(){
+    this.setEmptyAfter(2500)
   }
 }
 </script>
