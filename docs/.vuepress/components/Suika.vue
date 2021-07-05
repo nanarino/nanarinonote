@@ -4,7 +4,7 @@
       <canvas width="48" height="48" 
         @click="alert('Bottoms up!')"
         @dblclick="startAnimation()"
-        @mouseover="nextFrame()" ref="canvas">
+        @mouseout="nextFrame()" ref="canvas">
       </canvas>
         
       <Alert @setMsg='alert' :msg="msg"/>
