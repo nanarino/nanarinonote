@@ -4,7 +4,7 @@ module.exports = {
     locales: {
         '/': {
             lang: 'zh-CN',
-            title: 'nanarino note',
+            title: '7rinote',
             description: '今年的冬天很长吧？然后我最喜欢的赏樱推迟又推……终于，以为到了春天，樱花却突然很快的开了，又很快地凋谢了……这么悔恨的年份根本就没有吧？'
         }
     },
