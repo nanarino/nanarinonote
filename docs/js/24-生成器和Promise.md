@@ -1,28 +1,5 @@
 # 生成器和Promise
 
-## 回调地狱（Callback Hell）
-
-写代码的时候需要控制代码的执行顺序。A加载完成之后做B，B搜集好了之后做C...或者C，D，E都要完成才可以继续执行F，这种代码该如何实现？
-
-```js
-work(function chuanyifu(err, data, shuaya){
-    //blabla...穿衣服
-    shuaya&&shuaya(function chifan(food ,goOut){
-        //blabla...吃饭
-        goOut&&goOut(function drive(daka){
-            //blabla...开车
-            daka&&daka(function coding(){
-                //blabla...写代码
-            })
-        })
-    })
-})
-```
-
-后面不停是})一层一层嵌套的回调的，就是 **回调地狱**，看多了头晕，但是不得不这么写，因为代码逻辑是这样做的。这种**屎一样**的代码怎么重构怎么优化？
-
-
-
 ## 生成器（Generator）
 
 生成器函数也叫作**惰性函数**
@@ -153,18 +130,42 @@ f.throw("你这个答案有问题")//Error! 你这个答案有问题
 
 
 
+## 回调地狱（Callback Hell）
+
+写代码的时候需要控制代码的执行顺序。A加载完成之后做B，B搜集好了之后做C...或者C，D，E都要完成才可以继续执行F，这种代码该如何实现？
+
+```js
+work(function chuanyifu(err, data, shuaya){
+    //blabla...穿衣服
+    shuaya&&shuaya(function chifan(food ,goOut){
+        //blabla...吃饭
+        goOut&&goOut(function drive(daka){
+            //blabla...开车
+            daka&&daka(function coding(){
+                //blabla...写代码
+            })
+        })
+    })
+})
+```
+
+后面不停是})一层一层嵌套的回调的，就是 **回调地狱**，看多了头晕，但是不得不这么写，因为代码逻辑是这样做的。这种的代码怎么重构怎么优化？
+
+
+
 ## Promise
 
 Promise是一个构造函数，传入一个函数A，在函数中接受两个参数resolve和reject，这是两个参数是函数，通过在A中使用resolve或者reject来表示函数A的进行状态，resolve表示搞定reject表示失败。
 
 promise有三种状态： "**Pending**" "**Fulfilled**" "**Reject**" 初始状态是Pending，一旦状态改变只能是Resolve或者Reject,并且状态一旦改变，**不可修改**
 
-​	resolve接受一个参数，表示异步事件得出的结果
+- ​	resolve接受一个参数，表示异步事件得出的结果
 
-​	reject也是接受一个参数，表示异步事件没有结果或者失败
+- ​	reject接受一个参数，表示异步事件没有结果或者失败
+
 
 ```js
-let promise = new Promise(function(resolve, reject){
+let p = new Promise(function(resolve, reject){
     setTimeout(function(){
         resolve("数据已经算出来了")
     },2000)
@@ -175,7 +176,7 @@ let promise = new Promise(function(resolve, reject){
 * then实例方法可以在等待得出结论之后调用
 
 ```js
-promise.then(function(data){
+p.then(function(data){
     //完成resolve后接受参数 data 的执行函数
 },function(err){
     //未完成reject后接受参数err的执行函数
@@ -187,24 +188,22 @@ promise.then(function(data){
 **then支持返回一个新的Promise对象**，后续可以保证链式调用
 
 ```js
-promise.then(data=>
-    //then做的的事情
+p.then(data=>{
     return new Pormise(fn(resolve, reject){resolve("data2")})
-).then(()=>
-    //第二段做的事情
+}).then(()=>{
     return new Promise(fn2(resolve, reject){resolve("data3")})
-).then(()={
-    //...第三段
+}).then(()={
+    //...
 })
 ```
 
 请将异步操作写到promise里面，then里写同步行为
 
-* catch实例方法，接受一个参数err，接受处理前面的失败或者错误
+* catch实例方法，接受一个参数err，接受处理前面以及更早的失败或者错误
 
 ```js
-promise.then(()=>{
-    //
+p.then(()=>{
+    //...
 }).catch((err)=>{
     console.log(err)
 })
@@ -213,8 +212,8 @@ promise.then(()=>{
 * finally实例方法，后续处理操作，无论前面的promise的结果是什么都会执行的内容
 
 ```js
-promise.then(()=>{
-    //
+p.then(()=>{
+    //...
 }).catch((err)=>{
     console.log(err)
 }).finally(()=>{
@@ -249,7 +248,7 @@ function xiaban(data){
 work().then(chifan).then(coding).then(xiaban)
 ```
 
-* Promise.all方法，打包多个Promise实例，统一判断状态，返回一个新的promise对象，可以对多个promise进行统一判断
+* `Promise.all`方法，打包多个Promise实例，统一判断状态，返回一个新的promise对象，可以对多个promise进行统一判断
 
   接受一个数组，数组里面存放多个promise对象实例。当每个promise对象的方法为触发resolve时，整体触发then的回调函数。接受的数组posts为每个resolve返回的结果。如果有失败了是返回第一个失败的结果。
 
@@ -265,7 +264,7 @@ Promise.all([p1, p2, p3]).then((posts)=>{
 })
 ```
 
-* Promise.race方法，打包多个Promise，同all方法类似，只要有一个完成（不论成功或者失败），就触发完成事件。
+* `Promise.race`方法，打包多个Promise，同all方法类似，只要有一个完成（不论成功或者失败），就触发完成事件。
 
 ```js
 let p1 = new Promise((res, rej)=>rej("no"))
@@ -280,7 +279,7 @@ Promise.race([p1, p2, p3]).then((posts)=>{
 })
 ```
 
-* Promise.reject(reason) 手动触发失败事件，返回一个失败的promise并且触发后续的失败操作，并传递信息给后续的方法
+* `Promise.reject(reason) `手动触发失败事件，返回一个失败的promise并且触发后续的失败操作，并传递信息给后续的方法
 
 ```js
 let p = new Promise((res, rej)=>{
@@ -295,4 +294,5 @@ let p = new Promise((res, rej)=>{
 })
 ```
 
-* Promise.resolve(value) 如果value是普通值（非Promise对象或者不带then方法）那么就会返回一个Fulfilled状态的promise，其余情况的根据参数value的Promise的结果确定。
+* `Promise.resolve(value)` 如果value是普通值（非Promise对象或者不带then方法）那么就会返回一个Fulfilled状态的promise，其余情况的根据参数value的Promise的结果确定。
+

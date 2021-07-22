@@ -1,4 +1,6 @@
-# ajax和fetch
+# ajax网络请求 
+
+## 原生浏览器ajax
 
 ajax（Asynchronous JavaScript and XML）：
 
@@ -16,7 +18,7 @@ XML
 
 
 
-## AJAX 对象的使用
+### AJAX 对象的使用
 
 原生的JavaScript封装了一个方法。XMLHttpRequest构造函数， 
 
@@ -38,11 +40,9 @@ xhr.onreadstatechange = function(){// 监听后台请求得状态变化
 
 * xhr.open方法 ，接受三个参数：
 
-​	method: 请求方式， 常见的有GET请求或者POST请求
-
-​	url： 发送请求的后台地址
-
-​	async: 是否异步，true为异步 ， false为非异步(ajax的存在请使用异步)
+  * ​	method: 请求方式， 常见的有GET请求或者POST请求
+  * ​	url： 发送请求的后台地址
+  * ​	async: 是否异步，true为异步 ， false为非异步(ajax的存在请使用异步)
 
 * xhr.send：发送请求所携带得数据，在get请求中不填或者填null
 
@@ -54,7 +54,7 @@ xhr.onreadstatechange = function(){// 监听后台请求得状态变化
 
 
 
-## AJAX状态码
+### AJAX状态码
 
 AJAX得运行是需要经过几个状态的转变的, 比如发送请求前的设置, 发送请求中, 等待服务器响应, 解析响应内容, 解析完成可以使用数据等多个阶段.
 
@@ -106,7 +106,7 @@ xhr.onreadystatechange = function(){
 
 
 
-## http状态码
+### http状态码
 
 常见的状态码可以帮助我们对当前请求的状态进行判断。常见的http状态码有:
 
@@ -120,7 +120,7 @@ xhr.onreadystatechange = function(){
 
 
 
-## 请求方式
+### 请求方式
 
 HTTP 定义了与服务器交互的不同方法，最基本的方法是 GET 和 POST。 GET 适用于多数请求，而保留 POST 仅用于更新站点。GET操作用于获取信息而非修改信息，一般不应产生副作用。
 
@@ -229,7 +229,7 @@ GET和POST发送数据的方式：
 
 
 
-## GET缓存
+### GET缓存
 
 **什么是缓存？**
 
@@ -243,7 +243,7 @@ GET和POST发送数据的方式：
 
 
 
-## 跨域
+## CORS跨域问题
 
 浏览器为了保护用户， 保证用户安全，使用**同源策略** 来针对请求做出响应。
 
@@ -295,9 +295,9 @@ JavaScript只能访问和操作自己域下的资源，不能访问和操作其�
 
 
 
-## fetch
+## fetch和axios
 
-它是基于Promise的ajax请求的二度封装
+fetch是es6基于Promise的ajax请求的二度封装
 
 ```js
 fetch(...).then(fun2)
@@ -307,6 +307,16 @@ fetch(...).then(fun2)
 ```
 
 从上边的代码可以看出，fetch用起来像jQuery一样简单，虽然还是有Callback的影子，但是看起来舒服多了
+
+[Axios](https://www.axios-http.cn/)是基于async和await对ajax的第三方封装   需要下载引入
+
+```js
+try{
+	console.log(await axios.post(url, data, {headers, params}))
+} catch (err) {
+    console.log(`请求失败：${err}`)
+}
+```
 
 
 

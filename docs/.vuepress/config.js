@@ -59,7 +59,7 @@ module.exports = {
                     ]
                 },
                 {
-                    title: 'BOM和DOM',
+                    title: '作为浏览器脚本',
                     children: [
                         '18-DOM方法',
                         '19-事件相关',
@@ -68,18 +68,18 @@ module.exports = {
                     ]
                 },
                 {
-                    title: '杂项方法',
+                    title: '杂项及新增方法',
                     children: [
                         '22-重新实现某些方法',
                         '23-排序算法的实现',
                         '24-生成器和Promise',
                         '25-async和await',
-                        '26-Proxy和Reflect',
-                        '27-ajax和fetch'
+                        '26-描述符和代理类',
+                        '27-ajax网络请求'
                     ]
                 },
                 {
-                    title: 'WEB相关',
+                    title: '作为服务端脚本',
                     children: [
                         '28-nodejs',
                         '29-mongodb',

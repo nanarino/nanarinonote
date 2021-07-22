@@ -4,13 +4,13 @@
 
 ## async和await
 
-async叫异步函数。是ES2017新出的，这让异步操作变得更简单了。
+async叫异步函数。是ES2017新出的，这让异步操作变得更简单了，几乎看起来是同步代码。
 
-本质上还是操作promise对象观察状态。
+本质上还是操作promise对象观察状态
 
+---
 
-
-await之前（需要node环境）
+使用await之前（node环境）先定义返回Promise的函数
 
 ```js
 const fs = require("fs")
@@ -23,48 +23,32 @@ const ReadFile = filePath =>{
         })
     })
 }
-const Read = path =>{
-    ReadFile(path).then((data)=>{
-        console.log(data)
-    })
-}
-Read("./data.txt")
+
+ReadFile("./data.txt").then((data)=>{
+    console.log(data)
+})
 ```
 
-用async和await。在用的时候先把回调异步的函数改成返回Promise的函数
-
-可以使用node的`require("util").promisify()`。
+用async和await
 
 ```js
-const fs = require("fs")
-const readFile = require("util").promisify(fs.readFile)
-
-const Read = async filePath => {
+const main = async () => {
     try {
-        const fr = await readFile(filePath, "utf-8")
+        const fr = await readFile("./data.txt", "utf-8")
         console.log(fr)
     } catch (err) {
         console.log('Error', err)
     }    
 }
-Read("./4.c")
+main()
 ```
 
-上述代码内部readFile其实也是返回了一个promise对象,所以可以await结果。
-
-延时输出：
+可以使用node的`require("util").promisify()`可以让特定参数的函数封装为返回promise的函数
 
 ```js
-async function timeout(ms){//延时执行函数
-	await new Promise((res,rej)=>{
-		setTimeout(res,ms)
-	})
-}
-async function Print(ms, str){//添加延时输出功能
-	await timeout(ms)
-	console.log(str)
-}
-Print(2000,"hello")
+const fs = require("fs")
+const readFile = require("util").promisify(fs.readFile)
+//await readFile(...)
 ```
 
 如果需要自己实现promisify：
@@ -81,6 +65,49 @@ function promisify(fn) {
         })
     }
 }
+```
+
+await就像是同步代码，例如：等待用户输入文件名然后读取文件的内容：
+
+获取用户的输入使用`readline.createInterface`，
+
+它不符合`require("util").promisify()`规定的特定格式所以需要自己封装
+
+```js
+const fs = require("fs")
+const readFile = require("util").promisify(fs.readFile)
+
+const { createInterface } = require("readline")
+
+const input = question => {
+    return new Promise((resolve, reject) => {
+        const readline = createInterface({
+            input: process.stdin,
+            output: process.stdout
+        })
+        readline.question(question, input => {
+            input ? resolve(input) : reject()
+            readline.close()
+        })
+    })
+}
+
+const main = async () => {
+    let filename
+    try {
+        filename = await input(`请输入文件名：./`)
+    } catch (err) {
+        console.log(`无输入`)
+        return
+    }
+    try {
+        console.log(await readFile(`./${filename}`, "utf-8"))
+    } catch (err) {
+        console.log(`读取失败：${err}`)
+    }
+}
+
+main()
 ```
 
 
@@ -103,3 +130,5 @@ Generator功能更强大，async的语义更好，各有优点。
 在node.js的执行过程可以发现：async会预编译为Generator和Promise的组合语法，而await关键字则会编译为为yield关键字
 
 也就是说async是对Generator的再次封装
+
+yiled promiseObject --> await asyncFunction()
