@@ -2,12 +2,8 @@
 
 本仓库的docs目录是我的语言基础知识的学习笔记，包含
 
-- JavaScript（es5/6+）
-- Python（3.6.8）
-
-也包含了一些数据库指令，web框架的简单知识
-
-写着写着就变成了一个教程差不多的东西了。
+- JavaScript（es6+）
+- Python（3.9+）
 
 
 
@@ -15,26 +11,26 @@
 
 本仓库的docs目录中的笔记内容被部署在了仓库的页面中：
 
-<https://nanarino.github.io/markdown-note/>
+<https://nanarino.github.io/markdown-note/>（很久才打包一次）
 
-部署的脚本在根目录的`deploy.sh`。
+打包部署的脚本在根目录的`deploy.sh`。
 
+如果克隆后本地运行 先修改配置文件(`/docs/.vuepress/config.js`)
 
+将`base: '/markdown-note/'`改为`base: '/'` 
 
-## 学习路线
+```js
+module.exports = {
+    base: '/markdown-note/',
+```
 
-1. 〖DIV〗→〖CSS3〗→〖less〗/〖sass〗/〖stylus〗
-2. 【JavaScript】→【Node】→【Koa2】→【MongoDB】
-3. 【Python】→【MySQL】→【django】→【drf】→〖Redis〗
-4. 【JavaScript】→【Vue】→〖React〗→〖Nuxt〗
-
-本笔记只记录【基础语法知识】，〖详细的框架用法〗请左转其官方文档。
+然后再按照下一段的操作打包运行👇
 
 
 
 ## page-cli-setup
 
-本文档采用vuepress展示。
+本文档采用vuepress展示。它本质是一个vue2项目。
 
 其安装依赖和本地运行的命令如下：
 
@@ -43,7 +39,7 @@ npm install
 ```
 
 
-安装依赖完成后使用如下命令使用脚手架，（不必，已写好.cmd脚本）：
+安装依赖完成后使用如下命令使用脚手架，（不必，已写好`.cmd`脚本）：
 
 ```bash
 # serve with hot reload at localhost:8080
@@ -52,8 +48,6 @@ npm run docs:dev
 # build for production with minification
 npm run docs:build
 ```
-
-For a detailed explanation on how things work, check out [docs for vuepress](https://github.com/vuejs/vuepress).
 
 
 
