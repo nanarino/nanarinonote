@@ -92,7 +92,7 @@ const input = question => {
     })
 }
 
-const main = async () => {
+void async function main(){
     let filename
     try {
         filename = await input(`请输入文件名：./`)
@@ -105,9 +105,7 @@ const main = async () => {
     } catch (err) {
         console.log(`读取失败：${err}`)
     }
-}
-
-main()
+}()
 ```
 
 
