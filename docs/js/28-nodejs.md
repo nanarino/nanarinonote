@@ -21,9 +21,14 @@ const { $ } = require('./til.js')
 new $()...
 ```
 
-而ecma最新的模块化得用mjs文件后缀以做区分 它使用import来导入。
+而ES Modules得用mjs文件后缀以做区分 它使用import from来导入。
 
+但ES Modules无法使用__dirname，得用process.cwd()代替
 
+::: danger   脚本所在目录问题
+如果js文件使用右键*打开方式*选择解释器运行会导致process.cwd定位到C:\Windows\System32    
+应该在cmd中使用命令或者选定为默认打开方式双击
+:::
 
 ## 终端输入输出
 
@@ -92,8 +97,6 @@ ecma最新 JavaScript modules规范引入 文件后缀得是`.ejs`
 ```js
 import {createInterface} from 'readline'
 ```
-
-
 
 
 

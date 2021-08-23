@@ -8,7 +8,15 @@ async叫异步函数。是ES2017新出的，这让异步操作变得更简单了
 
 本质上还是操作promise对象观察状态
 
+- async 放在函数声明之前 函数需要返回一个Promise对象 
+
+  如果不是，将会返回Promise<resolve=原Returns>
+
+- await 放在promise对象前，阻塞执行
+
 ---
+
+### 创建异步函数
 
 使用await之前（node环境）先定义返回Promise的函数
 
@@ -43,6 +51,8 @@ const main = async () => {
 main()
 ```
 
+### promisify
+
 可以使用node的`require("util").promisify()`可以让特定参数的函数封装为返回promise的函数
 
 ```js
@@ -67,7 +77,11 @@ function promisify(fn) {
 }
 ```
 
-await就像是同步代码，例如：等待用户输入文件名然后读取文件的内容：
+### 连续使用
+
+相比连续promise.then()，await就像是同步代码，
+
+例如：等待用户输入文件名然后读取文件的内容：
 
 获取用户的输入使用`readline.createInterface`，
 
@@ -110,16 +124,16 @@ void async function main(){
 
 
 
-## **async和Generator的区别**:
+## **与Generator的区别**:
 
-#### 表面区别：
+### 表面区别
 
 - async内置执行器：直接执行就可以，不需要next等其他方法 
 - async良好的语义。async表示异步函数，await需要等待后面的表达式结果结束。
 - Generator返回的是Iterator对象，async返回的是promise对象,可以后续then继续操作。
 
 
-#### 内在联系：
+### 内在联系
 
 两者都能解救回调地狱的问题，对于开发者，两者都是黑匣子。
 
@@ -130,3 +144,31 @@ Generator功能更强大，async的语义更好，各有优点。
 也就是说async是对Generator的再次封装
 
 yiled promiseObject --> await asyncFunction()
+
+
+
+## 异步生成器
+
+可以用`async function* asyncGenerator()`定义 
+
+也可以实现`Symbol.asyncIterator`接口
+
+```js
+async function* asyncGenerator() {
+  var i = 0;
+  while (i < 3) {
+    yield i++;
+  }
+}
+
+(async function() {
+  for await (num of asyncGenerator()) {
+    console.log(num);
+  }
+})();
+// 0
+// 1
+// 2
+```
+
+yield的如果不是Promise对象会被自动yield Promise<resolve=原yield>

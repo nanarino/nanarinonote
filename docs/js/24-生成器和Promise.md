@@ -10,9 +10,11 @@
 
 这个迭代器可以遍历Generator的每一个状态。
 
-### 与Iterator接口的关系
+### 与Symbol.iterator的关系
 
-Iterator是Symbol类型下的一个属性：Symbol.iterator，这是一个接口。由于Generator的状态叠加的性质，可以将对象添加可以枚举的性质。每次调用都返回它值
+Symbol.iterator，这是一个接口。
+
+由于Generator的状态叠加的性质，可以将对象添加可以枚举的性质。每次调用都返回它值
 
 ```js
 for(i of obj){console.log(obj)}

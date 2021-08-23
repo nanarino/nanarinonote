@@ -122,7 +122,7 @@ console.log(Symbol.keyFor(s3))//undefined
 
 ### 内置的`Symbol`的值
 
-ES6提供了11个内置的属性，分别是
+Symbol提供了11个内置的属性，分别是
 
 * `Symbol.hasInstance`
   * 使用`instanceOf`方法时调用此属性，判断某一对象是否是某构造函数的实例
@@ -150,14 +150,15 @@ ES6提供了11个内置的属性，分别是
   arr2[Symbol.isConcatSpreadable] = true
   arr1.concat(arr2, 5)//[1, 2, 3, 4, 5]
   ```
-* `Symbol.species` 
+* `Symbol.species`  
 * `Symbol.match`
 * `Symbol.replace`
 * `Symbol.search`
 * `Symbol.split`
 * **`Symbol.iterator`**
+  
   * 指向默认遍历方法，使用迭代器函数来遍历
-
+  
   ```js
   let obj = {0:"a", 1:"b", 2:"c", length:3}
   obj[Symbol.iterator] = function* (){
@@ -210,24 +211,20 @@ const s2 = new Set([1, 2, 3, 5])
 
 `Array.from()`方法可以传入`set`实例对象转数组。
 
-### 遍历方法
+### 枚举方法
 
-* Set数据类型有四个遍历方法，用于遍历成员。
+* Set数据类型有四个枚举方法，用于遍历成员。
 
-  * `keys`: 返回遍历的键名，等价于键值
-  * `values`: 返回遍历的键值
+  * `keys`: 返回枚举的键名，等价于键值
+  * `values`: 返回枚举的键值
   * `entries`: 返回键值对的遍历器。
   * `forEach`: 使用回调函数遍历每一个成员
 
   ```js
   let set = new Set([1, 2, 3, 4])
-  
   for(let i of set.keys()) console.log(i)//1 2 3 4
-  
   for(let i of set.values()) console.log(i)//1 2 3 4
-  
   for(let i of set.entries()) console.log(i)//[1, 1] [2, 2] [3, 3] [4, 4]
-  
   set.forEach(i=>console.log(i))//1 2 3 4
   ```
 
@@ -258,10 +255,10 @@ map.get(el)===content//true
 * `delete` 传入键名，返回布尔类型，失败是false
 * `clear` 清空`map`
 
-### 遍历方法
+### 枚举方法
 
-- `keys`: 返回遍历的键名
-- `values`: 返回遍历的键值
-- `entries`: 返回键值对的遍历器。
+- `keys`: 返回枚举的键名
+- `values`: 返回枚举的键值
+- `entries`: 返回键值对的枚举器。
 - `forEach`: 使用回调函数遍历每一个成员
 
