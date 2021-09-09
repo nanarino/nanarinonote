@@ -8,11 +8,13 @@ async叫异步函数。是ES2017新出的，这让异步操作变得更简单了
 
 本质上还是操作promise对象观察状态
 
-- async 放在函数声明之前 函数需要返回一个Promise对象 
+- async 关键字放在函数声明之前 函数需要返回一个Promise对象 
 
   如果不是，将会返回Promise<resolve=原Returns>
 
-- await 放在promise对象前，阻塞执行
+- await 关键字放在promise对象前，阻塞其执行并得到结果
+
+  await 关键字只能在async 函数内使用
 
 ---
 

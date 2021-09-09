@@ -159,7 +159,7 @@ module.exports = {
                         '31-SQL语句',
                         '32-pymssql模块',
                         '33-Django',
-                        '34-Tornado',
+                        '34-FastAPI',
                     ]
                 },
                 {
