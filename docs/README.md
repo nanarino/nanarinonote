@@ -3,7 +3,7 @@ home: true
 layout: Nanarino
 heroImage: /favicon.ico
 heroAlt: Suika
-actionText: 淦
+actionText: turn back time
 actionLink: /js/
 features:
 - title: Chunk it up
