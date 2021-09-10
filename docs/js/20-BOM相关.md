@@ -112,7 +112,7 @@ navigator.userAgent //用户本地的信息组合
 
 ## console对象
 
-window对象下面也有一个console对象，也有很多方法
+window对象下面也有一个console对象，也有很多方法（比node.js的console方法多）
 
 ```js
 console.log()//输出当前作用域的值
@@ -127,5 +127,7 @@ console.group()//小组内容输出。
 console.groupEnd()//小组内容输出关闭。
 console.time()//计时
 console.timeEnd()//计时结束
+
+console.table()//以表格输出对象
 ```
 

@@ -12,13 +12,18 @@ XML
 
 使用ajax的优点：
 
-* 页面局部刷新, 不会整体刷新, 单独的几个请求,请求的是核心数据,减少了请求数的压力
-* 带宽无压力
-* 服务器不用做太多操作只需要JSON或XML
+* 相比于默认的form标签的onsubmit提交，ajax不会刷新页面。
+* 单独的几个请求,请求的是核心数据,减少了请求数的压力
+
+ajax的请求类型和form.enctype一样需要注意
+
+除了`application/x-www-form-urlencoded`
+
+`multipart/form-data`外 ajax可以使用`application/json`
 
 
 
-### AJAX 对象的使用
+### 创建ajax对象
 
 原生的JavaScript封装了一个方法。XMLHttpRequest构造函数， 
 
@@ -54,7 +59,7 @@ xhr.onreadstatechange = function(){// 监听后台请求得状态变化
 
 
 
-### AJAX状态码
+### ajax状态码
 
 AJAX得运行是需要经过几个状态的转变的, 比如发送请求前的设置, 发送请求中, 等待服务器响应, 解析响应内容, 解析完成可以使用数据等多个阶段.
 
@@ -295,7 +300,26 @@ JavaScript只能访问和操作自己域下的资源，不能访问和操作其�
 
 
 
-## fetch和axios
+## 封装的ajax方法
+
+### jQuery
+
+```js
+$.ajax({
+    type: "POST",
+    url: location.pathname,
+    data: $("form").serialize(),
+    async: false,
+    error: function (err) {
+        alert('error',err)
+    },
+    success: function (data){
+        alert('success',data)
+    }
+})
+```
+
+### fetch
 
 fetch是es6基于Promise的ajax请求的二度封装
 
@@ -306,7 +330,9 @@ fetch(...).then(fun2)
           .catch(fun)
 ```
 
-从上边的代码可以看出，fetch用起来像jQuery一样简单，虽然还是有Callback的影子，但是看起来舒服多了
+从上边的代码可以看出，fetch用起来像`jQuery.ajax()`一样简单，虽然还是有Callback的影子，但是看起来舒服多了
+
+### axios
 
 [Axios](https://www.axios-http.cn/)是基于async和await对ajax的第三方封装   需要下载引入
 
