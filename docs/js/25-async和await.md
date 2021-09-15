@@ -101,8 +101,8 @@ const input = question => {
             input: process.stdin,
             output: process.stdout
         })
-        readline.question(question, input => {
-            input ? resolve(input) : reject()
+        readline.question(question, ipt => {
+            ipt ? resolve(ipt) : reject('')
             readline.close()
         })
     })
