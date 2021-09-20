@@ -79,9 +79,63 @@ function promisify(fn) {
 }
 ```
 
-### 连续使用
 
-相比连续promise.then()，await就像是同步代码，
+
+## 并发运行
+
+并发运行多个async函数，只需要先全部运行，需要获取结果的时候再await
+
+```js
+const asyuncfun1 = async () => new Promise((resolve, reject) => {
+    setTimeout(function () {
+        resolve(1)
+    }, 2000)
+})
+const asyuncfun2 = async () => new Promise((resolve, reject) => {
+    setTimeout(function () {
+        resolve(2)
+    }, 2000)
+})
+void async function main() {
+    task1 = asyuncfun1()
+    task2 = asyuncfun2()
+    console.log(1, await task1)
+    console.log(2, await task2)
+}()
+```
+
+除此之外await promise.all()
+
+```js
+void async function main() {
+    console.log(await Promise.all([asyuncfun1(), asyuncfun2()]))
+}()
+```
+
+ 甚至Array.forEach也是一种选择 （但是普通for循环会被await阻塞）
+
+```js
+void async function main() {
+    [asyuncfun1, asyuncfun2].forEach(async (cb)=>{
+        console.log(await cb())
+    })
+}()
+```
+
+
+
+## 继发运行
+
+继发运行只需要执行async函数后立即await即可逐个阻塞
+
+相比连续promise.then()，await就像是同步代码
+
+```js
+void async function main() {
+    await asyuncfun1()
+    await asyuncfun2()
+}()
+```
 
 例如：等待用户输入文件名然后读取文件的内容：
 
