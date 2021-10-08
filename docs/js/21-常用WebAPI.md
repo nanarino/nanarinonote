@@ -1,4 +1,6 @@
-# H5新增方法
+# 常用WebAPI
+
+
 
 ## 存储对象
 
@@ -285,9 +287,11 @@ window.navigator.getBattery().then( data => {
 })
 ```
 
-## 编辑命令
 
-类似于富文本编辑器
+
+## designMod
+
+类似于文本编辑器
 
 ```js
 const iframe = document.createElement('iframe');

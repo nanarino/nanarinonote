@@ -1,6 +1,4 @@
-# DOM方法
-
-## DOM对象
+# DOM对象
 
 DOM(Document Object Model)文档对象模型：
 

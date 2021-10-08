@@ -4,6 +4,24 @@ Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境
 
 
 
+## 官方文档
+
+本笔记只记录基础，详细请查看：
+
+<http://nodejs.cn/api/>
+
+
+
+## 常用的模块
+
+- fs模块 - 文件读写
+- events模块 - 事件触发器
+- crypto模块 - 加密
+- path模块 - 路径
+- URL模块/HTTP模块
+
+
+
 ## CommonJS规范
 
 `CommonJS`是服务器端模块的规范，`Node.js`采用了这个规范。Node.JS首先采用了js模块化的概念。
@@ -29,6 +47,8 @@ new $()...
 如果js文件使用右键*打开方式*选择解释器运行会导致process.cwd定位到C:\Windows\System32    
 应该在cmd中使用命令或者选定为默认打开方式双击
 :::
+
+
 
 ## 终端输入输出
 
@@ -100,14 +120,6 @@ import {createInterface} from 'readline'
 
 
 
-## 官方文档
-
-本笔记只记录基础，详细请查看：
-
-<http://nodejs.cn/api/>
-
-
-
 ## 事件轮询机制
 
 异步优先级：DLE观察者 > I/O观察者 > check观察者
@@ -143,16 +155,6 @@ setTimeout(()=>{
 ```
 
 思考：上面代码打印12345的顺序是？
-
-
-
-## 常用的模块
-
-- fs模块 - 文件读写
-- events模块 - 事件触发器
-- crypto模块 - 加密
-- path模块 - 路径
-- URL模块/HTTP模块
 
 
 
