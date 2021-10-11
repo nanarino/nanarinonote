@@ -1,5 +1,5 @@
 module.exports = {
-    base: '/markdown-note/',
+    base: '/nanarinonote/',
     evergreen: true,
     locales: {
         '/': {

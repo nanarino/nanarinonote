@@ -1,45 +1,41 @@
-# markdown-note: docs
+# nanarinonote
 
-本仓库的docs目录是我的语言基础知识的学习笔记，包含
+学习笔记，包含
 
-- JavaScript（es6+）
-- Python（3.9+）
+- JavaScript
+- Python
 
 
 
 ## page-build
 
-本仓库的docs目录中的笔记内容被部署在了仓库的页面中：
+仓库的页面（很久才打包一次）
 
-<https://nanarino.github.io/markdown-note/>（很久才打包一次）
+<https://nanarino.github.io/nanarinonote/>
 
-打包部署的脚本在根目录的`deploy.sh`。
+打包部署的脚本    `/deploy.sh`
 
-如果克隆后本地运行 先修改配置文件(`/docs/.vuepress/config.js`)
+配置文件    `/docs/.vuepress/config.js`
 
-将`base: '/markdown-note/'`改为`base: '/'` 
+本地运行可以将`base: '/nanarinonote/'`改为`base: '/'` 
 
 ```js
 module.exports = {
-    base: '/markdown-note/',
+    base: '/nanarinonote/',
 ```
-
-然后再按照下一段的操作打包运行👇
 
 
 
 ## page-cli-setup
 
-本文档采用vuepress展示。它本质是一个vue2项目。
-
-其安装依赖和本地运行的命令如下：
+安装依赖
 
 ```bash
 npm install
 ```
 
 
-安装依赖完成后使用如下命令使用脚手架，（不必，已写好`.cmd`脚本）：
+脚手架命令（或运行`docs_dev.cmd` `docs_build.cmd`）：
 
 ```bash
 # serve with hot reload at localhost:8080
@@ -51,13 +47,12 @@ npm run docs:build
 
 
 
-## 笔记参考
+## 参考
 
-[Eva-J](https://www.cnblogs.com/Eva-J/p/7277026.html)
+- [Eva-J](https://www.cnblogs.com/Eva-J/p/7277026.html)
+- [李文周](https://www.cnblogs.com/liwenzhou/p/9959979.html)
 
-[李文周](https://www.cnblogs.com/liwenzhou/p/9959979.html)
+- [GGGG-XXXX](https://www.cnblogs.com/GGGG-XXXX/p/9564651.html)
 
-[GGGG-XXXX](https://www.cnblogs.com/GGGG-XXXX/p/9564651.html)
-
-[Alex](https://www.cnblogs.com/alex3714/articles/5760582.html)
+- [Alex](https://www.cnblogs.com/alex3714/articles/5760582.html)
 
