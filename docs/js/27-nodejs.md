@@ -22,9 +22,37 @@ Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境
 
 
 
-## CommonJS规范
+## npm包管理器
 
-`CommonJS`是服务器端模块的规范，`Node.js`采用了这个规范。Node.JS首先采用了js模块化的概念。
+初始化nodejs项目
+
+```shell
+npm init
+```
+
+安装server模块（例）包用于开发
+
+```shell
+npm install server -D
+```
+
+模块以脚本命令在cmd运行server模块包
+
+```shell
+npx server -p 8080
+```
+
+本地安装开发中的common包
+
+```shell
+npm link common
+```
+
+
+
+## CJS模块
+
+`CommonJS`是nodejs模块默认使用的规范。Node.JS首先采用了js模块化的概念。
 
 根据`CommonJS`规范，一个单独的文件就是一个模块。每一个模块都是一个单独的作用域，也就是说，在该模块内部定义的变量，无法被其他模块读取，除非定义为`global`对象的属性。
 
