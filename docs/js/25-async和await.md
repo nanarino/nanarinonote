@@ -1,31 +1,46 @@
 # async和await
 
-
-
-## async和await
-
-async叫异步函数。是ES2017新出的，这让异步操作变得更简单了，几乎看起来是同步代码。
+async function叫异步函数。是ES2017新出的，这让异步操作变得更简单了，几乎看起来是同步代码
 
 本质上还是操作promise对象观察状态
 
-- async 关键字放在函数声明之前 函数需要返回一个Promise对象 
+## 创建异步函数
 
-  如果不是，将会返回Promise<resolve=原Returns>
-
-- await 关键字放在promise对象前，阻塞其执行并得到结果
-
-  await 关键字只能在async 函数内使用
-
----
-
-### 创建异步函数
+### 普通方式
 
 使用await之前（node环境）先定义返回Promise的函数
 
 ```js
 const fs = require("fs")
 //读取文件的操作
-const ReadFile = filePath =>{
+const ReadFile = filePath => new Promise((res,rej)=>{
+    fs.readFile(filePath, "utf-8", (err, data)=>{
+        if(err) rej(err)
+        res(data)
+    })
+})
+```
+
+.then运行
+
+```js
+ReadFile("./data.txt").then((data)=>{
+    console.log(data)
+})
+```
+
+用await代替.then
+
+```js
+console.log(await ReadFile("./data.txt", "utf-8"))
+```
+
+### async关键字方式
+
+在函数声明或表达式前加上async关键字即可
+
+```js
+async function ReadFile(){
     return new Promise((res,rej)=>{
         fs.readFile(filePath, "utf-8", (err, data)=>{
             if(err) rej(err)
@@ -33,29 +48,21 @@ const ReadFile = filePath =>{
         })
     })
 }
-
-ReadFile("./data.txt").then((data)=>{
-    console.log(data)
-})
 ```
 
-用async和await
+- async 关键字放在函数声明之前，函数需要返回一个Promise对象 
 
-```js
-const main = async () => {
-    try {
-        const fr = await readFile("./data.txt", "utf-8")
-        console.log(fr)
-    } catch (err) {
-        console.log('Error', err)
-    }    
-}
-main()
-```
+  如果不是，将会**自动帮你包装成`Promise<resolves>`**
 
-### promisify
+- await 关键字放在promise对象前，阻塞其执行并得到结果
 
-可以使用node的`require("util").promisify()`可以让特定参数的函数封装为返回promise的函数
+  await 关键字**只能在async 函数内使用**
+
+
+
+### promisify包装
+
+可以使用node的`require("util").promisify()`可以让特定参数的函数封装为异步函数
 
 ```js
 const fs = require("fs")
@@ -68,7 +75,7 @@ const readFile = require("util").promisify(fs.readFile)
 ```js
 function promisify(fn) {
     return function () {
-        var args = Array.prototype.slice.call(arguments);//=[...arguments]
+        var args = Array.prototype.slice.call(arguments);//[...arguments]
         return new Promise(function (resolve) {
             args.push(function (result) {
                 resolve(result);
@@ -86,12 +93,12 @@ function promisify(fn) {
 并发运行多个async函数，只需要先全部运行，需要获取结果的时候再await
 
 ```js
-const asyuncfun1 = async () => new Promise((resolve, reject) => {
+const asyuncfun1 = () => new Promise((resolve, reject) => {
     setTimeout(function () {
         resolve(1)
     }, 2000)
 })
-const asyuncfun2 = async () => new Promise((resolve, reject) => {
+const asyuncfun2 = () => new Promise((resolve, reject) => {
     setTimeout(function () {
         resolve(2)
     }, 2000)
@@ -99,8 +106,8 @@ const asyuncfun2 = async () => new Promise((resolve, reject) => {
 void async function main() {
     task1 = asyuncfun1()
     task2 = asyuncfun2()
-    console.log(1, await task1)
-    console.log(2, await task2)
+    console.log(await task1)
+    console.log(await task2)
 }()
 ```
 
