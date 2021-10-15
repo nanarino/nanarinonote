@@ -31,7 +31,7 @@ DOM(Document Object Model)文档对象模型：
 
 
 
-## 获取元素的方法
+## 获取元素
 
 ```js
 document.getElementById //通过ID获取某个元素
@@ -52,7 +52,7 @@ let arr2 = document.querySelectorAll(".item")
 //arr2 NodeList
 ```
 
-#### HTMLCollection和NodeList的异同:
+### HTMLCollection和NodeList的异同
 
 - 都是**DOM节点的集合**，两者都属于Collections范畴，但是NodeList的范围要更广泛一点，它可以包含节点对象和文本对象。HTMLCollection比NodeList多了一个namedItem方法，其他方法保持一致
 
@@ -84,9 +84,11 @@ nli.length//4	HTMLCollection  会动态改变
 
 
 
-## DOM中的增删改查
+## 增删改查
 
-### 增加：
+### 增
+
+`innerHTML+=`
 
 ```js
 box.innerHTML += "BLABLA"
@@ -115,9 +117,12 @@ box.innerHTML += "BLABLA"
 
 ---
 
-**正确的方式**： 
+正确的方式
 
-DOM的生成节点的方式和添加元素的方法：
+- `createElement`    生成元素
+- `createTextNode`    生成文本
+- `appendChild`    作为子节点放置
+- `insertBefore`    移动子节点到其他子节点之前
 
 ```js
 let li = document.createElement("li")//生成一个li的标签节点。
@@ -133,9 +138,9 @@ document.body.appendChild(li)//放置
 这种添加方式只是对DOM树的某一个枝叶做修改，不会重新种树。    
 但是枝叶的修改也是DOM操作，也会有渲染重排的问题。
 
-**`Image()`**构造函数将会创建一个新的[`HTMLImageElement`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLImageElement)实例。
+- `Image()`构造函数将会创建一个新的[`HTMLImageElement`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLImageElement)实例。
 
-它的功能等价于 [`document.createElement('img')`](https://developer.mozilla.org/zh-CN/docs/Web/API/Document/createElement)
+  它的功能等价于 [`document.createElement('img')`](https://developer.mozilla.org/zh-CN/docs/Web/API/Document/createElement)
 
 ```js
 var myImage = new Image(100, 200);
@@ -145,9 +150,9 @@ document.body.appendChild(myImage);
 
 
 
-### 删除
+### 删
 
-同样也不要`.innerHTML`。
+同样也不要`.innerHTML`。删除子使用`removeChild`
 
 ```html
 <ul class='list'>
@@ -162,17 +167,22 @@ let list = document.querySelector(".list")
 list.removeChild(ali[0])// 从父元素中删除节点。必须是父子关系。
 ```
 
-修改 = 增加 + 删除
+
+
+### 改
+
+完全修改 = 删除+增加
 
 ```js
 list.replaceChild(document.createElement("a"), ali[0])//选中儿子ali[0]替换成新建的a元素节点
-
 list.relaceWith(document.createElement("li"))// 将自己替换成li元素节点
 ```
 
+修改顺序用`insertBefore` 移动子节点到其他子节点之前
 
 
-### 查询
+
+### 查
 
   查询元素。可以通过绝对位值关键字符查询。也可以通过相对位值查询父节点，相邻节点，子节点查询元素。
 

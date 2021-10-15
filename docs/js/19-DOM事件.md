@@ -20,19 +20,6 @@ window.onclick = function(e){
 
 绑定点击事件可以用（对象.`on`+事件名）的方式绑定事件，然后挂载上处理函数接受事件对象来进行处理。
 
-事件绑定的特点：
-
-```js
-document.onclick = function(){
-    console.log(1)
-}
-//点击文档 打印1
-document.onclick = function(){
-    console.log(2)
-}
-//点击文档 打印2
-```
-
 - 事件绑定同一个对象只能给同一个事件绑定唯一一个事件处理函数.如果绑定第二个,第一个会被清除掉.因为本质上只是给对象的on事件属性上添加了一个函数。
 - 事件绑定函数的this指向当前调用(触发)事件的主体对象。
 - 在绑定事件之前, 事件属性的处理函数默认是null。
@@ -120,42 +107,6 @@ li.removeEventListener("click", function(){console.log(1)})
 
 在低版本的IE浏览器中使用: `attachEvent`和`detachEvent` 
 
-```js
-function(){//不需要传入事件对象
-    var e = window.event//低版本IE中的事件对象
-    console.log(this===li) //true
-}
-li.attachEvent("onclick", fn)
-//添加
-li.detachEvent("onclick", fn)
-//删除
-```
-
-这里就有针对不同浏览器的兼容性封装,我们可以封装一个事件添加和删除的公共方法.
-
-```js
-let EventUtil = {
-    addHandle: function(el, type, handler){
-        if(el.addEventListener){
-            el.addEventListener(type, handler)
-        }else if(el.attachEvent){//attachEvent
-            el.attachEvent("on"+type, handler)
-        }else{// 
-            el["on"+type] = handler
-        }
-    },
-    removeHandle: function(el, type, handler){
-        if(el.removeEventListener){
-            el.removeEventListener(type, handler)
-        }else if(el.deleteEvent){
-            el.detachEvent("on"+type, handler)
-        }else{
-            el.["on"+type] = null
-        }
-    }
-}
-```
-
 
 
 ## 事件委托
@@ -166,7 +117,6 @@ let EventUtil = {
 let list = document.querySelector(".list")
 let ali = document.querySelectorAll(".list>li")
 function fn(e){
-    //handle it
     console.log(e.target)// 这是事件源（事件对象的触发主体对象）
 }
 list.addEventListener("click", fn)
@@ -228,8 +178,6 @@ list.addEventListener("click", fn)
 ## 默认行为
 
 默认行为： 指的是浏览器的默认行为。
-
-当前页面中什么都没写的时候，点击某些标签或者右键或者滚动的时候，都会触发相应的事件，都会出现相应的效果。这就是浏览器的默认行为。
 
 有时候我们需要阻止默认行为，使用`e.preventDefault()`，这句不兼容，IE8以下的浏览器会不生效。在IE678的浏览器阻止默认行为的方法：`e.returnValue = false`
 
@@ -319,102 +267,27 @@ btn.addEventListener("click", function(e){
 | srcElement   | 元素   | 事件目标，等同于target                                       |
 | type         | 字符串 | 被触发事件的类型                                             |
 
-浏览器事件对象的兼容性：
+### 鼠标事件
 
-之前我们写了事件绑定的兼容性写法，现在我们完成事件对象的整合。
+双击会触发两次单击 单击也会继而触发按下抬起
 
-```js
-let EventUtil = {
-    addHandler: function(){
-        //见前文
-    },
-    removeHandle: function(){
-        //见前文
-    }
-    getEvent: function(e){
-        return e || window.event
-    },
-    getTarget: function(e){
-        return e.target || e.srcElement
-    },
-    preventDefault: function(e){
-        if(e.preventDefault){
-            e.preventDefault()
-        }else{
-            e.returnValue = false
-        }
-    },
-    stopPropagation: function(e){
-        if(e.stopPropagation){
-            e.stopPropagation()
-        }else{
-            e.cancelBabulle = true
-        }
-    }
-}
-```
+即使是鼠标事件 它的e.shiftKey和e.ctrlKey也能判断热键
 
-**事件类型**：
+表单元素的默认行为：会自动捕获按钮的点击来触发onsubmit
 
-- UI事件，当用户于页面上的元素交互的时候触发
-- 鼠标事件，当用户获得或失去焦点的时候触发 如`onclick`，`ondoubleclick`
-- 滚动事件，当使用鼠标滚轮（或类似设备）的时候触发
-- 文本事件，当输入文本时触发
-- 键盘事件，当用户通过键盘在页面上执行操作的时候触发
-- 变动事件，当底层DOM结构发生变化时触发
+### 键盘事件
 
-**鼠标和键盘触发是分状态的.**
+如果被绑定到具体标签上，则需要聚焦到当前目标，没有聚焦的不能触发，一般写到input标签中或者document中。input标签的键盘事件推荐使用`oninput`
 
-```js
-document.addEventListener("mousedown", function(){
-    console.log("鼠标按下")//按下触发事件
-})
-document.addEventListener("mouseup", function(){
-    console.log("鼠标抬起")//在此处抬起鼠标触发事件，和在哪按下没关系
-})
-document.addEventListener("click", function(){
-    console.log("鼠标点击")//在此处按下并且抬起鼠标触发事件，和时长没关系，在抬起鼠标瞬间触发。
-})
-```
+keypress在ie和edge浏览器中只有回车空格触发，且其他浏览器中(`alt` `ctrl` `shift`等不会输入的)是不会触发`keypress`的。
 
-**键盘事件:**
+### UI事件
 
-如果被绑定到具体标签上，则需要聚焦到当前目标，没有聚焦的不能触发，一般写到input标签中或者document中，或者window。
-
-在input标签中有输入法的时候也不能触发，只能写到`onchange`事件
-
-```js
-input.addEventListener("keydown", function(e){//按下触发，长按连续触发
-    console.log("keydown")
-})
-input.addEventListener("keyup", function(e){//每次抬起触发，没有长按效果
-    console.log("keyup")
-})
-input.addEventListener("keypress", function(e){//按下触发，和keydown类似
-    console.log("keypress")//ie和edge包括chromium内核的edge只有回车空格触发
-})
-```
-
-其中，`keydown`事件和`keypress`事件在监输入的时候不能获取到实时的输入内容，会少最后一位，只有`keyup`可以获取。
-
-并且`keydown`的本质是监听按下事件，任何按键都能触发，但是`keypress`是监听输入。只有当用户有输入的时候才会触发，也就是说(`alt` `ctrl` `shift`等不会输入的)是不会触发`keypress`的。
-
-其中函数内部接受的参数e是事件对象，里面可以找寻到按键的信息等。
-
-**UI事件:**
-
-当页面加载完成的`load`事件，比如window和img的加载都会触发`load`事件
+当页面加载完成的`load`事件，比如window，img，script的加载都会触发`load`事件
 
 ```js
 window.onload = function(){
     console.log("页面加载成功")
-}
-console.log(1)//有顺序
-```
-
-```js
-img.onload = function(){
-    console.log("图片加载成功")
 }
 ```
 
@@ -425,11 +298,9 @@ img.onload = function(){
 节流：给事件设置只能触发一次，每隔一段时间重置使用次数。    
 防抖：给事件设置冷却时间，冷却时间未到时触发会重置冷却时间。
 
+### 滚轮事件
 
-
-## 兼容滚轮事件
-
-`onscroll` 滚动事件是监听浏览器的滚动条，只要滚动条的滑块发生变化，就会触发。
+`onscroll` 滚动事件是监听浏览器的滚动条，只要滚动条的滑块发生变化，就会触发。（火狐需要另外处理）
 
 ```js
 window.onscroll = function(e){//监听滚动位值发生变化
@@ -442,68 +313,28 @@ window.onscroll = function(e){//监听滚动位值发生变化
 window.onmousewheel = function(e){//监听鼠标中键滑轮滚动，不监听滚动条拖拽
     console.log("scrolling~")
     e.preventDefault() //这里阻止了默认的滚动事件
-    //但是onmousewheel不兼容火狐，在火狐里要使用DOMMouseScroll
-    //DOMMouseScroll也只支持火狐。并且只支持DOM2级事件。
+    //火狐用DOMMouseScroll也只支持火狐。并且只支持DOM2级事件。
 }
 ```
 
-在`onmousewheel`滚动事件中有属性: `deltaX`和`deltaY`表示x方向和y方向的滚动差值。下和右为正。
+### drag事件
 
-兼容处理： 
+拖拉（drag）指的是，用户在某个对象上按下鼠标键不放，拖动它到另一个位置，然后释放鼠标键，将该对象放在那里。
 
-1. 确定浏览器
-2. 确定绑定方式
+拖拉的对象有好几种，包括元素节点、图片、链接、选中的文字等等。在网页中，除了元素节点默认不可以拖拉，其他（图片、链接、选中的文字）都是可以直接拖拉的。为了让元素节点可拖拉，可以将该节点的`draggable`属性设为`true`。
 
-```js
-function mouseWheel(obj, cb, bool){
-    let type = (obj.onmousewheel === null)?"mousewheel":"DOMMouseScroll"
-    //对火狐浏览器判断
-    obj.addEventListener?obj.addEventListener(type, cb, bool):obj.attachEvent("on"+type, cb, bool)
-}
+```html
+<div draggable="true">
+  此区域可拖拉
+</div>
 ```
 
-继续处理兼容性问题。    
-目标： 获取滚动方向和滚动的值。    
-关于滚动方向和滚动的值也需要统一。
+当元素节点或选中的文本被拖拉时，就会持续触发拖拉事件，包括以下一些事件。（火狐需要另外处理）
 
-```js
-function wheel(e, d){
-    if(d > 0 ){
-           console.log("向 上 滚动了" + d)
-       }else{
-           console.log("向 下 滚动了" + d)
-       }
-       return false;
-}
-mouseWheel(document,wheel);
-function mouseWheel(dom,eFn){
-    //真正的事件函数,用来处理统一的值
-    function fn(e){
-        e = e || window.event;
-        //滚动方向和数值保持一致，向上是正1，向下是-1
-        var direction = e.wheelDelta / 120 || -e.detail / 3;
-           if(eFn.call(dom, e, direction) === false){
-               if(dom.addEventListener){
-                   e.preventDefault();
-               }else{
-                   e.returnValue = false;//阻止默认事件
-               }
-           }//改变函数的this指向
-    }
-    var type;//事件名称
-    if(dom.onmousewheel === null){
-        //主流和IE
-        type = "mousewheel";
-    }else{
-        //火狐
-        type = "DOMMouseScroll"; 
-    }
-    if(dom.addEventListener){
-        dom.addEventListener(type, fn, false);
-    }else{
-        dom.attachEvent("on"+type,fn);
-    }
-}
-// 也比较重要, 实际
-```
-
+- `drag`：拖拉过程中，在被拖拉的节点上持续触发（相隔几百毫秒）。
+- `dragstart`：用户开始拖拉时，在被拖拉的节点上触发，该事件的`target`属性是被拖拉的节点。通常应该在这个事件的监听函数中，指定拖拉的数据。
+- `dragend`：拖拉结束时（释放鼠标键或按下 ESC 键）在被拖拉的节点上触发，该事件的`target`属性是被拖拉的节点。它与`dragstart`事件，在同一个节点上触发。不管拖拉是否跨窗口，或者中途被取消，`dragend`事件总是会触发的。
+- `dragenter`：拖拉进入当前节点时，在当前节点上触发一次，该事件的`target`属性是当前节点。通常应该在这个事件的监听函数中，指定是否允许在当前节点放下（drop）拖拉的数据。如果当前节点没有该事件的监听函数，或者监听函数不执行任何操作，就意味着不允许在当前节点放下数据。在视觉上显示拖拉进入当前节点，也是在这个事件的监听函数中设置。
+- `dragover`：拖拉到当前节点上方时，在当前节点上持续触发（相隔几百毫秒），该事件的`target`属性是当前节点。该事件与`dragenter`事件的区别是，`dragenter`事件在进入该节点时触发，然后只要没有离开这个节点，`dragover`事件会持续触发。
+- `dragleave`：拖拉操作离开当前节点范围时，在当前节点上触发，该事件的`target`属性是当前节点。如果要在视觉上显示拖拉离开操作当前节点，就在这个事件的监听函数中设置。
+- `drop`：被拖拉的节点或选中的文本，释放到目标节点时，在目标节点上触发。注意，如果当前节点不允许`drop`，即使在该节点上方松开鼠标键，也不会触发该事件。如果用户按下 ESC 键，取消这个操作，也不会触发该事件。该事件的监听函数负责取出拖拉数据，并进行相关处理。
