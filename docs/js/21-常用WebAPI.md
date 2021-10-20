@@ -22,7 +22,9 @@ BOM提供了 `sessionStorage` （会话存储） 和 `localStorage`（本地存�
 
 ```js
 encodeURI()//编码 str→uri
+encodeURIComponent()//额外编码;,/?:@&=+$#
 decodeURI()//解码 uri→str
+decodeURIComponent()//解码;,/?:@&=+$#
 atob()//解码 base64→str
 btoa()//编码 str→base64
 ```
@@ -190,13 +192,24 @@ function base64(data, type = "text/plain") {
 
 ## URLSearchParams
 
-`URLSearchParams` 定义了一些实用的方法来处理 URL 的查询字符串
+`URLSearchParams` 定义了一些实用的方法来处理 URL 的查询字符串。nodejs中也支持。
+
+解析当前页面的查询参数location.search
 
 ```js
 new URLSearchParams(location.search).get('pageSize')
 ```
 
-nodejs中也支持
+URLSearchParams是个允许重复的字典对象，其他常用方法：
+
+- get(key)    获取第一个key的value
+- set(key,value)    设置key的唯一value
+- getAll(key)    获取key所有的value
+- append(key,value)    追加设置key的value
+- toString    序列化为查询参数
+- keys/values    键/值迭代器
+
+值得注意的是 value设置后会自动`encodeURIComponent`
 
 ```js
 const data = new URLSearchParams()
