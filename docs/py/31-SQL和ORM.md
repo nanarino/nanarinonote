@@ -223,7 +223,7 @@ cur.callproc('FindPerson', ('Jane Doe',))
 
 不用关注底层的数据库访问细节，注意力关注到业务逻辑层；有效防止**sql注入**。
 
-![](../.vuepress/public/img/orm.webp)
+![](../.vuepress/public/img/orm.jpg)
 
 python主流的 ORM 框架：
 
@@ -232,7 +232,7 @@ python主流的 ORM 框架：
 - peewee
 - Tortoise（异步）
 
-这里以[SQLALchemy]([SQLAlchemy文档 — SQLAlchemy 1.4 Documentation (osgeo.cn)](https://www.osgeo.cn/sqlalchemy/))为例
+这里以[SQLALchemy](https://www.osgeo.cn/sqlalchemy/)为例
 
 sqlalchemy分为两个部分 
 
