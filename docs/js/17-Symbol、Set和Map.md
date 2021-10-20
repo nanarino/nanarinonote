@@ -136,6 +136,7 @@ Symbol提供了11个内置的属性，分别是
   "123" instanceof ZeroEnd//false
   "1230" instanceof ZeroEnd//true
   ```
+  
 * `Symbol.isConcatSpreadable`
 
   * 作为数组连接的时候是否允许展开，默认可以
@@ -150,15 +151,21 @@ Symbol提供了11个内置的属性，分别是
   arr2[Symbol.isConcatSpreadable] = true
   arr1.concat(arr2, 5)//[1, 2, 3, 4, 5]
   ```
+  
 * `Symbol.species`  
+
 * `Symbol.match`
+
 * `Symbol.replace`
+
 * `Symbol.search`
+
 * `Symbol.split`
+
 * **`Symbol.iterator`**
-  
-  * 指向默认遍历方法，使用迭代器函数来遍历
-  
+
+  指向默认遍历方法，使用迭代器函数来遍历
+
   ```js
   let obj = {0:"a", 1:"b", 2:"c", length:3}
   obj[Symbol.iterator] = function* (){
@@ -171,8 +178,26 @@ Symbol提供了11个内置的属性，分别是
       console.log(i)//"a" "b" "c"
   }
   ```
+
 * `Symbol.toPrimitive`
+
 * `Symbol.toStringTag`
+
+  内置的 [`Object.prototype.toString()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/toString) 方法会去读取这个返回
+
+  ```js
+  //基本类型即便没有 toStringTag 属性，也能被 toString() 方法识别并返回
+  Object.prototype.toString.call([1, 2]);    //"[object Array]"
+  //非基本类型需要有toStringTag
+  ({}).toString.call(function* () {}); //"[object GeneratorFunction]"
+  //自己的类需要自己定义[Symbol.toStringTag]接口
+  class ValidatorClass {
+    get [Symbol.toStringTag]() {
+      return "Validator";
+    }
+  }
+  ```
+
 * `Symbol.unscopables`
 
 

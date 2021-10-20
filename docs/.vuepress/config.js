@@ -31,7 +31,7 @@ module.exports = {
                         '',
                         '1-初识javascript',
                         '2-数据类型伊始',
-                        '3-函数和自定义属性',
+                        '3-函数和对象属性',
                         '4-流程控制',
                         '5-运算符和类型转换'
                     ]
@@ -50,7 +50,7 @@ module.exports = {
                     title: '对象和方法',
                     children: [
                         '11-字符串和数组',
-                        '12-解构赋值',
+                        '12-解构赋值和序列化',
                         '13-数学对象和日期对象',
                         '14-对象方法扩展',
                         '15-正则对象',
@@ -155,18 +155,9 @@ module.exports = {
                 {
                     title: 'WEB相关',
                     children: [
-                        '31-SQL语句',
-                        '32-pymssql模块',
-                        '33-Django',
-                        '34-FastAPI',
-                    ]
-                },
-                {
-                    title: '杂项模块',
-                    children: [
-                        '35-Tkinter模块',
-                        '36-PyInstaller模块',
-                        '37-PyAutoGUI模块',
+                        '31-SQL和ORM',
+                        '32-Django',
+                        '33-FastAPI',
                     ]
                 },
             ],

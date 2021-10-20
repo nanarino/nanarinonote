@@ -119,7 +119,17 @@ void async function main() {
 }()
 ```
 
- 甚至Array.forEach也是一种选择 （但是普通for循环会被await阻塞）
+使用for await of可以保证顺序
+
+```js
+void async function main(){
+    for await(let item of [asyuncfun2(), asyuncfun1()]) {
+        console.log(item)
+    }
+}()
+```
+
+甚至Array.forEach也是一种选择 （但是普通for循环会被await阻塞）
 
 ```js
 void async function main() {

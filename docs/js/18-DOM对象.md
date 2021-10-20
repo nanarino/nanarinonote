@@ -4,11 +4,9 @@ DOM(Document Object Model)文档对象模型：
 
 * 文档对象模型是一个树形结构，类似于家谱树
 
-  html标签里面包裹了所有的文档内容，是**根节点**，整个html表示整个文档。
+  html标签是**根节点**，整个html表示整个文档。
 
-  html节点内部通常有两个同级节点head和body，
-
-  它们都是html的**子节点**。html是它们的**父亲节点（parent）**，它们互为**兄弟节点**。
+  head和body是html的**子节点**。html是它们的**父亲节点（parent）**，它们互为**兄弟节点**。
 
   这样一层一层的关系就是**节点树**。各个标签在页面中都是**元素节点（element node）**
 
@@ -16,18 +14,9 @@ DOM(Document Object Model)文档对象模型：
 
   * 元素节点（element node）
 
-    文档对象模型中的标签就是最基本的元素节点。它们层层嵌套形成整个页面。
-
   * 文本节点（text node）
 
-    DOM内的文本为文本节点。文本节点有的被包含在元素节点中的，比如p标签内部的文字。
-
   * 属性节点（attribute node）
-
-    属性节点从属于元素。
-
-    比如`<input type='radio'>`其中type='radio'是元素节点p的属性节点。
-
 
 
 
@@ -48,38 +37,8 @@ querySelector,querySelectorAll//静态获取元素
 ```js
 let arr1 = document.getElementsByClassName("item")
 let arr2 = document.querySelectorAll(".item")
-//arr1 HTMLCollection
-//arr2 NodeList
-```
-
-### HTMLCollection和NodeList的异同
-
-- 都是**DOM节点的集合**，两者都属于Collections范畴，但是NodeList的范围要更广泛一点，它可以包含节点对象和文本对象。HTMLCollection比NodeList多了一个namedItem方法，其他方法保持一致
-
-- `HTMLCollection`是以节点为元素的列表，可以凭借索引、节点名称、节点属性来对独立的节点进行访问。HTML DOM中的Collections是实时变动的，当原始文件变化，Collections也会随之发生变化。
-
-- `NodeList`返回节点的有序集合，DOM中的`NodeList`也是实时变动的
-
-- Node是一个基础类型，document, element, text, comment, documentFragment等都继承于Node. 在这篇文章最开始的测试中`NodeList`结果中有非常多的`text`，其实element, text, comment都是Node的子类，可以将它们视为：**elementNode**, **textNode**以及**commentNode**.平时在DOM中最常用的Element对象，其本质就是elementNode.
-
-
-```html
-<ul class="box">
-   <li class="item"></li>
-   <li class="item"></li>
-   <li class="item"></li>
-</ul>
-```
-
-```js
-let box = document.querySelector(".box")
-let qli = document.querySelectorAll(".item")
-let cli = document.getElementsByClassName("item")
-let nli = document.getElementsByTagName("li")
-box.innerHTML+=`<li class="item"></li>`//添加元素
-qli.length//3	NodeList  不会动态改变
-cli.length//4	HTMLCollection  会动态改变(相当于记录了一个获取方式)
-nli.length//4	HTMLCollection  会动态改变
+//arr1 HTMLCollection  会动态改变(相当于记录了一个获取方式)
+//arr2 NodeList  不会动态改变
 ```
 
 
@@ -90,30 +49,12 @@ nli.length//4	HTMLCollection  会动态改变
 
 `innerHTML+=`
 
-```js
-box.innerHTML += "BLABLA"
-```
-
-将box内部的DOM节点转换成字符串，然后字符串添加内容，然后浏览器重新渲染。重新生成DOM结构。等价于重绘和重排。缺点：
+将内部的DOM节点转换成字符串，然后字符串添加内容，然后浏览器重新渲染。重新生成DOM结构。等价于重绘和重排。缺点：
 
 1. 增加浏览器渲染不必要的开销 
 
-   ```js
-   for(let i = 0; i < 100; i++){
-       box.innerHTML+=`<li class="item">${i}</li>`
-   }
-   //此时浏览器重写了100次box的内部结构，
-   //每次重写都会重新渲染一次，等价于加载了100次页面
-   let str =""
-   for(let i = 0; i < 100; i++){
-       str+=`<li class="item">${i}</li>`
-   }
-   box.innerHTML+=str//两段代码效率完全不同
-   ```
+2. 原先的节点绑定的事件将会消失，无论是不是动态获取元素。
 
-2. 原先的节点绑定的事件将会消失。
-
-   无论是不是动态获取元素。
 
 ---
 
@@ -121,7 +62,7 @@ box.innerHTML += "BLABLA"
 
 - `createElement`    生成元素
 - `createTextNode`    生成文本
-- `appendChild`    作为子节点放置
+- `appendChild`    作为子节点放置，已在页面中的节点会在原位置消失
 - `insertBefore`    移动子节点到其他子节点之前
 
 ```js
@@ -178,7 +119,7 @@ list.replaceChild(document.createElement("a"), ali[0])//选中儿子ali[0]替换
 list.relaceWith(document.createElement("li"))// 将自己替换成li元素节点
 ```
 
-修改顺序用`insertBefore` 移动子节点到其他子节点之前
+修改顺序用`insertBefore` 移动子节点到其他子节点之前。 也可以使用`appendChild`  
 
 
 
@@ -279,16 +220,14 @@ li.previousElementSibing //前一个元素节点
 
 * 节点对象的继承关系。
 
-任何一个节点都是对象，原型链的终点都是Object。那继承关系是什么呢？在chrome浏览器可以测试
-
 ```js
 let temp = document.createElement("div")// div标签节点
-temp.__proto__ //HTMLDivElement:div构造函数的原型，上面有div节点独有的方法
-temp.__proto__.__proto__ //HTMLCollection:html元素节点构造函数的原型，节点的共有性质都在这
-temp.__proto__.__proto__.__proto__ //Element:本质上和Document同级都是Node下面的一个元素
-temp.__proto__.__proto__.__proto__.__proto__ //Node:所有节的构造函数的原型，存放节点基础方法
-temp.__proto__.__proto__.__proto__.__proto__.__proto__ //EventTarget:事件对象的构造函数的原型
-temp.__proto__.__proto__.__proto__.__proto__.__proto__.__proto__ //Object的原型
+temp.__proto__ //HTMLDivElement
+temp.__proto__.__proto__ //HTMLCollection
+temp.__proto__.__proto__.__proto__ //Element
+temp.__proto__.__proto__.__proto__.__proto__ //Node
+temp.__proto__.__proto__.__proto__.__proto__.__proto__ //EventTarget
+temp.__proto__.__proto__.__proto__.__proto__.__proto__.__proto__ //Object
 ```
 
 

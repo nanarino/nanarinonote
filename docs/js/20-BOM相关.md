@@ -55,6 +55,7 @@ scrollX, scrollY 表示浏览器的滚动的位置
     * scrollTo(x, y)偏移到多少的位值
     * confirm() 确认
     * prompt() 输入信息并返回
+    * atob / btoa 字符串二进制处理
 
 
 
@@ -68,17 +69,29 @@ console.dir(window.location)
 
 * host： 主机名加端口
 * hostname: 主机名不加端口
-* port：端口， 一台服务器有很多的入口，每个入口都有不同的处理方法和访问权限，默认是80端口
-* pathname： 路径选择，网站分区选择
-* protocol： 协议，客户端服务端请求响应标准如http和https等
-* search： 请求的内容，通常是get请求发送给后台的信息
+* port：`:`之后的 表示端口， http默认是80端口
+* pathname： `/`之后的，表示路由，网站分区选择
+* protocol： 协议，如http和https等
+* search： `?`之后的 表示请求，通常是get请求发送给后台的信息
 * href： 整体路径
+* hash：`#`之后的 表示锚点
 
 获取到的以上属性都在字符串，如果对其直接赋值，会导致浏览器重新解析地址栏，达到跳转的效果。
 
 ```js
 location.reload() //刷新页面
 location.reload(true) //绕过缓存刷新页面
+```
+
+### hash路由
+
+```js
+//页面路由：会跳转到另外一个页面当中；
+window.location.href = "http://baidu.com"
+//hash路由，不会使页面跳转，可以实现页面无刷的效果；
+window.location.hash = '#/home'
+//hashichange事件，监听hash路由的变化
+window.onhashchange = function(){...}
 ```
 
 

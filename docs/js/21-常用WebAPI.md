@@ -18,19 +18,6 @@ BOM提供了 `sessionStorage` （会话存储） 和 `localStorage`（本地存�
 
 
 
-## hash路由
-
-```js
-//页面路由：会跳转到另外一个页面当中；
-window.location.href = "http://baidu.com"
-//hash路由，不会使页面跳转，可以实现页面无刷的效果；
-window.location.hash = '#/home'
-//hashichange事件，监听hash路由的变化
-window.onhashchange = function(){...}
-```
-
-
-
 ## 编码方式
 
 ```js
@@ -54,7 +41,9 @@ new Buffer(base64str, 'base64')).toString()
 
 
 
-## 自定义属性新规范
+## dataset对象
+
+`data-`是自定义属性新规范
 
 ```html
 <div id='box' data-pf='f' pd='d' data-x='h' data-hans='hanS'/>
@@ -201,7 +190,13 @@ function base64(data, type = "text/plain") {
 
 ## URLSearchParams
 
-URLSearchParams 定义了一些实用的方法来处理 URL 的查询字符串
+`URLSearchParams` 定义了一些实用的方法来处理 URL 的查询字符串
+
+```js
+new URLSearchParams(location.search).get('pageSize')
+```
+
+nodejs中也支持
 
 ```js
 const data = new URLSearchParams()
