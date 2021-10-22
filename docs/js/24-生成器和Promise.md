@@ -4,37 +4,21 @@
 
 生成器函数也叫作**惰性函数**
 
-但是和普通的函数不同，他封装了一个可以存储状态的状态机。
-
-在js中，生成器函数执行会创建一个迭代器（Iterator）。
-
-这个迭代器可以遍历Generator的每一个状态。
-
-### 与Symbol.iterator的关系
-
-Symbol.iterator，这是一个接口。
-
-由于Generator的状态叠加的性质，可以将对象添加可以枚举的性质。每次调用都返回它值
-
-```js
-for(i of obj){console.log(obj)}
-//obj is not iterable
-Object.prototype[Symbol.iterator] = function* (){
-    for(let i in this){
-        yield this[i]
-    }
-}//所有的对象的原型上都添加上了可枚举的接口
-let obj = {a:1, b:2, c:3}
-for(i of obj){console.log(obj)}；//1 2 3
-```
-
-
-
-### yield关键字的使用
-
 惰性函数的function后面添加* 号，内部用yield返回状态，类似于return
 
-执行generator后返回的对象的next方法来执行代码：
+在js中，生成器函数执行会创建一个**迭代器（Iterator）**。
+
+```js
+iterator = generator()
+```
+
+这个迭代器可以借助`.next()`方法遍历Generator的每一个状态。
+
+
+
+### iterator.next
+
+执行iterator的next方法来执行代码：
 
 1. 当函数执行到yield的时候函数会暂停后续的操作，并返回的后续的表达式的值。在返回对象的value里面
 2. 下次调用next的时候从上次结束的地方继续执行，并且有储存当时的状态。
@@ -43,49 +27,52 @@ for(i of obj){console.log(obj)}；//1 2 3
 无限遍历的情况
 
 ```js
-function* foo(){
+function* generator(){
     let num = 0;
     while(true){
-        yield num++//运行到yield返回，但是函数不消失，等待下次继续从这执行，直到遇到下一个yield或者函数执行完成
+        yield num++//等待下次继续从yield这执行
     }
 }
-let o = foo()
-o.next().value//0
-o.next().value//1
-o.next().value//2
-o.next().value//3
-o.next().value//4
-o.next().value//5
+let iter = generator()
+iter.next().value//0
+iter.next().value//1
+iter.next().value//2
+iter.next().value//3
+iter.next().value//4
+iter.next().value//5
 //....
 ```
 
 此时o就是一个**迭代器对象（Iterator）**。
 
-迭代器对象实现了next方法：根据叠加情况返回对应的值和完成情况形成的对象。
+#### next传参
+
+根据叠加情况返回对应的值和完成情况形成的对象。
 
 ```js
-function* foo(){
+function* generator(){
     let num = 0;
     let c = 0;
     while(true){
         num++ 
-        c = yield num
-        //运行到yield返回，但是函数不消失，等待下次继续从这执行，直到遇到下一个yield或者函数执行完成
+        c = yield num//等待下次继续从yield这执行
         num += c
         c = 0
     }
 }
-let o = foo()
-o.next().value;//1   0+1+0
-o.next(3).value;//5  1+1+3
-o.next(5).value;//11 5+1+5
+let iter = generator()
+iter.next().value;//1   0+1+0
+iter.next(3).value;//5  1+1+3
+iter.next(5).value;//11 5+1+5
 ```
 
 
 
-### 与for...of...配合使用
+### for...of...
 
-与闭包不同的是，Generator与for配合的时候不需要用其他变量保存其生成的Iterator也能进行迭代
+Iterator与for配合的时候类似于闭包用其他变量保存状态
+
+Iterator.next的值是不可枚举的，可以for of遍历 但不可被Object.values，for in等枚举
 
 ```js
 function* a(){
@@ -96,12 +83,45 @@ function* a(){
 c = a()
 for(i of a()){console.log(i)}//1，2，3
 for(i of c){console.log(i)}//1,2,3
-c.next().value//undefined
+c.next().value//undefined  被掏空了
 ```
 
+`for let i of iterator` 相当于每轮循环执行`let  i = iterator.next().value`
 
 
-### throw抛出异常
+
+#### Symbol.iterator
+
+`for of`    并不是只能遍历iterator对象或实现了`.next`的 **类iterator对象**
+
+非Iterator对象会尝试调用其Symbol.iterator方法
+
+Array等内置对象本身实现了Symbol.iterator所有可以直接使用`for  of arr`
+
+这里创建一个**类数组对象**：
+
+```js
+let obj = {0:"a", 1:"b", 2:"c", length:3}
+obj[Symbol.iterator] = function* (){
+    let i = 0
+    while(i<this.length){
+        yield this[i++]
+    }
+}
+for(let i of obj){
+    console.log(i)//"a" "b" "c"
+}
+```
+
+不是生成器但是实现了.next方法也被认为是（类）生成器
+
+不是数组但是实现了length和可迭代可枚举也被认为是（类）数组
+
+这称为**鸭子类型**
+
+
+
+### iterator.throw
 
 可以在遍历器外部抛出异常，在函数的内部捕获，内部处理
 
@@ -123,12 +143,6 @@ f.throw("你这个答案有问题")//Error! 你这个答案有问题
 ```
 
 抛出的异常在内部接受之后就停止了。不会再叠加
-
-- Generator使用的方法
-
-  状态函数等待外部状态或者函数的出数据，再在此方法中传入参数继续执行迭代。
-
-  比如发送请求，返回多段数据，内部传入迭代函数，每次都整理数据，添加完成之后再抛出。一般是结合async使用
 
 
 
@@ -159,11 +173,13 @@ work(function chuanyifu(err, data, shuaya){
 
 Promise是一个构造函数，传入一个函数A，在函数中接受两个参数resolve和reject，这是两个参数是函数，通过在A中使用resolve或者reject来表示函数A的进行状态，resolve表示搞定reject表示失败。
 
+### 创建
+
 promise有三种状态： "**Pending**" "**Fulfilled**" "**Reject**" 初始状态是Pending，一旦状态改变只能是Resolve或者Reject,并且状态一旦改变，**不可修改**
 
-- ​	resolve接受一个参数，表示异步事件得出的结果
+- resolve接受一个参数，表示异步事件得出的结果
 
-- ​	reject接受一个参数，表示异步事件没有结果或者失败
+- reject接受一个参数，表示异步事件没有结果或者失败
 
 
 ```js
@@ -174,8 +190,11 @@ let p = new Promise(function(resolve, reject){
 })
 ```
 
-* 构造函数传入的参数是支持异步操作。等待函数A的结果之后我们才可以进行后续的操作。
-* then实例方法可以在等待得出结论之后调用
+构造函数传入的参数是支持异步操作。等待函数A的结果之后我们才可以进行后续的操作。
+
+### then
+
+then实例方法可以在等待得出结论之后调用
 
 ```js
 p.then(function(data){
@@ -201,7 +220,9 @@ p.then(data=>{
 
 请将异步操作写到promise里面，then里写同步行为
 
-* catch实例方法，接受一个参数err，接受处理前面以及更早的失败或者错误
+### 异常处理
+
+.catch实例方法，接受一个参数err，接受处理前面以及更早的失败或者错误
 
 ```js
 p.then(()=>{
@@ -211,7 +232,7 @@ p.then(()=>{
 })
 ```
 
-* finally实例方法，后续处理操作，无论前面的promise的结果是什么都会执行的内容
+.finally实例方法，后续处理操作，无论前面的promise的结果是什么都会执行的内容
 
 ```js
 p.then(()=>{
@@ -250,9 +271,11 @@ function xiaban(data){
 work().then(chifan).then(coding).then(xiaban)
 ```
 
-* `Promise.all`方法，打包多个Promise实例，统一判断状态，返回一个新的promise对象，可以对多个promise进行统一判断
+### Promise.all
 
-  接受一个数组，数组里面存放多个promise对象实例。当每个promise对象的方法为触发resolve时，整体触发then的回调函数。接受的数组posts为每个resolve返回的结果。如果有失败了是返回第一个失败的结果。
+`Promise.all`静态方法，打包多个Promise实例，统一判断状态，返回一个新的promise对象，可以对多个promise进行统一判断
+
+接受一个数组，数组里面存放多个promise对象实例。当每个promise对象的方法为触发resolve时，整体触发then的回调函数。接受的数组posts为每个resolve返回的结果。如果有失败了是返回第一个失败的结果。
 
 ```js
 let p1 = new Promise((res, rej)=>res("no"))
@@ -266,7 +289,9 @@ Promise.all([p1, p2, p3]).then((posts)=>{
 })
 ```
 
-* `Promise.race`方法，打包多个Promise，同all方法类似，只要有一个完成（不论成功或者失败），就触发完成事件。
+### Promise.race
+
+`Promise.race`静态方法，打包多个Promise，同all方法类似，只要有一个完成（不论成功或者失败），就触发完成事件。
 
 ```js
 let p1 = new Promise((res, rej)=>rej("no"))
@@ -281,7 +306,9 @@ Promise.race([p1, p2, p3]).then((posts)=>{
 })
 ```
 
-* `Promise.reject(reason) `手动触发失败事件，返回一个失败的promise并且触发后续的失败操作，并传递信息给后续的方法
+### 手动设置状态
+
+`Promise.reject(reason) `手动触发失败事件，返回一个失败的promise并且触发后续的失败操作，并传递信息给后续的方法
 
 ```js
 let p = new Promise((res, rej)=>{
@@ -296,5 +323,5 @@ let p = new Promise((res, rej)=>{
 })
 ```
 
-* `Promise.resolve(value)` 如果value是普通值（非Promise对象或者不带then方法）那么就会返回一个Fulfilled状态的promise，其余情况的根据参数value的Promise的结果确定。
+`Promise.resolve(value)` 如果value是普通值（非Promise对象或者不带then方法）那么就会返回一个Fulfilled状态的promise，其余情况的根据参数value的Promise的结果确定。
 

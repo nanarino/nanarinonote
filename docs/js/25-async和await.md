@@ -52,7 +52,7 @@ async function ReadFile(){
 
 - async 关键字放在函数声明之前，函数需要返回一个Promise对象 
 
-  如果不是，将会**自动帮你包装成`Promise<resolves>`**
+  如果不是，将会**自动帮你包装成`Promise.resolve(value)`**
 
 - await 关键字放在promise对象前，阻塞其执行并得到结果
 
@@ -244,4 +244,4 @@ async function* asyncGenerator() {
 // 2
 ```
 
-yield的如果不是Promise对象会被自动yield Promise<resolve=原yield>
+yield的如果不是Promise对象会被自动yield Promise.resolve(value)

@@ -164,20 +164,7 @@ Symbol提供了11个内置的属性，分别是
 
 * **`Symbol.iterator`**
 
-  指向默认遍历方法，使用迭代器函数来遍历
-
-  ```js
-  let obj = {0:"a", 1:"b", 2:"c", length:3}
-  obj[Symbol.iterator] = function* (){
-      let i = 0
-      while(i<this.length){
-          yield this[i++]
-      }
-  }
-  for(let i of obj){
-      console.log(i)//"a" "b" "c"
-  }
-  ```
+  指向默认遍历方法。见生成器函数章节
 
 * `Symbol.toPrimitive`
 
