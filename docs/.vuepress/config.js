@@ -72,7 +72,7 @@ module.exports = {
                     children: [
                         '22-描述符和代理类',
                         '23-TS以及实验性语法',
-                        '24-生成器和Promise',
+                        '24-惰性函数和Promise',
                         '25-async和await',
                         '26-ajax网络请求'
                     ]

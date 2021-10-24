@@ -1,24 +1,29 @@
-# 生成器和Promise
+# 惰性函数和Promise
 
-## 生成器（Generator）
+## 生成器
 
-生成器函数也叫作**惰性函数**
+生成器函数（**Generator Function**）也叫作**惰性函数**，避免与生成器弄混。
 
-惰性函数的function后面添加* 号，内部用yield返回状态，类似于return
+惰性函数的function后面添加**\*** 号，内部用yield返回状态，类似于return
 
-在js中，生成器函数执行会创建一个**迭代器（Iterator）**。
+在js中，惰性函数执行会创建一个生成器（**Generator**）。
 
 ```js
-iterator = generator()
+> function* foo(){}
+undefined
+> ({}).toString.call(foo)
+'[object GeneratorFunction]'
+> ({}).toString.call(foo())
+'[object Generator]'
 ```
 
-这个迭代器可以借助`.next()`方法遍历Generator的每一个状态。
+这个生成器可以借助`.next()`方法遍历惰性函数的每一个状态。
 
 
 
-### iterator.next
+### generator.next
 
-执行iterator的next方法来执行代码：
+执行生成器的next方法来执行代码：
 
 1. 当函数执行到yield的时候函数会暂停后续的操作，并返回的后续的表达式的值。在返回对象的value里面
 2. 下次调用next的时候从上次结束的地方继续执行，并且有储存当时的状态。
@@ -27,13 +32,13 @@ iterator = generator()
 无限遍历的情况
 
 ```js
-function* generator(){
+function* generatorFunction(){
     let num = 0;
     while(true){
         yield num++//等待下次继续从yield这执行
     }
 }
-let iter = generator()
+let iter = generatorFunction()
 iter.next().value//0
 iter.next().value//1
 iter.next().value//2
@@ -43,14 +48,12 @@ iter.next().value//5
 //....
 ```
 
-此时o就是一个**迭代器对象（Iterator）**。
-
 #### next传参
 
 根据叠加情况返回对应的值和完成情况形成的对象。
 
 ```js
-function* generator(){
+function* generatorFunction(){
     let num = 0;
     let c = 0;
     while(true){
@@ -60,13 +63,40 @@ function* generator(){
         c = 0
     }
 }
-let iter = generator()
+let iter = generatorFunction()
 iter.next().value;//1   0+1+0
 iter.next(3).value;//5  1+1+3
 iter.next(5).value;//11 5+1+5
 ```
 
+### generator.throw
 
+可以在遍历器外部抛出异常，在函数的内部捕获，内部处理
+
+```js
+function* foo(){
+    let t =0;
+    try{
+        while(t<5){
+	        yield 123
+            t++;
+        }
+    }catch(err){
+        console.log("Error!",err)
+    }
+}
+let f = foo();
+f.next().value//123
+f.throw("你这个答案有问题")//Error! 你这个答案有问题
+```
+
+抛出的异常在内部接受之后就停止了。不会再叠加
+
+
+
+## 迭代器
+
+一般的，所有实现了next方法的对象都叫做**迭代器（Iterator）**。
 
 ### for...of...
 
@@ -118,31 +148,6 @@ for(let i of obj){
 不是数组但是实现了length和可迭代可枚举也被认为是（类）数组
 
 这称为**鸭子类型**
-
-
-
-### iterator.throw
-
-可以在遍历器外部抛出异常，在函数的内部捕获，内部处理
-
-```js
-function* foo(){
-    let t =0;
-    try{
-        while(t<5){
-	        yield 123
-            t++;
-        }
-    }catch(err){
-        console.log("Error!",err)
-    }
-}
-let f = foo();
-f.next().value//123
-f.throw("你这个答案有问题")//Error! 你这个答案有问题
-```
-
-抛出的异常在内部接受之后就停止了。不会再叠加
 
 
 
