@@ -47,18 +47,12 @@ async def get_item(id: int):
 async def get_items(limit: Optional[int] = None, offset: Optional[int] = None):
     return {"limit": limit, "offset": offset}
 
-from pydantic import BaseModel
-class Item(BaseModel):
-    title: str
-    content: str
-    user: int
-
-#请求创建新的item；按请求体模型
-@app.post('/item')
-async def create_item(item: Item):
-    return item
-
-#除此之外还有请求全部覆盖PUT和部分修改PATCH的动作 以及删除DELETE动作
+'''除此之外还有
+请求创建POTS
+请求全部覆盖PUT
+请求部分修改PATCH
+以及删除DELETE动作
+他们可能需要用的请求体'''
 if __name__ == '__main__':
     import os
     os.system('')
@@ -147,7 +141,7 @@ class group(BaseModel):
 
 ### Form，File
 
-需要接收的不是 JSON(`application/json`)
+需要接收的不是 JSON（`application/json`）
 
 而是表单以及表单上传文件时（`multipart/form-data`）使用
 
@@ -158,4 +152,44 @@ from fastapi import Form
 async def login(username: str = Form(...), password: str = Form(...)):
     return {"username": username}
 ```
+
+
+
+## 抛出异常
+
+http异常
+
+```python
+from fastapi import HTTPException
+
+raise HTTPException(status_code=404, detail="Not found",headers={})
+```
+
+自定义异常数据返回
+
+```python
+from fastapi import FastAPI, Request
+from fastapi.responses import JSONResponse
+
+class UnicornException(Exception):
+    def __init__(self, name: str):
+        self.name = name
+
+app = FastAPI()
+
+@app.exception_handler(UnicornException)
+async def unicorn_exception_handler(request: Request, exc: UnicornException):
+    return JSONResponse(
+        status_code=418,
+        content={"message": f"Oops! {exc.name} did something..."},
+    )
+
+@app.get("/unicorns/{name}")
+async def read_unicorn(name: str):
+    if name == "yolo":
+        raise UnicornException(name=name)
+    return {"unicorn_name": name}
+```
+
+
 

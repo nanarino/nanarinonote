@@ -249,7 +249,19 @@ url = "mysql+pymysql://root:*****@127.0.0.1:3306/demodemo?charset=utf8"
 egn = create_engine(url)
 ```
 
-创建异步引擎
+其他参数
+
+- `connect_args={"check_same_thread": False}`   为sqlite开启多线程（默认不开启）
+
+- `poolclass=sqlalchemy.pool.NullPool`   不使用连接池
+
+  （默认`QueuePool`，多线程时用`SingletonThreadPool`）
+
+- `pool_pre_ping=True`    连接池开启悲观处理（默认不开启）
+
+- `pool_recycle=3600`    连接回收时间秒（mysql默认28800）
+
+#### 创建异步引擎
 
 ```python
 from sqlalchemy.ext.asyncio import create_async_engine
@@ -263,7 +275,9 @@ async_egn = create_async_engine(url)
 
 metadata对象通常在应用程序的“models”或“dbschema”类型的包中
 
-metadata收集表对象Table，以及表的列对象Column
+#### 使用Table收集
+
+metadata收集表对象**Table**，以及表的列对象Column
 
 ```python
 from sqlalchemy import MetaData
@@ -294,36 +308,67 @@ from sqlalchemy import ForeignKey
 #ForeignKey(其他表的primary_key) 即可作为外键约束的类型来创建Column
 ```
 
-映射生成（**类声明**）metadata
+#### 使用类注册
+
+##### 导出基类
 
 ```python
 from sqlalchemy.orm import registry
 mapper_registry = registry()
 #mapper_registry.metadata即为MetaData单例
 Base = mapper_registry.generate_base()
+#数据源对象使用Base.metadata获取
+```
+使用`declarative_base`也可以生成Base
 
-'''
-#使用declarative_base也可以生成Base
+```python
 from sqlalchemy.orm import declarative_base
 Base = declarative_base()
+```
 
-#不使用ORM也能使用declarative_base
+不使用ORM也能使用`declarative_base`
+
+```python
 from sqlalchemy.ext.declarative import declarative_base
-'''
+Base = declarative_base()
+```
 
+映射生成（**类声明**）metadata
+
+```python
 class User(Base):
     __tablename__ = 'user_account'
     id = Column(Integer, primary_key=True)
     name = Column(String(30))
 ```
 
+relationship，借助外键关系连带数据（等价于查询时使用join）
+
+```python
+from sqlalchemy.orm import relationship
+
+class Father(Base):
+    __tablename__ = "father"
+    id = Column(Integer,primary_key=True,autoincrement=True)
+    name = Column(String(40),unique=True)
+    age = Column(Integer)
+    son = relationship('Son',backref="Father")
+
+class Son(Base):
+    __tablename__ = 'son'
+    id = Column(Integer,primary_key=True,autoincrement=True)
+    name = Column(String(40),unique=True)
+    age = Column(Integer)
+    father_id = Column(Integer,ForeignKey('father.id'))
+```
+
 
 
 ### execute
 
-使用text可以支持非orm构造（即直接执行sql语句、存储过程等）
+使用**text**可以支持非orm构造（即直接执行sql语句、存储过程等）
 
-从Connection对象
+#### 从Connection对象
 
 ```python
 from sqlalchemy import text
@@ -334,7 +379,7 @@ with egn.connect() as conn:
     #conn.commit() 增删改需要提交
 ```
 
-异步连接
+##### 异步Connection
 
 ```python
 async with async_egn.connect() as conn:
@@ -349,7 +394,7 @@ async with async_egn.connect() as conn:
         print(row)
 ```
 
-从Session对象
+#### 从Session对象
 
 ```python
 from sqlalchemy import text
@@ -362,7 +407,18 @@ with Session(egn) as session:
 
 Session对象的使用 与Connection别无二致
 
-使用orm关系增删改查
+##### 异步Session
+
+```python
+from sqlalchemy.ext.asyncio import AsyncSession
+async with AsyncSession(async_egn) as session:
+    result = await session.execute(text('select * from demotable'))
+    print(result.all())
+```
+
+commit在异步情况下也需要await
+
+#### 使用ORM代替text
 
 ```python
 from sqlalchemy import insert,delete,update,select
