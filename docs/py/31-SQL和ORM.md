@@ -182,7 +182,7 @@ with pymssql.connect(**DATABASES) as conn:
 游标对象`.execute`方法的结果可以通过遍历游标对象来获取，通常也实现了下面的方法
 
 - `cursor.fetchone()`    弹出一条结果 相当于`next()`
-- `cursor.fetchall()`    弹出剩余结果，有的引擎有它的别名`cursor.all()`  
+- `cursor.fetchall()`    弹出剩余结果
 - `cursor.fetchmany(n)`    弹出n条结果，大部分引擎实现了
 
 大部分引擎`.execute`会直接返回游标， 可以`.execute(...).fetchall()`连续使用
@@ -292,7 +292,12 @@ demo_table = Table(
 )
 #Column的第二个参数支持很多类型，且兼容不同数据库
 #可以更具体的引入：from sqlalchemy.types import Integer,String
-#demo_table.name 即可反射到name列
+
+#反射到name列:
+#demo_table.columns[1]
+#demo_table.columns.name
+#demo_table.c.name
+#demo_table.name
 ```
 
 autoload，从已有的表自动加载（**不支持异步引擎**）
@@ -340,6 +345,8 @@ class User(Base):
     __tablename__ = 'user_account'
     id = Column(Integer, primary_key=True)
     name = Column(String(30))
+
+#User.__table__  可以获取到Table版的User
 ```
 
 relationship，借助外键关系连带数据（等价于查询时使用join）
@@ -430,9 +437,42 @@ conn.execute(insert(table), [{"name": "www"},{"name": "ddd"}])
 conn.execute(delete(table).where(table.columns.id == 1))
 # 改
 conn.execute(update(table).where(table.columns.name == "www"))
-# 查  table.columns.id， table.c.id， table.id 其实是同一个
+# 查  用table.columns.id， table.c.id， table.id 皆可
 query = select([table]).order_by(desc(table.c.id)).offset(1).limit(2)
 ```
+
+#### Table和类声明差异
+
+Table可以直接使用table.select等。Table得到的结果Row可以转dict，即可以使用下标取
+
+```python
+table = Table(
+    "demotable",
+    metadata,
+    Column('id', Integer, primary_key=True),
+    Column('name', String(30))
+)
+async with async_egn.connect() as conn:
+    result = await conn.execute(select([table]))
+    for row in result:
+        print(dict(row)) # {'id': 1, 'name': '1'}
+```
+
+而类注册的映射查询结果集内的Row无法转dict，可以使用`结果集.scalars()`转为映射对象后用属性取
+
+```python
+class Demo(Base):
+    __tablename__ = 'demotable'
+    id = Column(Integer, primary_key=True)
+    name = Column(String(30))
+    
+async with AsyncSession(async_egn) as session:
+        result = await session.execute(select(Demo))
+        for i in result.scalars():
+            print(i.id, i.name) # 1 '1'
+```
+
+
 
 ### DDL
 
