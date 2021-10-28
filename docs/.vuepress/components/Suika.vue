@@ -359,6 +359,7 @@ export default {
     .hero
       canvas
         margin 2rem auto 1.2rem
+        height 16rem
       h1
         font-size 2rem
       h1, .description, .action
