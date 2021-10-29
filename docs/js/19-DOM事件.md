@@ -14,6 +14,13 @@ window.onclick = function(e){
 }
 ```
 
+触发事件
+
+```js
+event = new Event('click')
+window.dispatchEvent(event)//"click"
+```
+
 
 
 ## 事件绑定

@@ -467,12 +467,16 @@ class Demo(Base):
     name = Column(String(30))
     
 async with AsyncSession(async_egn) as session:
-        result = await session.execute(select(Demo))
-        for i in result.scalars():
-            print(i.id, i.name) # 1 '1'
+    result = await session.execute(select(Demo))
+    for i in result.scalars():
+        print(i.id, i.name) # 1 '1'
 ```
 
+添加数据可以用`session.execute(insert(Demo).value(...))`也可以用`session.add(Demo(...))`
 
+如果要拿修改后的字段值可以先开启事务自动提交再使用`await session.flush()`或手动提交
+
+事实上，事务是自动开启的，手动开启事务自动提交`.begin():`不仅需要在orm使用之前就开启，且与手动提交`.commit()`互斥的
 
 ### DDL
 
