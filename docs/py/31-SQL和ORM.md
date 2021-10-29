@@ -406,7 +406,7 @@ async with async_egn.connect() as conn:
 ```python
 from sqlalchemy import text
 from sqlalchemy.orm import Session#,sessionmaker
-#sessionmaker(bind=engine)可以生成Session的元类
+#sessionmaker(bind=engine) 可以生成Session的元类（预设配置的类工厂）
 with Session(egn) as session:
     result = session.execute(text('select * from demotable'))
     print(result.all())
