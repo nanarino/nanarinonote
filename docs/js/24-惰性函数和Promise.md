@@ -96,7 +96,7 @@ f.throw("你这个答案有问题")//Error! 你这个答案有问题
 
 ## 迭代器
 
-一般的，所有实现了next方法的对象都叫做**迭代器（Iterator）**。
+一般的，所有实现了next方法的对象都叫做**迭代器（Iterator）**。生成器也是迭代器只是比普通迭代器多实现了上述方法。
 
 ### for...of...
 
@@ -124,9 +124,9 @@ c.next().value//undefined  被掏空了
 
 `for of`    并不是只能遍历iterator对象或实现了`.next`的 **类iterator对象**
 
-非Iterator对象会尝试调用其Symbol.iterator方法
+非Iterator对象会尝试调用其Symbol.iterator方法去获取一个Iterator
 
-Array等内置对象本身实现了Symbol.iterator所有可以直接使用`for  of arr`
+Array等内置对象本身实现了Symbol.iterator所有可以直接使用`for of arr`
 
 这里创建一个**类数组对象**：
 
