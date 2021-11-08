@@ -101,7 +101,13 @@ select nid,name,gender as gg from 表 where id > 1
 
 - `right join` : B表所有显示，如果B中无对应关系，则值为null
 
-- `union`  :  组合
+- `... union ...`  :  两个查询的结果集组合
+
+- 某些连表可以用子查询替代
+
+  `where exists()`   子查询结果集至少有一行
+
+  `where in ()`    筛选符合子查询结果集中的一行满足
 
 ### 函数
 
