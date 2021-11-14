@@ -6,7 +6,7 @@
 
 可以用npm或者yarn安装，这里以yarn为例
 
-写这篇文档时，webpack的版本为4.2
+写这篇笔记时，webpack的版本为4.2
 
 
 

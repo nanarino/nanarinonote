@@ -12,7 +12,7 @@ Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境
 
 
 
-## 常用的模块
+## 常用的内置模块
 
 - fs模块 - 文件读写
 - events模块 - 事件触发器
@@ -22,25 +22,56 @@ Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境
 
 
 
-## npm包管理器
+## 依赖管理
 
-初始化nodejs项目
+### 创建项目
+
+在空目录中，初始化nodejs项目
 
 ```shell
 npm init
 ```
 
-安装server模块（例）包用于开发
+初始化后生成package.json文件
+
+### 安装第三方依赖包
+
+安装server模块（例）包用于开发环境
 
 ```shell
 npm install server -D
 ```
 
-模块以脚本命令在cmd运行server模块包
+安装好之后server包会在node_modules目录中
+
+目录内使用server模块和使用内置模块一样
+
+### 使用包内的脚本命令
+
+模块如果要以脚本命令在cmd运行可以使用npx命令：
 
 ```shell
 npx server -p 8080
 ```
+
+如果是-g安装则不需要加npx 且任意目录内都可以运行（不推荐-g安装）
+
+快捷运行命令
+
+package.json文件内添加script选项可以固化命令快捷运行
+
+```json
+"scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build"
+}
+```
+
+命令就可以使用`npm run serve`，`npm run build`
+
+
+
+### 自己开发包
 
 本地安装开发中的common包
 
