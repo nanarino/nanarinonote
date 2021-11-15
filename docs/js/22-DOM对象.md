@@ -234,56 +234,30 @@ temp.__proto__.__proto__.__proto__.__proto__.__proto__.__proto__ //Object
 
 ## 宽高属性
 
-### 元素宽高相关的属性
+### client
 
-client: 读取元素的 content的宽高 + padding 的宽高 , 不包括滚动条和外边距以及边框
-
-获取body的宽高属性：
-
-```js
-console.log(document.body.clientWidth) //body的实际宽度，不包括滚动条
-```
-
-文档可视区域的宽高:
-
-```JS
-document.documentElement.clientWidth //当前文档区域可见宽度
-document.documentElement.clientHeight //当前文档区域可见高度
-```
-
-注意: 不包括滚动条. 虽然没有兼容性问题，但是在IE不同的版本的宽度显示数值有一点差异，大概是3px的差异
-
-注意: window下没有client属性
-
-用在元素身上:
+读取元素的 content的宽高 + padding 的宽高 , 不包括滚动条和外边距以及边框
 
 - clientWidth: 元素的content + padding宽/高, **不包括滚动条**
 - clientHeight
 - clientLeft
 - clientTop: 返回元素的content到边框的距离，也就是边框的厚度
 
-注意: 只读属性,不能进行设置
+注意: 只读属性，不能进行设置，window没有这些属性
 
-```html
-<style>
-    #box{
-        width: 200px;
-        height: 200px;
-        padding: 30px;
-        margin: 70px;
-        border: 20px black solid;
-        background-color: #f60;
-    }
-</style>
-<div id="box"></div>
-<script>
-	var oBox = document.getElementById("box")
-    console.log(oBox.clientWidth)
-    console.log(oBox.clientHeight)
-</script>
+```js
+document.documentElement.clientWidth //当前文档区域可见宽度
+document.documentElement.clientHeight //当前文档区域可见高度
 ```
 
-### 获取窗口对的内部宽度
+
+
+### offset
+
+- offsetWidth: 元素的content+padding+border
+- offsetHeight: 
+- offsetTop 元素顶部到定位父级的顶部距离，不包括定位父级的边框部分
+- offsetLeft 元素左边到定位父级元素左边距离, 不包括定位父级的边框部分
 
 ```js
 window.innerWidth; // 窗口的宽, 包括滚动条的宽度
@@ -295,7 +269,7 @@ window.innerWidth; // 窗口的宽, 包括滚动条的宽度
 window.innerWidth - document.documentElement.clientWidth
 ```
 
-offset 获取body页面的实际宽高
+获取body页面的实际宽高
 
 ```js
 document.body.offsetWidth
@@ -308,13 +282,6 @@ document.body.offsetHeight
 document.documentElement.offsetWidth //当前文档的可见区域宽度
 document.documentElement.offsetHeight//当前文档的实际高度
 ```
-
-在元素上：
-
-- offsetWidth: 元素的content+padding+border
-- offsetHeight: 
-- offsetTop 元素顶部到定位父级的顶部距离，不包括定位父级的边框部分
-- offsetLeft 元素左边到定位父级元素左边距离, 不包括定位父级的边框部分
 
 元素到body顶部的距离方法： 没有包括父级边框
 
@@ -343,8 +310,8 @@ function getOffset(dom){
            left: 0
        }
        while(dom!==document.body){
-           o.left += dom.offsetLeft+dom.offsetParent.clientLeft
-           o.top += dom.offsetTop+dom.offsetParent.clientTop
+           o.left += dom.offsetLeft + dom.offsetParent.clientLeft
+           o.top += dom.offsetTop + dom.offsetParent.clientTop
            dom = dom.offsetParent //定位父级
        }
        return o
@@ -352,19 +319,18 @@ function getOffset(dom){
    //包含边框，两方法可以合并
    ```
 
-   scroll
+### scroll
 
-   读取元素的content宽度+padding宽度，**包含滚动条**    
-   scrollWidth    
-   scrollHeight
+**可读写**元素的content宽度+padding宽度，**包含滚动条**
+
+- scrollWidth
+- scrollHeight
 
    子元素超出的时候， 会加上 超出的子元素的宽度/高度。当超出的时候，左padding或者上padding加上内容宽度或者高度。右padding或者下padding已经失去意义所以不会结算。
 
    但是当添加overflow属性的时候。会计算全部的padding + 内容宽/高 + 超出的子级宽/高
 
 
-
-   ### 滚动高度：可读可写
 
 获取元素的y轴或者x轴方向的被滚动挡住的那部分的宽度高度。等价于滚动过的部分
 
@@ -390,7 +356,7 @@ function getOffset(dom){
 
 
 
-   ### 鼠标位值相关的坐标
+   ### 鼠标坐标
 
 事件对象event
 
@@ -401,12 +367,6 @@ function getOffset(dom){
        console.log(e.pageX, e.pageY) // 相对于文档位置的左上角的位置,包含滚动条隐藏部分
    }
    ```
-
-事件对象的兼容性写法
-
-```js
-e = e || window.event
-```
 
 
 

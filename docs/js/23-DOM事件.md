@@ -12,17 +12,6 @@ window.onclick = function(e){
 }
 ```
 
-触发事件
-
-```js
-let event = new Event('click')
-window.dispatchEvent(event)//"click"
-```
-
-
-
-
-
 ## 事件绑定
 
 绑定点击事件可以用（对象.`on`+事件名）的方式绑定事件，然后挂载上处理函数接受事件对象来进行处理。
@@ -270,9 +259,18 @@ window.onmousewheel = function(e){//监听鼠标中键滑轮滚动，不监听�
 
 
 
-## 自定义事件
+## 事件派发
 
-除了开头的 Event可以简单定义事件，CustomEvent也可以还能携带数据
+Event可以简单声明事件，用dispatchEvent去派发
+
+```js
+let event = new Event('click')
+window.dispatchEvent(event)//"click"
+```
+
+事件名还可以自定义，自定义的事件可以用addEventListener来绑定
+
+除了Event，CustomEvent也可以，还能携带数据
 
 ```js
 let xx = new Event("xx", {"bubbles":true, "cancelable":false})
@@ -282,4 +280,3 @@ let xx = new CustomEvent("xx", {
 });
 ```
 
-自定义的事件可以用addEventListener来绑定，用dispatchEvent去触发。

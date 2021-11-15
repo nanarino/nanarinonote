@@ -1,4 +1,5 @@
 module.exports = {
+    //base: '/',
     base: '/nanarinonote/',
     evergreen: true,
     locales: {
@@ -51,30 +52,30 @@ module.exports = {
                     children: [
                         '11-字符串和数组',
                         '12-解构赋值和序列化',
-                        '13-数学对象和日期对象',
+                        '13-数学和日期对象',
                         '14-对象方法扩展',
                         '15-正则对象',
-                        '16-面向对象',
-                        '17-Symbol、Set和Map'
+                        '16-面向对象'
+                    ]
+                },
+                {
+                    title: '新增语法规范',
+                    children: [
+                        '17-新增数据类型',
+                        '18-描述符和代理类',
+                        '19-TS以及实验性语法',
+                        '20-惰性函数和Promise',
+                        '21-async和await'
                     ]
                 },
                 {
                     title: '作为浏览器脚本',
                     children: [
-                        '18-DOM对象',
-                        '19-DOM事件',
-                        '20-BOM相关',
-                        '21-常用WebAPI'
-                    ]
-                },
-                {
-                    title: '杂项及新增规范',
-                    children: [
-                        '22-描述符和代理类',
-                        '23-TS以及实验性语法',
-                        '24-惰性函数和Promise',
-                        '25-async和await',
-                        '26-ajax网络请求'
+                        '22-DOM对象',
+                        '23-DOM事件',
+                        '24-BOM相关',
+                        '25-常用WebAPI',
+                        '26-前后端交互'
                     ]
                 },
                 {
