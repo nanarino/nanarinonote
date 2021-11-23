@@ -84,7 +84,7 @@ module.exports = {
                         '27-nodejs',
                         '28-mongodb',
                         '29-Koa2',
-                        '30-webpack',
+                        '30-构建工具',
                         '31-Vue',
                         '32-Electron'
                     ]

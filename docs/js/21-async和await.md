@@ -8,7 +8,7 @@ async function叫异步函数。是ES2017新出的，这让异步操作变得更
 
 ### 普通方式
 
-使用await之前（node环境）先定义返回Promise的函数
+使用await之前（node环境，nodejs见之后笔记）先定义返回Promise的函数
 
 ```js
 const fs = require("fs")

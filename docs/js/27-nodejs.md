@@ -100,7 +100,9 @@ new $()...
 
 而ES Modules得用mjs文件后缀以做区分 它使用import from来导入。
 
-但ES Modules无法使用__dirname，得用process.cwd()代替
+但ES Modules无法使用`__dirname`/`__filename`/`require.resolve`/`process.env`
+
+他们可以用`import.meta`上的属性去代替
 
 ::: danger   脚本所在目录问题
 如果js文件使用右键*打开方式*选择解释器运行会导致process.cwd定位到C:\Windows\System32    
