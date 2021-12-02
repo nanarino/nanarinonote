@@ -20,12 +20,9 @@ vue.js本身是客户端脚本，脚手架提供的是开发服务器。
 
 环境：node > v12
 
-::: warning 包管理
-可以使用npm或者yarn安装，但请不要使用cnpm
-推荐不用-g安装，但需要在脚手架命令前面加npx（即npx vue create project等）
-:::
-
 ### vue-cli 2
+
+推荐不使用官网示例中的-g安装  而是原地创建
 
 ```bash
 #安装
@@ -59,13 +56,7 @@ npm init vite@latest my-vue-app -- --template vue
 
 ### snowpack
 
-snowpack与Vite差别不大，但是中文资料较少
-
-```bash
-npm install --save-dev snowpack
-
-npx create-snowpack-app vue-snowpack --template @snowpack/app-template-minimal
-```
+snowpack与Vite差别不大，但是中文资料较少，见[Getting Started with Vue (snowpack.dev)](https://www.snowpack.dev/tutorials/vue)
 
 
 
