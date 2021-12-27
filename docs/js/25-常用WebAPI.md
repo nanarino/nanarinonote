@@ -192,7 +192,7 @@ function base64(data, type = "text/plain") {
 
 ## URLSearchParams
 
-`URLSearchParams` 定义了一些实用的方法来处理 URL 的查询字符串。nodejs中也支持。
+`URLSearchParams` 键值对象。拥有一些实用的方法来处理 URL 的查询字符串。nodejs中也支持。
 
 解析当前页面的查询参数location.search
 
@@ -224,7 +224,7 @@ await axios.post(url, data.toString(), ...)
 
 ## FormData
 
-`FormData`对象可以调用它的[`append()`](https://developer.mozilla.org/zh-CN/docs/Web/API/FormData/append)方法来添加键名和键值。    
+`FormData`键值对象可以调用它的[`append()`](https://developer.mozilla.org/zh-CN/docs/Web/API/FormData/append)方法来添加键名和键值。    
 添加的键值可以是JavaScript原始数据类型，也可以是`blob`对象、 `file`对象。
 
 ```js
@@ -248,6 +248,12 @@ $.ajax({
     contentType: false,
     ...
 ```
+
+
+
+## Headers
+
+用来定义请求头键值对象
 
 
 

@@ -35,6 +35,8 @@ ReadFile("./data.txt").then((data)=>{
 console.log(await ReadFile("./data.txt", "utf-8"))
 ```
 
+.catch直接用普通try...catch...就可以捕获异常。抛出异常可以在asycnFunction中使用Promise.reject方法
+
 ### async关键字方式
 
 在函数声明或表达式前加上async关键字即可
@@ -90,7 +92,7 @@ function promisify(fn) {
 
 ## 并发运行
 
-并发运行多个async函数，只需要先全部运行，需要获取结果的时候再await
+并发运行多个asyncFunction，只需要先全部运行，需要获取结果的时候再await
 
 ```js
 const asyuncfun1 = () => new Promise((resolve, reject) => {
