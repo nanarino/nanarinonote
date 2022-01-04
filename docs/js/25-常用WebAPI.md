@@ -31,7 +31,7 @@ btoa()//编码 str→base64
 
 注意，`atob`和`btoa`是BOM方法，即`window.atob`和`window.btoa`，
 
-在`Node.js`环境中应该使用如下方法：
+在`Node.js`环境中应该使用`Buffer`类型
 
 ```js
 //编码 str→base64
@@ -87,39 +87,25 @@ classList是一个DOM属性,它是一个记录类名以及相关方法的对象,
 
 
 
-## 拖拽和文件对象
+## 文件有关对象
 
-为了使元素可拖动，把`draggable`属性设置为 true ：
+这里粗略介绍
+- `Blob`
+- `File`
+- `FileList`
+- `FileReader`
 
-```html
-<img draggable="true">
-```
-
-拖拽事件需要阻止默认行为，否则可能是在新标签页显示。
-
-注意：火狐浏览器不能使用`on`拖拽的0级事件
-
-| 事件名称  | 元素       | 描述                       |
-| --------- | ---------- | -------------------------- |
-| dragstart | 被拖拽元素 | 开始拖拽的一瞬间           |
-| drag      | 被拖拽元素 | 正在拖拽                   |
-| dragend   | 被拖拽元素 | 结束拖拽                   |
-| dragenter | 目标元素   | 被拖拽元素进入目标的一瞬间 |
-| dragover  | 目标元素   | 被拖拽元素在目标元素上     |
-| dragleave | 目标元素   | 被拖拽元素离开目标         |
-| drop      | 目标元素   | 结束拖拽，释放鼠标         |
-
-进行拖拽的元素可以通过以下方法传递数据
+在之前的DOM事件中有提到进行拖拽的元素可以通过以下方法传递数据
 
 ```js
 e.dataTransfer.setData('key', 'value')
 e.dataTransfer.getData('key')
 ```
 
-拖拽的文件对象的获取
+对拖拽的文件对象（客户端的本地文件）的获取：
 
 ```js
-//选中的多个文件组成的列表
+//选中的多个文件组成的列表 属于fileList类数组
 e.dataTransfer.files
 //单个
 e.dataTransfer.files.item(0)
@@ -150,6 +136,8 @@ div.ondrop = function (e) {
   return false;
 }
 ```
+
+类似的还有input文件上传也可以用`event.files`获取到`fileList`。
 
 文件对象`file`类是继承的`blob`类，故而以上代码可以使用h5的`blob`对象读取：
 
@@ -190,11 +178,13 @@ function base64(data, type = "text/plain") {
 
 
 
+
+
 ## URLSearchParams
 
 `URLSearchParams` 键值对象。拥有一些实用的方法来处理 URL 的查询字符串。nodejs中也支持。
 
-解析当前页面的查询参数location.search
+解析当前页面的查询参数`location.search`
 
 ```js
 new URLSearchParams(location.search).get('pageSize')
@@ -205,7 +195,7 @@ URLSearchParams是个允许重复的字典对象，其他常用方法：
 - get(key)    获取第一个key的value
 - set(key,value)    设置key的唯一value
 - getAll(key)    获取key所有的value
-- append(key,value)    追加设置key的value
+- append(key,value)    追加设置key的value，逗号隔开
 - toString    序列化为查询参数
 - keys/values    键/值迭代器
 
@@ -224,11 +214,11 @@ await axios.post(url, data.toString(), ...)
 
 ## FormData
 
-`FormData`键值对象可以调用它的[`append()`](https://developer.mozilla.org/zh-CN/docs/Web/API/FormData/append)方法来添加键名和键值。    
-添加的键值可以是JavaScript原始数据类型，也可以是`blob`对象、 `file`对象。
+`FormData`键值对象。方法与URLSearchParams类似。  
+添加的键值可以是JavaScript原始数据类型，也可以是`blob`对象
 
 ```js
-var formData = new FormData();
+const formData = new FormData();
 formData.append("username", "KOGAWA")
 formData.append("password", 123456)
 ```
@@ -253,7 +243,13 @@ $.ajax({
 
 ## Headers
 
-用来定义请求头键值对象
+用来定义请求头键值对象。方法与URLSearchParams类似。
+
+```js
+new Headers({'Content-Type': 'application/json'})
+```
+
+它与fetch方法伴生出现，可以直接在原生的fetch中使用。fetch方法的请求和响应对象本身的headers属性就是一个Headers实例对象。见fetch。
 
 
 

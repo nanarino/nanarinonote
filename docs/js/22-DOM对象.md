@@ -13,12 +13,16 @@ DOM(Document Object Model)文档对象模型：
 * 节点（node）的种类
 
   * 元素节点（element node）
-
   * 文本节点（text node）
-
   * 属性节点（attribute node）
 
+对于一个DOM对象，比如document.getElementById返回的对象，笼统来说它具有
 
+- 父类*Element* 
+- 父父类*Node*
+- 父父父类*EventTarget*
+
+在ts中操作DOM需要明确指出它的类型比如input标签的类型是*HTMLInputElement*
 
 ## 获取元素
 

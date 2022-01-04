@@ -173,7 +173,7 @@ window.event//低版本ie
 | preventDefault           | 函数     | 执行，就取消事件默认行为，当cancelable为true才行 |
 | stopImmediatePropagation | 函数     | 取消后续捕获或冒泡。阻止任何事件处理程序         |
 | stopPropagation          | 函数     | 取消后续捕获或冒泡。                             |
-| taget                    | 元素对象 | 事件的目标                                       |
+| target                   | 元素对象 | 事件的目标                                       |
 | trusted                  | 布尔型   | 是否是浏览器生成的事件                           |
 | type                     | 字符串   | 被触发的事件的类型                               |
 
@@ -182,6 +182,10 @@ window.event//低版本ie
 如果是`attachEvent`添加的event则有些不同。但那是ie浏览器了。
 
 ## 常用事件
+
+所有的事件见[Event - Web API 接口参考 | MDN (mozilla.org)](https://developer.mozilla.org/zh-CN/docs/Web/API/Event#基于_event_的接口)
+
+在ts中需要指定明确的event以及其target类型这很重要
 
 ### 鼠标事件
 
@@ -261,7 +265,7 @@ window.onmousewheel = function(e){//监听鼠标中键滑轮滚动，不监听�
 
 ## 事件派发
 
-Event可以简单声明事件，用dispatchEvent去派发
+Event可以简单声明事件，用EventTarget类（DOM的父父父类）的dispatchEvent方法去派发
 
 ```js
 let event = new Event('click')
@@ -270,7 +274,7 @@ window.dispatchEvent(event)//"click"
 
 事件名还可以自定义，自定义的事件可以用addEventListener来绑定
 
-除了Event，CustomEvent也可以，还能携带数据
+除了Event，CustomEvent也可以，还能携带自定义数据。
 
 ```js
 let xx = new Event("xx", {"bubbles":true, "cancelable":false})
@@ -279,4 +283,3 @@ let xx = new CustomEvent("xx", {
 	detail: { msg: "你好" }
 });
 ```
-

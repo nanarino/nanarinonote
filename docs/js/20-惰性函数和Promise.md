@@ -128,7 +128,7 @@ c.next().value//undefined  被掏空了
 
 Array等内置对象本身实现了Symbol.iterator所有可以直接使用`for of arr`
 
-这里创建一个**类数组对象**：
+这里创建一个**类数组对象**，它不是数组但支持`for of arr`，可以被`Array.from`转为数组：
 
 ```js
 let obj = {0:"a", 1:"b", 2:"c", length:3}
