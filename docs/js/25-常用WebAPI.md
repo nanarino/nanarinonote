@@ -225,19 +225,7 @@ formData.append("password", 123456)
 
 需要注意的是：
 
-用`FormData`对象提交需要设置`'Content-Type':'multipart/form-data'`
-
-如果使用`jQuery`来进行请求，在`$.ajax`中需要设置选项：
-
-```js
-$.ajax({
-    type: "POST",  
-    data: formData,
-    ...
-    processData: false,
-    contentType: false,
-    ...
-```
+用`FormData`对象提交需要设置请求头`'Content-Type':'multipart/form-data'`
 
 
 
