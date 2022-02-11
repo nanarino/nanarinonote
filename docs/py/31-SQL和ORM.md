@@ -482,7 +482,8 @@ async with AsyncSession(async_egn) as session:
 
 如果要拿修改后的字段值可以先开启事务自动提交再使用`await session.flush()`或手动提交
 
-事实上，事务是自动开启的，手动开启事务自动提交`.begin():`不仅需要在orm使用之前就开启，且与手动提交`.commit()`互斥的
+事实上，事务是自动开启的，手动开启事务自动提交`with session.begin():`不仅需要在orm使用之前就开启，    
+且与手动提交`session.commit()`互斥
 
 ### DDL
 
