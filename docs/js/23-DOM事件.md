@@ -187,19 +187,29 @@ window.event//低版本ie
 
 在ts中需要指定明确的event以及其target类型这很重要
 
+其中Mutation事件废弃而使用新的MutationObserver，见WebAPI章节
+
 ### 鼠标事件
 
 双击会触发两次单击 单击也会继而触发按下抬起
 
-即使是鼠标事件 它的e.shiftKey和e.ctrlKey也能判断热键
+即使是鼠标事件 它的e.shiftKey和e.ctrlKey也能判断热键。
 
-表单元素的默认行为：会自动捕获按钮的点击来触发onsubmit
+移入和移出事件有2套事件分别是默认冒泡和默认不冒泡的，
+
+实现拖拽时，移动有关的鼠标事件一定要去除冒泡以及默认事件，以避免鼠标抬起后DOM依然跟随鼠标。
+
+input的默认行为：点击内部和外部可以触发它的得到和失去焦点事件。
+
+表单元素的默认行为：会自动捕获按钮的点击来触发submit。
 
 ### 键盘事件
 
 如果被绑定到具体标签上，则需要聚焦到当前目标，没有聚焦的不能触发，一般写到input标签中或者document中。input标签的键盘事件推荐使用`oninput`
 
 keypress在ie和edge浏览器中只有回车空格触发，且其他浏览器中(`alt` `ctrl` `shift`等不会输入的)是不会触发`keypress`的。
+
+表单元素的默认行为：表单里含有type=submit的控件时回车会触发submit
 
 ### load事件
 
@@ -259,7 +269,7 @@ window.onmousewheel = function(e){//监听鼠标中键滑轮滚动，不监听�
 - `dragleave`：拖拉操作离开当前节点范围时，在当前节点上触发
 - `drop`：被拖拉的节点或选中的文本，释放到目标节点时，在目标节点上触发。注意，如果当前节点不允许`drop`，即使在该节点上方松开鼠标键，也不会触发该事件。如果ESC 取消这个操作，也不会触发该事件
 
-如果拖拽是含有文件，可以在event.dataTransfer.files中获取
+如果拖拽是含有文件，可以在event.dataTransfer.files中获取，见WebAPI中的文件有关对象。
 
 
 

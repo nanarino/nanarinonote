@@ -176,7 +176,18 @@ function base64(data, type = "text/plain") {
 }
 ```
 
+## MutationObserver
 
+MutationObserver代替了旧的Mutation Event功能，可以监视DOM树的修改。
+
+```js
+const observer = new MutationObserver((mutationsList, obs)=>{
+    console.dir(mutationsList)
+});
+
+
+observer.observe(dom, {attributes:true,childList:true,subtree:true})
+```
 
 
 
