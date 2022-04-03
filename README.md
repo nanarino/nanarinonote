@@ -1,6 +1,6 @@
 # nanarinonote
 
-基于vuepress1构建的零基础版学习笔记，包含
+基于vuepress1构建的零基础版学习笔记（教程？），包含
 
 - JavaScript
 - Python
