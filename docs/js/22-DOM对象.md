@@ -387,3 +387,13 @@ document.cookie
 它的格式为`cookie1=value; cookie2=value; cookie3=value;`
 
 设置过期：时间设置为当前之前即为过期
+
+
+## styleSheets
+
+通过`document.styleSheets`可以获取页面的CSSStyleSheet对象构成的数组
+
+```js
+const _CSSStyleSheet = document.styleSheets[document.styleSheets.length - 1]
+_CSSStyleSheet.insertRule(`ul{display:none}`, 0)
+```
