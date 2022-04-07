@@ -46,6 +46,10 @@ npm run docs:build
 ```
 
 
+## heroAnimation
+
+封面动画来自 くまもと先生（Twitter@skmmt3）
+
 
 ## 参考
 
