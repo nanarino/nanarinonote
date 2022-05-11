@@ -85,8 +85,7 @@ module.exports = {
                         '28-mongodb',
                         '29-Koa2',
                         '30-构建工具',
-                        '31-Vue',
-                        '32-Electron'
+                        '31-客户端构建'
                     ]
                 },
             ],

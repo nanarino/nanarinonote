@@ -2,7 +2,7 @@
 
 [FastAPI](https://fastapi.tiangolo.com/zh/)是使用uvicorn网络微框架asgi异步服务器的高性能RESTful API web框架
 
-而django使用的是uWSGI。
+而django3以下使用的是uWSGI。
 
 版本（写这个的时候2021年）：
 
@@ -11,6 +11,7 @@ fastapi==0.68.1
 uvicorn==0.15.0
 ```
 
+fastapi需要开发者使用pydantic来定义数据类。访问`/docs`可以查看接口文档和pydantic数据类
 
 
 ## 装饰器收集路由

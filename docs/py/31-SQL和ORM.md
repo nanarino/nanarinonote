@@ -66,32 +66,12 @@ mysql -u root -p ******
 ```
 
 用户授权管理等略去
+基本增删改查略去
 
-### 增删改查
 
-```sql
-insert into 表 (列名,列名...) values (值,值,值...)
-insert into 表 (列名,列名...) values (值,值,值...),(值,值,值...)
-insert into 表 (列名,列名...) select (列名,列名...) from 表
-```
+### 连表查询
 
-```sql
-delete from 表
-delete from 表 where id＝1 and name＝'alex'1
-```
-
-```sql
-update 表 set name ＝ 'alex' where id>1
-```
-
-```sql
-select * from 表
-select nid,name,gender as gg from 表 where id > 1
-```
-
-### 连表
-
-- join(`inner join`): 无对应关系则不显示
+- `inner join`: 无对应关系则不显示
   ```sql
   select A.num, A.name, B.name
   from A inner join B on A.nid = B.nid
@@ -145,7 +125,7 @@ python数据库引擎提供了 [PEP 249](https://www.python.org/dev/peps/pep-024
 
 ### 连接
 
-使用实例别名连接mssql。连接需要很大的开销，生产中会使用数据库连接池。
+连接需要很大的开销，生产中会使用数据库连接池。
 
 ```python
 import pymssql

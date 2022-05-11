@@ -34,6 +34,7 @@ npm init
 
 初始化后生成package.json文件
 
+
 ### 安装第三方依赖包
 
 安装server模块（例）包用于开发环境
@@ -46,19 +47,30 @@ npm install server -D
 
 目录内使用server模块和使用内置模块一样
 
-### 使用包内的脚本命令
 
-模块如果要以脚本命令在cmd运行可以使用npx命令：
+### 命令行工具
+
+如果要安装的server模块是命令行工具。如果要以脚本命令在cmd运行可以使用npx命令：
 
 ```shell
 npx server -p 8080
 ```
 
-如果是-g安装则不需要加npx 且任意目录内都可以运行（不推荐-g安装）
+如果是-g全局安装过了，则不需要加npx 且任意目录内都可以运行
 
-快捷运行命令
+除了yarn degit等工具，基本不推荐-g安装
 
-package.json文件内添加script选项可以固化命令快捷运行
+yarn可以代替npm，而degit则可以代替vuecli一类的构建工具
+
+以下命令查看全局安装了哪些包
+
+```shell
+npm list -g --depth 0
+```
+
+### 使用包内的脚本命令
+
+package.json文件内添加script选项可以固化命令快捷运行，其中的npx可以省略
 
 ```json
 "scripts": {
