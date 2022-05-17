@@ -2,7 +2,7 @@
 
 [FastAPI](https://fastapi.tiangolo.com/zh/)是使用uvicorn网络微框架asgi异步服务器的高性能RESTful API web框架
 
-而django3以下使用的是uWSGI。
+而其他框架如django2、flask一般是使用的是uWSGI。flask与fastapi的用法大致相同。
 
 版本（写这个的时候2021年）：
 

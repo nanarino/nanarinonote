@@ -156,8 +156,7 @@ module.exports = {
                     title: 'WEB相关',
                     children: [
                         '31-SQL和ORM',
-                        '32-Django',
-                        '33-FastAPI',
+                        '32-FastAPI'
                     ]
                 },
             ],
