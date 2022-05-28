@@ -56,16 +56,6 @@ Hello World!
 对于`.py`文件右键的`Edit with IDLE`来运行，也可以在cmd中`py 完整路径文件名`
 
 
-
-## 推荐资源
-
-除了[官方文档](https://docs.python.org/zh-cn/3/tutorial/)之外    
-哔哩哔哩搜索关键字：老男孩教育    
-[第14期完整（顺序稍乱）](https://space.bilibili.com/385868518)    
-[第9期（发现尾部不完整）](https://www.bilibili.com/video/av24702867)
-
-
-
 ## 常见问题
 
 - windows下安装后:
@@ -135,6 +125,3 @@ Hello World!
   只能等待库的更新，或者自己修改源码    
   如将`from collections import Iterable`修改为`from collections.abc import Iterable`
 
----
-
-这份笔记还在整理中，欢迎对本笔记进行勘误
