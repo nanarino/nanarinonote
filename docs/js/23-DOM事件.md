@@ -296,3 +296,5 @@ let xx = new CustomEvent("xx", {
 
 在鼠标事件中event.detail默认会显示当前事件已经触发的次数。    
 如果使用CustomEvent携带自定义数据detail触发后则会让原本记录的触发次数的功能失效
+
+给某些html原生标签派发默认事件可能需要`MouseEvent`等
