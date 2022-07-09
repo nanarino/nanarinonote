@@ -187,7 +187,6 @@ window.event//低版本ie
 
 在ts中需要指定明确的event以及其target类型这很重要
 
-其中Mutation事件废弃而使用新的MutationObserver，见WebAPI章节
 
 ### 鼠标事件
 
@@ -269,8 +268,21 @@ window.onmousewheel = function(e){//监听鼠标中键滑轮滚动，不监听�
 - `dragleave`：拖拉操作离开当前节点范围时，在当前节点上触发
 - `drop`：被拖拉的节点或选中的文本，释放到目标节点时，在目标节点上触发。注意，如果当前节点不允许`drop`，即使在该节点上方松开鼠标键，也不会触发该事件。如果ESC 取消这个操作，也不会触发该事件
 
-如果拖拽是含有文件，可以在event.dataTransfer.files中获取，见WebAPI中的文件有关对象。
+如果拖拽是含有文件，可以在event.dataTransfer.files中获取，见WebAPI中的FileList对象。
 
+
+### MutationObserver
+
+MutationObserver代替了旧的Mutation Event功能，可以监视DOM树的修改。
+
+```js
+const observer = new MutationObserver((mutationsList, obs)=>{
+    console.dir(mutationsList)
+});
+
+
+observer.observe(dom, {attributes:true,childList:true,subtree:true})
+```
 
 
 ## 事件派发

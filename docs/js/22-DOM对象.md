@@ -397,3 +397,33 @@ document.cookie
 const _CSSStyleSheet = document.styleSheets[document.styleSheets.length - 1]
 _CSSStyleSheet.insertRule(`ul{display:none}`, 0)
 ```
+
+
+## designMod
+
+类似于文本编辑器
+
+```js
+const iframe = document.createElement('iframe');
+document.body.appendChild(iframe);
+// iframe.document
+const doc = iframe.contentDocument;
+doc.designMode = 'on';
+// 全选
+// 有一些执行命令首先需要document.designMode = 'on';才可以使用
+const img = new Image();
+img.src = '111.gif';
+doc.body.appendChild(img);
+btn.onclick = function () {
+    doc.execCommand('selectAll'); // 不需要开designMode
+    // document.execCommand('copy');  // 不需要开designMode
+    // document.execCommand('cut'); // 需要开designMode
+    // doc.execCommand('bold'); // 加粗 需要开designMode
+    // doc.execCommand('fontSize', true, 7); // 1-7文字大小 font标签 需要开designMode
+    // doc.execCommand('foreColor', true, '#963');
+    // doc.execCommand('backColor', true, '#9527');
+    // doc.execCommand('italic'); // 斜体
+    // document.execCommand('delete')
+}
+```
+
