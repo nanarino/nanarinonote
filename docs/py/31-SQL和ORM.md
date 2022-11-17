@@ -139,7 +139,7 @@ DATABASES = {
 
 '''其他配置
 as_dict:bool 查询结果返回的是字典否则(默认)返回的为列表
-autocommit:bool 默认False，对数据表进行更改，则需要手动调用commit来提交操作
+autocommit:bool 默认False，自动提交，每一句sql都会变成事务，官网不建议开启
 port 端口号 使用别名时不传
 '''
 
@@ -369,7 +369,7 @@ with egn.connect() as conn:
 	for row in conn.execute(text("select * from demotable")):
 		print(row)
     #支持使用.fetchone/.fetchall/.fetchmany/.all方法迭代
-    #conn.commit() 增删改需要提交
+    #conn.commit() 增删改需要提交 这里未开启事务
 ```
 
 ##### 异步Connection
@@ -462,8 +462,7 @@ async with AsyncSession(async_egn) as session:
 
 如果要拿修改后的字段值可以先开启事务自动提交再使用`await session.flush()`或手动提交
 
-事实上，事务是自动开启的，手动开启事务自动提交`with session.begin():`不仅需要在orm使用之前就开启，    
-且与手动提交`session.commit()`互斥
+事实上，事务是自动开启的，手动开启事务`with session.begin():`结束之后会自动调用一次`session.commit()`
 
 ### DDL
 
