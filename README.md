@@ -55,6 +55,10 @@ npm run docs:build
 
 ## 参考
 
+部分AI回答
+- [ChatGPT](https://chat.openai.com/chat)
+
+以及一些博客
 - [Eva-J](https://www.cnblogs.com/Eva-J/p/7277026.html)
 - [李文周](https://www.cnblogs.com/liwenzhou/p/9959979.html)
 - [GGGG-XXXX](https://www.cnblogs.com/GGGG-XXXX/p/9564651.html)
