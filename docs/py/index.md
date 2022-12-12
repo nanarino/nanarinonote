@@ -64,13 +64,13 @@ Hello World!
   'python' 不是内部或外部命令，也不是可运行的程序或批处理文件。
   :::
   
-  可能是在使用安装包安装的时候未勾选add to path，可以手动添加环境变量
+  可能是在使用安装包安装的时候未勾选add to path，可以手动添加环境变量，但你也可以使用`py`命令
   
   ::: danger C:\Users\Administrator>pip -V
   'pip' 不是内部或外部命令，也不是可运行的程序或批处理文件。
   :::
   
-  可能是没设置好环境变量,或者pip压根没装  可以通过重新安装来解决
+  可能是没设置好环境变量，很可能是安装时权限不够。可以提权或使用专业版系统重新安装
   
   ::: warning C:\Users\Administrator>pip -V
   You are using pip version 10.0.3, however version 19.1.1 is available.    
@@ -79,8 +79,6 @@ Hello World!
 
   按照上述命令进行升级pip
 
-- windows下安装后: ` .py`文件 鼠标右键中没有  `edit with IDLE`    
-解决方法 修改注册表 有3个文件夹(新建)的默认值要修改 具体谷歌
 
 - pip下载非标准库/第三方模块速度过慢    
   可以使用清华大学镜像
@@ -110,18 +108,5 @@ Hello World!
   此时`python37`和`python37 -m pip`代替即可上面两个已失效命令，    
   便可再安装其他版本python即可，python和pip为最新安装的版本。
 
-------
-
-- 3.8版本以上的问题
-
-  某些模块第三方库引入之后可能会这样：
-
-  ::: danger DeprecationWarning:
-   Using or importing the ABCs from 'collections'     
-   instead of from 'collections.abc' is deprecated,    
-   and in 3.8 it willstop working
-  :::
-
-  只能等待库的更新，或者自己修改源码    
-  如将`from collections import Iterable`修改为`from collections.abc import Iterable`
+  如果需要频繁切换python版本 应该一开始就用 Anaconda 来安装和管理python
 
