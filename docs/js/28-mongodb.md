@@ -6,8 +6,6 @@
 本笔记只记录基础命令，详细的数据库用法请左转其官方文档。
 :::
 
-
-
 ## 命令行操作
 
 mongodb是非关系型数据库中最像关系型数据库的数据库，有很多命令也和sql有相似之处
@@ -99,8 +97,6 @@ mongo
 >db.集合名.deleteMany(obj)
 ```
 
-
-
 ## 使用mongoose
 
 使用node.js上的第三方模块mongoose连接MongoDB数据库
@@ -113,16 +109,15 @@ const Schema = mongoose.Schema
 
 
 db.on("error",()=>{
-	console.log("数据库连接失败")
+    console.log("数据库连接失败")
 })
 db.on("open",()=>{
-	console.log("project 数据库连接成功")
+    console.log("project 数据库连接成功")
 })
 
 
 module.exports = {
-	db,
-	Schema
+    db,
+    Schema
 }
 ```
-

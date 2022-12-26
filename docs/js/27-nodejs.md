@@ -2,15 +2,11 @@
 
 Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境
 
-
-
 ## 官方文档
 
 本笔记只记录基础，详细请查看：
 
 <http://nodejs.cn/api/>
-
-
 
 ## 常用的内置模块
 
@@ -19,8 +15,6 @@ Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境
 - crypto模块 - 加密
 - path模块 - 路径
 - URL模块/HTTP模块
-
-
 
 ## 依赖管理
 
@@ -34,7 +28,6 @@ npm init
 
 初始化后生成package.json文件
 
-
 ### 安装第三方依赖包
 
 安装server模块（例）包用于开发环境
@@ -46,7 +39,6 @@ npm install server -D
 安装好之后server包会在node_modules目录中
 
 目录内使用server模块和使用内置模块一样
-
 
 ### 命令行工具
 
@@ -81,8 +73,6 @@ package.json文件内添加script选项可以固化命令快捷运行，其中�
 
 命令就可以使用`npm run serve`，`npm run build`
 
-
-
 ### 自己开发包
 
 本地安装开发中的common包
@@ -90,8 +80,6 @@ package.json文件内添加script选项可以固化命令快捷运行，其中�
 ```shell
 npm link common
 ```
-
-
 
 ## CJS模块
 
@@ -120,8 +108,6 @@ new $()...
 如果js文件使用右键*打开方式*选择解释器运行会导致process.cwd定位到C:\Windows\System32    
 应该在cmd中使用命令或者选定为默认打开方式双击
 :::
-
-
 
 ## 终端输入输出
 
@@ -191,8 +177,6 @@ ecma最新 JavaScript modules规范引入 文件后缀得是`.ejs`
 import {createInterface} from 'readline'
 ```
 
-
-
 ## 事件轮询机制
 
 异步优先级：DLE观察者 > I/O观察者 > check观察者
@@ -228,6 +212,3 @@ setTimeout(()=>{
 ```
 
 思考：上面代码打印12345的顺序是？
-
-
-

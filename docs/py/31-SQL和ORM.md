@@ -6,15 +6,13 @@
 
 常见的关系型数据库
 
--  Oracle
--  MySql
--  Microsoft SQL Server
--  SQLite
--  PostgreSQL
+- Oracle
+- MySql
+- Microsoft SQL Server
+- SQLite
+- PostgreSQL
 
 关系型数据库提供对事务的支持，能保证系统中事务的正确执行，同时提供事务的恢复、回滚、并发控制和死锁问题的解决。
-
-
 
 ### 事务
 
@@ -25,15 +23,11 @@
 - I(Isolation)隔离性:并发事务之间相互不影响。
 - D(Durability)持久性:事务完成之后，对数据库的影响是永久的。
 
-
-
 ## SQL语句
 
 关系型数据库一般都支持通用的SQL（结构化查询语言）语句。
 
 不同的数据库支持不同的sql语句方言。
-
-
 
 ### 连接数据库
 
@@ -68,10 +62,10 @@ mysql -u root -p ******
 用户授权管理等略去
 基本增删改查略去
 
-
 ### 连表查询
 
 - `inner join`: 无对应关系则不显示
+  
   ```sql
   select A.num, A.name, B.name
   from A inner join B on A.nid = B.nid
@@ -84,9 +78,9 @@ mysql -u root -p ******
 - `... union ...`  :  两个查询的结果集组合
 
 - 某些连表可以用子查询替代
-
+  
   `where exists()`   子查询结果集至少有一行
-
+  
   `where in ()`    筛选符合子查询结果集中的一行满足
 
 ### 函数
@@ -112,8 +106,6 @@ sql函数分为 聚合函数 标量函数 排名函数 分析函数 等
 ### 作业
 
 创建的数据库定时任务。不同方言大不相同
-
-
 
 ## DB-ABI
 
@@ -201,8 +193,6 @@ cur.callproc('FindPerson', ('Jane Doe',))
 
 异步对应原引擎一般都以`aio-`开头。使用方法区别不大，只需要加上await来等待结果
 
-
-
 ## ORM
 
 对象关系映射（Object Relation Mapping）
@@ -240,7 +230,7 @@ egn = create_engine(url)
 - `connect_args={"check_same_thread": False}`   为sqlite开启多线程（默认不开启）
 
 - `poolclass=sqlalchemy.pool.NullPool`   不使用连接池
-
+  
   （默认`QueuePool`，多线程时用`SingletonThreadPool`）
 
 - `pool_pre_ping=True`    连接池开启悲观处理（默认不开启）
@@ -254,8 +244,6 @@ from sqlalchemy.ext.asyncio import create_async_engine
 url = "mysql+aiomysql://root:*****@127.0.0.1:3306/demodemo?charset=utf8"
 async_egn = create_async_engine(url)
 ```
-
-
 
 ### metadata
 
@@ -310,6 +298,7 @@ mapper_registry = registry()
 Base = mapper_registry.generate_base()
 #数据源对象使用Base.metadata获取
 ```
+
 使用`declarative_base`也可以生成Base
 
 ```python
@@ -355,8 +344,6 @@ class Son(Base):
     father_id = Column(Integer,ForeignKey('father.id'))
 ```
 
-
-
 ### execute
 
 使用**text**可以支持非orm构造（即直接执行sql语句、存储过程等）
@@ -366,8 +353,8 @@ class Son(Base):
 ```python
 from sqlalchemy import text
 with egn.connect() as conn:
-	for row in conn.execute(text("select * from demotable")):
-		print(row)
+    for row in conn.execute(text("select * from demotable")):
+        print(row)
     #支持使用.fetchone/.fetchall/.fetchmany/.all方法迭代
     #conn.commit() 增删改需要提交 这里未开启事务
 ```
@@ -379,7 +366,9 @@ async with async_egn.connect() as conn:
     result = await conn.execute(...)
     print(result.fetchall())
 ```
+
 连接流（异步生成器）
+
 ```python
 async with async_egn.connect() as conn:
     async_result = await conn.stream(...)
@@ -451,7 +440,7 @@ class Demo(Base):
     __tablename__ = 'demotable'
     id = Column(Integer, primary_key=True)
     name = Column(String(30))
-    
+
 async with AsyncSession(async_egn) as session:
     result = await session.execute(select(Demo))
     for i in result.scalars():
@@ -475,4 +464,3 @@ from sqlalchemy.schema import DDL
 #DDL.execute()1.4 版后已移除
 #所有语句执行都由 Connection.execute() 方法 Connection ，或在ORM中 Session.execute() 方法
 ```
-

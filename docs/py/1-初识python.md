@@ -7,17 +7,12 @@
 操作系统：纯命令行发展为图形界面，   
 应用程序：操作系统也是应用程序。
 
-
-
 ## python历史
 
 宏观上：python2 与 python3 区别：
 
 - python2 源码不标准，混乱，重复代码太多，
 - python3 统一 标准，去除重复代码。
-
-
-
 
 ## python的特点
 
@@ -29,7 +24,7 @@
 
 ## python种类
 
-### 从实现: 
+### 从实现:
 
 我们用的都是`CPython`就是用C语言实现的Python及其解释器（JIT编译器）    
 速度最快的是`pypy`是python自己实现的自己    
@@ -48,27 +43,25 @@
 也是通过 `#-*- encoding:utf-8 -*-` 来解决
 :::
 
-
 ## 变量
 
 变量：就是将一些运算的中间结果暂存到内存中，以便后续代码调用。
 
 - 必须由数字，字母，下划线任意组合，且不能数字开头。
-- 不能是python中的关键字 以下:
 
+- 不能是python中的关键字 以下:
+  
   ```python
   ['and', 'as', 'assert', 'break', 'class', 'continue',
-  	'def', 'del', 'elif', 'else', 'except', 'exec',
-  	'finally', 'for', 'from', 'global', 'if', 'import', 
-  	'in', 'is', 'lambda', 'not', 'or', 'pass', 'print', 
-  	'raise', 'return', 'try', 'while', 'with', 'yield']
+      'def', 'del', 'elif', 'else', 'except', 'exec',
+      'finally', 'for', 'from', 'global', 'if', 'import', 
+      'in', 'is', 'lambda', 'not', 'or', 'pass', 'print', 
+      'raise', 'return', 'try', 'while', 'with', 'yield']
   ```
 
 - 变量具有可描述性。
+
 - 不能是汉字等字符。
-
-
-
 
 ## 常量
 
@@ -78,26 +71,23 @@
 - 自然对数底数`e=2.71`
 - `BIR_OF_CHINA = 1949`
 
-
-
 ## 注释
 
 方便自己方便他人理解代码。
 
 - 单行注释：`#`
-- 多行注释：`'''`被注释内容`'''`
 
+- 多行注释：`'''`被注释内容`'''`
+  
   ```python
   """
-
+  
   被注释内容:代码千万行,注释第一行,注释不规范,亲人两行泪
-
+  
   """
   ```
 
 它不仅是注释，也是带换行的字符串块
-
-
 
 ## 用户交互`input`
 
@@ -108,8 +98,6 @@ a = input("请输入")
 1，等待输入。
 2，将输入的内容赋值给了前面变量。
 3，`input`接受的数据类型全部是`str`类型（字符串类型）
-
-
 
 ## 基础数据类型初始
 

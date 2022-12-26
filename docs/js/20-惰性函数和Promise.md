@@ -19,8 +19,6 @@ undefined
 
 这个生成器可以借助`.next()`方法遍历惰性函数的每一个状态。
 
-
-
 ### generator.next
 
 执行生成器的next方法来执行代码：
@@ -78,7 +76,7 @@ function* foo(){
     let t =0;
     try{
         while(t<5){
-	        yield 123
+            yield 123
             t++;
         }
     }catch(err){
@@ -91,8 +89,6 @@ f.throw("你这个答案有问题")//Error! 你这个答案有问题
 ```
 
 抛出的异常在内部接受之后就停止了。不会再叠加
-
-
 
 ## 迭代器
 
@@ -117,8 +113,6 @@ c.next().value//undefined  被掏空了
 ```
 
 `for let i of iterator` 相当于每轮循环执行`let  i = iterator.next().value`
-
-
 
 #### Symbol.iterator
 
@@ -149,8 +143,6 @@ for(let i of obj){
 
 这称为**鸭子类型**
 
-
-
 ## 回调地狱（Callback Hell）
 
 写代码的时候需要控制代码的执行顺序。A加载完成之后做B，B搜集好了之后做C...或者C，D，E都要完成才可以继续执行F，这种代码该如何实现？
@@ -172,8 +164,6 @@ work(function chuanyifu(err, data, shuaya){
 
 后面不停是})一层一层嵌套的回调的，就是 **回调地狱**，看多了头晕，但是不得不这么写，因为代码逻辑是这样做的。这种的代码怎么重构怎么优化？
 
-
-
 ## Promise
 
 Promise是一个构造函数，传入一个函数A，在函数中接受两个参数resolve和reject，这是两个参数是函数，通过在A中使用resolve或者reject来表示函数A的进行状态，resolve表示搞定reject表示失败。
@@ -185,7 +175,6 @@ promise有三种状态： "**Pending**" "**Fulfilled**" "**Reject**" 初始状�
 - resolve接受一个参数，表示异步事件得出的结果
 
 - reject接受一个参数，表示异步事件没有结果或者失败
-
 
 ```js
 let p = new Promise(function(resolve, reject){
@@ -329,4 +318,3 @@ let p = new Promise((res, rej)=>{
 ```
 
 `Promise.resolve(value)` 如果value是普通值（非Promise对象或者不带then方法）那么就会返回一个Fulfilled状态的promise，其余情况的根据参数value的Promise的结果确定。
-

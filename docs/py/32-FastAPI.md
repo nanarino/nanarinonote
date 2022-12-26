@@ -13,7 +13,6 @@ uvicorn==0.15.0
 
 fastapi需要开发者使用pydantic来定义数据类。访问`/docs`可以查看接口文档和pydantic数据类
 
-
 ## 装饰器收集路由
 
 从零开始的RESTful API
@@ -63,11 +62,9 @@ if __name__ == '__main__':
 
 使用uvicorn.run比uvicorn指令更方便
 
+## 用于参数校验以及自动收集的类
 
-
-## 用于参数校验的类
-
-支持混用各种参数
+支持混用各种参数，只需用默认参数来声明就可以自动搜集
 
 ### Query
 
@@ -83,13 +80,23 @@ async def get_pics(tg: str = Query(..., max_length=16)):
 
 ### Path
 
-路径参数声明校验。还可以定义元数据title。
+路径参数声明后自动收集校验。还可以定义元数据title。
 
 ```python
 from fastapi import Path
 
 @app.get('/user/{id}')
 async def get_user(id: int = Path(..., title="User's UUID")):
+    pass
+```
+
+还可以直接获取整个path
+
+```python
+from fastapi import Path
+
+@app.get('{url_path:path}')
+async def get_file(path: str = Path(..., title="File's Path")):
     pass
 ```
 
@@ -154,7 +161,61 @@ async def login(username: str = Form(...), password: str = Form(...)):
     return {"username": username}
 ```
 
+上传文件写入本地
 
+```python
+from fastapi import Form, UploadFile, File
+
+@app.post("/upload/")
+async def upload(filename: str = Form(...), file: UploadFile = File(...)):
+    content = await file.read()
+    async with aiofiles.open(pathlib.Path('static').joinpath(filename), "wb+") as f:
+        await f.write(content)
+```
+
+## 自动参数收集的依赖注入
+
+定义一个普通函数或者异步函数或者类，即可被`Depends`注入为依赖。依赖也可以依赖其他的依赖，功能类似于中间件，但只作用域这一个路由。
+
+例: path自动注入
+
+```python
+import fastapi
+import pathlib
+
+def get_file(url_path: str = fastapi.Path(...)) -> pathlib.Path:
+    return pathlib.Path("static").joinpath(url_path)
+
+@app.get('{url_path:path}')
+async def get_file_stream(file: pathlib.Path = fastapi.Depends(get_file):
+    # 事实上返回文件流可以 : 
+    #   return FileResponse(pathlib.Path) 或 StreamingResponse(io.BytesIO)
+    pass
+```
+
+## 原始Request
+
+只需用将类型注解为Request即可获取到原始请求，它在starlette的基础上几乎没有封装。
+
+例: Request自动注入，获取请求的IP
+
+```python
+from fastapi import FastAPI, Request, Depends
+
+def get_ip(request: Request):
+    forwarded = request.headers.get("X-Forwarded-For")
+    if forwarded:
+        ip = forwarded.split(",")[0]
+    else:
+        ip = request.client.host
+    return ip
+
+@app.post("/submit/")
+async def post_form(req: Request, ip = Depends(get_ip)):
+    print(ip)
+    form_data = await req.form()
+    return dict(form_data.items())
+```
 
 ## 抛出异常
 
@@ -191,6 +252,3 @@ async def read_unicorn(name: str):
         raise UnicornException(name=name)
     return {"unicorn_name": name}
 ```
-
-
-

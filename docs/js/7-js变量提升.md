@@ -1,7 +1,5 @@
 # js变量提升
 
-
-
 ## `var`的变量提升
 
 ```js
@@ -33,8 +31,6 @@ if(true){
     var a = 3;
 }
 ```
-
-
 
 ## `let`  `const` 的TDZ
 
@@ -99,8 +95,6 @@ MAX = 100;//Uncaught TypeError: Assignment to constant variable.
 * 不能重复申明
 * 是块级作用域，会强行绑定在这个区域
 
-
-
 ## `function`的变量提升
 
 函数也是用关键字声明的，只不过是`function`关键词。    
@@ -159,8 +153,6 @@ console.log(a);//ƒ foo(){}
 ```
 
 注意代码的书写顺序
-
-
 
 ## 严格模式
 

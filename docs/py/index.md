@@ -15,8 +15,6 @@
 - 必应
 - 哔哩哔哩
 
-
-
 ## 安装环境
 
 服务器上推荐安装兼容最好的python3.6.8。    
@@ -55,11 +53,10 @@ Hello World!
 以上就是python shell交互（行首有`>>>`），可以使用`exit()`或者`quit()`来退出    
 对于`.py`文件右键的`Edit with IDLE`来运行，也可以在cmd中`py 完整路径文件名`
 
-
 ## 常见问题
 
 - windows下安装后:
-
+  
   ::: danger C:\Users\Administrator>python -V
   'python' 不是内部或外部命令，也不是可运行的程序或批处理文件。
   :::
@@ -76,9 +73,8 @@ Hello World!
   You are using pip version 10.0.3, however version 19.1.1 is available.    
   You should consider upgrading via the 'python -m pip install --upgrade pip' command.
   :::
-
+  
   按照上述命令进行升级pip
-
 
 - pip下载非标准库/第三方模块速度过慢    
   可以使用清华大学镜像
@@ -90,13 +86,13 @@ Hello World!
 ---
 
 - **多版本**问题
-
+  
   当Windows系统里只安装了一个版本的python时    
   cmd里直接输入指令`py`打开`C:\Windows\py.exe`和输入`python`是一致的    
   而此时`pip`其实是等效于`py -m pip`和`python -m pip`    
   而如果将python.exe文件名改成其他的如**python37.exe**：    
   `py`和`pip`指令都将失效，也无法卸载了。
-
+  
   ```bash
   C:\Users\Administrator>py
   Can't find a default Python.
@@ -104,9 +100,8 @@ Hello World!
   C:\Users\Administrator>pip list
   Fatal error in launcher: Unable to create process using
   ```
-
+  
   此时`python37`和`python37 -m pip`代替即可上面两个已失效命令，    
   便可再安装其他版本python即可，python和pip为最新安装的版本。
-
+  
   如果需要频繁切换python版本 应该一开始就用 Anaconda 来安装和管理python
-

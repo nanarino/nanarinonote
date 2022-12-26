@@ -53,14 +53,12 @@ async function ReadFile(){
 ```
 
 - async 关键字放在函数声明之前，函数需要返回一个Promise对象 
-
+  
   如果不是，将会**自动帮你包装成`Promise.resolve(value)`**
 
 - await 关键字放在promise对象前，阻塞其执行并得到结果
-
+  
   await 关键字**只能在async 函数内使用**
-
-
 
 ### promisify包装
 
@@ -87,8 +85,6 @@ function promisify(fn) {
     }
 }
 ```
-
-
 
 ## 并发运行
 
@@ -140,8 +136,6 @@ void async function main() {
     })
 }()
 ```
-
-
 
 ## 继发运行
 
@@ -197,8 +191,6 @@ void async function main(){
 }()
 ```
 
-
-
 ## **与Generator的区别**:
 
 ### 表面区别
@@ -206,7 +198,6 @@ void async function main(){
 - async内置执行器：直接执行就可以，不需要next等其他方法 
 - async良好的语义。async表示异步函数，await需要等待后面的表达式结果结束。
 - Generator返回的是Iterator对象，async返回的是promise对象,可以后续then继续操作。
-
 
 ### 内在联系
 
@@ -219,8 +210,6 @@ Generator功能更强大，async的语义更好，各有优点。
 也就是说async是对Generator的再次封装
 
 yiled promiseObject --> await asyncFunction()
-
-
 
 ## 异步生成器
 

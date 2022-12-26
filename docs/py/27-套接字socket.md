@@ -1,7 +1,6 @@
 # 套接字socket
->套接字起源于 20 世纪 70 年代加利福尼亚大学伯克利分校版本的 Unix,即人们所说的 BSD Unix。 因此,有时人们也把套接字称为“伯克利套接字”或“BSD 套接字”。一开始,套接字被设计用在同 一台主机上多个应用程序之间的通讯。这也被称进程间通讯或IPC。
 
-
+> 套接字起源于 20 世纪 70 年代加利福尼亚大学伯克利分校版本的 Unix,即人们所说的 BSD Unix。 因此,有时人们也把套接字称为“伯克利套接字”或“BSD 套接字”。一开始,套接字被设计用在同 一台主机上多个应用程序之间的通讯。这也被称进程间通讯或IPC。
 
 ## socket模块
 
@@ -21,27 +20,23 @@ s = socket.socket()
 - TCP套接字的名SOCK_STREAM（默认类型）
 - UDP套接字的名SOCK_DGRAM
 
-
-
-| 常用方法          |                                                           |
-| ----------------- | --------------------------------------------------------- |
-| `s.bind()`        | 绑定(主机,端口号)到套接字                                 |
-| `s.listen()`      | 开始TCP监听                                               |
-| `s.accept()`      | 被动接受TCP客户的连接,(阻塞式)等待连接的到来              |
-| `s.connect()`     | 主动初始化TCP服务器连接                                   |
-| `s.connect_ex()`  | `connect()`函数的扩展版本,出错时返回出错码,而不是抛出异常 |
-| `s.recv()`        | #接收TCP数据                                              |
-| `s.send()`        | #发送TCP数据                                              |
-| `s.sendall()`     | #发送TCP数据                                              |
-| `s.recvfrom()`    | #接收UDP数据                                              |
-| `s.sendto()`      | #发送UDP数据                                              |
-| `s.getpeername()` | #连接到当前套接字的远端的地址                             |
-| `s.getsockname()` | #当前套接字的地址                                         |
-| `s.getsockopt()`  | #返回指定套接字的参数                                     |
-| `s.setsockopt()`  | #设置指定套接字的参数                                     |
-| `s.close()`       | #关闭套接字，也支持with上下文管理`socket.socket()`        |
-
-
+| 常用方法              |                                      |
+| ----------------- | ------------------------------------ |
+| `s.bind()`        | 绑定(主机,端口号)到套接字                       |
+| `s.listen()`      | 开始TCP监听                              |
+| `s.accept()`      | 被动接受TCP客户的连接,(阻塞式)等待连接的到来            |
+| `s.connect()`     | 主动初始化TCP服务器连接                        |
+| `s.connect_ex()`  | `connect()`函数的扩展版本,出错时返回出错码,而不是抛出异常  |
+| `s.recv()`        | #接收TCP数据                             |
+| `s.send()`        | #发送TCP数据                             |
+| `s.sendall()`     | #发送TCP数据                             |
+| `s.recvfrom()`    | #接收UDP数据                             |
+| `s.sendto()`      | #发送UDP数据                             |
+| `s.getpeername()` | #连接到当前套接字的远端的地址                      |
+| `s.getsockname()` | #当前套接字的地址                            |
+| `s.getsockopt()`  | #返回指定套接字的参数                          |
+| `s.setsockopt()`  | #设置指定套接字的参数                          |
+| `s.close()`       | #关闭套接字，也支持with上下文管理`socket.socket()` |
 
 ### 基于TCP协议的socket
 
@@ -95,8 +90,6 @@ ConnectionRefusedError: [WinError 10061] 由于目标计算机积极拒绝，无
 
 解决方法： 修改防火墙设置或者换一个端口号
 
-
-
 ### 基于UDP协议的socket
 
 udp无需监听和建立连接。
@@ -129,16 +122,16 @@ print(back_msg.decode('utf-8'),addr)
 ### 更多方法介绍
 
 - 面向锁
-
+  
   | `s.setblocking()` | 设置套接字的阻塞与非阻塞模式 |
-  | ----------------- | ---------------------------- |
+  | ----------------- | -------------- |
   | `s.settimeout()`  | 设置阻塞套接字操作的超时时间 |
   | `s.gettimeout()`  | 得到阻塞套接字操作的超时时间 |
 
 - 面向文件
-
-  | `s.fileno()`   | 套接字的文件描述符           |
-  | -------------- | ---------------------------- |
+  
+  | `s.fileno()`   | 套接字的文件描述符      |
+  | -------------- | -------------- |
   | `s.makefile()` | 创建一个与该套接字相关的文件 |
 
 官方文档对socket模块下的`socket.send()`和`socket.sendall()`解释如下：
@@ -153,7 +146,7 @@ if only some of the data was transmitted,
 the application needs to attempt delivery of the remaining data.
 send()的返回值是发送的字节数量，这个数量值可能小于要发送的string的字节数，
 也就是说可能无法发送string中所有的数据。如果有错误则会抛出异常。'''
-	pass
+    pass
 
 socket.sendall(string[, flags]):
 '''Send data to the socket. 
@@ -172,7 +165,7 @@ if any, was successfully sent.
 #while buffer:
 #    bytes = sock.send(buffer)
 #    buffer = buffer[bytes:]
-	pass
+    pass
 ```
 
 ## socketserver模块
@@ -225,8 +218,6 @@ print("Sent:     {}".format(data))
 print("Received: {}".format(received))
 ```
 
-
-
 ## 黏包
 
 现象 : 同时执行多条命令之后，得到的结果很可能只有一部分，在执行其他命令的时候又接收到之前执行的另外一部分结果，这种显现就是黏包。 
@@ -246,8 +237,6 @@ print("Received: {}".format(received))
 思路：制作报头，提前让接收端知晓自己将要发送的字节流总大小
 
 让发送端在发送数据前，发送**固定长度**的报头，然后接收端循环接收完所有数据。
-
-
 
 ## struct模块
 

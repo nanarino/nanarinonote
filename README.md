@@ -5,37 +5,24 @@
 - JavaScript
 - Python
 
-
-
 ## page-build
 
-仓库的页面（很久才打包一次，建议拉到本地打包）
+仓库的页面<https://nanarino.github.io/nanarinonote/>
 
-<https://nanarino.github.io/nanarinonote/>
-
-打包部署的脚本    `/deploy.sh`
-
-配置文件    `/docs/.vuepress/config.js`
+很久才打包一次，建议直接拉到本地使用Typedown查看器打开文件夹
 
 本地运行可以将`base: '/nanarinonote/'`改为`base: '/'` 
-
-```js
-module.exports = {
-    base: '/nanarinonote/',
-```
-
-
 
 ## page-cli-setup
 
 安装依赖
 
 ```bash
+# nvm use 14.19.2
 npm install
 ```
 
-
-脚手架命令（或运行`docs_dev.cmd` `docs_build.cmd`）：
+脚手架命令：
 
 ```bash
 # serve with hot reload at localhost:8080
@@ -45,22 +32,26 @@ npm run docs:dev
 npm run docs:build
 ```
 
-
-## heroAnimation
+## 借物
 
 ![伊吹萃香](./docs/.vuepress/public/suika.png)
 
-封面动画来自 くまもと先生（Twitter@skmmt3）
+封面
 
+- [くまもと先生](https://twitter.com/skmmt3?s=20&t=ltroPB3CFkNcqhtvoZvyRw)
 
-## 参考
+公式编辑
 
-部分AI回答
+- [MathJax](https://github.com/mathjax/MathJax)
+- [Typedown](https://www.microsoft.com/store/productId/9P8TCW4H2HB4)
+
+AI作答
+
 - [ChatGPT](https://chat.openai.com/chat)
 
-以及一些博客
+入门博客
+
 - [Eva-J](https://www.cnblogs.com/Eva-J/p/7277026.html)
 - [李文周](https://www.cnblogs.com/liwenzhou/p/9959979.html)
 - [GGGG-XXXX](https://www.cnblogs.com/GGGG-XXXX/p/9564651.html)
 - [Alex](https://www.cnblogs.com/alex3714/articles/5760582.html)
-

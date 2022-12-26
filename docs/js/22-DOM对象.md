@@ -3,15 +3,15 @@
 DOM(Document Object Model)文档对象模型：
 
 * 文档对象模型是一个树形结构，类似于家谱树
-
+  
   html标签是**根节点**，整个html表示整个文档。
-
+  
   head和body是html的**子节点**。html是它们的**父亲节点（parent）**，它们互为**兄弟节点**。
-
+  
   这样一层一层的关系就是**节点树**。各个标签在页面中都是**元素节点（element node）**
 
 * 节点（node）的种类
-
+  
   * 元素节点（element node）
   * 文本节点（text node）
   * 属性节点（attribute node）
@@ -45,8 +45,6 @@ let arr2 = document.querySelectorAll(".item")
 //arr2 NodeList  不会动态改变
 ```
 
-
-
 ## 增删改查
 
 ### 增
@@ -58,7 +56,6 @@ let arr2 = document.querySelectorAll(".item")
 1. 增加浏览器渲染不必要的开销 
 
 2. 原先的节点绑定的事件将会消失，无论是不是动态获取元素。
-
 
 ---
 
@@ -84,7 +81,7 @@ document.body.appendChild(li)//放置
 但是枝叶的修改也是DOM操作，也会有渲染重排的问题。
 
 - `Image()`构造函数将会创建一个新的[`HTMLImageElement`](https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLImageElement)实例。
-
+  
   它的功能等价于 [`document.createElement('img')`](https://developer.mozilla.org/zh-CN/docs/Web/API/Document/createElement)
 
 ```js
@@ -92,8 +89,6 @@ var myImage = new Image(100, 200);
 myImage.src = 'picture.jpg';
 document.body.appendChild(myImage);
 ```
-
-
 
 ### 删
 
@@ -112,8 +107,6 @@ let list = document.querySelector(".list")
 list.removeChild(ali[0])// 从父元素中删除节点。必须是父子关系。
 ```
 
-
-
 ### 改
 
 完全修改 = 删除+增加
@@ -125,20 +118,18 @@ list.relaceWith(document.createElement("li"))// 将自己替换成li元素节点
 
 修改顺序用`insertBefore` 移动子节点到其他子节点之前。 也可以使用`appendChild`  
 
-
-
 ### 查
 
   查询元素。可以通过绝对位值关键字符查询。也可以通过相对位值查询父节点，相邻节点，子节点查询元素。
 
-  * 父元素
-
+* 父元素
+  
   ```js
   let li = document.querySelectorAll(".list li")[0]
   li.parentNode//返回li的父元素的节点
   li.parentElement//返回li的父元素
   li.parentNode===li.parentElement //true
-
+  
   li.offsetParent //定位父级
   //两者没有本质上的区别，都可以返回父元素
   
@@ -148,33 +139,33 @@ list.relaceWith(document.createElement("li"))// 将自己替换成li元素节点
   document.documentElement.parentNode===document// true
   ```
 
-  * 同级元素
-
+* 同级元素
+  
   nextSibling和previousSibling选择上一个或者下一个同胞元素，如果不存在就是返回null
-
+  
   ```html
   <ul>
-      <li></li>
-      asdasd
-      <li></li>
+    <li></li>
+    asdasd
+    <li></li>
   </ul>
   ```
-
+  
   ```js
   let li = document.querySelector("li")
   li.previousSibling // null 前面一个节点
   li.nextSibling// "asdasd" 后面节点，是文本
   li.nextSibling.nextSibling// 第二个li
   ```
-
+  
   如果只想要标签元素节点，可以自行封装方法
-
+  
   其中节点有节点类型。1是标签，3是文本，2是属性
-
+  
   ```js
   function next(ele){
-      if(el.nextSibling.nodeType==1) return el.nextSibling
-      return next(ele.nextSibling)
+    if(el.nextSibling.nodeType==1) return el.nextSibling
+    return next(ele.nextSibling)
   }
   //判断nodeType如果是标签就返回，如果不是就继续找下一个
   //pre同理
@@ -187,22 +178,22 @@ li.nextElementSibing //下一个元素节点
 li.previousElementSibing //前一个元素节点
 ```
 
-  * 子元素
-
+* 子元素
+  
   子元素可能是多个，也可能是一个。
-
+  
   ```html
-<ul>
-    <li></li>
-    asdasd
-    <li></li>
-</ul>
+  <ul>
+  <li></li>
+  asdasd
+  <li></li>
+  </ul>
   ```
-
+  
   ```js
   let ul = document.querySelector("ul")
   ul.childElementCount //子元素节点个数 2
-  ul.children //	子元素节点集合HTMLCollection 2个li
+  ul.children //    子元素节点集合HTMLCollection 2个li
   ul.childNodes// 子节点集合 NodeList 3个，其中第二个是text
   ul.hasChildNodes // 有没有子节点，有就是true没有就是false也可以用length
   ul.firstChild //第一个子节点
@@ -211,8 +202,8 @@ li.previousElementSibing //前一个元素节点
   ul.lastElementChild //第一个元素子节点
   ```
 
-  * 属性节点和文本节点
-
+* 属性节点和文本节点
+  
   ```js
   let list = document.querySelector(".list")
   let attr = document.createAttribute("asd")
@@ -234,8 +225,6 @@ temp.__proto__.__proto__.__proto__.__proto__.__proto__ //EventTarget
 temp.__proto__.__proto__.__proto__.__proto__.__proto__.__proto__ //Object
 ```
 
-
-
 ## 宽高属性
 
 ### client
@@ -253,8 +242,6 @@ temp.__proto__.__proto__.__proto__.__proto__.__proto__.__proto__ //Object
 document.documentElement.clientWidth //当前文档区域可见宽度
 document.documentElement.clientHeight //当前文档区域可见高度
 ```
-
-
 
 ### offset
 
@@ -307,72 +294,67 @@ function getOffset(dom){
 
 包括父级边框的，元素到body顶部的距离
 
-   ```js
-   function getOffset(dom){
-       let o = {
-           top: 0,
-           left: 0
-       }
-       while(dom!==document.body){
-           o.left += dom.offsetLeft + dom.offsetParent.clientLeft
-           o.top += dom.offsetTop + dom.offsetParent.clientTop
-           dom = dom.offsetParent //定位父级
-       }
-       return o
-   }
-   //包含边框，两方法可以合并
-   ```
+```js
+function getOffset(dom){
+    let o = {
+        top: 0,
+        left: 0
+    }
+    while(dom!==document.body){
+        o.left += dom.offsetLeft + dom.offsetParent.clientLeft
+        o.top += dom.offsetTop + dom.offsetParent.clientTop
+        dom = dom.offsetParent //定位父级
+    }
+    return o
+}
+//包含边框，两方法可以合并
+```
 
 ### scroll
 
 **可读写**元素的content宽度+padding宽度，**包含滚动条**
 
 - scrollWidth
+
 - scrollHeight
-
+  
    子元素超出的时候， 会加上 超出的子元素的宽度/高度。当超出的时候，左padding或者上padding加上内容宽度或者高度。右padding或者下padding已经失去意义所以不会结算。
-
+  
    但是当添加overflow属性的时候。会计算全部的padding + 内容宽/高 + 超出的子级宽/高
-
-
 
 获取元素的y轴或者x轴方向的被滚动挡住的那部分的宽度高度。等价于滚动过的部分
 
-   ```js
-   document.documentElement.scrollTop
-   document.documentElement.scrollLeft
-   ```
+```js
+document.documentElement.scrollTop
+document.documentElement.scrollLeft
+```
 
 可以在滚动事件中监听： 
 
-   ```js
-   window.onscroll = function(){
-       console.log(document.documentElement.scrollTop)
-   }
-   //滚动的时候返回滚动高度
-   ```
+```js
+window.onscroll = function(){
+    console.log(document.documentElement.scrollTop)
+}
+//滚动的时候返回滚动高度
+```
 
 获取页面滚动高度存在兼容性问题，需要做兼容性写法
 
-   ```js
-   document.body.scrollTop || document.documentElement.scrollTop
-   ```
+```js
+document.body.scrollTop || document.documentElement.scrollTop
+```
 
-
-
-   ### 鼠标坐标
+### 鼠标坐标
 
 事件对象event
 
-   ```js
-   document.body.onclick = function(e){
-       // e 是 前面onclick事件触发之后整理的那一时刻的信息对象，叫事件对象
-   	console.log(e.clientX, e.clientY) // 相对于窗口的左上角位值
-       console.log(e.pageX, e.pageY) // 相对于文档位置的左上角的位置,包含滚动条隐藏部分
-   }
-   ```
-
-
+```js
+document.body.onclick = function(e){
+    // e 是 前面onclick事件触发之后整理的那一时刻的信息对象，叫事件对象
+    console.log(e.clientX, e.clientY) // 相对于窗口的左上角位值
+    console.log(e.pageX, e.pageY) // 相对于文档位置的左上角的位置,包含滚动条隐藏部分
+}
+```
 
 ## cookie
 
@@ -388,7 +370,6 @@ document.cookie
 
 设置过期：时间设置为当前之前即为过期
 
-
 ## styleSheets
 
 通过`document.styleSheets`可以获取页面的CSSStyleSheet对象构成的数组
@@ -397,7 +378,6 @@ document.cookie
 const _CSSStyleSheet = document.styleSheets[document.styleSheets.length - 1]
 _CSSStyleSheet.insertRule(`ul{display:none}`, 0)
 ```
-
 
 ## designMod
 
@@ -426,4 +406,3 @@ btn.onclick = function () {
     // document.execCommand('delete')
 }
 ```
-

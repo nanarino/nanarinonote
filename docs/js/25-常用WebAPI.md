@@ -4,7 +4,6 @@
 
 `URLSearchParams`等WebAPI也在慢慢兼容，而不需要`qs`包
 
-
 ## 文件有关对象
 
 - `Blob`
@@ -97,7 +96,6 @@ function base64(data, type = "text/plain") {
 
 `blob`对象的`slice`方法可以分割子Blob用于分片上传/下载/断点续传
 
-
 ## TypedArray
 
 `TypedArray`或`DataView`是`ArrayBuffer`字节数组类型的视图形式，存储方式依然是`ArrayBuffer`
@@ -114,7 +112,6 @@ function base64(data, type = "text/plain") {
 其中Uint8Array是格式化的PNG所用的类型，在canvas中使用较多。
 
 FileReader实例的readAsArrayBuffer方法可以将Blob转为ArrayBuffer
-
 
 ## URLSearchParams
 
@@ -146,8 +143,6 @@ console.log(data.toString())
 await axios.post(url, data.toString(), ...)
 ```
 
-
-
 ## FormData
 
 `FormData`键值对象。方法与URLSearchParams类似。  
@@ -163,8 +158,6 @@ formData.append("password", 123456)
 
 用`FormData`对象提交需要设置请求头`'Content-Type':'multipart/form-data'`
 
-
-
 ## Headers
 
 用来定义请求头键值对象。方法与URLSearchParams类似。
@@ -174,5 +167,3 @@ new Headers({'Content-Type': 'application/json'})
 ```
 
 它与fetch方法伴生出现，可以直接在原生的fetch中使用。fetch方法的请求和响应对象本身的headers属性就是一个Headers实例对象。见fetch。
-
-
