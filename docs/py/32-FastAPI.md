@@ -23,19 +23,9 @@ fastapi可以使用装饰器定义和收集路由
 
 ```python
 from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
 from typing import Optional
 
 app = FastAPI()
-
-#设置允许跨域
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
 
 #请求获取指定id的item；按路径参数
 @app.get('/item/{id}')
@@ -61,6 +51,53 @@ if __name__ == '__main__':
 ```
 
 使用uvicorn.run比uvicorn指令更方便
+
+## 中间件
+
+`add_middleware` 添加中间件
+
+```python
+from fastapi.middleware.cors import CORSMiddleware
+#设置允许跨域
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+```
+
+## 静态资源映射
+
+使用`app.mount`可以快速映射静态文件
+
+```python
+from fastapi.staticfiles import StaticFiles
+from pathlib import Path
+app.mount("/", StaticFiles(directory=Path(__file__).parent.joinpath("static"), html=True))
+```
+
+等价于下面代码
+
+```python
+from fastapi import HTTPException
+from fastapi.responses import FileResponse, Response, HTMLResponse
+@app.get('/{static_file:path}', 
+    response_class=Response(headers={"Content-Disposition" :"inline"}), 
+    tags=["static"]
+)
+async def static(static_file:str):
+    path = Path(__file__).parent.joinpath("static", static_file)
+    if path.is_file():
+        return FileResponse(path)
+    path /= Path('index.html') # parse `/` to `/index.html` 
+    if path.is_file():
+        async with aiofiles.open(path, 'rb') as f:
+            html = await f.read()
+        return HTMLResponse(html.decode('utf-8'))
+    raise HTTPException(status_code=404)
+```
 
 ## 用于参数校验以及自动收集的类
 
@@ -202,12 +239,12 @@ async def get_file_stream(file: pathlib.Path = fastapi.Depends(get_file):
 ```python
 from fastapi import FastAPI, Request, Depends
 
-def get_ip(request: Request):
-    forwarded = request.headers.get("X-Forwarded-For")
+def get_ip(req: Request):
+    forwarded = req.headers.get("X-Forwarded-For")
     if forwarded:
         ip = forwarded.split(",")[0]
     else:
-        ip = request.client.host
+        ip = req.client.host
     return ip
 
 @app.post("/submit/")
