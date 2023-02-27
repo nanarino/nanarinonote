@@ -1,24 +1,22 @@
 # nanarinonote
 
-基于 vuepress@1.7.1 构建的零基础版学习笔记（教程？），包含
+自用学习笔记，基于 vuepress@1.7.1，包含
 
-- JavaScript
-- Python
+- JavaScript基础
+- Python基础
 
 ## page-build
 
-仓库的页面<https://nanarino.github.io/nanarinonote/>
+先度构建：<https://nanarino.github.io/nanarinonote/>
 
-很久才打包一次，建议直接拉到本地使用Typedown查看器打开文件夹
-
-本地运行可以将`base: '/nanarinonote/'`改为`base: '/'` 
+本地运行需将配置文件中的`base: '/nanarinonote/'`改为`base: '/'` 
 
 ## page-cli-setup
 
 安装依赖
 
 ```bash
-# nvm use 14.19.2
+# nvm use 14.19.2+
 npm install
 ```
 
