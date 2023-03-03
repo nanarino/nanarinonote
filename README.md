@@ -47,9 +47,10 @@ AI作答
 
 - [ChatGPT](https://chat.openai.com/chat)
 
-入门博客
+博客/B乎
 
 - [Eva-J](https://www.cnblogs.com/Eva-J/p/7277026.html)
 - [李文周](https://www.cnblogs.com/liwenzhou/p/9959979.html)
 - [GGGG-XXXX](https://www.cnblogs.com/GGGG-XXXX/p/9564651.html)
 - [Alex](https://www.cnblogs.com/alex3714/articles/5760582.html)
+- [Snowflyt](https://www.zhihu.com/people/wo-mo-mo-kan-ni-zhuang-bi)
