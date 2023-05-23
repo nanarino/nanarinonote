@@ -1,4 +1,4 @@
-# nanarinonote
+# ☘ 自用初学笔记
 
 自用学习笔记，基于 vuepress@1.7.1，包含
 
