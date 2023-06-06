@@ -69,7 +69,7 @@
 
 - 圆周率`π=3.14`
 - 自然对数底数`e=2.71`
-- `BIR_OF_CHINA = 1949`
+- `BIR_OF_CHINA :typing.Final[int] = 1949`
 
 ## 注释
 

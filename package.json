@@ -26,7 +26,6 @@
   "homepage": "https://nanarino.github.io/nanarinonote/",
   "devDependencies": {
     "vuepress-plugin-mathjax": "^1.2.8",
-    "vue-router": "3.4.5",
     "vuepress": "^1.7.1"
   }
 }

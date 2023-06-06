@@ -16,18 +16,17 @@
 安装依赖
 
 ```bash
-# nvm use 14.19.2+
-npm install
+pnpm i
 ```
 
 脚手架命令：
 
 ```bash
 # serve with hot reload at localhost:8080
-npm run docs:dev
+pnpm docs:dev
 
 # build for production with minification
-npm run docs:build
+pnpm docs:build
 ```
 
 ## 借物
