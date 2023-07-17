@@ -8,7 +8,7 @@ Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境
 pnpm env use --global lts
 ```
 
-关于pnpm，见[https://pnpm.io/zh/](https://pnpm.io/zh/), 它可以完全代替装了nvm以及npm。
+关于pnpm，见[https://pnpm.io/zh/](https://pnpm.io/zh/), 它可以完全代替nvm以及npm。
 
 
 ## 官方文档
@@ -27,12 +27,16 @@ pnpm env use --global lts
 
 ## 依赖管理
 
+npm以及npx是nodejs的原始命令，使用pnpm安装的nodejs也没有理由再使用它们
+
+
 ### 创建项目
 
 在空目录中，初始化nodejs项目
 
 ```shell
-npm init
+# npm init
+pnpm init
 ```
 
 初始化后生成package.json文件
@@ -42,7 +46,8 @@ npm init
 安装server模块（例）包用于开发环境
 
 ```shell
-npm install server -D
+# npm install server -D
+pnpm install server -D
 ```
 
 安装好之后server包会在node_modules目录中
@@ -54,17 +59,21 @@ npm install server -D
 如果要安装的server模块是命令行工具。如果要以脚本命令在命令行运行，可以使用npx或pnpm命令：
 
 ```shell
-npx server -p 8080
+# npx server -p 8080
+pnpm server -p 8080
 ```
 
 如果是-g全局安装过了，则不需要加npx 且任意目录内都可以运行
 
 除了degit等工具，基本不推荐-g安装
 
-以下命令查看在全局安装了哪些包 pnpm命令类似
+以下命令查看在全局安装了哪些包
+
+pnpm命令类似，但是pnpm采用扁平依赖，没有depth选项
 
 ```shell
 npm list -g --depth 0
+pnpm list -g
 ```
 
 ### 使用包内的脚本命令
