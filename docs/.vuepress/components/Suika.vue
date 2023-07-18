@@ -3,8 +3,7 @@
     <header class="hero">
       <canvas width="48" height="48" 
         @click="alert('Bottoms up!')"
-        @dblclick="startAnimation()"
-        @mouseout="nextFrame()" ref="canvas">
+        @dblclick="startAnimation" ref="canvas">
       </canvas>
         
       <Alert @setMsg='alert' :msg="msg"/>
@@ -45,7 +44,8 @@ export default {
       msg:'',
       frameSpeed: 0,
       frameItem: 0,
-      frames:[]
+      frames:[],
+      ani:[]
     }
   },
   computed: {
@@ -63,15 +63,12 @@ export default {
     alert(m){
       return this.msg = m
     },
-    nextFrame(){
-      if(!this.frameSpeed) this.frameItem++
-    },
     startAnimation(){
       if(this.frameSpeed < 3){
         console.log(`fps ${8*(++this.frameSpeed)}`)
-        setInterval(()=>{
+        this.ani.push(setInterval(()=>{
           this.frameItem++
-        },125)
+        },125))
       }else{
         console.log(`播放速度已达上限`)
       }
@@ -270,11 +267,15 @@ export default {
       ctx.putImageData(px,0,0)
     }
     requestAnimationFrame(firstFrameInit)
+    this.$nextTick(this.startAnimation)
   },
   watch:{
-    'frameItem': function(newItem, oldItem){
-      requestAnimationFrame(this.frames[newItem%10])
+    'frameItem': function(i){
+      requestAnimationFrame(this.frames[i%10])
     },
+  },
+  beforeDestroy(){
+    this.ani.forEach(clearInterval)
   }
 }
 </script>

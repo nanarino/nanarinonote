@@ -1,15 +1,19 @@
 # ☘ 自用初学笔记
 
-自用学习笔记，基于 vuepress@1.7.1，包含
+自用学习笔记，基于 vuepress@1.9.9，包含
 
 - JavaScript基础
 - Python基础
+
 
 ## page-build
 
 先度构建：<https://nanarino.github.io/nanarinonote/>
 
 本地运行需将配置文件中的`base: '/nanarinonote/'`改为`base: '/'` 
+
+由于图片采用绝对路径导入，其他markdown编辑器可以无法查看图片。但是使用相对路径会导致构建后出现两份静态资源。
+
 
 ## page-cli-setup
 
@@ -40,7 +44,8 @@ pnpm docs:build
 公式编辑
 
 - [MathJax](https://github.com/mathjax/MathJax)
-- [Typedown](https://www.microsoft.com/store/productId/9P8TCW4H2HB4)
+
+公式渲染使用开箱即用的 `vuepress-plugin-mathjax` 插件。这也是还未将该文档迁移到vitepress
 
 AI作答
 

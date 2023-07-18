@@ -230,7 +230,7 @@ print("Received: {}".format(received))
 - 面向流的通信特点和Nagle算法    
   Nagle算法优化后将多次间隔较小且数据量小的数据，合并成一个大的数据块，然后进行封包。
 
-![img](../.vuepress/public/img/sp1.jpg)
+![img](/img/sp1.jpg)
 
 ### 解决方案
 

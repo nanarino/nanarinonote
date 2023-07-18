@@ -199,7 +199,7 @@ cur.callproc('FindPerson', ('Jane Doe',))
 
 不用关注底层的数据库访问细节，注意力关注到业务逻辑层；有效防止**sql注入**。
 
-![](../.vuepress/public/img/orm.jpg)
+![](/img/orm.jpg)
 
 python主流的 ORM 框架：
 
