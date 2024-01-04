@@ -29,15 +29,10 @@ pnpm docs:build
 
 ## 借物
 
-![伊吹萃香](./docs/public/suika.png)
-
 封面
-
 - [くまもと先生](https://twitter.com/skmmt3?s=20&t=ltroPB3CFkNcqhtvoZvyRw)
 
-
 博客
-
 - [Eva-J](https://www.cnblogs.com/Eva-J/p/7277026.html)
 - [李文周](https://www.cnblogs.com/liwenzhou/p/9959979.html)
 - [GGGG-XXXX](https://www.cnblogs.com/GGGG-XXXX/p/9564651.html)
