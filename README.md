@@ -1,6 +1,6 @@
 # ☘ 自用初学笔记
 
-自用学习笔记，基于 vuepress@1.9.9，包含
+自用学习笔记，基于 vitepress@1.0.0，包含
 
 - JavaScript基础
 - Python基础
@@ -35,7 +35,7 @@ pnpm docs:build
 
 ## 借物
 
-![伊吹萃香](./docs/.vuepress/public/suika.png)
+![伊吹萃香](./docs/public/suika.png)
 
 封面
 
@@ -44,8 +44,6 @@ pnpm docs:build
 公式编辑
 
 - [MathJax](https://github.com/mathjax/MathJax)
-
-公式渲染使用开箱即用的 `vuepress-plugin-mathjax` 插件。这也是还未将该文档迁移到vitepress
 
 AI作答
 

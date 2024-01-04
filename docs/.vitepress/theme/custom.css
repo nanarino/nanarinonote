@@ -1,0 +1,17 @@
+:root {
+  --vp-c-indigo-1: #e14d5e;
+  --vp-c-indigo-2: #f04b7f;
+  --vp-c-indigo-3: #d02354;
+  --vp-c-indigo-soft: #da2626;
+  --vp-home-hero-image-background-image: linear-gradient( 45deg, #b91a5c60 30%, #32edd460 );
+  --vp-home-hero-image-filter: blur(30px);
+}
+
+.title,
+.clip {
+  font-family: monospace;
+}
+
+#VPContent .VPHomeHero .image-bg {
+  z-index: 1;
+}
