@@ -1,9 +1,9 @@
 :root {
-  --vp-c-indigo-1: #e14d5e;
-  --vp-c-indigo-2: #f04b7f;
-  --vp-c-indigo-3: #d02354;
-  --vp-c-indigo-soft: #da2626;
-  --vp-home-hero-image-background-image: linear-gradient( 45deg, #b91a5c60 30%, #32edd460 );
+  --vp-c-indigo-1: #e865c3;
+  --vp-c-indigo-2: #f1568c;
+  --vp-c-indigo-3: #d02e23;
+  --vp-c-indigo-soft: rgb(158, 38, 218);
+  --vp-home-hero-image-background-image: linear-gradient(15deg, #b91a5c60 30%, #32edd460);
   --vp-home-hero-image-filter: blur(30px);
 }
 
@@ -14,4 +14,20 @@
 
 #VPContent .VPHomeHero .image-bg {
   z-index: 1;
+}
+
+/** mermaid **/
+.mermaid .r8 rect {
+  rx: 8 !important;
+  ry: 8 !important;
+}
+
+.mermaid .red rect {
+  fill: var(--vp-c-red-3) !important;
+  stroke: var(--vp-c-red-1) !important;
+}
+
+.mermaid .green rect {
+  fill: var(--vp-c-green-3) !important;
+  stroke: var(--vp-c-green-1) !important;
 }
