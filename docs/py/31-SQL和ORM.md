@@ -199,7 +199,22 @@ cur.callproc('FindPerson', ('Jane Doe',))
 
 不用关注底层的数据库访问细节，注意力关注到业务逻辑层；有效防止**sql注入**。
 
-![](/img/orm.jpg)
+```mermaid
+flowchart LR
+    subgraph ORM
+        Class(类) & Obj(实例) & Attr(属性)
+    end
+    subgraph DB
+        Table(表) & Row(数据行) & Field(字段)
+    end
+    Class <-.-> Table
+    Obj <-.-> Row
+    Attr <-.-> Field
+    class ORM red
+    class ORM r8
+    class DB green
+    class DB r8
+```
 
 python主流的 ORM 框架：
 
