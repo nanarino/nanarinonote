@@ -1,6 +1,6 @@
 # ☘ 自用初学笔记
 
-自用学习笔记，基于 vitepress@1.0.0，包含
+自用学习笔记，基于 vitepress@1.0.1，包含
 
 - JavaScript✡️基础
 - Python🐍基础

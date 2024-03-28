@@ -18,15 +18,15 @@
   },
   "homepage": "https://nanarino.github.io/nanarinonote/",
   "devDependencies": {
-    "@braintree/sanitize-url": "^7.0.0",
+    "@braintree/sanitize-url": "^7.0.1",
     "cytoscape": "^3.28.1",
     "cytoscape-cose-bilkent": "^4.1.0",
     "dayjs": "^1.11.10",
     "debug": "^4.3.4",
     "markdown-it-mathjax3": "^4.3.2",
-    "mermaid": "^10.6.1",
-    "vitepress": "1.0.0-rc.35",
+    "mermaid": "^10.9.0",
+    "vitepress": "^1.0.1",
     "vitepress-plugin-mermaid": "^2.0.16",
-    "vue": "^3.4.5"
+    "vue": "^3.4.21"
   }
 }
