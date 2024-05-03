@@ -1,8 +1,8 @@
-# SQL和ORM
+# SQL 和 ORM
 
 ## 关系型数据库
 
- 关系型数据库（SQL）指的是使用关系模型（二维表格模型）来组织数据的数据库。
+关系型数据库（SQL）指的是使用关系模型（二维表格模型）来组织数据的数据库。
 
 常见的关系型数据库
 
@@ -23,15 +23,15 @@
 - I(Isolation)隔离性:并发事务之间相互不影响。
 - D(Durability)持久性:事务完成之后，对数据库的影响是永久的。
 
-## SQL语句
+## SQL 语句
 
-关系型数据库一般都支持通用的SQL（结构化查询语言）语句。
+关系型数据库一般都支持通用的 SQL（结构化查询语言）语句。
 
-不同的数据库支持不同的sql语句方言。
+不同的数据库支持不同的 sql 语句方言。
 
 ### 连接数据库
 
-以mysql为例， 先启动mysqld再用客户端连接
+以 mysql 为例， 先启动 mysqld 再用客户端连接
 
 ```bash
 mysql -u root -p ******
@@ -40,10 +40,10 @@ mysql -u root -p ******
 显示数据库
 
 ```sql
-> show databases; 
+> show databases;
 ```
 
-创建数据库的DDL语句
+创建数据库的 DDL 语句
 
 ```sql
 # utf-8
@@ -65,37 +65,37 @@ mysql -u root -p ******
 ### 连表查询
 
 - `inner join`: 无对应关系则不显示
-  
+
   ```sql
   select A.num, A.name, B.name
   from A inner join B on A.nid = B.nid
   ```
 
-- `left join`:  A表所有显示，如果B中无对应关系，则值为null
+- `left join`: A 表所有显示，如果 B 中无对应关系，则值为 null
 
-- `right join` : B表所有显示，如果B中无对应关系，则值为null
+- `right join` : B 表所有显示，如果 B 中无对应关系，则值为 null
 
-- `... union ...`  :  两个查询的结果集组合
+- `... union ...` : 两个查询的结果集组合
 
 - 某些连表可以用子查询替代
-  
-  `where exists()`   子查询结果集至少有一行
-  
-  `where in ()`    筛选符合子查询结果集中的一行满足
+
+  `where exists()` 子查询结果集至少有一行
+
+  `where in ()` 筛选符合子查询结果集中的一行满足
 
 ### 函数
 
-sql函数分为 聚合函数 标量函数 排名函数 分析函数 等
+sql 函数分为 聚合函数 标量函数 排名函数 分析函数 等
 
 聚合函数用的最多，它与 GROUP BY 子句结合使用
 
-内置的聚合函数有AVG SUM COUNT等
+内置的聚合函数有 AVG SUM COUNT 等
 
 ### 存储过程
 
-存储过程（Store Procedure）是类似自定义函数的一组sql语句，可以有效防止**sql注入**攻击。
+存储过程（Store Procedure）是类似自定义函数的一组 sql 语句，可以有效防止**sql 注入**攻击。
 
-在MySQL 中，单个存储过程不是原子操作，而Oracle则是原子的。
+在 MySQL 中，单个存储过程不是原子操作，而 Oracle 则是原子的。
 
 故而前者需要指定事务，捕获其错误来决定是回滚（ROLLBACK）还是提交（COMMIT），就拥有了原子性。
 
@@ -109,11 +109,11 @@ sql函数分为 聚合函数 标量函数 排名函数 分析函数 等
 
 ## DB-ABI
 
-python数据库引擎提供了 [PEP 249](https://www.python.org/dev/peps/pep-0249) 所描述的符合 DB-API 2.0 规范的 SQL 接口
+python 数据库引擎提供了 [PEP 249](https://www.python.org/dev/peps/pep-0249) 所描述的符合 DB-API 2.0 规范的 SQL 接口
 
-这里以`pymssql`（Microsoft SQL Server的引擎）为例，与内置的`sqlite3`模块基本一致
+这里以`pymssql`（Microsoft SQL Server 的引擎）为例，与内置的`sqlite3`模块基本一致
 
-先使用pip安装或者[下载whl](https://www.lfd.uci.edu/~gohlke/pythonlibs/)
+先使用 pip 安装或者[下载 whl](https://www.lfd.uci.edu/~gohlke/pythonlibs/)
 
 ### 连接
 
@@ -159,9 +159,9 @@ with pymssql.connect(**DATABASES) as conn:
 
 游标对象`.execute`方法的结果可以通过遍历游标对象来获取，通常也实现了下面的方法
 
-- `cursor.fetchone()`    弹出一条结果 相当于`next()`
-- `cursor.fetchall()`    弹出剩余结果
-- `cursor.fetchmany(n)`    弹出n条结果，大部分引擎实现了
+- `cursor.fetchone()` 弹出一条结果 相当于`next()`
+- `cursor.fetchall()` 弹出剩余结果
+- `cursor.fetchmany(n)` 弹出 n 条结果，大部分引擎实现了
 
 大部分引擎`.execute`会直接返回游标， 可以`.execute(...).fetchall()`连续使用
 
@@ -191,13 +191,13 @@ cur.callproc('FindPerson', ('Jane Doe',))
 
 ### 异步引擎
 
-异步对应原引擎一般都以`aio-`开头。使用方法区别不大，只需要加上await来等待结果
+异步对应原引擎一般都以`aio-`开头。使用方法区别不大，只需要加上 await 来等待结果
 
 ## ORM
 
 对象关系映射（Object Relation Mapping）
 
-不用关注底层的数据库访问细节，注意力关注到业务逻辑层；有效防止**sql注入**。
+不用关注底层的数据库访问细节，注意力关注到业务逻辑层；有效防止**sql 注入**。
 
 ```mermaid
 flowchart LR
@@ -216,7 +216,7 @@ flowchart LR
     class DB r8
 ```
 
-python主流的 ORM 框架：
+python 主流的 ORM 框架：
 
 - Django-ORM
 - SQLALchemy（支持异步）
@@ -225,14 +225,14 @@ python主流的 ORM 框架：
 
 这里以[SQLALchemy](https://www.osgeo.cn/sqlalchemy/)为例
 
-sqlalchemy分为两个部分 
+sqlalchemy 分为两个部分
 
-- sqlalchemyORM   主要是sqlalchemy.orm模块，包括会话，加载对象。
-- sqlalchemyCore   sqlalchemy模块的其他子模块，包括引擎，连接，连接池。
+- sqlalchemyORM 主要是 sqlalchemy.orm 模块，包括会话，加载对象。
+- sqlalchemyCore sqlalchemy 模块的其他子模块，包括引擎，连接，连接池。
 
 ### engine
 
-创建引擎，依赖其他引擎，这里以pymysql连接MySQL为例。这里的引擎是一个连接池单例
+创建引擎，依赖其他引擎，这里以 pymysql 连接 MySQL 为例。这里的引擎是一个连接池单例
 
 ```python
 from sqlalchemy import create_engine
@@ -242,15 +242,15 @@ egn = create_engine(url)
 
 其他参数
 
-- `connect_args={"check_same_thread": False}`   为sqlite开启多线程（默认不开启）
+- `connect_args={"check_same_thread": False}` 为 sqlite 开启多线程（默认不开启）
 
-- `poolclass=sqlalchemy.pool.NullPool`   不使用连接池
-  
+- `poolclass=sqlalchemy.pool.NullPool` 不使用连接池
+
   （默认`QueuePool`，多线程时用`SingletonThreadPool`）
 
-- `pool_pre_ping=True`    连接池开启悲观处理（默认不开启）
+- `pool_pre_ping=True` 连接池开启悲观处理（默认不开启）
 
-- `pool_recycle=3600`    连接回收时间秒（mysql默认28800）
+- `pool_recycle=3600` 连接回收时间秒（mysql 默认 28800）
 
 #### 创建异步引擎
 
@@ -262,11 +262,11 @@ async_egn = create_async_engine(url)
 
 ### metadata
 
-metadata对象通常在应用程序的“models”或“dbschema”类型的包中
+metadata 对象通常在应用程序的“models”或“dbschema”类型的包中
 
-#### 使用Table收集
+#### 使用 Table 收集
 
-metadata收集表对象**Table**，以及表的列对象Column
+metadata 收集表对象**Table**，以及表的列对象 Column
 
 ```python
 from sqlalchemy import MetaData
@@ -314,14 +314,14 @@ Base = mapper_registry.generate_base()
 #数据源对象使用Base.metadata获取
 ```
 
-使用`declarative_base`也可以生成Base
+使用`declarative_base`也可以生成 Base
 
 ```python
 from sqlalchemy.orm import declarative_base
 Base = declarative_base()
 ```
 
-不使用ORM也能使用`declarative_base`
+不使用 ORM 也能使用`declarative_base`
 
 ```python
 from sqlalchemy.ext.declarative import declarative_base
@@ -339,7 +339,7 @@ class User(Base):
 #User.__table__  可以获取到Table版的User
 ```
 
-relationship，借助外键关系连带数据（等价于查询时使用join）
+relationship，借助外键关系连带数据（等价于查询时使用 join）
 
 ```python
 from sqlalchemy.orm import relationship
@@ -361,9 +361,9 @@ class Son(Base):
 
 ### execute
 
-使用**text**可以支持非orm构造（即直接执行sql语句、存储过程等）
+使用**text**可以支持非 orm 构造（即直接执行 sql 语句、存储过程等）
 
-#### 从Connection对象
+#### 从 Connection 对象
 
 ```python
 from sqlalchemy import text
@@ -374,7 +374,7 @@ with egn.connect() as conn:
     #conn.commit() 增删改需要提交 这里未开启事务
 ```
 
-##### 异步Connection
+##### 异步 Connection
 
 ```python
 async with async_egn.connect() as conn:
@@ -391,7 +391,7 @@ async with async_egn.connect() as conn:
         print(row)
 ```
 
-#### 从Session对象
+#### 从 Session 对象
 
 ```python
 from sqlalchemy import text
@@ -402,9 +402,9 @@ with Session(egn) as session:
     print(result.all())
 ```
 
-Session对象的使用 与Connection别无二致
+Session 对象的使用 与 Connection 别无二致
 
-##### 异步Session
+##### 异步 Session
 
 ```python
 from sqlalchemy.ext.asyncio import AsyncSession
@@ -413,9 +413,9 @@ async with AsyncSession(async_egn) as session:
     print(result.all())
 ```
 
-commit在异步情况下也需要await
+commit 在异步情况下也需要 await
 
-#### 使用ORM代替text
+#### 使用 ORM 代替 text
 
 ```python
 from sqlalchemy import insert,delete,update,select
@@ -431,9 +431,9 @@ conn.execute(update(table).where(table.columns.name == "www"))
 query = select([table]).order_by(desc(table.c.id)).offset(1).limit(2)
 ```
 
-#### Table和类声明差异
+#### Table 和类声明差异
 
-Table可以直接使用table.select等。Table得到的结果Row可以转dict，即可以使用下标取
+Table 可以直接使用 table.select 等。Table 得到的结果 Row 可以转 dict，即可以使用下标取
 
 ```python
 table = Table(
@@ -448,7 +448,7 @@ async with async_egn.connect() as conn:
         print(dict(row)) # {'id': 1, 'name': '1'}
 ```
 
-而类注册的映射查询结果集内的Row无法转dict，可以使用`结果集.scalars()`转为映射对象后用属性取
+而类注册的映射查询结果集内的 Row 无法转 dict，可以使用`结果集.scalars()`转为映射对象后用属性取
 
 ```python
 class Demo(Base):
@@ -470,9 +470,9 @@ async with AsyncSession(async_egn) as session:
 
 ### DDL
 
-DDL（数据定义语言）语句是用来配置数据库模式中的表、约束和其他永久对象的SQL的子集
+DDL（数据定义语言）语句是用来配置数据库模式中的表、约束和其他永久对象的 SQL 的子集
 
-`metadata.create_all(engine)`   按照预设的models生成空数据表`demotable`
+`metadata.create_all(engine)` 按照预设的 models 生成空数据表`demotable`
 
 ```python
 from sqlalchemy.schema import DDL

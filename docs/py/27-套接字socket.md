@@ -1,10 +1,10 @@
-# 套接字socket
+# 套接字 socket
 
-> 套接字起源于 20 世纪 70 年代加利福尼亚大学伯克利分校版本的 Unix,即人们所说的 BSD Unix。 因此,有时人们也把套接字称为“伯克利套接字”或“BSD 套接字”。一开始,套接字被设计用在同 一台主机上多个应用程序之间的通讯。这也被称进程间通讯或IPC。
+> 套接字起源于 20 世纪 70 年代加利福尼亚大学伯克利分校版本的 Unix,即人们所说的 BSD Unix。 因此,有时人们也把套接字称为“伯克利套接字”或“BSD 套接字”。一开始,套接字被设计用在同 一台主机上多个应用程序之间的通讯。这也被称进程间通讯或 IPC。
 
-## socket模块
+## socket 模块
 
-[`socket`](https://docs.python.org/zh-cn/3/library/socket.html)模块提供了访问 BSD套接字的接口
+[`socket`](https://docs.python.org/zh-cn/3/library/socket.html)模块提供了访问 BSD 套接字的接口
 
 ### 创建套接字
 
@@ -17,30 +17,30 @@ s = socket.socket()
 
 - AF_INET 面向网络的套接字（默认种族）
 - AF_UNIX 基于文件的套接字
-- TCP套接字的名SOCK_STREAM（默认类型）
-- UDP套接字的名SOCK_DGRAM
+- TCP 套接字的名 SOCK_STREAM（默认类型）
+- UDP 套接字的名 SOCK_DGRAM
 
-| 常用方法              |                                      |
-| ----------------- | ------------------------------------ |
-| `s.bind()`        | 绑定(主机,端口号)到套接字                       |
-| `s.listen()`      | 开始TCP监听                              |
-| `s.accept()`      | 被动接受TCP客户的连接,(阻塞式)等待连接的到来            |
-| `s.connect()`     | 主动初始化TCP服务器连接                        |
-| `s.connect_ex()`  | `connect()`函数的扩展版本,出错时返回出错码,而不是抛出异常  |
-| `s.recv()`        | #接收TCP数据                             |
-| `s.send()`        | #发送TCP数据                             |
-| `s.sendall()`     | #发送TCP数据                             |
-| `s.recvfrom()`    | #接收UDP数据                             |
-| `s.sendto()`      | #发送UDP数据                             |
-| `s.getpeername()` | #连接到当前套接字的远端的地址                      |
-| `s.getsockname()` | #当前套接字的地址                            |
-| `s.getsockopt()`  | #返回指定套接字的参数                          |
-| `s.setsockopt()`  | #设置指定套接字的参数                          |
-| `s.close()`       | #关闭套接字，也支持with上下文管理`socket.socket()` |
+| 常用方法          |                                                           |
+| ----------------- | --------------------------------------------------------- |
+| `s.bind()`        | 绑定(主机,端口号)到套接字                                 |
+| `s.listen()`      | 开始 TCP 监听                                             |
+| `s.accept()`      | 被动接受 TCP 客户的连接,(阻塞式)等待连接的到来            |
+| `s.connect()`     | 主动初始化 TCP 服务器连接                                 |
+| `s.connect_ex()`  | `connect()`函数的扩展版本,出错时返回出错码,而不是抛出异常 |
+| `s.recv()`        | #接收 TCP 数据                                            |
+| `s.send()`        | #发送 TCP 数据                                            |
+| `s.sendall()`     | #发送 TCP 数据                                            |
+| `s.recvfrom()`    | #接收 UDP 数据                                            |
+| `s.sendto()`      | #发送 UDP 数据                                            |
+| `s.getpeername()` | #连接到当前套接字的远端的地址                             |
+| `s.getsockname()` | #当前套接字的地址                                         |
+| `s.getsockopt()`  | #返回指定套接字的参数                                     |
+| `s.setsockopt()`  | #设置指定套接字的参数                                     |
+| `s.close()`       | #关闭套接字，也支持 with 上下文管理`socket.socket()`      |
 
-### 基于TCP协议的socket
+### 基于 TCP 协议的 socket
 
-#### server端
+#### server 端
 
 ```python
 import socket
@@ -55,7 +55,7 @@ conn.close()       #关闭客户端套接字
 sk.close()        #关闭服务器套接字(可选)
 ```
 
-#### client端
+#### client 端
 
 ```python
 import socket
@@ -73,7 +73,7 @@ sk.close()            # 关闭客户套接字
 OSError: [Error 48] Address already in use
 :::
 
-解决方法： 加入一条socket配置，重用ip和端口
+解决方法： 加入一条 socket 配置，重用 ip 和端口
 
 ```python
 import socket
@@ -90,13 +90,13 @@ ConnectionRefusedError: [WinError 10061] 由于目标计算机积极拒绝，无
 
 解决方法： 修改防火墙设置或者换一个端口号
 
-### 基于UDP协议的socket
+### 基于 UDP 协议的 socket
 
-udp无需监听和建立连接。
+udp 无需监听和建立连接。
 
-udp收发消息会分别接收和发送对方的地址（addr）。
+udp 收发消息会分别接收和发送对方的地址（addr）。
 
-#### server端
+#### server 端
 
 ```python
 import socket
@@ -108,7 +108,7 @@ udp_sk.sendto(b'hi',addr)                 # 对话(接收与发送)
 udp_sk.close()                         # 关闭服务器套接字
 ```
 
-#### client端
+#### client 端
 
 ```python
 import socket
@@ -122,41 +122,41 @@ print(back_msg.decode('utf-8'),addr)
 ### 更多方法介绍
 
 - 面向锁
-  
+
   | `s.setblocking()` | 设置套接字的阻塞与非阻塞模式 |
-  | ----------------- | -------------- |
+  | ----------------- | ---------------------------- |
   | `s.settimeout()`  | 设置阻塞套接字操作的超时时间 |
   | `s.gettimeout()`  | 得到阻塞套接字操作的超时时间 |
 
 - 面向文件
-  
-  | `s.fileno()`   | 套接字的文件描述符      |
-  | -------------- | -------------- |
+
+  | `s.fileno()`   | 套接字的文件描述符           |
+  | -------------- | ---------------------------- |
   | `s.makefile()` | 创建一个与该套接字相关的文件 |
 
-官方文档对socket模块下的`socket.send()`和`socket.sendall()`解释如下：
+官方文档对 socket 模块下的`socket.send()`和`socket.sendall()`解释如下：
 
 ```python
 socket.send(string[, flags]):
 '''Send data to the socket. The socket must be connected to a remote socket.
-The optional flags argument has the same meaning as for recv() above. 
-Returns the number of bytes sent. 
-Applications are responsible for checking that all data has been sent; 
-if only some of the data was transmitted, 
+The optional flags argument has the same meaning as for recv() above.
+Returns the number of bytes sent.
+Applications are responsible for checking that all data has been sent;
+if only some of the data was transmitted,
 the application needs to attempt delivery of the remaining data.
 send()的返回值是发送的字节数量，这个数量值可能小于要发送的string的字节数，
 也就是说可能无法发送string中所有的数据。如果有错误则会抛出异常。'''
     pass
 
 socket.sendall(string[, flags]):
-'''Send data to the socket. 
-The socket must be connected to a remote socket. 
-The optional flags argument has the same meaning as for recv() above. 
-Unlike send(), this method continues to send data 
-from string until either all data has been sent or an error occurs. 
-None is returned on success. 
-On error, an exception is raised, 
-and there is no way to determine how much data, 
+'''Send data to the socket.
+The socket must be connected to a remote socket.
+The optional flags argument has the same meaning as for recv() above.
+Unlike send(), this method continues to send data
+from string until either all data has been sent or an error occurs.
+None is returned on success.
+On error, an exception is raised,
+and there is no way to determine how much data,
 if any, was successfully sent.
 尝试发送string的所有数据，成功则返回None，失败则抛出异常。
 故，下面两段代码是等价的：'''
@@ -168,16 +168,16 @@ if any, was successfully sent.
     pass
 ```
 
-## socketserver模块
+## socketserver 模块
 
-[`socketserver`](https://docs.python.org/zh-cn/3/library/socketserver.html)模块使一个server端可以同时和多个client端连接（多线程)
+[`socketserver`](https://docs.python.org/zh-cn/3/library/socketserver.html)模块使一个 server 端可以同时和多个 client 端连接（多线程)
 
-与只使用socket时`conn,addr = sk.accept()`相同的是    
-继承`socketserver.BaseRequestHandler`之后    
-`self.request` 就相当于conn    
-`self.client_address` 就相当于addr
+与只使用 socket 时`conn,addr = sk.accept()`相同的是  
+继承`socketserver.BaseRequestHandler`之后  
+`self.request` 就相当于 conn  
+`self.client_address` 就相当于 addr
 
-### server端
+### server 端
 
 ```python
 import socketserver
@@ -199,9 +199,9 @@ if __name__ == "__main__":
     server.serve_forever()
 ```
 
-### client端
+### client 端
 
-就是最前面的基于TCP的套接字的C端，这里使用with上下文管理的写法
+就是最前面的基于 TCP 的套接字的 C 端，这里使用 with 上下文管理的写法
 
 ```python
 import socket
@@ -220,15 +220,15 @@ print("Received: {}".format(received))
 
 ## 黏包
 
-现象 : 同时执行多条命令之后，得到的结果很可能只有一部分，在执行其他命令的时候又接收到之前执行的另外一部分结果，这种显现就是黏包。 
+现象 : 同时执行多条命令之后，得到的结果很可能只有一部分，在执行其他命令的时候又接收到之前执行的另外一部分结果，这种显现就是黏包。
 
 ### 黏包成因
 
-- TCP协议的拆包机制    
-  当发送端缓冲区的长度大于网卡的MTU时TCP会将这次发送的数据拆成几个数据包发送出去。
+- TCP 协议的拆包机制  
+  当发送端缓冲区的长度大于网卡的 MTU 时 TCP 会将这次发送的数据拆成几个数据包发送出去。
 
-- 面向流的通信特点和Nagle算法    
-  Nagle算法优化后将多次间隔较小且数据量小的数据，合并成一个大的数据块，然后进行封包。
+- 面向流的通信特点和 Nagle 算法  
+  Nagle 算法优化后将多次间隔较小且数据量小的数据，合并成一个大的数据块，然后进行封包。
 
 ```mermaid
 flowchart LR
@@ -250,9 +250,9 @@ flowchart LR
 
 让发送端在发送数据前，发送**固定长度**的报头，然后接收端循环接收完所有数据。
 
-## struct模块
+## struct 模块
 
-[`struct`](https://docs.python.org/zh-cn/3/library/struct.html)可以把以下类型转成固定长度的bytes
+[`struct`](https://docs.python.org/zh-cn/3/library/struct.html)可以把以下类型转成固定长度的 bytes
 
 | Format | C Type             | Python type        | Standard size | Notes  |
 | ------ | ------------------ | ------------------ | ------------- | ------ |
@@ -260,7 +260,7 @@ flowchart LR
 | c      | char               | string of length 1 | 1             |        |
 | b      | signed char        | integer            | 1             | (3)    |
 | B      | unsigned char      | integer            | 1             | (3)    |
-| ?      | _Bool              | bool               | 1             | (1)    |
+| ?      | \_Bool             | bool               | 1             | (1)    |
 | h      | short              | integer            | 2             | (3)    |
 | H      | unsigned short     | integer            | 2             | (3)    |
 | i      | int                | integer            | 4             | (3)    |
@@ -273,7 +273,7 @@ flowchart LR
 | d      | double             | float              | 8             | (4)    |
 | s      | char[]             | string             |               |        |
 | P      | char[]             | string             |               |        |
-| p      | void *             | integer            |               | (5)(3) |
+| p      | void \*            | integer            |               | (5)(3) |
 
 - `struct.pack()`
 - `struct.unpack()`
@@ -288,11 +288,11 @@ struct.error: 'i' format requires -2147483648 <= number <= 2147483647 #这个是
 
 `.unpack()`将返回一个元组。
 
-#### 使用struct自制报头
+#### 使用 struct 自制报头
 
 以远程终端功能（雾）为例：
 
-服务端（自定制报头） 
+服务端（自定制报头）
 
 ```python
 import socket, struct, os, subprocess
@@ -318,7 +318,7 @@ conn.close()
 s.close()
 ```
 
-客户端（自定制报头） 
+客户端（自定制报头）
 
 ```python
 import socket, struct
@@ -341,4 +341,4 @@ while 1:
 s.close()
 ```
 
-自此，黏包问题被完美解决。事实上，应用层的协议（FTP等）本质上就是定制的稍微复杂一点的报头。
+自此，黏包问题被完美解决。事实上，应用层的协议（FTP 等）本质上就是定制的稍微复杂一点的报头。

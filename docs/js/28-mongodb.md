@@ -1,6 +1,6 @@
-# mongodb数据库
+# mongodb 数据库
 
-是一种非关系型数据库，内置了一个简单的JavaScript的交互式环境
+是一种非关系型数据库，内置了一个简单的 JavaScript 的交互式环境
 
 ::: tip 关于数据库
 本笔记只记录基础命令，详细的数据库用法请左转其官方文档。
@@ -8,7 +8,7 @@
 
 ## 命令行操作
 
-mongodb是非关系型数据库中最像关系型数据库的数据库，有很多命令也和sql有相似之处
+mongodb 是非关系型数据库中最像关系型数据库的数据库，有很多命令也和 sql 有相似之处
 
 ### 开启服务
 
@@ -17,11 +17,11 @@ mongodb是非关系型数据库中最像关系型数据库的数据库，有很�
 mongod --dbpath 路径
 ```
 
-默认端口号27017
+默认端口号 27017
 
 ### 进入服务端
 
-另起一个cmd窗口
+另起一个 cmd 窗口
 
 ```powershell
 mongo
@@ -36,7 +36,7 @@ mongo
 删除数据库
 
 ```powershell
->db.dropDatabase(数据库名字)  
+>db.dropDatabase(数据库名字)
 ```
 
 进入数据库(不存在则新建)
@@ -54,13 +54,13 @@ mongo
 新建集合
 
 ```powershell
->db.createCollection("集合名")  
+>db.createCollection("集合名")
 ```
 
 删除集合
 
 ```powershell
->db.集合名.drop()  
+>db.集合名.drop()
 ```
 
 查数据
@@ -78,7 +78,7 @@ mongo
 增数据（直接向一个不存在的集合中插入数据也能创建集合）
 
 ```powershell
->db.集合名.insert({键值对})  
+>db.集合名.insert({键值对})
 ```
 
 增/改数据
@@ -97,27 +97,27 @@ mongo
 >db.集合名.deleteMany(obj)
 ```
 
-## 使用mongoose
+## 使用 mongoose
 
-使用node.js上的第三方模块mongoose连接MongoDB数据库
+使用 node.js 上的第三方模块 mongoose 连接 MongoDB 数据库
 
 ```js
-const mongoose = require('mongoose')
-const db = mongoose.createConnection("mongodb://localhost:27017/project",{useNewUrlParser: true})
-mongoose.Promise=global.Promise
-const Schema = mongoose.Schema
+const mongoose = require("mongoose");
+const db = mongoose.createConnection("mongodb://localhost:27017/project", {
+  useNewUrlParser: true,
+});
+mongoose.Promise = global.Promise;
+const Schema = mongoose.Schema;
 
-
-db.on("error",()=>{
-    console.log("数据库连接失败")
-})
-db.on("open",()=>{
-    console.log("project 数据库连接成功")
-})
-
+db.on("error", () => {
+  console.log("数据库连接失败");
+});
+db.on("open", () => {
+  console.log("project 数据库连接成功");
+});
 
 module.exports = {
-    db,
-    Schema
-}
+  db,
+  Schema,
+};
 ```

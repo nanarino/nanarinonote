@@ -1,25 +1,25 @@
-# FastAPI框架
+# FastAPI 框架
 
-[FastAPI](https://fastapi.tiangolo.com/zh/)是使用uvicorn网络微框架asgi异步服务器的高性能RESTful API web框架
+[FastAPI](https://fastapi.tiangolo.com/zh/)是使用 uvicorn 网络微框架 asgi 异步服务器的高性能 RESTful API web 框架
 
-而其他框架如django2、flask一般是使用的是uWSGI。flask与fastapi的用法大致相同。
+而其他框架如 django2、flask 一般是使用的是 uWSGI。flask 与 fastapi 的用法大致相同。
 
-版本（写这个的时候2021年）：
+版本（写这个的时候 2021 年）：
 
 ```bash
 fastapi==0.68.1
 uvicorn==0.15.0
 ```
 
-fastapi需要开发者使用pydantic来定义数据类。访问`/docs`可以查看接口文档和pydantic数据类
+fastapi 需要开发者使用 pydantic 来定义数据类。访问`/docs`可以查看接口文档和 pydantic 数据类
 
 ## 装饰器收集路由
 
-从零开始的RESTful API
+从零开始的 RESTful API
 
-[RESTful API](https://restfulapi.cn/)是定义**HTTP动作**的风格的API
+[RESTful API](https://restfulapi.cn/)是定义**HTTP 动作**的风格的 API
 
-fastapi可以使用装饰器定义和收集路由
+fastapi 可以使用装饰器定义和收集路由
 
 ```python
 from fastapi import FastAPI
@@ -50,7 +50,7 @@ if __name__ == '__main__':
     uvicorn.run(app, host="0.0.0.0", port=8080)
 ```
 
-使用uvicorn.run比uvicorn指令更方便
+使用 uvicorn.run 比 uvicorn 指令更方便
 
 ## 中间件
 
@@ -83,15 +83,15 @@ app.mount("/", StaticFiles(directory=Path(__file__).parent.joinpath("static"), h
 ```python
 from fastapi import HTTPException
 from fastapi.responses import FileResponse, Response, HTMLResponse
-@app.get('/{static_file:path}', 
-    response_class=Response(headers={"Content-Disposition" :"inline"}), 
+@app.get('/{static_file:path}',
+    response_class=Response(headers={"Content-Disposition" :"inline"}),
     tags=["static"]
 )
 async def static(static_file:str):
     path = Path(__file__).parent.joinpath("static", static_file)
     if path.is_file():
         return FileResponse(path)
-    path /= Path('index.html') # parse `/` to `/index.html` 
+    path /= Path('index.html') # parse `/` to `/index.html`
     if path.is_file():
         async with aiofiles.open(path, 'rb') as f:
             html = await f.read()
@@ -117,7 +117,7 @@ async def get_pics(tg: str = Query(..., max_length=16)):
 
 ### Path
 
-路径参数声明后自动收集校验。还可以定义元数据title。
+路径参数声明后自动收集校验。还可以定义元数据 title。
 
 ```python
 from fastapi import Path
@@ -127,7 +127,7 @@ async def get_user(id: int = Path(..., title="User's UUID")):
     pass
 ```
 
-还可以直接获取整个path
+还可以直接获取整个 path
 
 ```python
 from fastapi import Path
@@ -169,7 +169,7 @@ async def create_item(item: Item=Body(..., embed=True)):
 
 #### Field
 
-定义Body里的字段
+定义 Body 里的字段
 
 ```python
 from pydantic import BaseModel, Field
@@ -214,7 +214,7 @@ async def upload(filename: str = Form(...), file: UploadFile = File(...)):
 
 定义一个普通函数或者异步函数或者类，即可被`Depends`注入为依赖。依赖也可以依赖其他的依赖，功能类似于中间件，但只作用域这一个路由。
 
-例: path自动注入
+例: path 自动注入
 
 ```python
 import fastapi
@@ -225,16 +225,16 @@ def get_file(url_path: str = fastapi.Path(...)) -> pathlib.Path:
 
 @app.get('{url_path:path}')
 async def get_file_stream(file: pathlib.Path = fastapi.Depends(get_file):
-    # 事实上返回文件流可以 : 
+    # 事实上返回文件流可以 :
     #   return FileResponse(pathlib.Path) 或 StreamingResponse(io.BytesIO)
     pass
 ```
 
-## 原始Request
+## 原始 Request
 
-只需用将类型注解为Request即可获取到原始请求，它在starlette的基础上几乎没有封装。
+只需用将类型注解为 Request 即可获取到原始请求，它在 starlette 的基础上几乎没有封装。
 
-例: Request自动注入，获取请求的IP
+例: Request 自动注入，获取请求的 IP
 
 ```python
 from fastapi import FastAPI, Request, Depends
@@ -256,7 +256,7 @@ async def post_form(req: Request, ip = Depends(get_ip)):
 
 ## 抛出异常
 
-http异常
+http 异常
 
 ```python
 from fastapi import HTTPException

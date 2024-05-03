@@ -196,7 +196,7 @@ onMounted(() => {
   })
   requestAnimationFrame(init)
   let i = 0
-  ani.value = setInterval(()=>{
+  ani.value = window.setInterval(() => {
     requestAnimationFrame(frames[(++i)%10])
   }, 125)
 })

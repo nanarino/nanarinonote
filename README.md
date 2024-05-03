@@ -2,9 +2,8 @@
 
 自用学习笔记，基于 vitepress@1.0.1，包含
 
-- JavaScript✡️基础
-- Python🐍基础
-
+- JavaScript✡️ 基础
+- Python🐍 基础
 
 ## 本地运行
 
@@ -24,15 +23,16 @@ pnpm docs:dev
 pnpm docs:build
 ```
 
-可以将配置文件中的`base: '/nanarinonote/'`改为`base: '/'` 
-
+可以将配置文件中的`base: '/nanarinonote/'`改为`base: '/'`
 
 ## 借物
 
 封面
+
 - [くまもと先生](https://twitter.com/skmmt3?s=20&t=ltroPB3CFkNcqhtvoZvyRw)
 
 博客
+
 - [Eva-J](https://www.cnblogs.com/Eva-J/p/7277026.html)
 - [李文周](https://www.cnblogs.com/liwenzhou/p/9959979.html)
 - [GGGG-XXXX](https://www.cnblogs.com/GGGG-XXXX/p/9564651.html)
