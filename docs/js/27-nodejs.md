@@ -99,9 +99,9 @@ npm link common
 
 ## CJS 模块
 
-`CommonJS`是 nodejs 模块默认使用的规范。Node.JS 首先采用了 js 模块化的概念。
+`CommonJS` 是 nodejs 模块默认使用的规范（以下简称 `cjs`）。Node.JS 首先采用了 js 模块化的概念。
 
-根据`CommonJS`规范，一个单独的文件就是一个模块。每一个模块都是一个单独的作用域，也就是说，在该模块内部定义的变量，无法被其他模块读取，除非定义为`global`对象的属性。
+根据 `cjs` 规范，一个单独的文件就是一个模块。每一个模块都是一个单独的作用域，也就是说，在该模块内部定义的变量，无法被其他模块读取，除非定义为`global`对象的属性。
 
 输出模块变量的最好方法是使用`module.exports`对象。
 
@@ -114,11 +114,9 @@ const { $ } = require('./til.js')
 new $()...
 ```
 
-而 ES Modules 得用 mjs 文件后缀以做区分 它使用 import from 来导入。
+而 ES Modules 用 `.mjs` 文件后缀以做区分 它使用 import from 来导入（而`.ts` 则默认就相当于 `.mts` 了）。
 
-但 ES Modules 无法使用`__dirname`/`__filename`/`require.resolve`/`process.env`
-
-他们可以用`import.meta`上的属性去代替
+ES Modules 无法使用 `__dirname`/`__filename`/`require.resolve`/`process.env`，但可以用`import.meta`上的属性去代替
 
 ::: danger 脚本所在目录问题
 如果 js 文件使用右键*打开方式*选择解释器运行会导致 process.cwd 定位到 C:\Windows\System32  
@@ -187,7 +185,7 @@ readline.question("input:", (input) => {
 });
 ```
 
-ecma 最新 JavaScript modules 规范引入 文件后缀得是`.ejs`
+ecma modules 规范引入：
 
 ```js
 import { createInterface } from "readline";
