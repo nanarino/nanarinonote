@@ -1,0 +1,8 @@
+@import url("@fontsource/jetbrains-mono/600.css");
+
+@font-face {
+    font-family: HYWenHei;
+    src: url("/fonts/HYWenHei-85W-zh.ttf"),
+        url("/fonts/HYWenHei-85W-zh.woff2") format("woff2"),
+        url("/fonts/HYWenHei-85W-zh.woff") format("woff");
+}

@@ -1,0 +1,14 @@
+.mermaid .r8 rect {
+    rx: 8 !important;
+    ry: 8 !important;
+}
+
+.mermaid .red rect {
+    fill: var(--vp-c-red-3) !important;
+    stroke: var(--vp-c-red-1) !important;
+}
+
+.mermaid .green rect {
+    fill: var(--vp-c-green-3) !important;
+    stroke: var(--vp-c-green-1) !important;
+}

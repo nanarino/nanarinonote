@@ -1,0 +1,8 @@
+# 这个配置主要用来格式化 docs/.vitepress/**/*.[css, ts, vue]
+
+tabWidth = 4
+semi = false
+
+[[overrides]]
+files = "*.md"
+options.tabWidth = 2
