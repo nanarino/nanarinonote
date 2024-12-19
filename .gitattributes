@@ -1,0 +1,6 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Language stats
+docs/** linguist-documentation=false
+docs/**/*.md linguist-detectable=true

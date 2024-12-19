@@ -1,0 +1,7 @@
+mdformat
+mdformat-gfm
+mdformat-frontmatter
+mdformat-footnote
+mdformat-gfm-alerts
+mdformat-web
+mdformat-ruff

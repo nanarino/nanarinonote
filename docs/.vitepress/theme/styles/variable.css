@@ -1,0 +1,18 @@
+:root {
+    --vp-c-indigo-1: #e865c3;
+    --vp-c-indigo-2: #f1568c;
+    --vp-c-indigo-3: #d02e23;
+    --vp-c-indigo-soft: #e0cce9;
+    --vp-nav-logo-height: 40pt;
+    --vp-home-hero-image-background-image: linear-gradient(
+        15deg,
+        #b91a5c60 30%,
+        #32edd460
+    );
+    --vp-home-hero-image-filter: blur(30px);
+    --vp-font-family-base: HYWenHei, -apple-system, BlinkMacSystemFont,
+        "Helvetica Neue", Helvetica, Segoe UI, Arial, Roboto, "PingFang SC",
+        miui, "Hiragino Sans GB", "Microsoft Yahei", sans-serif;
+    --vp-font-family-mono: "JetBrains Mono", Menlo, Monaco, Consolas,
+        "Liberation Mono", "Courier New", HYWenHei;
+}

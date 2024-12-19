@@ -1,0 +1,34 @@
+{
+  "name": "notebook",
+  "version": "5.1.0",
+  "main": "docs_dev.cmd",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:preview": "vitepress preview docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nanarino/notebook.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nanarino/notebook/issues"
+  },
+  "homepage": "https://nanarino.github.io/notebook/",
+  "devDependencies": {
+    "@braintree/sanitize-url": "^7.1.1",
+    "@fontsource/jetbrains-mono": "^5.2.5",
+    "@types/node": "^22.14.1",
+    "cytoscape": "^3.31.2",
+    "cytoscape-cose-bilkent": "^4.1.0",
+    "dayjs": "^1.11.13",
+    "debug": "^4.4.0",
+    "markdown-it-mathjax3": "^4.3.2",
+    "mermaid": "^10.9.3",
+    "vitepress": "^1.6.3",
+    "vitepress-plugin-mermaid": "^2.0.17",
+    "vue": "^3.5.13"
+  }
+}

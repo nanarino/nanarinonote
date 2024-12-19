@@ -1,0 +1,35 @@
+#VPContent .VPHomeHero .image-bg {
+    z-index: 1;
+    pointer-events: none;
+}
+
+#VPContent .VPHomeHero .image-bg + canvas {
+    max-width: 320px;
+    mask-image: radial-gradient(aqua 57.7%, transparent 70.7%);
+    border-radius: 50%;
+}
+
+#VPContent .VPHomeFeatures .VPFeature {
+    position: relative;
+    overflow: hidden;
+}
+
+#VPContent .VPHomeFeatures .VPFeature:after {
+    content: "";
+    display: block;
+    position: absolute;
+    inset: 0;
+    background-image: url(/images/overyear.png);
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+#VPContent .VPHomeFeatures .VPFeature:hover:after {
+    opacity: 0.1;
+}
+
+.VPImage.logo {
+    image-rendering: pixelated;
+}

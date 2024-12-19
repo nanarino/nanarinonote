@@ -1,0 +1,6 @@
+# 配置 mdformat-ruff
+
+indent-width = 4
+
+[format]
+docstring-code-format = true
