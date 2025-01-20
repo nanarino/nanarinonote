@@ -27,9 +27,9 @@ const ani = ref(NaN)
 const frames: (() => void)[] = []
 
 onMounted(() => {
-    const ctx = (<HTMLCanvasElement>canvasRef.value).getContext(
-        "2d"
-    ) as CanvasRenderingContext2D
+    if (!canvasRef.value) return
+    const ctx = canvasRef.value.getContext("2d")
+    if (!ctx) return
     ctx.fillStyle = `rgb(${PALETTE.j})`
     ctx.fillRect(0, 0, 48, 40)
     ctx.fillStyle = `rgb(${PALETTE.i})`
@@ -209,16 +209,25 @@ onMounted(() => {
         })
     }
     requestAnimationFrame(init)
-    let i = 0
+})
+
+let i = 0
+const start = () => {
     ani.value = window.setInterval(() => {
         requestAnimationFrame(frames[++i % 10])
     }, 125)
-})
-
-onBeforeUnmount(() => clearInterval(ani.value))
+}
+const stop = () => ani.value && clearInterval(ani.value)
+onBeforeUnmount(stop)
 </script>
 <template>
-    <canvas width="48" height="48" ref="canvasRef"></canvas>
+    <canvas
+        @mouseenter="start"
+        @mouseleave="stop"
+        width="48"
+        height="48"
+        ref="canvasRef"
+    ></canvas>
 </template>
 <style scoped>
 canvas {

@@ -21,7 +21,7 @@ java 同 javascript 之间没有关系
 
 ```html
 <script type="text/javascript">
- //你的JavaScript代码   这是单行注释
+ // 你的JavaScript代码   这是单行注释
 </script>
 ```
 
@@ -37,11 +37,17 @@ java 同 javascript 之间没有关系
 
 ```javascript
 //单行注释
+
 /*
  *   多行注释
  */
+
 console.log("打印日志")
-//打印的其他内容甚至打印图片等花里胡哨的操作可以百度
+console.log("打印日志"); // 可以加分号
+// 一般情况下下一行第一个字符是 [ { / 需要加分号 可以加在最前面
+// 譬如方法`[Symbol.*](){}`
+// 在几年前的低版本Chromium必须加分号 写成 `;[Symbol.*](){}`
+// 现在不需要了
 ```
 
 在低版本 ie 浏览器中只有按下 F12 打开了控制台之后才能使用 console\

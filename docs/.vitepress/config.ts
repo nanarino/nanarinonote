@@ -8,10 +8,16 @@ enum nav {
     py = "/python/",
     js = "/javascript/",
 }
-const a = (thisSidebarName: nav, MDFileName: string) => ({
-    text: MDFileName,
-    link: thisSidebarName + MDFileName,
-})
+const a = (thisSidebarName: nav, markdownFileName: string) => {
+    const [_, num, title] = markdownFileName.split(/^(\d+)-/)
+    let link: string = thisSidebarName
+    let text = `${[...num].reduce(
+        (t, n) => t + ["𝟶", "𝟷", "𝟸", "𝟹", "𝟺", "𝟻", "𝟼", "𝟽", "𝟾", "𝟿"][n],
+        ""
+    )}﹒${title}`
+    if (num !== "0") link += markdownFileName
+    return { text, link }
+}
 
 export default withMermaid({
     ...defineConfig({
@@ -45,13 +51,13 @@ export default withMermaid({
                     {
                         text: "起步",
                         items: [
-                            { text: "0-准备环境", link: nav.js },
-                            a(nav.js, "1-初识javascript"),
-                            a(nav.js, "2-数据类型伊始"),
-                            a(nav.js, "3-函数和对象属性"),
-                            a(nav.js, "4-流程控制"),
-                            a(nav.js, "5-运算符和类型转换"),
-                        ],
+                            "0-准备环境",
+                            "1-初识javascript",
+                            "2-数据类型伊始",
+                            "3-函数和对象属性",
+                            "4-流程控制",
+                            "5-运算符和类型转换",
+                        ].map((text) => a(nav.js, text)),
                     },
                     {
                         text: "函数和作用域",
@@ -109,11 +115,11 @@ export default withMermaid({
                     {
                         text: "起步",
                         items: [
-                            { text: "0-准备环境", link: nav.py },
-                            a(nav.py, "1-初识python"),
-                            a(nav.py, "2-流程控制"),
-                            a(nav.py, "3-异常处理"),
-                        ],
+                            "0-准备环境",
+                            "1-初识python",
+                            "2-流程控制",
+                            "3-异常处理",
+                        ].map((text) => a(nav.py, text)),
                     },
                     {
                         text: "数据类型",

@@ -231,8 +231,7 @@ async function* asyncGenerator() {
     }
 }
 
-;
-(async function() {
+void(async function() {
     for await (num of asyncGenerator()) {
         console.log(num)
     }

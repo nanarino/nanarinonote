@@ -16,8 +16,15 @@
 ```bash
 # 用于本地伺服器的运行和文档构建
 pnpm i
-# 用于文档格式化 **记得先进入虚拟环境**
+```
+
+安裝格式化工具
+
+```bash
+# 使用pip
 pip install -r requirements.txt
+# 或使用uv
+uv tool install mdformat --with-requirements requirements.txt
 ```
 
 脚手架命令

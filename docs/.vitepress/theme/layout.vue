@@ -1,5 +1,5 @@
 <script setup>
-import DefaultTheme from "vitepress/theme"
+import DefaultTheme from "vitepress/theme-without-fonts"
 import Suika from "./components/Suika.vue"
 
 const { Layout } = DefaultTheme

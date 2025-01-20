@@ -17,7 +17,7 @@
 打开浏览器按下`F12` 找到控制台的交互式窗口(`Console`)\
 输入宇宙级代码
 
-::: tip >console.log("Hello World!")
+::: tip > console.log("Hello World!")
 Hello World!
 :::
 
