@@ -2,4 +2,4 @@
 * text=auto
 
 # Language stats
-docs/* linguist-detectable=true
+docs/** linguist-detectable=true
