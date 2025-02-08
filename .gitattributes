@@ -2,5 +2,4 @@
 * text=auto
 
 # Language stats
-*.md linguist-documentation=false
-*.md linguist-detectable
+docs/* linguist-detectable=true
