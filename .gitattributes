@@ -3,4 +3,4 @@
 
 # Language stats
 docs/** linguist-documentation=false
-docs/** linguist-detectable=true
+docs/**/*.md linguist-detectable=true
